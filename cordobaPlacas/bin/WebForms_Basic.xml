@@ -1329,6 +1329,42 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.nuevoCliente._txtCuit">
+<summary>
+Control txtCuit.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.nuevoCliente._txtCuit_MaskedEditExtender">
+<summary>
+Control txtCuit_MaskedEditExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.nuevoCliente._RequiredFieldValidator7">
+<summary>
+Control RequiredFieldValidator7.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.nuevoCliente._RegularExpressionValidator1">
+<summary>
+Control RegularExpressionValidator1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.nuevoCliente._txtNombre">
 <summary>
 Control txtNombre.
@@ -1377,6 +1413,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.nuevoCliente._RequiredFieldValidator3">
 <summary>
 Control RequiredFieldValidator3.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.nuevoCliente._RegularExpressionValidator2">
+<summary>
+Control RegularExpressionValidator2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1449,6 +1494,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.nuevoCliente._ValidationSummary1">
 <summary>
 Control ValidationSummary1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.nuevoCliente._pnlMsg">
+<summary>
+Control pnlMsg.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.nuevoCliente._lblMsg">
+<summary>
+Control lblMsg.
 </summary>
 <remarks>
 Campo generado automáticamente.

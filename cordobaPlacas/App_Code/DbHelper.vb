@@ -63,6 +63,7 @@ Public Class DbHelper
             cmd.Parameters.AddWithValue("@DIRECCION", _cliente.direccion)
             cmd.Parameters.AddWithValue("@CIUDAD", _cliente.ciudad)
             cmd.Parameters.AddWithValue("@PROVINCIA", _cliente.provincia)
+            cmd.Parameters.AddWithValue("@CUIT", _cliente.CUIT)
 
             cnn.Open()
             cmd.ExecuteNonQuery()
@@ -74,6 +75,42 @@ Public Class DbHelper
         End Try
     End Sub
 
+    Friend Sub insertCliente(_cliente As Cliente)
+        Try
+            String.Format("SELECT COUNT(CUIT) FROM CLIENTES WHERE CUIT={0}", _cliente.CUIT)
+            cmd.Connection = cnn
+            cmd.CommandText = String.Format("SELECT NOMBRE FROM CLIENTES WHERE CUIT='{0}'", _cliente.CUIT)
+            cmd.CommandType = CommandType.Text
+
+            Dim dt = New DataTable
+
+            da.Fill(dt)
+
+            If dt.Rows.Count > 0 Then
+                Throw New Exception(String.Format("El CUIT ya existe para el cliente {0}", dt(0)(0)))
+            Else
+
+                cmd.CommandText = "SP_INSERT_CLIENTE"
+                cmd.CommandType = CommandType.StoredProcedure
+
+                cmd.Parameters.AddWithValue("@NOMBRE", _cliente.nombre)
+                cmd.Parameters.AddWithValue("@TELEFONO", _cliente.tel)
+                cmd.Parameters.AddWithValue("@MAIL", _cliente.mail)
+                cmd.Parameters.AddWithValue("@DIRECCION", _cliente.direccion)
+                cmd.Parameters.AddWithValue("@CIUDAD", _cliente.ciudad)
+                cmd.Parameters.AddWithValue("@PROVINCIA", _cliente.provincia)
+                cmd.Parameters.AddWithValue("@CUIT", _cliente.CUIT)
+
+                cnn.Open()
+                cmd.ExecuteNonQuery()
+            End If
+
+        Catch ex As SqlException
+            Throw New Exception("ERROR DE BASE DE DATOS:    " & ex.Message)
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
     Friend Sub updateStock(_idItem As Integer, _stock As Integer)
         Try
             cmd.Connection = cnn

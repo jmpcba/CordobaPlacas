@@ -23,6 +23,42 @@ Partial Public Class nuevoCliente
     Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
+    '''Control txtCuit.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCuit As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control txtCuit_MaskedEditExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCuit_MaskedEditExtender As Global.AjaxControlToolkit.MaskedEditExtender
+    
+    '''<summary>
+    '''Control RequiredFieldValidator7.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator7 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
+    '''Control RegularExpressionValidator1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+    
+    '''<summary>
     '''Control txtNombre.
     '''</summary>
     '''<remarks>
@@ -75,6 +111,15 @@ Partial Public Class nuevoCliente
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents RequiredFieldValidator3 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
+    '''Control RegularExpressionValidator2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
     
     '''<summary>
     '''Control txtDir.
@@ -147,4 +192,22 @@ Partial Public Class nuevoCliente
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
+    
+    '''<summary>
+    '''Control pnlMsg.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlMsg As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control lblMsg.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
 End Class

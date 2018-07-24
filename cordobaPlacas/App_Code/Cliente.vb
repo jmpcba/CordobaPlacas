@@ -8,6 +8,7 @@ Public Class Cliente
     Public direccion As String
     Public ciudad As String
     Public provincia As String
+    Public CUIT As String
     Public datos As DataTable
     Private db As New DbHelper("CLIENTES")
 
@@ -25,11 +26,12 @@ Public Class Cliente
         direccion = t.Rows(0)("DIRECCION").trim()
         ciudad = t.Rows(0)("CIUDAD").trim()
         provincia = t.Rows(0)("PROVINCIA").trim()
+        CUIT = t.Rows(0)("CUIT").trim()
         datos = t
     End Sub
 
-    Public Sub New(_id As Integer, _nombre As String, _tel As String, _mail As String, _dir As String, _ciudad As String, _prov As String)
-        id = _id
+    Public Sub New(_CUIT As String, _nombre As String, _tel As String, _mail As String, _dir As String, _ciudad As String, _prov As String)
+        CUIT = _CUIT
         nombre = _nombre
         tel = _tel
         mail = _mail
@@ -40,11 +42,27 @@ Public Class Cliente
     End Sub
 
     Public Function getClientes() As DataTable
-        Return db.getTable()
+        Try
+            Return db.getTable()
+        Catch ex As Exception
+            Throw
+        End Try
+
     End Function
 
     Public Sub actualizar()
-        db.actualizarCliente(Me)
+        Try
+            db.actualizarCliente(Me)
+        Catch ex As Exception
+            Throw
+        End Try
     End Sub
 
+    Public Sub insertar()
+        Try
+            db.insertCliente(Me)
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
 End Class
