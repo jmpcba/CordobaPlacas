@@ -1,6 +1,17 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="nuevoCliente.aspx.vb" Inherits="cordobaPlacas.nuevoCliente"  Theme="default" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="modificarCliente.aspx.vb" Inherits="cordobaPlacas.modificarCliente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Panel ID="Panel1" runat="server" Width="258px">    
+    <asp:Panel ID="Panel1" runat="server" Width="258px">  
+        <h4>Modificar Cliente</h4>  
+        <p>Seleccione el cliente de la lista y haga click en Editar</p>
+        <br />
+        <asp:Panel ID="Panel2" runat="server">
+            <asp:ListBox ID="lstClientes" runat="server"></asp:ListBox>
+            <ajaxToolkit:ListSearchExtender ID="lstClientes_ListSearchExtender" runat="server" BehaviorID="lstClientes_ListSearchExtender" TargetControlID="lstClientes">
+            </ajaxToolkit:ListSearchExtender>
+            <asp:Button ID="btnEditar" runat="server" Text="Editar" />
+        </asp:Panel>
+        <br />
+        <asp:Panel ID="pnlDatosCliente" runat="server">
     <table cellpadding="5" style="border-collapse: collapse; border-style: solid; border-width: 1px">
         <tr>
                 <td>CUIT</td>
@@ -55,10 +66,14 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" /></td>
+                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" />
+                    <ajaxToolkit:ConfirmButtonExtender ID="btnGuardar_ConfirmButtonExtender" runat="server" ConfirmText="Desea guardar los cambios?" TargetControlID="btnGuardar" />
+                </td>
             </tr>
         </table>
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="validators" DisplayMode="List" Width="234px" />
+        </asp:Panel>
         <br />
         <asp:Panel ID="pnlMsg" runat="server">
             <asp:Label ID="lblMsg" runat="server" Text="Label"></asp:Label>

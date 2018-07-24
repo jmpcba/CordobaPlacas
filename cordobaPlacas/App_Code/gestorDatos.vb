@@ -100,6 +100,29 @@ Public Class GestorDatos
         End Try
     End Sub
 
+    Public Sub getCombos(ByVal _lst As ListBox, ByVal _comboName As combos)
+        Try
+            If _comboName = combos.estados Then
+
+                Dim estado As New Estado()
+                _lst.DataSource = estado.getEstados()
+                _lst.DataTextField = "nombre"
+                _lst.DataValueField = "id"
+                _lst.DataBind()
+
+            ElseIf _comboName = combos.clientes Then
+
+                Dim cliente As New Cliente()
+                _lst.DataSource = cliente.getClientes()
+                _lst.DataTextField = "nombre"
+                _lst.DataValueField = "id"
+                _lst.DataBind()
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
+
     Public Sub mostrarGrillaItems(ByVal _grilla As GridView, ByVal _pedido As Pedido, Optional _withStock As Boolean = False)
         'definicion de tabla
         Dim dt = New DataTable()

@@ -35,6 +35,14 @@
                 </tr>
                 <tr>
                     <td>
+                        CUIT
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtCUIT" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Ingrese un valor para CUIT" ControlToValidate="txtNombre" CssClass="validators" Text="*" ValidationGroup="vgUpdateCliente"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Nombre
                     </td>
                     <td>

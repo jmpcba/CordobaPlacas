@@ -185,6 +185,15 @@ Partial Public Class nuevoCliente
     Protected WithEvents btnGuardar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''Control btnGuardar_ConfirmButtonExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnGuardar_ConfirmButtonExtender As Global.AjaxControlToolkit.ConfirmButtonExtender
+    
+    '''<summary>
     '''Control ValidationSummary1.
     '''</summary>
     '''<remarks>

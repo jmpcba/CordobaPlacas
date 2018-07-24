@@ -196,6 +196,15 @@
         cliente = Session("cliente")
 
         btnActualizarCliente_ModalPopupExtender.Hide()
+        Dim fcuit = txtCUIT.Text.Trim()
+
+        fcuit = fcuit.Insert(2, "-")
+        fcuit = fcuit.Insert(11, "-")
+
+        If cliente.CUIT <> fcuit Then
+            cliente.CUIT = fcuit
+            cambio = True
+        End If
 
         If cliente.nombre <> txtNombre.Text.Trim() Then
             cliente.nombre = txtNombre.Text.Trim()
