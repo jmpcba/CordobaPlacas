@@ -188,6 +188,9 @@
                 <asp:DetailsView ID="dvClienteConfirmar" runat="server" Height="50px" Width="125px"></asp:DetailsView>
                 <hr />
                 <h4>Detalle Del Pedido</h4>
+                <br />
+                <asp:CheckBox ID="chkStock" style="align-items:center;" runat="server" />
+                <br />
                 <asp:GridView ID="grPepedidoConfirmar" runat="server"></asp:GridView>
             </asp:WizardStep>
         </WizardSteps>

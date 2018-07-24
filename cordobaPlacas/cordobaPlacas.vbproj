@@ -46,8 +46,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Documents\ASP.NET AJAX Control Toolkit\Bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="AjaxMin, Version=4.97.4951.28478, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxMin.4.97.4951.28483\lib\net40\AjaxMin.dll</HintPath>
@@ -447,7 +447,6 @@
     <Compile Include="App_Code\Cliente.vb" />
     <Compile Include="App_Code\GestorPedidos.vb" />
     <Compile Include="App_Code\Hoja.vb" />
-    <Compile Include="App_Code\Item_old.vb" />
     <Compile Include="App_Code\Madera.vb" />
     <Compile Include="App_Code\Marco.vb" />
     <Compile Include="App_Code\Pedido.vb" />

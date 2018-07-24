@@ -44,163 +44,6 @@ Public Class GestorDatos
         End Try
     End Sub
 
-    Public Sub getCombos(ByVal _cbLinea As DropDownList, ByVal _cbChapa As DropDownList, ByVal _cbMarco As DropDownList, ByVal _cbMadera As DropDownList, ByVal _cbHoja As DropDownList, ByVal _cbMano As DropDownList)
-
-        Dim selMaderas() As Integer
-        Dim selChapas() As Integer
-        Dim selMarcos() As Integer
-        Dim selHojas() As Integer
-        Dim selManos() As Integer
-        Dim maderas As DataTable
-        Dim chapas As DataTable
-        Dim marcos As DataTable
-        Dim hojas As DataTable
-        Dim manos As DataTable
-        Dim rowsToDelete = New List(Of DataRow)
-
-        Try
-            maderas = madera.getMaderas()
-            chapas = chapa.getChapas()
-            marcos = marco.getMarcos()
-            hojas = hoja.getHojas
-            manos = mano.getManos()
-        Catch ex As Exception
-            Throw
-        End Try
-
-        Dim seleccion = _cbLinea.SelectedItem.Value
-
-        Select Case seleccion
-
-            Case 1 'linea liviana
-                selMaderas = {0}
-                selChapas = {0}
-                selMarcos = {0, 1, 2}
-                selHojas = {0, 1, 2, 3}
-                selManos = {0, 1}
-            Case 2 ' linea intrermedia
-                selMaderas = {0, 1}
-                selChapas = {1}
-                selMarcos = {1, 2, 3, 4}
-                selHojas = {0, 1, 2, 3}
-                selManos = {0, 1}
-            Case 3 'linea pesada
-                selMaderas = {0, 1, 2}
-                selChapas = {2}
-                selMarcos = {1, 2, 3, 4}
-                selHojas = {0, 1, 2, 3}
-                selManos = {0, 1}
-            Case 4 'frente placard
-                selMaderas = {0, 2}
-                selChapas = {2}
-                selMarcos = {1}
-                selHojas = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
-                selManos = {2}
-            Case Else
-                selMaderas = {0, 1, 2}
-                selChapas = {0, 1, 2}
-                selMarcos = {0, 1, 2, 3, 4}
-                selHojas = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
-                selManos = {0, 1, 2}
-        End Select
-
-        If _cbLinea.SelectedValue <> 0 Then 'si no esta seleccionada la opcion vacia
-            'ELIMINAR MADERAS QUE NO VAN CON LA LINEA SELECCIONADA
-            For Each row As DataRow In maderas.Rows
-                If Not selMaderas.Contains(row("id")) Then
-                    rowsToDelete.Add(row)
-                End If
-            Next
-
-            For Each i As DataRow In rowsToDelete
-                maderas.Rows.Remove(i)
-            Next
-
-            'ELIMINAR CHAPAS QUE NO CORRESPONDEN CON LA LINEA
-            rowsToDelete.Clear()
-
-            For Each r As DataRow In chapas.Rows
-                If Not selChapas.Contains(r("id")) Then
-                    rowsToDelete.Add(r)
-                End If
-            Next
-
-            For Each r As DataRow In rowsToDelete
-                chapas.Rows.Remove(r)
-            Next
-
-            rowsToDelete.Clear()
-            'ELIMINAR MARCOS QUE NO CORRESPONDEN CON LA LINEA
-            For Each r As DataRow In marcos.Rows
-                If Not selMarcos.Contains(r("id")) Then
-                    rowsToDelete.Add(r)
-                End If
-            Next
-
-            For Each r As DataRow In rowsToDelete
-                marcos.Rows.Remove(r)
-            Next
-
-            rowsToDelete.Clear()
-            'ELIMINAR ANCHOS DE HOJA QUE NO CORRESPONDEN CON LA LINEA
-            For Each r As DataRow In hojas.Rows
-                If Not selHojas.Contains(r("id")) Then
-                    rowsToDelete.Add(r)
-                End If
-            Next
-
-            For Each r As DataRow In rowsToDelete
-                hojas.Rows.Remove(r)
-            Next
-
-            rowsToDelete.Clear()
-            'ELIMINAR MANOS QUE NOS CORRESPONDEN CON LA LINEA
-            For Each r As DataRow In manos.Rows
-                If Not selManos.Contains(r("id")) Then
-                    rowsToDelete.Add(r)
-                End If
-            Next
-
-            For Each r As DataRow In rowsToDelete
-                manos.Rows.Remove(r)
-            Next
-
-            _cbMarco.DataSource = marcos
-            _cbMadera.DataSource = maderas
-            _cbChapa.DataSource = chapas
-            _cbHoja.DataSource = hojas
-            _cbMano.DataSource = manos
-
-            _cbMano.DataTextField = "nombre"
-            _cbMano.DataValueField = "id"
-
-            _cbChapa.DataTextField = "nombre"
-            _cbChapa.DataValueField = "id"
-
-            _cbMarco.DataTextField = "nombre"
-            _cbMarco.DataValueField = "id"
-
-            _cbMadera.DataTextField = "nombre"
-            _cbMadera.DataValueField = "id"
-
-            _cbHoja.DataTextField = "nombre"
-            _cbHoja.DataValueField = "id"
-
-            _cbChapa.DataBind()
-            _cbMarco.DataBind()
-            _cbMadera.DataBind()
-            _cbHoja.DataBind()
-            _cbMano.DataBind()
-
-        Else
-
-            _cbChapa.Items.Clear()
-            _cbMarco.Items.Clear()
-            _cbMadera.Items.Clear()
-            _cbHoja.Items.Clear()
-            _cbMano.Items.Clear()
-        End If
-    End Sub
 
     Public Sub fillCombos(ByVal _cbLinea As DropDownList, ByVal _cbChapa As DropDownList, ByVal _cbMarco As DropDownList, ByVal _cbMadera As DropDownList, ByVal _cbHoja As DropDownList, ByVal _cbMano As DropDownList)
         Dim db = New DbHelper()
@@ -280,7 +123,7 @@ Public Class GestorDatos
         End Try
     End Sub
 
-    Public Sub mostrarGrillaItems(ByVal _grilla As GridView, ByVal _pedido As Pedido)
+    Public Sub mostrarGrillaItems(ByVal _grilla As GridView, ByVal _pedido As Pedido, Optional _withStock As Boolean = False)
         'definicion de tabla
         Dim dt = New DataTable()
         dt.Columns.Add("LINEA", GetType(String))
@@ -291,6 +134,10 @@ Public Class GestorDatos
         dt.Columns.Add("MANO", GetType(String))
         dt.Columns.Add("CANTIDAD", GetType(Integer))
         dt.Columns.Add("PRECIO", GetType(Decimal))
+
+        If _withStock Then
+            dt.Columns.Add("STOCK", GetType(Decimal))
+        End If
 
         'llenado de tabla
         For Each item As Item In _pedido.items
@@ -303,11 +150,16 @@ Public Class GestorDatos
             row("cantidad") = item.cant
             row("precio") = item.monto
             row("mano") = item.producto.mano.nombre
+
+            If _withStock Then
+                row("stock") = item.producto.stock
+            End If
+
             dt.Rows.Add(row)
-        Next
-        'actualizacion de grilla
-        _grilla.DataSource = dt
-        _grilla.DataBind()
+            Next
+            'actualizacion de grilla
+            _grilla.DataSource = dt
+            _grilla.DataBind()
     End Sub
 
     Public Function getPedidosCliente(ByVal _cliente As Integer) As DataTable

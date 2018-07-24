@@ -38,7 +38,7 @@
                         <asp:BoundField DataField="Ultima Modificacion" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" DataFormatString="{0:d}" />
                         </Columns>
                         </asp:GridView>
-                    <asp:SqlDataSource ID="dsNvos" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString %>" SelectCommand="SP_PEDIDOS_RECIBIDOS" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="dsNvos" runat="server" ConnectionString="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True" SelectCommand="SP_PEDIDOS_RECIBIDOS" SelectCommandType="StoredProcedure" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
                 </div>
                     <asp:Panel ID="pnlDetalleNvo" runat="server" Visible="False">
                         <div>
@@ -125,7 +125,7 @@
                         <asp:BoundField DataField="Ultima Modificacion" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" DataFormatString="{0:d}" />
                     </Columns>
                 </asp:GridView>
-                <asp:SqlDataSource ID="dsEnCurso" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString %>" SelectCommand="sp_PEDIDOS_EN_CURSO" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="dsEnCurso" runat="server" SelectCommand="sp_PEDIDOS_EN_CURSO" SelectCommandType="StoredProcedure" ConnectionString="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True"></asp:SqlDataSource>
                 <asp:Panel ID="pnlDetalleEnCurso" runat="server" Visible="False">
                     <hr />
                     <h4>Detalle Pedido</h4>
@@ -194,7 +194,7 @@
                                 <asp:BoundField DataField="Ultima Modificacion" DataFormatString="{0:d}" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="dsEnsamblados" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString %>" SelectCommand="SP_PEDIDOS_ITEMS_ENSAMBLADO" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="dsEnsamblados" runat="server" ConnectionString="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True" SelectCommand="SP_PEDIDOS_ITEMS_ENSAMBLADO" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                     </div>
                     </asp:Panel>
                     <asp:Panel ID="pnlDetalleEnsamblados" runat="server" Visible="False">
@@ -240,7 +240,7 @@
                             <asp:BoundField DataField="Ultima Modificacion" DataFormatString="{0:d}" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
                         </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="dsPedidosDeposito" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString %>" SelectCommand="SP_PEDIDOS_ITEMS_ENDEPOSITO" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="dsPedidosDeposito" runat="server" ConnectionString="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True" SelectCommand="SP_PEDIDOS_ITEMS_ENDEPOSITO" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 </asp:Panel>
                 <asp:Panel ID="pnlDetalleDeposito" runat="server" Visible="False">
                     <hr />

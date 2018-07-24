@@ -53,6 +53,26 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-DGL3LL5;Initial Catalog=cbaPlacas;Integrated Security=True")>  _
+        Public ReadOnly Property desktopConStr() As String
+            Get
+                Return CType(Me("desktopConStr"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source = USER - PC;Initial Catalog=cbaPlacas;Integrated Security=True")>  _
+        Public ReadOnly Property laptopConStr() As String
+            Get
+                Return CType(Me("laptopConStr"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

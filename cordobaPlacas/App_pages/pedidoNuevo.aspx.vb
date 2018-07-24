@@ -8,6 +8,8 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         pnlUpdateCliente.Visible = False
+        chkStock.Checked = False
+
         Try
             gestorDatos = New GestorDatos()
             If IsPostBack Then
@@ -93,10 +95,29 @@
             Else
                 gestorPedidos = Session("GestorPedidos")
                 gestorDatos.getCliente(gestorPedidos.pedido.cliente.id, dvClienteConfirmar)
-                gestorDatos.mostrarGrillaItems(grPepedidoConfirmar, gestorPedidos.pedido)
+                gestorDatos.mostrarGrillaItems(grPepedidoConfirmar, gestorPedidos.pedido, True)
                 lblCantidadNvo.Text = gestorPedidos.pedido.cantTotal
                 lblPrecioNvo.Text = gestorPedidos.pedido.precioTotal
                 lblDetalleNvo.Text = gestorPedidos.pedido.cliente.nombre
+
+                Dim flag = True
+
+                For Each r As GridViewRow In grPepedidoConfirmar.Rows
+                    If Convert.ToInt32(r.Cells(6).Text) >= Convert.ToInt32(r.Cells(8).Text) Then
+                        r.ForeColor = Drawing.Color.Red
+                        flag = False
+                    End If
+                Next
+
+                If flag Then
+                    chkStock.Text = "Dispone de Stock para cubrir este pedido"
+                    chkStock.ForeColor = Drawing.Color.Green
+                    chkStock.Checked = True
+                Else
+                    chkStock.Text = "Este pedido debe ser fabricado"
+                    chkStock.ForeColor = Drawing.Color.Red
+                    chkStock.Checked = False
+                End If
             End If
         Else
             gestorPedidos = Session("GestorPedidos")

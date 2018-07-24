@@ -43,20 +43,6 @@ Public Class GestorPedidos
         End Try
     End Sub
 
-    Public Sub actualizarPedido(ByVal _idPedido As Integer, ByVal _item As Item_old)
-        Dim dbItem = New DbHelper("items")
-        Dim pedido As Pedido
-        Try
-            dbItem.actualizarItem(_item.id, _item.hoja.id, _item.marco.id, _item.madera.id, _item.chapa.id, _item.cant, _item.precio, _item.mano.id, _item.linea.id, _item.estado.id)
-
-            pedido = New Pedido(_idPedido)
-            actualizarPedido(pedido.id, "cant_total", pedido.cantTotal)
-            actualizarPedido(pedido.id, "precio_total", pedido.precioTotal)
-            actualizarPedido(pedido.id, "estado", pedido.estado.id)
-        Catch ex As Exception
-            Throw
-        End Try
-    End Sub
 
     Public Sub actualizarEnCurso(_gr As GridView)
         Dim cambio = False

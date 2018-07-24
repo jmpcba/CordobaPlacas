@@ -9,7 +9,7 @@ Public Class DbHelper
     Private da As SqlDataAdapter
     Private ds As DataSet
     Private table As String
-    Private conStr As String = "Data Source=DESKTOP-DGL3LL5;Initial Catalog=cbaPlacas;Integrated Security=True"
+    Private conStr As String = "Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True"
 
     Sub New(ByVal _table As String)
         table = _table

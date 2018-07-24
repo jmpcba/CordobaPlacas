@@ -143,7 +143,7 @@
             gestordatos.getComboLineas(cbLinea)
             cbLinea.SelectedValue = item.producto.linea.id
 
-            gestordatos.getCombos(cbLinea, cbChapa, cbMarco, cbMadera, cbHoja, cbMano)
+            'gestordatos.getCombos(cbLinea, cbChapa, cbMarco, cbMadera, cbHoja, cbMano)
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
@@ -171,9 +171,9 @@
             Dim cant = txtCantidad.Text.Trim()
             Dim linea = New linea(cbLinea.SelectedItem.Value, cbLinea.SelectedItem.Text)
             Dim estado = New Estado(0)
-            Dim item = New Item_old(idItem, hoja, marco, madera, chapa, cant, mano, idPedido, linea, estado)
+            'Dim item = New Item_old(idItem, hoja, marco, madera, chapa, cant, mano, idPedido, linea, estado)
 
-            gestorPedidos.actualizarPedido(idPedido, Item)
+            'gestorPedidos.actualizarPedido(idPedido, Item)
             buscar()
             grDetalle.DataSource = gestordatos.getItems(idPedido)
             grDetalle.DataBind()
@@ -196,7 +196,7 @@
         rgxCantidad.Enabled = True
 
         Try
-            gestordatos.getCombos(cbLinea, cbChapa, cbMarco, cbMadera, cbHoja, cbMano)
+            'gestordatos.getCombos(cbLinea, cbChapa, cbMarco, cbMadera, cbHoja, cbMano)
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
