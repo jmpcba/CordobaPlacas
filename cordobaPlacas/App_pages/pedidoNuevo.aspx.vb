@@ -13,8 +13,6 @@
         Try
             gestorDatos = New GestorDatos()
             If IsPostBack Then
-                'rgxCantidad.Enabled = True
-                'rfvCantidad.Enabled = True
                 gestorPedidos = Session("GestorPedidos")
             Else
                 gestorDatos.getCombos(dpCliente, GestorDatos.combos.clientes)

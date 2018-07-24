@@ -30,19 +30,6 @@ Public Class GestorPedidos
         End Try
     End Sub
 
-    Public Sub actualizarPedido(ByVal _idPedido As Integer, ByVal _col As String, ByVal _val As String)
-        Try
-            db.updateById(_idPedido, _col, _val)
-            db.updateById(_idPedido, "fecha_modificado", Today.Date.ToShortDateString)
-
-            If _col = "estado" And _val = "ENTREGADO" Then
-                db.updateById(_idPedido, "entregado", Today.Date.ToShortDateString)
-            End If
-        Catch ex As Exception
-            Throw
-        End Try
-    End Sub
-
 
     Public Sub actualizarEnCurso(_gr As GridView)
         Dim cambio = False

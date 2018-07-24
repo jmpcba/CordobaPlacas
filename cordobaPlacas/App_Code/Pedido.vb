@@ -172,46 +172,6 @@ Public Class Pedido
         precioTotal -= i.monto
     End Sub
 
-    Public Function calcularMateriales(_stock As Integer) As DataTable
-        Dim dt = New DataTable
-        Dim dts = New List(Of DataTable)
-
-
-        For Each i As Item In items
-            Dim desp = i.CalcularMateriales()
-
-            If dt.Rows.Count = 0 Then
-                dt = desp.Clone()
-            End If
-
-            For Each r As DataRow In desp.Rows
-                Dim id = r("ID_PIEZA")
-                Dim encontro = False
-                r("CONSUMO") = r("CONSUMO") * (i.cant - _stock)
-                For Each j As DataRow In dt.Rows
-                    If j("ID_PIEZA") = id Then
-                        j("CONSUMO") = j("CONSUMO") + r("CONSUMO")
-                        encontro = True
-                        Exit For
-                    End If
-                Next
-
-                If Not encontro Then
-                    dt.ImportRow(r)
-                End If
-            Next
-        Next
-        Return dt
-    End Function
-
-    Public Sub updateItem(_id As Integer, _item As Item)
-        For Each i As Item In items
-            If i.id = _id Then
-                i.clone(_item)
-            End If
-        Next
-    End Sub
-
     Public Function itemIndex(_id As Integer) As Integer
         Dim result = -1
         Dim j = 0

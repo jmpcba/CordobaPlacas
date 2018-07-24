@@ -40,6 +40,7 @@ Public Class Estado
         End Try
     End Function
 
+    'PARA BORRAR
     Public Function getEstadosPosibles() As String()
         Dim r As DataRow
         Dim dt As DataTable

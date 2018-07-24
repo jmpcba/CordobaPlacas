@@ -189,7 +189,7 @@
                 <hr />
                 <h4>Detalle Del Pedido</h4>
                 <br />
-                <asp:CheckBox ID="chkStock" style="align-items:center;" runat="server" />
+                <asp:CheckBox ID="chkStock" style="align-items:center;" runat="server" Enabled="False" />
                 <br />
                 <asp:GridView ID="grPepedidoConfirmar" runat="server"></asp:GridView>
             </asp:WizardStep>

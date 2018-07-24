@@ -100,29 +100,6 @@ Public Class GestorDatos
         End Try
     End Sub
 
-    Public Sub getCombos(ByVal _lst As ListBox, ByVal _comboName As combos)
-        Try
-            If _comboName = combos.estados Then
-
-                Dim estado As New Estado()
-                _lst.DataSource = estado.getEstados()
-                _lst.DataTextField = "nombre"
-                _lst.DataValueField = "id"
-                _lst.DataBind()
-
-            ElseIf _comboName = combos.clientes Then
-
-                Dim cliente As New Cliente()
-                _lst.DataSource = cliente.getClientes()
-                _lst.DataTextField = "nombre"
-                _lst.DataValueField = "id"
-                _lst.DataBind()
-            End If
-        Catch ex As Exception
-            Throw
-        End Try
-    End Sub
-
     Public Sub mostrarGrillaItems(ByVal _grilla As GridView, ByVal _pedido As Pedido, Optional _withStock As Boolean = False)
         'definicion de tabla
         Dim dt = New DataTable()
@@ -162,15 +139,6 @@ Public Class GestorDatos
             _grilla.DataBind()
     End Sub
 
-    Public Function getPedidosCliente(ByVal _cliente As Integer) As DataTable
-        Try
-            Dim db = New DbHelper("pedidos")
-            Return db.getPedidos(_cliente)
-        Catch ex As Exception
-            Throw
-        End Try
-    End Function
-
     Public Function getItems(ByVal _pedido As Integer) As DataTable
         Try
             Dim db = New DbHelper("ITEMS")
@@ -199,44 +167,6 @@ Public Class GestorDatos
             Throw
         End Try
     End Function
-
-    Public Sub grDetalleNvos(_pedido As Pedido, _estado As Estado, _gr As GridView)
-        Dim dt = New DataTable()
-        Dim i = 0
-        Dim db = New DbHelper("ITEMS")
-        Dim redRows = New List(Of Integer)
-
-        Try
-            dt = db.getItems(_pedido.id, _estado, True)
-            dt.Columns.Add("Usar Stock", GetType(Integer))
-            dt.Columns.Add("Materiales", GetType(String))
-
-            For Each r As DataRow In dt.Rows
-                Dim id = r("ITEM")
-                Dim item As Item
-
-                item = _pedido.getItemById(r("item"))
-
-                If Not calcularMateriales(item) Then
-                    r("materiales") = "NO"
-                    redRows.Add(i)
-                Else
-                    r("materiales") = "SI"
-                End If
-                i += 1
-            Next
-
-            _gr.DataSource = dt
-            _gr.DataBind()
-
-            For Each i In redRows
-                _gr.Rows(i).ForeColor = Drawing.Color.Red
-            Next
-
-        Catch ex As Exception
-            Throw
-        End Try
-    End Sub
 
     Public Function buscarPedidos(ByVal _nroPedido As Integer, _fecDesde As Date, ByVal _fecHasta As Date, _fecModDesde As Date, _fecModHasta As Date, ByVal _cliente As Object, ByVal _estado As Object) As DataTable
 
@@ -315,56 +245,6 @@ Public Class GestorDatos
         Return result
     End Function
 
-    Public Function calcularMateriales(_item As Item) As Boolean
-        Dim materiales = _item.CalcularMateriales()
-        Dim result = True
-
-        Dim i = 0
-
-        For Each r As DataRow In materiales.Rows
-            Dim requerido = r("CONSUMO") * _item.cant
-
-            If requerido > r("STOCK_DISPONIBLE") Then
-                result = False
-            End If
-            i += 1
-        Next
-        Return result
-    End Function
-
-    Public Function calcularMateriales(_item As Item, gr As GridView, _stock As Integer) As Boolean
-        Dim materiales = _item.CalcularMateriales()
-        Dim result = True
-        Dim redRows = New List(Of Integer)
-
-        materiales.Columns.Add("REQUERIDO", GetType(Decimal))
-        materiales.Columns.Add("FALTANTE", GetType(Decimal))
-
-        Dim i = 0
-
-        For Each r As DataRow In materiales.Rows
-            Dim requerido = r("CONSUMO") * (_item.cant - _stock)
-
-            r("REQUERIDO") = requerido
-
-            If requerido > r("STOCK_DISPONIBLE") Then
-                result = False
-                r("FALTANTE") = r("STOCK_DISPONIBLE") - requerido
-                redRows.Add(i)
-            End If
-            i += 1
-        Next
-
-        gr.DataSource = materiales
-        gr.DataBind()
-
-        For Each i In redRows
-            gr.Rows(i).ForeColor = Drawing.Color.Red
-        Next
-
-        Return result
-    End Function
-
     Friend Function getItemsEnsamblados(_id As Integer) As DataTable
         Dim db = New DbHelper()
         Try
@@ -372,25 +252,6 @@ Public Class GestorDatos
         Catch ex As Exception
             Throw
         End Try
-    End Function
-
-    Public Function calcularMateriales(_item As Item, _stock As Integer) As Boolean
-        Dim materiales = _item.CalcularMateriales()
-        Dim result = True
-        Dim redRows = New List(Of Integer)
-
-        Dim i = 0
-
-        For Each r As DataRow In materiales.Rows
-            Dim requerido = r("CONSUMO") * (_item.cant - _stock)
-
-            If requerido > r("STOCK_DISPONIBLE") Then
-                result = False
-                redRows.Add(i)
-            End If
-            i += 1
-        Next
-        Return result
     End Function
 
     Public Function calcularMateriales(_pedido As Pedido, _gr As GridView) As Boolean
@@ -422,5 +283,4 @@ Public Class GestorDatos
 
         Return result
     End Function
-
 End Class

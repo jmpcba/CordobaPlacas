@@ -263,6 +263,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_pages\nuevoCliente.aspx" />
     <Content Include="App_pages\pedidoNuevo.aspx" />
     <Content Include="images\refresh-button-icon.png" />
     <Content Include="images\refresh.jpg" />
@@ -462,6 +463,13 @@
     </Compile>
     <Compile Include="App_pages\impresionOrdenes.aspx.vb">
       <DependentUpon>impresionOrdenes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="App_pages\nuevoCliente.aspx.designer.vb">
+      <DependentUpon>nuevoCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_pages\nuevoCliente.aspx.vb">
+      <DependentUpon>nuevoCliente.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="App_pages\pedidoNuevo.aspx.designer.vb">
