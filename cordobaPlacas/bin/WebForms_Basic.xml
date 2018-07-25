@@ -1311,6 +1311,123 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.busquedaCliente._pnlBusqueda">
+<summary>
+Control pnlBusqueda.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._txtCuit">
+<summary>
+Control txtCuit.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._txtCuit_MaskedEditExtender">
+<summary>
+Control txtCuit_MaskedEditExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._txtNombre">
+<summary>
+Control txtNombre.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._txtTel">
+<summary>
+Control txtTel.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._txtMail">
+<summary>
+Control txtMail.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._txtDir">
+<summary>
+Control txtDir.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._txtCiudad">
+<summary>
+Control txtCiudad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._txtProvincia">
+<summary>
+Control txtProvincia.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._btnLimpiar">
+<summary>
+Control btnLimpiar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._btnBuscar">
+<summary>
+Control btnBuscar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._pnlResultado">
+<summary>
+Control pnlResultado.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.busquedaCliente._grResultado">
+<summary>
+Control grResultado.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.modificarCliente._Panel1">
 <summary>
 Control Panel1.

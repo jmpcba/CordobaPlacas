@@ -7,29 +7,39 @@ Public Class GestorDatos
     Public hoja As Hoja
     Public linea As linea
     Public mano As Mano
+    Private db As DbHelper
 
-    Private cnn As SqlConnection
-    Private cmd As SqlCommand
-    Private da As SqlDataAdapter
-    Private ds As DataSet
     Public Enum combos
         estados
         clientes
     End Enum
     Public Sub New()
-
         chapa = New Chapa()
         marco = New Marco()
         madera = New Madera()
         hoja = New Hoja()
         linea = New linea()
         mano = New Mano
+
     End Sub
 
     Friend Sub getCliente(_idCliente As Integer, _dv As DetailsView)
         Dim cliente = New Cliente(_idCliente)
         _dv.DataSource = cliente.datos
         _dv.DataBind()
+    End Sub
+
+    Friend Sub buscarCliente(_cliente As Cliente, _gv As GridView)
+        Dim dt As New DataTable
+        db = New DbHelper("CLIENTES")
+
+        Try
+            dt = db.buscarClientes(_cliente)
+            _gv.DataSource = dt
+            _gv.DataBind()
+        Catch ex As Exception
+            Throw
+        End Try
     End Sub
 
     Public Sub getComboLineas(ByVal _cbLineas As DropDownList)

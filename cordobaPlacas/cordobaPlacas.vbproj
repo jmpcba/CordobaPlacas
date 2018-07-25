@@ -263,9 +263,11 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_pages\clientes\busquedaCliente.aspx" />
     <Content Include="App_pages\clientes\modificarCliente.aspx" />
     <Content Include="App_pages\clientes\nuevoCliente.aspx" />
     <Content Include="App_pages\pedidoNuevo.aspx" />
+    <Content Include="buscarCliente.aspx" />
     <Content Include="images\refresh-button-icon.png" />
     <Content Include="images\refresh.jpg" />
     <Content Include="App_pages\administrarPedidos.aspx" />
@@ -459,6 +461,13 @@
       <DependentUpon>administrarPedidos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="App_pages\clientes\busquedaCliente.aspx.designer.vb">
+      <DependentUpon>busquedaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_pages\clientes\busquedaCliente.aspx.vb">
+      <DependentUpon>busquedaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="App_pages\clientes\modificarCliente.aspx.designer.vb">
       <DependentUpon>modificarCliente.aspx</DependentUpon>
     </Compile>
@@ -517,6 +526,13 @@
     <Compile Include="App_pages\confirmacionNuevoPedido.aspx.vb">
       <DependentUpon>confirmacionNuevoPedido.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="buscarCliente.aspx.designer.vb">
+      <DependentUpon>buscarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="buscarCliente.aspx.vb">
+      <DependentUpon>buscarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Contact.aspx.designer.vb">
       <DependentUpon>Contact.aspx</DependentUpon>

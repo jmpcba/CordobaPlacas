@@ -17,11 +17,13 @@ Public Class DbHelper
         cmd = New SqlCommand()
         da = New SqlDataAdapter(cmd)
         ds = New DataSet()
+        cmd.Connection = cnn
     End Sub
 
     Sub New()
         cnn = New SqlConnection(conStr)
         cmd = New SqlCommand()
+        cmd.Connection = cnn
         da = New SqlDataAdapter(cmd)
         ds = New DataSet()
     End Sub
@@ -397,51 +399,13 @@ Public Class DbHelper
 
         cmd.Connection = cnn
         cmd.CommandText = query
-        da.Fill(ds, table)
+        Try
+            da.Fill(ds, table)
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
 
         Return ds.Tables("pedidos")
-
-        'dt.Columns.Add("Nro Pedido", GetType(Integer))
-        'dt.Columns.Add("Cliente", GetType(String))
-        'dt.Columns.Add("Cantidad", GetType(Integer))
-        'dt.Columns.Add("Precio", GetType(Decimal))
-        'dt.Columns.Add("Estado", GetType(String))
-        'dt.Columns.Add("Fecha Recibido", GetType(String))
-        'dt.Columns.Add("Ultima Modificacion", GetType(String))
-        'dt.Columns.Add("Fecha entregado", GetType(String))
-
-        'For Each r As DataRow In rt.Rows
-        '    Dim newRow = dt.NewRow()
-        '    Dim fechaRecibido As Date
-        '    Dim fechaModificado As Date
-        '    Dim fechaEntregado As Date
-        '    newRow("Nro Pedido") = r("Nro Pedido")
-        '    newRow("Cliente") = r("Cliente")
-        '    newRow("Cantidad") = r("Cantidad")
-        '    newRow("Precio") = r("Precio")
-        '    newRow("Estado") = r("Estado")
-        '    fechaRecibido = r.Item(5)
-        '    newRow("Fecha Recibido") = fechaRecibido.ToShortDateString()
-
-        '    If IsDBNull(r.Item(6)) Then
-        '        newRow("Ultima Modificacion") = r("Ultima Modificacion")
-        '    Else
-        '        fechaModificado = r.Item(6)
-        '        newRow("Ultima Modificacion") = fechaModificado.ToShortDateString()
-        '    End If
-
-        '    If IsDBNull(r.Item(7)) Then
-        '        newRow("Fecha entregado") = r("Fecha entregado")
-        '    Else
-        '        fechaEntregado = r.Item(7)
-        '        newRow("Fecha entregado") = fechaEntregado.ToShortDateString()
-        '    End If
-
-        '    dt.Rows.Add(newRow)
-        'Next
-
-        'Return dt
-
     End Function
 
     Public Sub updateById(ByVal _id As Integer, ByVal _col As String, ByVal _val As String)
@@ -454,23 +418,6 @@ Public Class DbHelper
             query = String.Format("UPDATE {0} SET {1} = '{2}' WHERE id={3}", table, _col, _val, _id)
         End If
 
-        Try
-            cmd.Connection = cnn
-            cmd.CommandText = query
-            cnn.Open()
-            cmd.ExecuteNonQuery()
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        Finally
-            cnn.Close()
-        End Try
-    End Sub
-
-    Public Sub actualizarItem(ByVal _idItem As Integer, ByVal _idHoja As Integer, ByVal _idMarco As Integer, ByVal _idMadera As Integer, ByVal _idChapa As Integer, ByVal _cant As Integer, ByVal _precio As Decimal, _idMano As Integer, ByVal _idLinea As Integer, ByVal _estado As Integer)
-        Dim strPrecio = _precio.ToString()
-        strPrecio = strPrecio.Replace(",", ".")
-
-        Dim query = String.Format("UPDATE {0} SET idHoja={1}, idMarco={2}, idMadera={3}, idChapa={4}, cantidad={5}, precio={6}, idMano={7}, idLinea={8}, idEstado={9} WHERE id={10}", table, _idHoja, _idMarco, _idMadera, _idChapa, _cant, strPrecio, _idMano, _idLinea, _estado, _idItem)
         Try
             cmd.Connection = cnn
             cmd.CommandText = query
@@ -663,6 +610,75 @@ Public Class DbHelper
         End Try
     End Function
 
+    Public Function buscarClientes(_cliente As Cliente) As DataTable
+        Dim query = "SELECT * FROM CLIENTES WHERE "
+        Dim firstParam = True
 
+        If _cliente.ciudad <> "" Then
+            If Not firstParam Then
+                query = query & " AND "
+            End If
+            query = query & String.Format("CIUDAD LIKE '%{0}%'", _cliente.ciudad)
+            firstParam = False
+        End If
+
+        If _cliente.CUIT <> "" Then
+            If Not firstParam Then
+                query = query & " AND "
+            End If
+            query = query & String.Format("CUIT LIKE '%{0}%'", _cliente.CUIT)
+            firstParam = False
+        End If
+
+        If _cliente.direccion <> "" Then
+            If Not firstParam Then
+                query = query & " AND "
+            End If
+            query = query & String.Format("DIRECCION LIKE '%{0}%'", _cliente.direccion)
+            firstParam = False
+        End If
+
+        If _cliente.mail <> "" Then
+            If Not firstParam Then
+                query = query & " AND "
+            End If
+            query = query & String.Format("MAIL LIKE '%{0}%'", _cliente.mail)
+            firstParam = False
+        End If
+
+        If _cliente.nombre <> "" Then
+            If Not firstParam Then
+                query = query & " AND "
+            End If
+            query = query & String.Format("NOMBRE LIKE '%{0}%'", _cliente.nombre)
+            firstParam = False
+        End If
+
+        If _cliente.provincia <> "" Then
+            If Not firstParam Then
+                query = query & " AND "
+            End If
+            query = query & String.Format("PROVINCIA LIKE '%{0}%'", _cliente.provincia)
+            firstParam = False
+        End If
+
+        If _cliente.tel <> "" Then
+            If Not firstParam Then
+                query = query & " AND "
+            End If
+            query = query & String.Format("TELEFONO LIKE '%{0}%'", _cliente.tel)
+            firstParam = False
+        End If
+
+        cmd.CommandText = query
+
+        Try
+            da.Fill(ds, table)
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+
+        Return ds.Tables("CLIENTES")
+    End Function
 
 End Class
