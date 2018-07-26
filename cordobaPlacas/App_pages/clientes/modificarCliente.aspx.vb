@@ -16,6 +16,23 @@ Public Class modificarCliente
                 errorPanel(ex.Message)
             End Try
 
+            Dim idCliente = Request.QueryString("IDCliente")
+
+            If Not IsNothing(idCliente) Then
+                Try
+                    Dim cliente = New Cliente(idCliente)
+                    Session("cliente") = cliente
+
+                    pnlDatosCliente.Visible = True
+
+                    llenarCombos(cliente)
+
+                    msgPanel(String.Format("Datos de cliente {0}- CARGADOS", cliente.nombre))
+
+                Catch ex As Exception
+                    errorPanel(ex.Message)
+                End Try
+            End If
         End If
     End Sub
 

@@ -6,10 +6,10 @@
             <div class="jumbotron">
                 <h1>Pedidos</h1>
                 <p class="lead">Administre pedidos existentes y envie nuevos pedidos desde aqui.</p>
-                <p><a href="App_pages/pedidoNuevo.aspx" class="btn btn-primary btn-lg">Nuevo&raquo;</a></p>
-                <p><a href="App_pages/ModificarPedido.aspx" class="btn btn-primary btn-lg">Modificar&raquo;</a></p>
-                <p><a href="App_pages/consultarPedidos.aspx" class="btn btn-primary btn-lg">Mis Pedidos&raquo;</a></p>
-                <p><a href="App_pages/administrarPedidos.aspx" class="btn btn-primary btn-lg">Produccion&raquo;</a></p>
+                <p><a href="App_pages/pedidos/pedidoNuevo.aspx" class="btn btn-primary btn-lg">Nuevo&raquo;</a></p>
+                <p><a href="App_pages/pedidos/ModificarPedido.aspx" class="btn btn-primary btn-lg">Modificar&raquo;</a></p>
+                <p><a href="App_pages/pedidos/consultarPedidos.aspx" class="btn btn-primary btn-lg">Mis Pedidos&raquo;</a></p>
+                <p><a href="App_pages/pedidos/administrarPedidos.aspx" class="btn btn-primary btn-lg">Produccion&raquo;</a></p>
             </div>
 
             <div class="row">
@@ -21,13 +21,13 @@
                     <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Modificar &raquo;</a></p>
                 </div>
                 <div class="col-md-4">
-                    <h2>Seguridad</h2>
+                    <h2>Clientes</h2>
                     <p>
                         Administracion de usuarios y roles.
                     </p>
-                    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Nuevo Usuario &raquo;</a></p>
-                    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Modificar Usuario &raquo;</a></p>
-                    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Roles &raquo;</a></p>
+                    <p><a class="btn btn-default" href="App_pages/clientes/busquedaCliente.aspx">Buscar &raquo;</a></p>
+                    <p><a class="btn btn-default" href="App_pages/clientes/ModificarCliente">Modificar &raquo;</a></p>
+                    <p><a class="btn btn-default" href="App_pages/clientes/nuevoCliente.aspx">Nuevo &raquo;</a></p>
                 </div>
                 <div class="col-md-4">
                     <h2>Reportes</h2>

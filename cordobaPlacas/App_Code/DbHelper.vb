@@ -670,6 +670,11 @@ Public Class DbHelper
             firstParam = False
         End If
 
+        'ELIMINA WHERE SI NO SE PASARON PARAMETROS
+        If firstParam Then
+            query = query.Replace(" WHERE ", "")
+        End If
+
         cmd.CommandText = query
 
         Try

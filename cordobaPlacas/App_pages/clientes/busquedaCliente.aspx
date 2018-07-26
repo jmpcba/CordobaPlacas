@@ -1,12 +1,23 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="busquedaCliente.aspx.vb" Inherits="cordobaPlacas.busquedaCliente" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="busquedaCliente.aspx.vb" Inherits="cordobaPlacas.busquedaCliente" Theme="default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        <%--
+	  $(document).ready(function() {
+	    $("#btnSubmit").click(function() {
+	        alert("Desea borrar los parametros de busqueda?");
+            $('#<%=TextBox1.ClientID%>').val("New Value");
+	    });
+	  });
+        --%>
+	</script>
+
     <table>
         <tr>
             <td>
                 <asp:Panel ID="pnlBusqueda" runat="server">
         <table cellpadding="5" style="border-collapse: collapse; border-style: solid; border-width: 1px">
             <tr>
-                <td colspan="2" style="text-align: left"><h5>Detalle</h5></td>
+                <td colspan="2" style="text-align: left"><h4>Busqueda</h4></td>
             <tr>
                 <td>CUIT</td>
                 <td style="width: 283px; text-align: justify;" class="text-right">
@@ -62,7 +73,7 @@
             <td style="vertical-align: top; text-align: left">
                 <asp:Panel ID="pnlResultado" runat="server">
                     <h4>Resultados</h4><br />
-                    <asp:GridView ID="grResultado" runat="server"></asp:GridView>
+                    <asp:GridView ID="grResultado" runat="server" AutoGenerateSelectButton="True"></asp:GridView>
                 </asp:Panel>
             </td>
         </tr>

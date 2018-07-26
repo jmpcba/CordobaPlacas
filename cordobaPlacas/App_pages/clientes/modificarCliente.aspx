@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="modificarCliente.aspx.vb" Inherits="cordobaPlacas.modificarCliente" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="modificarCliente.aspx.vb" Inherits="cordobaPlacas.modificarCliente" Theme="default"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Panel ID="Panel1" runat="server">  
         <table>

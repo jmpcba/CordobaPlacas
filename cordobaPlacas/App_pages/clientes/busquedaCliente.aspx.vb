@@ -22,4 +22,11 @@
         End Try
 
     End Sub
+
+    Protected Sub grResultado_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grResultado.SelectedIndexChanged
+        Dim row = grResultado.SelectedRow
+        Dim id = row.Cells(1).Text
+
+        Response.Redirect("modificarCliente.aspx?IDCliente=" & id)
+    End Sub
 End Class

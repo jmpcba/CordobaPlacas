@@ -266,14 +266,12 @@
     <Content Include="App_pages\clientes\busquedaCliente.aspx" />
     <Content Include="App_pages\clientes\modificarCliente.aspx" />
     <Content Include="App_pages\clientes\nuevoCliente.aspx" />
-    <Content Include="App_pages\pedidoNuevo.aspx" />
+    <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
     <Content Include="buscarCliente.aspx" />
     <Content Include="images\refresh-button-icon.png" />
     <Content Include="images\refresh.jpg" />
-    <Content Include="App_pages\administrarPedidos.aspx" />
-    <Content Include="App_pages\confirmacionNuevoPedido.aspx" />
-    <Content Include="App_pages\impresionOrdenes.aspx" />
-    <Content Include="App_pages\prueba.aspx" />
+    <Content Include="App_pages\pedidos\administrarPedidos.aspx" />
+    <Content Include="App_pages\pedidos\confirmacionNuevoPedido.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -286,9 +284,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_pages\ImprimirOrdenDeTrabajo.aspx" />
-    <Content Include="App_pages\ModificarPedido.aspx" />
-    <Content Include="App_pages\consultarPedidos.aspx" />
+    <Content Include="App_pages\pedidos\ModificarPedido.aspx" />
+    <Content Include="App_pages\pedidos\consultarPedidos.aspx" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
@@ -300,9 +297,21 @@
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="WebForm1.aspx" />
     <Content Include="WebForm3.aspx" />
     <Content Include="app_themes\default\default.skin" />
     <Content Include="App_pages\Web.config" />
+    <Content Include="pedidos.xsc">
+      <DependentUpon>pedidos.xsd</DependentUpon>
+    </Content>
+    <None Include="pedidos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>pedidos.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="pedidos.xss">
+      <DependentUpon>pedidos.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -454,10 +463,10 @@
     <Compile Include="App_Code\Madera.vb" />
     <Compile Include="App_Code\Marco.vb" />
     <Compile Include="App_Code\Pedido.vb" />
-    <Compile Include="App_pages\administrarPedidos.aspx.designer.vb">
+    <Compile Include="App_pages\pedidos\administrarPedidos.aspx.designer.vb">
       <DependentUpon>administrarPedidos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_pages\administrarPedidos.aspx.vb">
+    <Compile Include="App_pages\pedidos\administrarPedidos.aspx.vb">
       <DependentUpon>administrarPedidos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -475,13 +484,6 @@
       <DependentUpon>modificarCliente.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="App_pages\impresionOrdenes.aspx.designer.vb">
-      <DependentUpon>impresionOrdenes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_pages\impresionOrdenes.aspx.vb">
-      <DependentUpon>impresionOrdenes.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="App_pages\clientes\nuevoCliente.aspx.designer.vb">
       <DependentUpon>nuevoCliente.aspx</DependentUpon>
     </Compile>
@@ -489,25 +491,12 @@
       <DependentUpon>nuevoCliente.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="App_pages\pedidoNuevo.aspx.designer.vb">
+    <Compile Include="App_pages\pedidos\pedidoNuevo.aspx.designer.vb">
       <DependentUpon>pedidoNuevo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_pages\pedidoNuevo.aspx.vb">
+    <Compile Include="App_pages\pedidos\pedidoNuevo.aspx.vb">
       <DependentUpon>pedidoNuevo.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="App_pages\prueba.aspx.designer.vb">
-      <DependentUpon>prueba.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_pages\prueba.aspx.vb">
-      <DependentUpon>prueba.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="App_pages\PRUEBA.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PRUEBA.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\IdentityConfig.vb" />
@@ -520,10 +509,10 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="App_Start\Startup.Auth.vb" />
-    <Compile Include="App_pages\confirmacionNuevoPedido.aspx.designer.vb">
+    <Compile Include="App_pages\pedidos\confirmacionNuevoPedido.aspx.designer.vb">
       <DependentUpon>confirmacionNuevoPedido.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_pages\confirmacionNuevoPedido.aspx.vb">
+    <Compile Include="App_pages\pedidos\confirmacionNuevoPedido.aspx.vb">
       <DependentUpon>confirmacionNuevoPedido.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -554,21 +543,14 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="App_pages\ImprimirOrdenDeTrabajo.aspx.designer.vb">
-      <DependentUpon>ImprimirOrdenDeTrabajo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_pages\ImprimirOrdenDeTrabajo.aspx.vb">
-      <DependentUpon>ImprimirOrdenDeTrabajo.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="App_Code\linea.vb" />
     <Compile Include="App_Code\Mano.vb" />
     <Compile Include="App_Code\item.vb" />
     <Compile Include="Models\IdentityModels.vb" />
-    <Compile Include="App_pages\ModificarPedido.aspx.designer.vb">
+    <Compile Include="App_pages\pedidos\ModificarPedido.aspx.designer.vb">
       <DependentUpon>ModificarPedido.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_pages\ModificarPedido.aspx.vb">
+    <Compile Include="App_pages\pedidos\ModificarPedido.aspx.vb">
       <DependentUpon>ModificarPedido.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -592,10 +574,15 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="App_Code\Producto.vb" />
-    <Compile Include="App_pages\ordenes.vb">
+    <Compile Include="pedidos.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ordenes.rpt</DependentUpon>
+      <DependentUpon>pedidos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="rptCliente.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCliente.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">
@@ -620,12 +607,19 @@
     <Compile Include="Site.Mobile.Master.designer.vb">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="App_pages\consultarPedidos.aspx.designer.vb">
+    <Compile Include="App_pages\pedidos\consultarPedidos.aspx.designer.vb">
       <DependentUpon>consultarPedidos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_pages\consultarPedidos.aspx.vb">
+    <Compile Include="App_pages\pedidos\consultarPedidos.aspx.vb">
       <DependentUpon>consultarPedidos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForm3.aspx.designer.vb">
       <DependentUpon>WebForm3.aspx</DependentUpon>
@@ -636,19 +630,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="App_pages\PRUEBA.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>PRUEBA.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_pages\ordenes.rpt">
+    <EmbeddedResource Include="rptCliente.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ordenes.vb</LastGenOutput>
+      <LastGenOutput>rptCliente.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
