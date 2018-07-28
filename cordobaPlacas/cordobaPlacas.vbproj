@@ -266,6 +266,7 @@
     <Content Include="App_pages\clientes\busquedaCliente.aspx" />
     <Content Include="App_pages\clientes\modificarCliente.aspx" />
     <Content Include="App_pages\clientes\nuevoCliente.aspx" />
+    <Content Include="App_pages\pedidos\busquedas.ascx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
     <Content Include="buscarCliente.aspx" />
     <Content Include="images\refresh-button-icon.png" />
@@ -490,6 +491,13 @@
     <Compile Include="App_pages\clientes\nuevoCliente.aspx.vb">
       <DependentUpon>nuevoCliente.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="App_pages\pedidos\busquedas.ascx.designer.vb">
+      <DependentUpon>busquedas.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="App_pages\pedidos\busquedas.ascx.vb">
+      <DependentUpon>busquedas.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_pages\pedidos\pedidoNuevo.aspx.designer.vb">
       <DependentUpon>pedidoNuevo.aspx</DependentUpon>

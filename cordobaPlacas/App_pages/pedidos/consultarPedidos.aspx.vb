@@ -5,77 +5,115 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         gestorDatos = New GestorDatos()
         cliente.id = 1
-        lblDetalle.Text = ""
-        pnlError.Visible = False
+
+        pnlMsg.Visible = False
+        pnlDetalle.Visible = False
 
         If Not IsPostBack Then
             Try
                 gestorDatos.getCombos(dpFiltroEstados, GestorDatos.combos.estados)
-                dpFiltroEstados.Items.Add("")
+                gestorDatos.getCombos(dpClientes, GestorDatos.combos.clientes)
+
+
+                dpFiltroEstados.Items.Add("TODOS")
                 dpFiltroEstados.SelectedIndex = dpFiltroEstados.Items.Count - 1
+
+                dpClientes.Items.Add("TODOS")
+                dpClientes.SelectedIndex = dpClientes.Items.Count - 1
+
             Catch ex As Exception
                 errorPanel(ex.Message)
             End Try
         End If
     End Sub
 
-    Protected Sub grPedidos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grPedidos.SelectedIndexChanged
-        gestorDatos = New GestorDatos()
-        Dim row = grPedidos.SelectedRow
-        Dim estado = row.Cells(3).Text
-        Dim idPedido = row.Cells(1).Text
-        Try
-            lblDetalle.Text = "DETALLE"
-            grDetalle.DataSource = gestorDatos.getItems(idPedido)
-            grDetalle.DataBind()
-        Catch ex As Exception
-            errorPanel(ex.Message)
-        End Try
-    End Sub
-
-    Private Sub buscar()
+    Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         Dim idPedido = Nothing
-        Dim fecha = Nothing
-        Dim estado = Nothing
-        Dim fecDesde = Nothing
-        Dim fecHasta = Nothing
+        Dim fecRecDesde = Nothing
+        Dim fecRecHasta = Nothing
+        Dim fecModDesde = Nothing
+        Dim fecModHasta = Nothing
+        Dim idCliente = Nothing
+        Dim idEstado = Nothing
+        Dim table As DataTable
+
+        pnlResultadoBusqueda.Visible = True
+        grResultadoBusqueda.SelectedIndex = -1
 
         If txtPedido.Text <> "" Then
             idPedido = txtPedido.Text
         End If
 
-        If dpFiltroEstados.SelectedItem.Value <> "" Then
-            estado = dpFiltroEstados.SelectedValue
+        If txtFecRecDesde.Text <> "" Then
+            fecRecDesde = txtFecRecDesde.Text
         End If
 
-        If txtFecDesde.Text <> "" Then
-            fecDesde = txtFecDesde.Text
+        If txtFecRecHasta.Text <> "" Then
+            fecRecHasta = txtFecRecHasta.Text
         End If
 
-        If txtFecHasta.Text <> "" Then
-            fecHasta = txtFecHasta.Text
+        If txtFecModDesde.Text <> "" Then
+            fecModDesde = txtFecModDesde.Text
         End If
 
-        grDetalle.DataSource = Nothing
-        grDetalle.DataBind()
+        If txtFecModHasta.Text <> "" Then
+            fecModHasta = txtFecModHasta.Text
+        End If
+
+        If dpClientes.SelectedValue <> "TODOS" Then
+            idCliente = dpClientes.SelectedValue
+        End If
+
+        If dpFiltroEstados.SelectedValue <> "TODOS" Then
+            idEstado = dpFiltroEstados.SelectedValue
+        End If
+
+        grResultadoBusqueda.DataSource = Nothing
+        grResultadoBusqueda.DataBind()
 
         Try
-            'grPedidos.DataSource = gestorDatos.buscarPedidos(idPedido, fecDesde, fecHasta, cliente.id, estado)
-            grPedidos.DataBind()
+            table = gestorDatos.buscarPedidos(idPedido, fecRecDesde, fecRecHasta, fecModDesde, fecModHasta, idCliente, idEstado)
+            grResultadoBusqueda.DataSourceID = Nothing
+            grResultadoBusqueda.DataSource = table
+            grResultadoBusqueda.DataBind()
+
+            Dim msg = "Resultados de busqueda - CARGADOS"
+            msgPanel(msg)
+
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
     End Sub
 
-    Protected Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
-        buscar()
+    Private Sub msgPanel(_msg As String)
+        pnlMsg.Visible = True
+        lblMsg.Text = _msg
+        lblMsg.ForeColor = Drawing.Color.Green
     End Sub
 
-    Protected Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
-        Response.Redirect(Request.Url.AbsoluteUri)
+    Private Sub errorPanel(ByVal _msg As String)
+        pnlMsg.Visible = True
+        lblMsg.Text = _msg
+        lblMsg.ForeColor = Drawing.Color.Red
     End Sub
-    Public Sub errorPanel(ByVal _msg As String)
-        pnlError.Visible = True
-        lblError.Text = _msg
+
+    Protected Sub grResultadoBusqueda_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grResultadoBusqueda.SelectedIndexChanged
+        Try
+            pnlDetalle.Visible = True
+            Dim row = grResultadoBusqueda.SelectedRow
+            Dim idPedido = row.Cells(1).Text
+            Dim gestorPedidos = New GestorPedidos(idPedido)
+            Dim pedido As Pedido
+            Dim gestorDatos = New GestorDatos()
+            Session.Add("gestorPedido", gestorPedidos)
+            pedido = gestorPedidos.pedido
+
+            gestorDatos.consultarPedido(pedido, grDetalleBusqueda)
+
+            msgPanel(String.Format("Datos pedido {0} CARGADOS", idPedido))
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        End Try
+
     End Sub
 End Class

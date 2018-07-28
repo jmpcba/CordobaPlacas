@@ -23,7 +23,7 @@
         ActiveTabIndex="0">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
-                 <div>
+                 <asp:Panel ID="pnlNvos" runat="server">
                     <h2>Pedidos Nuevos</h2>
                     <p>
                         <asp:ImageButton ID="btnRefreshNv" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" ImageAlign="Middle" ToolTip="Refrescar" />
@@ -39,9 +39,8 @@
                         </Columns>
                         </asp:GridView>
                     <asp:SqlDataSource ID="dsNvos" runat="server" ConnectionString="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True" SelectCommand="SP_PEDIDOS_RECIBIDOS" SelectCommandType="StoredProcedure" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
-                </div>
+                </asp:Panel>
                     <asp:Panel ID="pnlDetalleNvo" runat="server" Visible="False">
-                        <div>
                             <hr />
                             <h4>Detalles Pedido</h4>
                             <asp:GridView ID="grDetalleNvo" runat="server" AutoGenerateColumns="False" ToolTip="Detalles del Pedido">
@@ -78,7 +77,6 @@
                                 ConfirmText="Imprimir etiquetas de deposito?" 
                                 TargetControlID="btnImprimirEtiquetasDeposito"
                                  />
-                        </div>
                     </asp:Panel>
                     <asp:Panel ID="pnlStockNvo" runat="server" Visible="False">
                         <div>

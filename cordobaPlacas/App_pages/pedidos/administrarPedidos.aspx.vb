@@ -240,89 +240,6 @@ Public Class administrarPedidos
         End Try
     End Sub
 
-    'Protected Sub grDetalleEnCurso_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grDetalleEnCurso.SelectedIndexChanged
-    '    Dim row = grDetalleEnCurso.SelectedRow
-    '    Dim idItem = row.Cells(1).Text
-    '    Dim item As Item
-    '    Dim dt = New DataTable()
-
-    '    pnlDetalleEnCurso.Visible = True
-    '    pnlEstadoEnCurso.Visible = True
-    '    gestorPedidos = Session("gestorPedidos")
-
-    '    For Each i As Item In gestorPedidos.pedido.items
-    '        If idItem = i.id Then
-    '            item = i
-    '            Exit For
-    '        End If
-    '    Next
-
-    '    dt.Columns.Add("Cantidad", GetType(Integer))
-    '    dt.Columns.Add("Hojas Terminadas", GetType(Integer))
-    '    dt.Columns.Add("Marcos Terminados", GetType(Integer))
-    '    dt.Columns.Add("Ensambladas", GetType(Integer))
-    '    dt.Columns.Add("Stock", GetType(Integer))
-    '    dt.Columns.Add("En Deposito", GetType(Integer))
-
-    '    Dim r = dt.NewRow()
-
-    '    r("Cantidad") = item.cant
-    '    r("Hojas Terminadas") = item.hojasTerminadas
-    '    r("Marcos Terminados") = item.marcosTerminados
-    '    r("Ensambladas") = item.getEnsamblados()
-    '    r("En Deposito") = item.enDeposito
-    '    r("Stock") = item.stock
-
-    '    dt.Rows.Add(r)
-
-    '    grDetalleEnCursoItem.DataSource = dt
-    '    grDetalleEnCursoItem.DataBind()
-
-    '    Session("activeItem") = item
-
-    '    txtMarcosTerminados.Text = item.marcosTerminados
-    '    txtHojaTerminada.Text = item.hojasTerminadas
-    '    txtEnsambladas.Text = item.getEnsamblados()
-
-    '    txtMarcosTerminados_NumericUpDownExtender.Maximum = item.cant - item.stock
-    '    txtHojaTerminada_NumericUpDownExtender.Maximum = item.cant - item.stock
-    '    btnActualizarEnsambladas_ConfirmButtonExtender.ConfirmText = String.Format("Actualizar progreso del item: {0}, pedido: {1}", item.id, item.idPedido)
-
-    '    'SOLO PERMITE ENSAMBLAR LA MISMA CANTIDAD DE MARCOS U HOJAS DEPENDIENDO CUAL SEA MENOR
-    '    'TODO: SI EL PEDIDO SE CUBRIO 100% CON STOCK NO MOSTRAR LOS CONTROLES Y MOSTRAR UN CARTEL INFORMANDOLO
-    '    If item.marcosTerminados < item.hojasTerminadas Then
-    '        txtEnsambladas_NumericUpDownExtender.Maximum = item.marcosTerminados
-    '    Else
-    '        txtEnsambladas_NumericUpDownExtender.Maximum = item.hojasTerminadas
-    '    End If
-
-    '    Dim msg = String.Format("Carga de datos Item {0} - CORRECTA", item.id)
-    '    msgPanel(msg)
-
-    'End Sub
-
-    'Protected Sub btnActualizarEnCurso_Click(sender As Object, e As EventArgs) Handles btnActualizarEnCurso.Click
-    '    Dim item As Item
-    '    item = Session("activeItem")
-    '    If txtEnsambladas.Text.Trim <> item.getEnsamblados() Then
-    '        item.setEnsamblados(txtEnsambladas.Text.Trim)
-    '    End If
-
-    '    If txtHojaTerminada.Text.Trim <> item.hojasTerminadas Then
-    '        item.hojasTerminadas = txtHojaTerminada.Text.Trim
-    '    End If
-
-    '    If txtMarcosTerminados.Text.Trim <> item.marcosTerminados Then
-    '        item.marcosTerminados = txtMarcosTerminados.Text.Trim
-    '    End If
-
-    '    item.actualizar()
-
-    '    bindGrillas()
-    '    Dim msg = String.Format("Actualizacion Item {0} - CORRECTA", item.id)
-    '    msgPanel(msg)
-
-    'End Sub
 
     Protected Sub grDeposito_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grDeposito.SelectedIndexChanged
         Dim nt = New DataTable()
@@ -432,55 +349,6 @@ Public Class administrarPedidos
 
     End Sub
 
-    'Protected Sub grDetalleEnsamblados_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grDetalleEnsamblados.SelectedIndexChanged
-    '    Dim row = grDetalleEnsamblados.SelectedRow
-    '    Dim idItem = row.Cells(1).Text
-    '    Dim item As Item
-    '    Dim dt = New DataTable()
-
-    '    pnlDetalleEnsamblados.Visible = True
-    '    gestorPedidos = Session("gestorPedidos")
-
-    '    For Each i As Item In gestorPedidos.pedido.items
-    '        If idItem = i.id Then
-    '            item = i
-    '            Exit For
-    '        End If
-    '    Next
-
-    '    Session("activeItem") = item
-
-    '    If item.getEnsamblados() > item.enDeposito Then
-    '        btnAlmacenar.Enabled = True
-    '    Else
-    '        btnAlmacenar.Enabled = False
-    '    End If
-
-    '    dt.Columns.Add("Cantidad", GetType(Integer))
-    '    dt.Columns.Add("Ensambladas", GetType(Integer))
-    '    dt.Columns.Add("En Deposito", GetType(Integer))
-    '    dt.Columns.Add("Stock", GetType(Integer))
-    '    dt.Columns.Add("Para Almacenar", GetType(Integer))
-
-    '    Dim r = dt.NewRow()
-    '    Dim nuevas = item.getEnsamblados() - item.enDeposito
-    '    btnAlmacenar_ConfirmButtonExtender.ConfirmText = String.Format("Se van a enviar a deposito e imprimir etiquetas {0} puertas", nuevas)
-
-    '    r("Cantidad") = item.cant
-    '    r("Ensambladas") = item.getEnsamblados()
-    '    r("en Deposito") = item.enDeposito
-    '    r("Stock") = item.stock
-    '    r("Para Almacenar") = nuevas
-
-    '    dt.Rows.Add(r)
-
-    '    If item.enDeposito <> item.getEnsamblados() Then
-    '        btnAlmacenar.Visible = True
-    '    End If
-
-    '    Dim msg = String.Format("Carga de datos Item {0} - CORRECTA", item.id)
-    '    msgPanel(msg)
-    'End Sub
 
     Protected Sub btnAlmacenar_Click(sender As Object, e As EventArgs) Handles btnAlmacenar.Click
         Dim check = True
@@ -555,36 +423,6 @@ Public Class administrarPedidos
     Protected Sub btnRefreshNv_Click(sender As Object, e As ImageClickEventArgs) Handles btnRefreshNv.Click
         bindGrillas()
     End Sub
-
-    'Protected Sub btnRecalcular_Click(sender As Object, e As EventArgs) Handles btnRecalcularItem.Click
-
-    '    Dim item As Item
-
-    '    pnlDetalleNvo.Visible = True
-    '    pnlStockNvo.Visible = True
-
-    '    item = Session("activeItem")
-
-    '    Dim materiales = gestorDatos.calcularMateriales(item, grMateriales, txtStock.Text.Trim)
-
-
-    '    chkPiezas.Checked = materiales
-
-    '    If materiales Then
-    '        btnImprimir.Visible = True
-    '        chkPiezas.Text = "DISPONE DE MATERIALES SUFICIENTES"
-    '        chkPiezas.ForeColor = Drawing.Color.Green
-    '        chkPiezas.Checked = True
-    '    Else
-    '        chkPiezas.Text = "NO DISPONE DE MATERIALES SUFICIENTES"
-    '        chkPiezas.Checked = False
-    '        chkPiezas.ForeColor = Drawing.Color.Red
-    '        pnlBtnCompras.Visible = True
-    '    End If
-
-    '    Dim msg = String.Format("Carga de datos Item {0} - CORRECTA", item.id)
-    '    msgPanel(msg)
-    'End Sub
 
     Protected Sub btnRecalcularPedido_Click(sender As Object, e As EventArgs) Handles btnRecalcularPedido.Click
         Dim materiales As Boolean

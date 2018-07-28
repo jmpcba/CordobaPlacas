@@ -561,7 +561,7 @@ Public Class DbHelper
     End Function
 
     Public Sub actualizarPedido(_pedido As Pedido)
-        Dim strPrecio = _pedido.cantTotal.ToString()
+        Dim strPrecio = _pedido.precioTotal.ToString()
 
         strPrecio = strPrecio.Replace(",", ".")
 

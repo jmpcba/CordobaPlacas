@@ -14,13 +14,13 @@ Option Explicit On
 Partial Public Class WebForm2
     
     '''<summary>
-    '''Control LoginName1.
+    '''Control pnlBusquedas.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents LoginName1 As Global.System.Web.UI.WebControls.LoginName
+    Protected WithEvents pnlBusquedas As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
     '''Control txtPedido.
@@ -32,6 +32,24 @@ Partial Public Class WebForm2
     Protected WithEvents txtPedido As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''Control revNroPedido.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents revNroPedido As Global.System.Web.UI.WebControls.RegularExpressionValidator
+    
+    '''<summary>
+    '''Control dpClientes.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents dpClientes As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''Control dpFiltroEstados.
     '''</summary>
     '''<remarks>
@@ -41,40 +59,148 @@ Partial Public Class WebForm2
     Protected WithEvents dpFiltroEstados As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''Control txtFecDesde.
+    '''Control txtFecRecDesde.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtFecDesde As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtFecRecDesde As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''Control txtFecDesde_CalendarExtender.
+    '''Control txtFecRecDesde_MaskedEditExtender.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtFecDesde_CalendarExtender As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents txtFecRecDesde_MaskedEditExtender As Global.AjaxControlToolkit.MaskedEditExtender
     
     '''<summary>
-    '''Control txtFecHasta.
+    '''Control txtFecRecDesde_CalendarExtender.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtFecHasta As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtFecRecDesde_CalendarExtender As Global.AjaxControlToolkit.CalendarExtender
     
     '''<summary>
-    '''Control txtFecHasta_CalendarExtender.
+    '''Control CVFecRecDesde.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtFecHasta_CalendarExtender As Global.AjaxControlToolkit.CalendarExtender
+    Protected WithEvents CVFecRecDesde As Global.System.Web.UI.WebControls.CompareValidator
+    
+    '''<summary>
+    '''Control txtFecRecHasta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecRecHasta As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control txtFecRecHasta_MaskedEditExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecRecHasta_MaskedEditExtender As Global.AjaxControlToolkit.MaskedEditExtender
+    
+    '''<summary>
+    '''Control txtFecRecHasta_CalendarExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecRecHasta_CalendarExtender As Global.AjaxControlToolkit.CalendarExtender
+    
+    '''<summary>
+    '''Control CompareValidator1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents CompareValidator1 As Global.System.Web.UI.WebControls.CompareValidator
+    
+    '''<summary>
+    '''Control txtFecModDesde.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecModDesde As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control txtFecModDesde_MaskedEditExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecModDesde_MaskedEditExtender As Global.AjaxControlToolkit.MaskedEditExtender
+    
+    '''<summary>
+    '''Control txtFecModDesde_CalendarExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecModDesde_CalendarExtender As Global.AjaxControlToolkit.CalendarExtender
+    
+    '''<summary>
+    '''Control CompareValidator2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents CompareValidator2 As Global.System.Web.UI.WebControls.CompareValidator
+    
+    '''<summary>
+    '''Control txtFecModHasta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecModHasta As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control txtFecModHasta_MaskedEditExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecModHasta_MaskedEditExtender As Global.AjaxControlToolkit.MaskedEditExtender
+    
+    '''<summary>
+    '''Control txtFecModHasta_CalendarExtender2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecModHasta_CalendarExtender2 As Global.AjaxControlToolkit.CalendarExtender
+    
+    '''<summary>
+    '''Control CompareValidator3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents CompareValidator3 As Global.System.Web.UI.WebControls.CompareValidator
     
     '''<summary>
     '''Control btnBuscar.
@@ -86,56 +212,110 @@ Partial Public Class WebForm2
     Protected WithEvents btnBuscar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control btnLimpiar.
+    '''Control btnVolver.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnLimpiar As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnVolver As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control grPedidos.
+    '''Control pnlValidacionBusqueda.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents grPedidos As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents pnlValidacionBusqueda As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control lblDetalle.
+    '''Control VSBuscar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lblDetalle As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents VSBuscar As Global.System.Web.UI.WebControls.ValidationSummary
     
     '''<summary>
-    '''Control grDetalle.
+    '''Control pnlResultadoBusqueda.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents grDetalle As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents pnlResultadoBusqueda As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control pnlError.
+    '''Control btnPnlBusqueda.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents pnlError As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents btnPnlBusqueda As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control lblError.
+    '''Control btnPnlBusqueda_ModalPopupExtender.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lblError As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents btnPnlBusqueda_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+    
+    '''<summary>
+    '''Control grResultadoBusqueda.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grResultadoBusqueda As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control SqlDataSource1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDataSource1 As Global.System.Web.UI.WebControls.SqlDataSource
+    
+    '''<summary>
+    '''Control pnlDetalle.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlDetalle As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control grDetalleBusqueda.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grDetalleBusqueda As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control pnlMsg.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlMsg As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control lblMsg.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
 End Class

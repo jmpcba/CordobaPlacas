@@ -143,7 +143,7 @@ Public Class GestorDatos
         dt.Columns.Add("CHAPA", GetType(String))
         dt.Columns.Add("MANO", GetType(String))
         dt.Columns.Add("CANTIDAD", GetType(Integer))
-        dt.Columns.Add("PRECIO", GetType(Decimal))
+        dt.Columns.Add("MONTO", GetType(Decimal))
 
         If _withStock Then
             dt.Columns.Add("STOCK", GetType(Decimal))
@@ -158,7 +158,7 @@ Public Class GestorDatos
             row("madera") = item.producto.madera.nombre
             row("chapa") = item.producto.chapa.nombre
             row("cantidad") = item.cant
-            row("precio") = item.monto
+            row("MONTO") = item.monto
             row("mano") = item.producto.mano.nombre
 
             If _withStock Then
@@ -316,4 +316,44 @@ Public Class GestorDatos
 
         Return result
     End Function
+
+    Public Sub consultarPedido(_pedido As Pedido, _gr As GridView)
+        Dim dt = New DataTable()
+
+        dt.Columns.Add("ESTADO", GetType(String))
+        dt.Columns.Add("LINEA", GetType(String))
+        dt.Columns.Add("HOJA", GetType(String))
+        dt.Columns.Add("MARCO", GetType(String))
+        dt.Columns.Add("MADERA", GetType(String))
+        dt.Columns.Add("CHAPA", GetType(String))
+        dt.Columns.Add("MANO", GetType(String))
+        dt.Columns.Add("MONTO", GetType(Decimal))
+        dt.Columns.Add("CANTIDAD", GetType(Integer))
+        dt.Columns.Add("STOCK", GetType(Decimal))
+        dt.Columns.Add("ENSAMBLADAS", GetType(Decimal))
+        dt.Columns.Add("PENDIENTES", GetType(Decimal))
+
+        For Each item As Item In _pedido.items
+            Dim row = dt.NewRow()
+            row("ESTADO") = item.getEstado().nombre
+            row("LINEA") = item.producto.linea.nombre
+            row("HOJA") = item.producto.hoja.nombre
+            row("MARCO") = item.producto.marco.nombre
+            row("MADERA") = item.producto.madera.nombre
+            row("CHAPA") = item.producto.chapa.nombre
+            row("MANO") = item.producto.mano.nombre
+            row("CANTIDAD") = item.cant
+            row("MONTO") = item.monto
+            row("STOCK") = item.stock
+            row("ENSAMBLADAS") = item.getEnsamblados
+            row("PENDIENTES") = item.cant - item.getEnsamblados() - item.stock
+
+            dt.Rows.Add(row)
+        Next
+
+        'actualizacion de grilla
+        _gr.DataSource = dt
+        _gr.DataBind()
+
+    End Sub
 End Class
