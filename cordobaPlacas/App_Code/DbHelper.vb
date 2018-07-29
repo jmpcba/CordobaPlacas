@@ -686,4 +686,31 @@ Public Class DbHelper
         Return ds.Tables("CLIENTES")
     End Function
 
+    Public Function getRegistroItem(_idItem As Integer) As DataTable
+        Dim query = "SELECT FECHA, ENTRADA FROM REGISTRO_ITEMS WHERE ID_ITEM=" & _idItem
+
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = query
+
+        Try
+            da.Fill(ds, "REGISTRO_ITEMS")
+            Return ds.Tables("REGISTRO_ITEMS")
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+    End Function
+
+    Public Function getRegistroPedido(_idPedido) As DataTable
+        Dim query = "SELECT FECHA, ENTRADA FROM REGISTRO_PEDIDOS WHERE ID_PEDIDO=" & _idPedido
+
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = query
+
+        Try
+            da.Fill(ds, "REGISTRO_PEDIDOS")
+            Return ds.Tables("REGISTRO_PEDIDOS")
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+    End Function
 End Class

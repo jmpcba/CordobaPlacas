@@ -8,6 +8,7 @@
 
         pnlMsg.Visible = False
         pnlDetalle.Visible = False
+        pnlRegistro.Visible = False
 
         If Not IsPostBack Then
             Try
@@ -100,6 +101,7 @@
     Protected Sub grResultadoBusqueda_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grResultadoBusqueda.SelectedIndexChanged
         Try
             pnlDetalle.Visible = True
+            pnlRegistro.Visible = True
             Dim row = grResultadoBusqueda.SelectedRow
             Dim idPedido = row.Cells(1).Text
             Dim gestorPedidos = New GestorPedidos(idPedido)
@@ -108,7 +110,7 @@
             Session.Add("gestorPedido", gestorPedidos)
             pedido = gestorPedidos.pedido
 
-            gestorDatos.consultarPedido(pedido, grDetalleBusqueda)
+            gestorDatos.consultarPedido(pedido, grDetalleBusqueda, grRegistro)
 
             msgPanel(String.Format("Datos pedido {0} CARGADOS", idPedido))
         Catch ex As Exception

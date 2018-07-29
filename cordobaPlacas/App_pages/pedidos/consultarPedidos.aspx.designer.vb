@@ -302,6 +302,24 @@ Partial Public Class WebForm2
     Protected WithEvents grDetalleBusqueda As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
+    '''Control btnRegistro.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnRegistro As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnRegistro_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnRegistro_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+    
+    '''<summary>
     '''Control pnlMsg.
     '''</summary>
     '''<remarks>
@@ -318,4 +336,31 @@ Partial Public Class WebForm2
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control pnlRegistro.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlRegistro As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control grRegistro.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grRegistro As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control btnRegistroVolver.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnRegistroVolver As Global.System.Web.UI.WebControls.Button
 End Class

@@ -156,9 +156,20 @@
     <asp:Panel ID="pnlDetalle" runat="server">
         <hr />
         <asp:GridView ID="grDetalleBusqueda" runat="server" ToolTip="Detalle pedido"></asp:GridView>
+        <br />
+        <asp:Button ID="btnRegistro" runat="server" Text="Ver Registro" />
+        <ajaxToolkit:ModalPopupExtender ID="btnRegistro_ModalPopupExtender" runat="server" BackgroundCssClass="modalBackground" BehaviorID="btnRegistro_ModalPopupExtender" CancelControlID="btnRegistroVolver" DynamicServicePath="" PopupControlID="pnlRegistro" TargetControlID="btnRegistro">
+        </ajaxToolkit:ModalPopupExtender>
     </asp:Panel>
     <asp:Panel ID="pnlMsg" runat="server">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>
+    </asp:Panel>
+    <asp:Panel ID="pnlRegistro" runat="server" CssClass="modalPopUp">
+        <h4>Registro</h4>
+        <hr />
+        <asp:GridView ID="grRegistro" runat="server"></asp:GridView>
+        <br />
+        <asp:Button ID="btnRegistroVolver" runat="server" Text="Volver" />
     </asp:Panel>
 </asp:Content>
 

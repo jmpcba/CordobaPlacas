@@ -317,9 +317,10 @@ Public Class GestorDatos
         Return result
     End Function
 
-    Public Sub consultarPedido(_pedido As Pedido, _gr As GridView)
+    Public Sub consultarPedido(_pedido As Pedido, grDetalle As GridView, _grRegistro As GridView)
         Dim dt = New DataTable()
 
+        'GRILLA DETALLE
         dt.Columns.Add("ESTADO", GetType(String))
         dt.Columns.Add("LINEA", GetType(String))
         dt.Columns.Add("HOJA", GetType(String))
@@ -352,8 +353,23 @@ Public Class GestorDatos
         Next
 
         'actualizacion de grilla
-        _gr.DataSource = dt
-        _gr.DataBind()
+        grDetalle.DataSource = dt
+        grDetalle.DataBind()
+
+        'GRILLA REGISTRO
+        Dim DTR = New DataTable
+        Dim dbRegistroPedido = New DbHelper()
+        DTR = dbRegistroPedido.getRegistroPedido(_pedido.id)
+
+        For Each item As Item In _pedido.items
+            Dim dbRegistroItem = New DbHelper()
+            Dim DTI As New DataTable
+            DTI = dbRegistroItem.getRegistroItem(item.id)
+            DTR.Merge(DTI)
+        Next
+
+        _grRegistro.DataSource = DTR
+        _grRegistro.DataBind()
 
     End Sub
 End Class
