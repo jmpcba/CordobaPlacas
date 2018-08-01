@@ -321,6 +321,7 @@ Public Class GestorDatos
         Dim dt = New DataTable()
 
         'GRILLA DETALLE
+        dt.Columns.Add("ID", GetType(String))
         dt.Columns.Add("ESTADO", GetType(String))
         dt.Columns.Add("LINEA", GetType(String))
         dt.Columns.Add("HOJA", GetType(String))
@@ -336,6 +337,7 @@ Public Class GestorDatos
 
         For Each item As Item In _pedido.items
             Dim row = dt.NewRow()
+            row("ID") = item.id
             row("ESTADO") = item.getEstado().nombre
             row("LINEA") = item.producto.linea.nombre
             row("HOJA") = item.producto.hoja.nombre
@@ -357,6 +359,10 @@ Public Class GestorDatos
         grDetalle.DataBind()
 
         'GRILLA REGISTRO
+        obtenerRegistro(_pedido, _grRegistro)
+    End Sub
+
+    Public Sub obtenerRegistro(_pedido As Pedido, _grRegistro As GridView)
         Dim DTR = New DataTable
         Dim dbRegistroPedido = New DbHelper()
         DTR = dbRegistroPedido.getRegistroPedido(_pedido.id)
@@ -366,10 +372,10 @@ Public Class GestorDatos
             Dim DTI As New DataTable
             DTI = dbRegistroItem.getRegistroItem(item.id)
             DTR.Merge(DTI)
+            DTR.DefaultView.Sort = "FECHA"
         Next
 
         _grRegistro.DataSource = DTR
         _grRegistro.DataBind()
-
     End Sub
 End Class

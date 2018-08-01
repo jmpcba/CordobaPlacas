@@ -20,7 +20,7 @@
         runat="server"
         Height="100%"
         Width="100%"
-        ActiveTabIndex="0">
+        ActiveTabIndex="4">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
                  <asp:Panel ID="pnlNvos" runat="server">
@@ -427,12 +427,10 @@
                     <asp:Button ID="btnBuscarRemitos" runat="server" Text="Re-Imprimir Remitos" visible="False" ToolTip="Imprimir nuevamente el remito"/>
                     <asp:Button ID="btnCancelarBuscar" runat="server" Text="Cancelar" visible="False"/>
                 </asp:Panel>
-</ContentTemplate>
+    </ContentTemplate>
 </ajaxToolkit:TabPanel>  
     </ajaxToolkit:TabContainer>
-    <div>
-        <asp:Panel ID="pnlMsg" runat="server">
-            <asp:Label ID="lblMsg" runat="server"></asp:Label>
-        </asp:Panel>
-    </div>
+    <asp:Panel ID="pnlMsg" runat="server">
+        <asp:Label ID="lblMsg" runat="server"></asp:Label>
+     </asp:Panel>
 </asp:Content>

@@ -2,7 +2,8 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Wizard ID="Wizard1" runat="server" ActiveStepIndex="0" CellPadding="10" DisplayCancelButton="True" ValidateRequestMode="Enabled">
+    <h2>Nuevo Pedido</h2>
+    <asp:Wizard ID="Wizard1" runat="server" ActiveStepIndex="1" CellPadding="10" DisplayCancelButton="True" ValidateRequestMode="Enabled">
         <NavigationStyle BorderStyle="Solid" BorderWidth="1px" />
         <SideBarStyle BorderStyle="None" HorizontalAlign="Left" VerticalAlign="Top" Wrap="True" />
         <StepStyle BorderStyle="Solid" BorderWidth="1px" CssClass="wizard" />

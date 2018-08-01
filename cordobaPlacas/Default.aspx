@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Home Page" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="cordobaPlacas._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:LoginView ID="LoginView1" runat="server">
+    bu<asp:LoginView ID="LoginView1" runat="server">
         <LoggedInTemplate>
             <div class="jumbotron">
                 <h1>Pedidos</h1>

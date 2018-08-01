@@ -267,8 +267,8 @@
     <Content Include="App_pages\clientes\modificarCliente.aspx" />
     <Content Include="App_pages\clientes\nuevoCliente.aspx" />
     <Content Include="App_pages\pedidos\busquedas.ascx" />
+    <Content Include="App_pages\pedidos\ModificarPedidos.aspx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
-    <Content Include="buscarCliente.aspx" />
     <Content Include="images\refresh-button-icon.png" />
     <Content Include="images\refresh.jpg" />
     <Content Include="App_pages\pedidos\administrarPedidos.aspx" />
@@ -285,7 +285,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_pages\pedidos\ModificarPedido.aspx" />
+    <Content Include="App_pages\pedidos\ModificarPedido_viejo.aspx">
+      <BrowseToURL>~/App_pages/pedidos/ModificarPedido_viejo.aspx</BrowseToURL>
+    </Content>
     <Content Include="App_pages\pedidos\consultarPedidos.aspx" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
@@ -499,6 +501,13 @@
       <DependentUpon>busquedas.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="App_pages\pedidos\ModificarPedidos.aspx.designer.vb">
+      <DependentUpon>ModificarPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_pages\pedidos\ModificarPedidos.aspx.vb">
+      <DependentUpon>ModificarPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="App_pages\pedidos\pedidoNuevo.aspx.designer.vb">
       <DependentUpon>pedidoNuevo.aspx</DependentUpon>
     </Compile>
@@ -524,13 +533,6 @@
       <DependentUpon>confirmacionNuevoPedido.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="buscarCliente.aspx.designer.vb">
-      <DependentUpon>buscarCliente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="buscarCliente.aspx.vb">
-      <DependentUpon>buscarCliente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Contact.aspx.designer.vb">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
@@ -555,11 +557,11 @@
     <Compile Include="App_Code\Mano.vb" />
     <Compile Include="App_Code\item.vb" />
     <Compile Include="Models\IdentityModels.vb" />
-    <Compile Include="App_pages\pedidos\ModificarPedido.aspx.designer.vb">
-      <DependentUpon>ModificarPedido.aspx</DependentUpon>
+    <Compile Include="App_pages\pedidos\ModificarPedido_viejo.aspx.designer.vb">
+      <DependentUpon>ModificarPedido_viejo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_pages\pedidos\ModificarPedido.aspx.vb">
-      <DependentUpon>ModificarPedido.aspx</DependentUpon>
+    <Compile Include="App_pages\pedidos\ModificarPedido_viejo.aspx.vb">
+      <DependentUpon>ModificarPedido_viejo.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />

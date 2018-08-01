@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="consultarPedidos.aspx.vb" Inherits="cordobaPlacas.WebForm2" Theme="default" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Panel ID="pnlBusquedas" runat="server" CssClass="modalPopUp">
+    <asp:Panel ID="pnlBusquedas" runat="server" CssClass="modalPopUp" DefaultButton="btnBuscar">
         <table>
             <tr >
                 <td colspan="4" ><h2>Buscar Pedidos</h2></td>

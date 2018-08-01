@@ -2166,6 +2166,177 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.ModificarPedidos._Wizard1">
+<summary>
+Control Wizard1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._pnlPedidos">
+<summary>
+Control pnlPedidos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._grPedidos">
+<summary>
+Control grPedidos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._pnldetallePedido">
+<summary>
+Control pnldetallePedido.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._grDetalle">
+<summary>
+Control grDetalle.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._rbOpciones">
+<summary>
+Control rbOpciones.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._modificarItem">
+<summary>
+Control modificarItem.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._pnlGrilla">
+<summary>
+Control pnlGrilla.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._grDetalleModificar">
+<summary>
+Control grDetalleModificar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._pnlModificarCombos">
+<summary>
+Control pnlModificarCombos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._cbLinea">
+<summary>
+Control cbLinea.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._cbChapa">
+<summary>
+Control cbChapa.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._cbMarco">
+<summary>
+Control cbMarco.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._txtCant">
+<summary>
+Control txtCant.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._cbMadera">
+<summary>
+Control cbMadera.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._cbHoja">
+<summary>
+Control cbHoja.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._cbMano">
+<summary>
+Control cbMano.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.ModificarPedidos._btnAgregar">
+<summary>
+Control btnAgregar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.pedidoNuevo._Wizard1">
 <summary>
 Control Wizard1.
@@ -2661,7 +2832,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._LoginName1">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._LoginName1">
 <summary>
 Control LoginName1.
 </summary>
@@ -2670,7 +2841,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._txtPedido">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._txtPedido">
 <summary>
 Control txtPedido.
 </summary>
@@ -2679,7 +2850,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._cbCliente">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._cbCliente">
 <summary>
 Control cbCliente.
 </summary>
@@ -2688,7 +2859,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._txtFecDesde">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._txtFecDesde">
 <summary>
 Control txtFecDesde.
 </summary>
@@ -2697,7 +2868,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._clExtFecDesde">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._clExtFecDesde">
 <summary>
 Control clExtFecDesde.
 </summary>
@@ -2706,7 +2877,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._txtFecHasta">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._txtFecHasta">
 <summary>
 Control txtFecHasta.
 </summary>
@@ -2715,7 +2886,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._clExtFecHasta">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._clExtFecHasta">
 <summary>
 Control clExtFecHasta.
 </summary>
@@ -2724,7 +2895,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._btnBuscar">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._btnBuscar">
 <summary>
 Control btnBuscar.
 </summary>
@@ -2733,7 +2904,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._btnLimpiar">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._btnLimpiar">
 <summary>
 Control btnLimpiar.
 </summary>
@@ -2742,7 +2913,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._grPedidos">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._grPedidos">
 <summary>
 Control grPedidos.
 </summary>
@@ -2751,7 +2922,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._lblDetalle">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._lblDetalle">
 <summary>
 Control lblDetalle.
 </summary>
@@ -2760,7 +2931,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._grDetalle">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._grDetalle">
 <summary>
 Control grDetalle.
 </summary>
@@ -2769,7 +2940,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._pnlCombos">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._pnlCombos">
 <summary>
 Control pnlCombos.
 </summary>
@@ -2778,7 +2949,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._cbLinea">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._cbLinea">
 <summary>
 Control cbLinea.
 </summary>
@@ -2787,7 +2958,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._cbChapa">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._cbChapa">
 <summary>
 Control cbChapa.
 </summary>
@@ -2796,7 +2967,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._cbMarco">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._cbMarco">
 <summary>
 Control cbMarco.
 </summary>
@@ -2805,7 +2976,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._txtCantidad">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._txtCantidad">
 <summary>
 Control txtCantidad.
 </summary>
@@ -2814,7 +2985,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._cbMadera">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._cbMadera">
 <summary>
 Control cbMadera.
 </summary>
@@ -2823,7 +2994,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._cbHoja">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._cbHoja">
 <summary>
 Control cbHoja.
 </summary>
@@ -2832,7 +3003,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._cbMano">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._cbMano">
 <summary>
 Control cbMano.
 </summary>
@@ -2841,7 +3012,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._btnAgregar">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._btnAgregar">
 <summary>
 Control btnAgregar.
 </summary>
@@ -2850,7 +3021,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._btnCancelar">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._btnCancelar">
 <summary>
 Control btnCancelar.
 </summary>
@@ -2859,7 +3030,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._rfvLinea">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._rfvLinea">
 <summary>
 Control rfvLinea.
 </summary>
@@ -2868,7 +3039,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._rfvChapa">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._rfvChapa">
 <summary>
 Control rfvChapa.
 </summary>
@@ -2877,7 +3048,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._rfvMarco">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._rfvMarco">
 <summary>
 Control rfvMarco.
 </summary>
@@ -2886,7 +3057,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._rfvMadera">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._rfvMadera">
 <summary>
 Control rfvMadera.
 </summary>
@@ -2895,7 +3066,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._rfvHoja">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._rfvHoja">
 <summary>
 Control rfvHoja.
 </summary>
@@ -2904,7 +3075,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._rfvMano">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._rfvMano">
 <summary>
 Control rfvMano.
 </summary>
@@ -2913,7 +3084,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._rfvCantidad">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._rfvCantidad">
 <summary>
 Control rfvCantidad.
 </summary>
@@ -2922,7 +3093,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._rgxCantidad">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._rgxCantidad">
 <summary>
 Control rgxCantidad.
 </summary>
@@ -2931,7 +3102,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._pnlError">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._pnlError">
 <summary>
 Control pnlError.
 </summary>
@@ -2940,7 +3111,7 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.ModificarPedido._lblError">
+<member name="F:cordobaPlacas.ModificarPedido_viejo._lblError">
 <summary>
 Control lblError.
 </summary>
