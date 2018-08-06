@@ -63,7 +63,7 @@ Public Class Pedido
                 Dim item = New Item(r("id"))
                 items.Add(item)
                 precioTotal += item.monto
-                cantTotal += item.cant
+                cantTotal += item.getCant()
             Next
 
         Catch ex As Exception
@@ -76,8 +76,9 @@ Public Class Pedido
         Dim encontro = False
 
         For Each i As Item In items
-            If i.producto.id = _item.producto.id Then
-                i.cant += _item.cant
+            If i.getProducto.id = _item.getProducto.id Then
+                Dim cantActual = i.getCant()
+                i.setCant(cantActual + _item.getCant())
                 i.monto += _item.monto
                 encontro = True
                 Exit For
@@ -89,7 +90,7 @@ Public Class Pedido
         End If
 
         precioTotal += _item.monto
-        cantTotal += _item.cant
+        cantTotal += _item.getCant()
 
     End Sub
 
@@ -147,7 +148,7 @@ Public Class Pedido
             For Each r As DataRow In desp.Rows
                 Dim id = r("ID_PIEZA")
                 Dim encontro = False
-                r("CONSUMO") = r("CONSUMO") * (i.cant - i.stock)
+                r("CONSUMO") = r("CONSUMO") * (i.getCant() - i.stock)
                 For Each j As DataRow In dt.Rows
                     If j("ID_PIEZA") = id Then
                         j("CONSUMO") = j("CONSUMO") + r("CONSUMO")
@@ -168,7 +169,7 @@ Public Class Pedido
         Dim i As Item
         i = items(_index)
         items.Remove(i)
-        cantTotal -= i.cant
+        cantTotal -= i.getCant()
         precioTotal -= i.monto
     End Sub
 
@@ -184,7 +185,32 @@ Public Class Pedido
         Next
 
         Return result
-
     End Function
 
+    Private Sub calcularTotales()
+
+        cantTotal = 0
+        precioTotal = 0
+
+        For Each i As Item In items
+            cantTotal += i.getCant()
+            precioTotal += i.monto
+        Next
+
+    End Sub
+
+    Public Sub modificarItem(_id As Integer, _it As Item)
+        Dim i = itemIndex(_id)
+
+        If items(i).getCant() <> _it.getCant() Then
+            items(i).setCant(_it.getCant())
+        End If
+
+        If items(i).getProducto.id <> _it.getProducto.id Then
+            items(i).setProducto(_it.getProducto)
+        End If
+
+        calcularTotales()
+
+    End Sub
 End Class

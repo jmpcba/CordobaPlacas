@@ -152,24 +152,55 @@ Public Class GestorDatos
         'llenado de tabla
         For Each item As Item In _pedido.items
             Dim row = dt.NewRow()
-            row("linea") = item.producto.linea.nombre
-            row("hoja") = item.producto.hoja.nombre
-            row("marco") = item.producto.marco.nombre
-            row("madera") = item.producto.madera.nombre
-            row("chapa") = item.producto.chapa.nombre
-            row("cantidad") = item.cant
+            row("linea") = item.getProducto.linea.nombre
+            row("hoja") = item.getProducto.hoja.nombre
+            row("marco") = item.getProducto.marco.nombre
+            row("madera") = item.getProducto.madera.nombre
+            row("chapa") = item.getProducto.chapa.nombre
+            row("cantidad") = item.getCant
             row("MONTO") = item.monto
-            row("mano") = item.producto.mano.nombre
+            row("mano") = item.getProducto.mano.nombre
 
             If _withStock Then
-                row("stock") = item.producto.stock
+                row("stock") = item.getProducto.stock
             End If
 
             dt.Rows.Add(row)
-            Next
-            'actualizacion de grilla
-            _grilla.DataSource = dt
-            _grilla.DataBind()
+        Next
+        'actualizacion de grilla
+        _grilla.DataSource = dt
+        _grilla.DataBind()
+    End Sub
+
+    Public Sub mostrarGrillaModificarItems(ByVal _grilla As GridView, ByVal _pedido As Pedido)
+        'definicion de tabla
+        Dim dt = New DataTable()
+        dt.Columns.Add("CANT", GetType(Integer))
+        dt.Columns.Add("LINEA", GetType(String))
+        dt.Columns.Add("MADERA", GetType(String))
+        dt.Columns.Add("HOJA", GetType(String))
+        dt.Columns.Add("MARCO", GetType(String))
+        dt.Columns.Add("CHAPA", GetType(String))
+        dt.Columns.Add("MANO", GetType(String))
+        dt.Columns.Add("MONTO", GetType(Decimal))
+
+        'llenado de tabla
+        For Each item As Item In _pedido.items
+            Dim row = dt.NewRow()
+            row("linea") = item.getProducto.linea.nombre
+            row("hoja") = item.getProducto.hoja.nombre
+            row("marco") = item.getProducto.marco.nombre
+            row("madera") = item.getProducto.madera.nombre
+            row("chapa") = item.getProducto.chapa.nombre
+            row("CANT") = item.getCant
+            row("MONTO") = item.monto
+            row("mano") = item.getProducto.mano.nombre
+
+            dt.Rows.Add(row)
+        Next
+        'actualizacion de grilla
+        _grilla.DataSource = dt
+        _grilla.DataBind()
     End Sub
 
     Public Function getItems(ByVal _pedido As Integer) As DataTable
@@ -242,7 +273,7 @@ Public Class GestorDatos
 
     Public Function getStock(_item As Item) As DataTable
         Dim db = New DbHelper("Stock")
-        Return db.getStock(_item.producto.hoja.id, _item.producto.marco.id, _item.producto.madera.id, _item.producto.chapa.id, _item.producto.mano.id, _item.producto.linea.id)
+        Return db.getStock(_item.getProducto.hoja.id, _item.getProducto.marco.id, _item.getProducto.madera.id, _item.getProducto.chapa.id, _item.getProducto.mano.id, _item.getProducto.linea.id)
     End Function
 
     Public Function calcularMateriales(_item As Item, gr As GridView) As Boolean
@@ -256,7 +287,7 @@ Public Class GestorDatos
         Dim i = 0
 
         For Each r As DataRow In materiales.Rows
-            Dim requerido = r("CONSUMO") * _item.cant
+            Dim requerido = r("CONSUMO") * _item.getCant()
 
             r("REQUERIDO") = requerido
 
@@ -339,17 +370,17 @@ Public Class GestorDatos
             Dim row = dt.NewRow()
             row("ID") = item.id
             row("ESTADO") = item.getEstado().nombre
-            row("LINEA") = item.producto.linea.nombre
-            row("HOJA") = item.producto.hoja.nombre
-            row("MARCO") = item.producto.marco.nombre
-            row("MADERA") = item.producto.madera.nombre
-            row("CHAPA") = item.producto.chapa.nombre
-            row("MANO") = item.producto.mano.nombre
-            row("CANTIDAD") = item.cant
+            row("LINEA") = item.getProducto.linea.nombre
+            row("HOJA") = item.getProducto.hoja.nombre
+            row("MARCO") = item.getProducto.marco.nombre
+            row("MADERA") = item.getProducto.madera.nombre
+            row("CHAPA") = item.getProducto.chapa.nombre
+            row("MANO") = item.getproducto.mano.nombre
+            row("CANTIDAD") = item.getCant()
             row("MONTO") = item.monto
             row("STOCK") = item.stock
             row("ENSAMBLADAS") = item.getEnsamblados
-            row("PENDIENTES") = item.cant - item.getEnsamblados() - item.stock
+            row("PENDIENTES") = item.getCant() - item.getEnsamblados() - item.stock
 
             dt.Rows.Add(row)
         Next

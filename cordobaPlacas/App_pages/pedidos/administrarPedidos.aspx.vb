@@ -269,7 +269,7 @@ Public Class administrarPedidos
                 For Each r As DataRow In dt.Rows
                     Dim item = pedido.getItemById(r("ITEM"))
                     r("EN DEPOSITO") = item.getEnDeposito()
-                    r("PENDIENTES") = item.cant - item.stock - item.getEnDeposito()
+                    r("PENDIENTES") = item.getCant() - item.stock - item.getEnDeposito()
                 Next
             End If
 

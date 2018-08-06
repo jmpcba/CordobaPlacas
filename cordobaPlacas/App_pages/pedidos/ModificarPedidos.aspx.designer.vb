@@ -23,6 +23,15 @@ Partial Public Class ModificarPedidos
     Protected WithEvents Wizard1 As Global.System.Web.UI.WebControls.Wizard
     
     '''<summary>
+    '''Control rbOpciones.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents rbOpciones As Global.System.Web.UI.WebControls.RadioButtonList
+    
+    '''<summary>
     '''Control pnlPedidos.
     '''</summary>
     '''<remarks>
@@ -68,15 +77,6 @@ Partial Public Class ModificarPedidos
     Protected WithEvents grDetalle As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''Control rbOpciones.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents rbOpciones As Global.System.Web.UI.WebControls.RadioButtonList
-    
-    '''<summary>
     '''Control modificarItem.
     '''</summary>
     '''<remarks>
@@ -111,6 +111,15 @@ Partial Public Class ModificarPedidos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents pnlModificarCombos As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control grModificado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grModificado As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
     '''Control cbLinea.
@@ -176,11 +185,11 @@ Partial Public Class ModificarPedidos
     Protected WithEvents cbMano As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''Control btnAgregar.
+    '''Control btnModificar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnAgregar As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnModificar As Global.System.Web.UI.WebControls.Button
 End Class

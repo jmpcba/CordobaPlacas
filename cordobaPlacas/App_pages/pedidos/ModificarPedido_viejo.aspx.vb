@@ -141,19 +141,19 @@
 
         Try
             gestordatos.getComboLineas(cbLinea)
-            cbLinea.SelectedValue = item.producto.linea.id
+            cbLinea.SelectedValue = item.getProducto.linea.id
 
             'gestordatos.getCombos(cbLinea, cbChapa, cbMarco, cbMadera, cbHoja, cbMano)
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
 
-        cbChapa.SelectedValue = item.producto.chapa.id
-        cbMarco.SelectedValue = item.producto.marco.id
-        cbMadera.SelectedValue = item.producto.madera.id
-        cbHoja.SelectedValue = item.producto.hoja.id
-        cbMano.SelectedValue = item.producto.mano.id
-        txtCantidad.Text = item.cant
+        cbChapa.SelectedValue = item.getProducto.chapa.id
+        cbMarco.SelectedValue = item.getProducto.marco.id
+        cbMadera.SelectedValue = item.getProducto.madera.id
+        cbHoja.SelectedValue = item.getProducto.hoja.id
+        cbMano.SelectedValue = item.getProducto.mano.id
+        txtCantidad.Text = item.getCant()
         Session("GestorPedidos") = gestorPedidos
     End Sub
 

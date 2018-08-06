@@ -2,7 +2,7 @@
 Public Class Madera
     Public id As Integer
     Public nombre As String
-    Dim db = New DbHelper("maderas")
+    Dim db As DbHelper = New DbHelper("maderas")
 
     Public Sub New()
 

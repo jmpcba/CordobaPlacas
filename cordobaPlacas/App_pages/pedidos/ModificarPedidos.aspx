@@ -3,46 +3,50 @@
     <h2>Modificar Pedidos</h2>
     <asp:Wizard ID="Wizard1" runat="server" ActiveStepIndex="2">
         <WizardSteps>
+            <asp:WizardStep runat="server" title="Opciones">
+                Seleccione una opcion:<asp:RadioButtonList ID="rbOpciones" runat="server">
+                    <asp:ListItem Value="0">Modificar un Pedido</asp:ListItem>
+                    <asp:ListItem Value="1">Cancelar un Pedido</asp:ListItem>
+                </asp:RadioButtonList>
+            </asp:WizardStep>
             <asp:WizardStep runat="server" title="Seleccionar">
                 <asp:Panel ID="pnlPedidos" runat="server">
-                    <p>Seleccione el pedido que va a modificar</p>
-                    <asp:GridView ID="grPedidos" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="SqlDataSource1" AutoGenerateSelectButton="True">
-                        <Columns>
-                            <asp:BoundField DataField="Nro Pedido" HeaderText="Nro Pedido" InsertVisible="False" ReadOnly="True" SortExpression="Nro Pedido" />
-                            <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
-                            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" />
-                            <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
-                            <asp:BoundField DataField="Fecha Recibido" DataFormatString="{0:d}" HeaderText="Fecha Recibido" SortExpression="Fecha Recibido" />
-                            <asp:BoundField DataField="Ultima Modificacion" DataFormatString="{0:d}" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
-                        </Columns>
+                    <p>Seleccione un pedido</p>
+                    <asp:GridView ID="grPedidos" runat="server" AutoGenerateSelectButton="True">
                     </asp:GridView>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="sp_PEDIDOS_EN_CURSO" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 </asp:Panel>
                 <asp:Panel ID="pnldetallePedido" runat="server" Visible="false">
                     <hr />
-                    <p>Detalle Pedido</p>
+                    <p>Detalle</p>
                     <asp:GridView ID="grDetalle" runat="server"></asp:GridView>
                 </asp:Panel>
             </asp:WizardStep>
-            <asp:WizardStep runat="server" title="Opciones">
-                <asp:RadioButtonList ID="rbOpciones" runat="server">
-                    <asp:ListItem Value="0">Modificar Pedido</asp:ListItem>
-                    <asp:ListItem Value="1">Cancelar Pedido</asp:ListItem>
-                </asp:RadioButtonList>
-            </asp:WizardStep>
             <asp:WizardStep ID="modificarItem" runat="server" Title="Modificar">
+                <h4>Pedido Original</h4>
+                <hr />
                 <asp:Panel ID="pnlGrilla" runat="server">
                     <asp:GridView ID="grDetalleModificar" runat="server" AutoGenerateSelectButton="True"></asp:GridView>
                 </asp:Panel>
                 <asp:Panel ID="pnlModificarCombos" runat="server">
-                    <h4>PASO 2 - Pedido</h4>
+                    <hr />
+                    <h4>Pedido Modificado</h4>
+                    <hr />
+                    <asp:GridView ID="grModificado" runat="server"></asp:GridView>
                     <hr />
                     <table>
+                        <tr>
+                            <td colspan="7"><h4>Opciones</h4></td>
+                        </tr>
+                        <tr>
+                            <td colspan="7"><hr /></td>
+                        </tr>
                         <tr>
                             <td>Linea</td>
                             <td>
                                 <asp:DropDownList ID="cbLinea" AutoPostBack="true" runat="server"></asp:DropDownList>
                             </td>
+
                             <td colspan="5">
                                 Seleccione una Linea para empezar
                             </td>
@@ -77,7 +81,7 @@
                                 <asp:DropDownList ID="cbMano" runat="server"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Button ID="btnAgregar" runat="server" Text="Agregar" />
+                                <asp:Button ID="btnModificar" runat="server" Text="Modificar" />
                             </td>
                         </tr>
                     </table>   

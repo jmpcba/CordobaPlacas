@@ -1,4 +1,6 @@
 ﻿Imports System.Data
+Imports cordobaPlacas
+
 Public Class GestorPedidos
     Public pedido As Pedido
     Private db As DbHelper
@@ -29,7 +31,6 @@ Public Class GestorPedidos
             Throw
         End Try
     End Sub
-
 
     Public Sub actualizarEnCurso(_gr As GridView)
         Dim cambio = False
@@ -117,6 +118,10 @@ Public Class GestorPedidos
         End If
     End Sub
 
+    Friend Sub modificarPedido(_itemOrg As Pedido, _Nvoitem As Item)
+
+    End Sub
+
     Public Sub EnviarProduccion(_gr As GridView)
         Dim flag = True
         'ACTUALIZAR STOCK EN CADA ITEM DEL PEDIDO
@@ -131,7 +136,7 @@ Public Class GestorPedidos
 
 
             'SI SE CUBRE 100% DEL PEDIDO CON STOCK CAMBIAR EL ESTADO
-            If pedido.items(index).stock = pedido.items(index).cant Then
+            If pedido.items(index).stock = pedido.items(index).getCant() Then
                 pedido.items(index).setEstado(New Estado(Estado.estados.deposito))
             Else
                 pedido.items(index).setEstado(New Estado(Estado.estados.enCola))

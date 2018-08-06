@@ -2,8 +2,8 @@
 Public Class Item
     Public id As Integer
     Public idPedido As Integer
-    Public producto As Producto
-    Public cant As Integer
+    Private producto As Producto
+    Private cant As Integer
     Public monto As Decimal
     Private estado As Estado
     Private db As DbHelper
@@ -41,6 +41,23 @@ Public Class Item
         enDeposito = dt(0)(9)
         stock = dt(0)(10)
     End Sub
+    Public Sub setCant(_cant As Integer)
+        cant = _cant
+        monto = producto.precioUnitario * cant
+    End Sub
+
+    Public Function getCant() As Integer
+        Return cant
+    End Function
+
+    Public Sub setProducto(_prod As Producto)
+        producto = _prod
+        monto = producto.precioUnitario * cant
+    End Sub
+
+    Public Function getProducto() As Producto
+        Return producto
+    End Function
 
     Public Sub setEnDeposito(_val As Integer)
         enDeposito = _val

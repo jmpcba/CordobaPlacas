@@ -441,8 +441,8 @@ Public Class DbHelper
         cmd.CommandType = CommandType.StoredProcedure
 
         cmd.Parameters.AddWithValue("@ID_ITEM", _item.id)
-        cmd.Parameters.AddWithValue("@ID_PRODUCTO", _item.producto.id)
-        cmd.Parameters.AddWithValue("@CANT", _item.cant)
+        cmd.Parameters.AddWithValue("@ID_PRODUCTO", _item.getProducto().id)
+        cmd.Parameters.AddWithValue("@CANT", _item.getcant)
         cmd.Parameters.AddWithValue("@MONTO", _item.monto)
         cmd.Parameters.AddWithValue("@ID_ESTADO", _item.getEstado().id)
         cmd.Parameters.AddWithValue("@MARCO_TER", _item.marcosTerminados)
@@ -700,7 +700,7 @@ Public Class DbHelper
         End Try
     End Function
 
-    Public Function getRegistroPedido(_idPedido) As DataTable
+    Public Function getRegistroPedido(_idPedido As Integer) As DataTable
         Dim query = "SELECT FECHA, ENTRADA FROM REGISTRO_PEDIDOS WHERE ID_PEDIDO=" & _idPedido
 
         cmd.CommandType = CommandType.Text

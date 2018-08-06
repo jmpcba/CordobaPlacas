@@ -6,8 +6,8 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         gestorDatos = New GestorDatos
-        pnldetallePedido.Visible = False
-        pnlModificarCombos.Visible = False
+        'pnldetallePedido.Visible = False
+        'pnlModificarCombos.Visible = False
 
 
     End Sub
@@ -36,19 +36,21 @@
         gestorPedidos = Session("gestorPedidos")
 
         If e.CurrentStepIndex = 0 Then
-            If gestorPedidos.pedido.estado.id > Estado.estados.enCola Then
-                rbOpciones.Items(0).Enabled = False
-            End If
-        ElseIf e.CurrentStepIndex = 1 Then
-            If rbOpciones.SelectedValue = 0 Then
-                Wizard1.ActiveStepIndex = 2
-                grDetalleModificar.DataSource = gestorDatos.getItems(gestorPedidos.pedido.id)
-                grDetalleModificar.DataBind()
-            Else
-                Wizard1.ActiveStepIndex = 3
-            End If
+            Dim dt As New DataTable
+            If rbOpciones.SelectedIndex = 0 Then
 
+                dt = gestorDatos.buscarPedidos(Nothing, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, Nothing, Estado.estados.enCola)
+                dt.Merge(gestorDatos.buscarPedidos(Nothing, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, Nothing, Estado.estados.recibido))
+                dt.DefaultView.Sort = "Fecha Recibido"
+                grPedidos.DataSource = dt
+                grPedidos.DataBind()
 
+            ElseIf rbOpciones.SelectedIndex = 1 Then
+                dt = gestorDatos.buscarPedidos(Nothing, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, Nothing, Nothing)
+
+                grPedidos.DataSource = dt
+                grPedidos.DataBind()
+            End If
         End If
     End Sub
 
@@ -57,26 +59,53 @@
         Dim idItem = row.Cells(1).Text
         Dim item As Item
         gestorPedidos = Session("gestorPedidos")
+
         item = gestorPedidos.pedido.getItemById(idItem)
+        Session("itemActivo") = item
 
         pnlModificarCombos.Visible = True
 
         gestorDatos.getComboLineas(cbLinea)
-        cbLinea.SelectedValue = item.producto.linea.id
+        cbLinea.SelectedValue = item.getProducto.linea.id
 
         gestorDatos.fillCombos(cbLinea, cbChapa, cbMarco, cbMadera, cbHoja, cbMano)
 
-        cbChapa.SelectedValue = item.producto.chapa.id
-        cbHoja.SelectedValue = item.producto.hoja.id
-        cbMadera.SelectedValue = item.producto.madera.id
-        cbMano.SelectedValue = item.producto.mano.id
-        cbMarco.SelectedValue = item.producto.marco.id
-        txtCant.Text = item.cant
+        cbChapa.SelectedValue = item.getProducto.chapa.id
+        cbHoja.SelectedValue = item.getProducto.hoja.id
+        cbMadera.SelectedValue = item.getProducto.madera.id
+        cbMano.SelectedValue = item.getProducto.mano.id
+        cbMarco.SelectedValue = item.getProducto.marco.id
+        txtCant.Text = item.getCant()
 
     End Sub
 
     Protected Sub cbLinea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLinea.SelectedIndexChanged
         pnlModificarCombos.Visible = True
         gestorDatos.fillCombos(cbLinea, cbChapa, cbMarco, cbMadera, cbHoja, cbMano)
+    End Sub
+
+    Protected Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        Dim row = grDetalleModificar.SelectedRow
+        Dim idItem = row.Cells(1).Text
+        Dim itemOrig As Item
+
+        Dim chapa = New Chapa(cbChapa.SelectedItem.Value, cbChapa.SelectedItem.Text)
+        Dim marco = New Marco(cbMarco.SelectedItem.Value, cbMarco.SelectedItem.Text)
+        Dim madera = New Madera(cbMadera.SelectedItem.Value, cbMadera.SelectedItem.Text)
+        Dim hoja = New Hoja(cbHoja.SelectedItem.Value, cbHoja.SelectedItem.Text)
+        Dim mano = New Mano(cbMano.SelectedItem.Value, cbMano.SelectedItem.Text)
+        Dim cant = txtCant.Text.Trim()
+        Dim linea = New linea(cbLinea.SelectedItem.Value, cbLinea.SelectedItem.Text)
+        Dim producto = New Producto(hoja, marco, madera, chapa, mano, linea)
+        Dim itemMod = New Item(producto, cant)
+
+        gestorPedidos = Session("gestorPedidos")
+        itemOrig = gestorPedidos.pedido.getItemById(idItem)
+        gestorPedidos.pedido.modificarItem(idItem, itemMod)
+
+        pnlModificarCombos.Visible = True
+
+        gestorPedidos.pedido.modificarItem(idItem, itemMod)
+        gestorDatos.mostrarGrillaModificarItems(grModificado, gestorPedidos.pedido)
     End Sub
 End Class
