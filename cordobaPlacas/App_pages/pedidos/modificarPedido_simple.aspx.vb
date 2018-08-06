@@ -50,12 +50,16 @@
 
     Protected Sub grDetalle_RowEditing(sender As Object, e As GridViewEditEventArgs)
         Dim idItem = Convert.ToInt32(grDetalle.DataKeys(e.NewEditIndex).Value.ToString())
+        Dim i As Item
 
         gp = Session("gestorPedidos")
+        i = gp.pedido.getItemById(idItem)
+        Session("idLinea") = i.getProducto().linea.id
 
         pnlDetalle.Visible = True
         grDetalle.EditIndex = e.NewEditIndex
         grDetalle.DataBind()
+        ViewState("editIndex") = e.NewEditIndex
         'llenarGrillaDetalle()
     End Sub
 
@@ -84,4 +88,26 @@
     Protected Sub grDetalle_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
 
     End Sub
+
+    Protected Sub cbLinea_SelectedIndexChanged1(sender As Object, e As EventArgs)
+        Dim cbLineas As DropDownList
+        Dim cbMadera As DropDownList
+        Dim cbHoja As DropDownList
+        Dim cbMarco As DropDownList
+        Dim cbChapa As DropDownList
+        Dim cbMano As DropDownList
+
+        cbLineas = grDetalle.Rows(ViewState("editIndex")).FindControl("cblinea")
+        cbMadera = grDetalle.Rows(ViewState("editIndex")).FindControl("cbmadera")
+        cbHoja = grDetalle.Rows(ViewState("editIndex")).FindControl("cbHoja")
+        cbMarco = grDetalle.Rows(ViewState("editIndex")).FindControl("cbMarco")
+        cbChapa = grDetalle.Rows(ViewState("editIndex")).FindControl("cbChapa")
+        cbMano = grDetalle.Rows(ViewState("editIndex")).FindControl("cbMano")
+
+        gd.fillCombos(cbLineas, cbChapa, cbMarco, cbMadera, cbHoja, cbMano)
+
+        pnlDetalle.Visible = True
+        grDetalle.EditIndex = ViewState("editIndex")
+    End Sub
+
 End Class
