@@ -23,55 +23,45 @@
             onrowediting="grDetalle_RowEditing"
             onrowcancelingedit="grDetalle_RowCancelingEdit"
             onrowUpdating="grDetalle_RowUpdating"
-            onrowdeleting="grDetalle_RowDeleting"
+            onrowdeleting="grDetalle_RowDeleting" DataSourceID="dsItems"
             >
 
             <Columns>
-                <asp:BoundField DataField="ITEM" HeaderText="ITEM" ReadOnly="true"/>
-                <asp:TemplateField HeaderText="CANT">
+                <asp:BoundField DataField="ITEM" HeaderText="ITEM" ReadOnly="true" InsertVisible="False" SortExpression="ITEM"/>
+                <asp:TemplateField HeaderText="CANT" SortExpression="CANT">
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtCant" runat="server" Text='<%# Bind("CANT") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtCant" runat="server" Text='<%# Bind("CANT", "{0}") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="lblCant" runat="server" Text='<%# Bind("CANT") %>'></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("CANT") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="LINEA">
+                <asp:TemplateField HeaderText="LINEA" SortExpression="LINEA">
                     <EditItemTemplate>
-                        <asp:DropDownList ID="cbLineas" runat="server" DataSourceID="Lineas" DataTextField="nombre" DataValueField="id" SelectedValue='<%# bind("LINEA") %>'>
+                        <asp:DropDownList ID="dsLinea" runat="server">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="Lineas" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [lineas]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="dsLineas" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [lineas]"></asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("LINEA") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="MADERA">
-                    <EditItemTemplate>
-                        <asp:DropDownList ID="cbMadera" runat="server">
-                        </asp:DropDownList>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("MADERA") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField DataField="HOJA" HeaderText="HOJA" ReadOnly="true" />
-                <asp:BoundField DataField="MARCO" HeaderText="MARCO" ReadOnly="true"/>
-                <asp:BoundField DataField="MANO" HeaderText="CHAPA" ReadOnly="true"/>
-                <asp:TemplateField>
-                    <EditItemTemplate>
-                        <asp:ImageButton ID="ImageButton2" runat="server" CommandName="update" Height="20px" ImageUrl="~/images/save.png" Width="20px" ToolTip="Guardar Cambios" />
-                        <ajaxToolkit:ConfirmButtonExtender ID="ImageButton2_ConfirmButtonExtender" runat="server" ConfirmText="Desea Guardar los cambios?" TargetControlID="ImageButton2" />
-                        <asp:ImageButton ID="ImageButton4" runat="server" CommandName="delete" Height="20px" ImageUrl="~/images/delete.png" ToolTip="Borrar Item" Width="20px" />
-                        <ajaxToolkit:ConfirmButtonExtender ID="ImageButton4_ConfirmButtonExtender" runat="server" ConfirmText="Borrar este item?" TargetControlID="ImageButton4" />
-                        <asp:ImageButton ID="ImageButton3" runat="server" CommandName="cancel" Height="20px" ImageUrl="~/images/cancel.png" Width="20px" ToolTip="Cancelar Edicion" />
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:ImageButton ID="btnEditar" runat="server" CommandName="edit" Height="20px" ImageUrl="~/images/edit-512.png" Width="20px" />
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="MADERA" HeaderText="MADERA" SortExpression="MADERA" />
+                <asp:BoundField DataField="HOJA" HeaderText="HOJA" SortExpression="HOJA" />
+                <asp:BoundField DataField="MARCO" HeaderText="MARCO" SortExpression="MARCO" />
+                <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" SortExpression="CHAPA" />
+                <asp:BoundField DataField="MANO" HeaderText="MANO" SortExpression="MANO" />
+                <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" SortExpression="ESTADO" />
+                <asp:CommandField ButtonType="Image" CancelImageUrl="~/images/cancel.png" DeleteImageUrl="~/images/delete.png" EditImageUrl="~/images/edit-512.png" ShowEditButton="True" UpdateImageUrl="~/images/save.png">
+                <ControlStyle Height="20px" Width="20px" />
+                </asp:CommandField>
             </Columns>
         </asp:GridView>
+        <asp:SqlDataSource ID="dsItems" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SP_ITEMS_PEDIDO" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="0" Name="idPedido" SessionField="idPedido" Type="Int16" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <br />
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar Pedido" />
     </asp:Panel>

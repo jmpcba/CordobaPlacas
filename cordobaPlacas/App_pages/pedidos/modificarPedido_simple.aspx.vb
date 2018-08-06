@@ -21,9 +21,9 @@
             pnlCombos.Visible = True
             gp = New GestorPedidos(idItem)
             Session("gestorPedidos") = gp
-
-            llenarGrillaDetalle()
-
+            Session("idPedido") = gp.pedido.id
+            'llenarGrillaDetalle()
+            grDetalle.DataBind()
             msgPanel(String.Format("Detalle Pedido {0} - CARGADO", gp.pedido.id))
         Catch ex As Exception
             errorPanel(ex.Message)
@@ -55,14 +55,14 @@
 
         pnlDetalle.Visible = True
         grDetalle.EditIndex = e.NewEditIndex
-
-        llenarGrillaDetalle()
+        grDetalle.DataBind()
+        'llenarGrillaDetalle()
     End Sub
 
     Protected Sub grDetalle_RowCancelingEdit(sender As Object, e As GridViewCancelEditEventArgs)
         pnlDetalle.Visible = True
         grDetalle.EditIndex = -1
-        llenarGrillaDetalle()
+        'llenarGrillaDetalle()
     End Sub
 
     Protected Sub grDetalle_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
@@ -75,7 +75,7 @@
         gp.pedido.items(gp.pedido.itemIndex(idItem)).setCant(cant)
         gp.pedido.items(gp.pedido.itemIndex(idItem)).actualizar()
 
-        llenarGrillaDetalle()
+        'llenarGrillaDetalle()
 
         Dim msg = String.Format("Carga de datos pedido {0} - CORRECTA", gp.pedido.id)
         msgPanel(msg)
