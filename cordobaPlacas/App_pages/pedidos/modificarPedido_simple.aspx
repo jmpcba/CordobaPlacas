@@ -27,22 +27,13 @@
 
             <Columns>
                 <asp:BoundField DataField="ITEM" HeaderText="ITEM" ReadOnly="true" InsertVisible="False" SortExpression="ITEM"/>
+                <asp:BoundField DataField="LINEA" HeaderText="LINEA" ReadOnly="True" SortExpression="LINEA" />
                 <asp:TemplateField HeaderText="CANT" SortExpression="CANT">
                     <EditItemTemplate>
                         <asp:TextBox ID="txtCant" runat="server" Text='<%# Bind("CANT") %>' Width="50px"></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("CANT") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="LINEA" SortExpression="LINEA">
-                    <EditItemTemplate>
-                        <asp:DropDownList ID="cbLinea" runat="server" AutoPostBack="True" DataSourceID="dsLineas" DataTextField="nombre" DataValueField="id" OnSelectedIndexChanged="cbLinea_SelectedIndexChanged1" SelectedValue='<%# Bind("ID_LINEA") %>'>
-                        </asp:DropDownList>
-                        <asp:SqlDataSource ID="dsLineas" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [lineas]"></asp:SqlDataSource>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("LINEA") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="MADERA" SortExpression="MADERA">
@@ -75,8 +66,13 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="MARCO" SortExpression="MARCO">
                     <EditItemTemplate>
-                        <asp:DropDownList ID="cbMarco" runat="server">
+                        <asp:DropDownList ID="cbMarco" runat="server" DataSourceID="dsMarcos" DataTextField="NOMBRE" DataValueField="id" SelectedValue='<%# Bind("ID_MARCO") %>'>
                         </asp:DropDownList>
+                        <asp:SqlDataSource ID="dsMarcos" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SP_COMBO_MARCO" SelectCommandType="StoredProcedure">
+                            <SelectParameters>
+                                <asp:SessionParameter DefaultValue="0" Name="LINEA" SessionField="idLinea" Type="Int16" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("MARCO") %>'></asp:Label>
@@ -84,8 +80,13 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="CHAPA" SortExpression="CHAPA">
                     <EditItemTemplate>
-                        <asp:DropDownList ID="cbChapa" runat="server">
+                        <asp:DropDownList ID="cbChapa" runat="server" DataSourceID="dsChapa" DataTextField="NOMBRE" DataValueField="id" SelectedValue='<%# Bind("ID_CHAPA") %>'>
                         </asp:DropDownList>
+                        <asp:SqlDataSource ID="dsChapa" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SP_COMBO_CHAPA" SelectCommandType="StoredProcedure">
+                            <SelectParameters>
+                                <asp:SessionParameter DefaultValue="0" Name="LINEA" SessionField="idLinea" Type="Int16" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label6" runat="server" Text='<%# Bind("CHAPA") %>'></asp:Label>
@@ -93,15 +94,19 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="MANO" SortExpression="MANO">
                     <EditItemTemplate>
-                        <asp:DropDownList ID="cbMano" runat="server">
+                        <asp:DropDownList ID="cbMano" runat="server" DataSourceID="dsManos" DataTextField="NOMBRE" DataValueField="id" SelectedValue='<%# Bind("ID_MANO") %>'>
                         </asp:DropDownList>
+                        <asp:SqlDataSource ID="dsManos" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SP_COMBO_MANO" SelectCommandType="StoredProcedure">
+                            <SelectParameters>
+                                <asp:SessionParameter DefaultValue="0" Name="LINEA" SessionField="idLinea" Type="Int16" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label7" runat="server" Text='<%# Bind("MANO") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" SortExpression="ESTADO" ReadOnly="True" />
-                <asp:BoundField DataField="ID_LINEA" HeaderText="ID_LINEA" SortExpression="ID_LINEA" Visible="False" />
                 <asp:BoundField DataField="ID_MADERA" HeaderText="ID_MADERA" ReadOnly="True" SortExpression="ID_MADERA" Visible="False" />
                 <asp:BoundField DataField="ID_HOJA" HeaderText="ID_HOJA" ReadOnly="True" SortExpression="ID_HOJA" Visible="False" />
                 <asp:BoundField DataField="ID_MARCO" HeaderText="ID_MARCO" ReadOnly="True" SortExpression="ID_MARCO" Visible="False" />

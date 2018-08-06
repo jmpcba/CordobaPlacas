@@ -60,54 +60,73 @@
         grDetalle.EditIndex = e.NewEditIndex
         grDetalle.DataBind()
         ViewState("editIndex") = e.NewEditIndex
-        'llenarGrillaDetalle()
+
+        Dim msg = "Modo Edicion"
+        msgPanel(msg)
+
     End Sub
 
     Protected Sub grDetalle_RowCancelingEdit(sender As Object, e As GridViewCancelEditEventArgs)
         pnlDetalle.Visible = True
         grDetalle.EditIndex = -1
-        'llenarGrillaDetalle()
+
     End Sub
 
     Protected Sub grDetalle_RowUpdating(sender As Object, e As GridViewUpdateEventArgs)
         Dim idItem = Convert.ToInt32(grDetalle.DataKeys(e.RowIndex).Value.ToString())
+        Dim row As GridViewRow = grDetalle.Rows(e.RowIndex)
         Dim txtCant As TextBox = grDetalle.Rows(e.RowIndex).FindControl("txtCant")
         Dim cant = txtCant.Text.Trim
 
-        gp = Session("gestorPedidos")
-
-        gp.pedido.items(gp.pedido.itemIndex(idItem)).setCant(cant)
-        gp.pedido.items(gp.pedido.itemIndex(idItem)).actualizar()
-
-        'llenarGrillaDetalle()
-
-        Dim msg = String.Format("Carga de datos pedido {0} - CORRECTA", gp.pedido.id)
-        msgPanel(msg)
-    End Sub
-
-    Protected Sub grDetalle_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
-
-    End Sub
-
-    Protected Sub cbLinea_SelectedIndexChanged1(sender As Object, e As EventArgs)
-        Dim cbLineas As DropDownList
         Dim cbMadera As DropDownList
         Dim cbHoja As DropDownList
         Dim cbMarco As DropDownList
         Dim cbChapa As DropDownList
         Dim cbMano As DropDownList
+        Dim producto As Producto
 
-        cbLineas = grDetalle.Rows(ViewState("editIndex")).FindControl("cblinea")
+        gp = Session("gestorPedidos")
+
         cbMadera = grDetalle.Rows(ViewState("editIndex")).FindControl("cbmadera")
         cbHoja = grDetalle.Rows(ViewState("editIndex")).FindControl("cbHoja")
         cbMarco = grDetalle.Rows(ViewState("editIndex")).FindControl("cbMarco")
         cbChapa = grDetalle.Rows(ViewState("editIndex")).FindControl("cbChapa")
         cbMano = grDetalle.Rows(ViewState("editIndex")).FindControl("cbMano")
 
-        gd.fillCombos(cbLineas, cbChapa, cbMarco, cbMadera, cbHoja, cbMano)
+        Dim chapa = New Chapa(cbChapa.SelectedItem.Value, cbChapa.SelectedItem.Text)
+        Dim marco = New Marco(cbMarco.SelectedItem.Value, cbMarco.SelectedItem.Text)
+        Dim madera = New Madera(cbMadera.SelectedItem.Value, cbMadera.SelectedItem.Text)
+        Dim hoja = New Hoja(cbHoja.SelectedItem.Value, cbHoja.SelectedItem.Text)
+        Dim mano = New Mano(cbMano.SelectedItem.Value, cbMano.SelectedItem.Text)
+        Dim linea = gp.pedido.items(gp.pedido.itemIndex(idItem)).getProducto().linea
 
-        pnlDetalle.Visible = True
-        grDetalle.EditIndex = ViewState("editIndex")
+        producto = New Producto(hoja, marco, madera, chapa, mano, linea)
+
+        gp.pedido.items(gp.pedido.itemIndex(idItem)).setProducto(producto)
+        gp.pedido.items(gp.pedido.itemIndex(idItem)).setCant(cant)
+
+        Try
+            gp.pedido.items(gp.pedido.itemIndex(idItem)).actualizar()
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        End Try
+
+        Dim msg = String.Format("Pedido {0} - ACTUALIZADO", gp.pedido.id)
+        msgPanel(msg)
     End Sub
 
+    Protected Sub grDetalle_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
+        Dim row As GridViewRow = grDetalle.Rows(e.RowIndex)
+        Dim idItem = row.Cells(0).Text
+        gp = Session("gestorPedidos")
+
+        Try
+            gp.cancelarItem(idItem)
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        End Try
+
+        Dim msg = String.Format("Item {0} - CANCELADO", idItem)
+        msgPanel(msg)
+    End Sub
 End Class

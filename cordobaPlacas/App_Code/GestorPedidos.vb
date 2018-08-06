@@ -160,4 +160,29 @@ Public Class GestorPedidos
         End If
         pedido.actualizar()
     End Sub
+
+    Friend Sub cancelarItem(_idItem As String)
+        Try
+            Dim index = pedido.itemIndex(_idItem)
+            Dim flag = True
+            pedido.items(index).setEstado(New Estado(Estado.estados.cancelado))
+
+            pedido.items(index).actualizar()
+
+            'CAMBIA EL ESTADO DEL PEDIDO A CANCELADO SI TODOS SUS ITEMS ESTAN CANCELADOS
+            For Each i As Item In pedido.items
+                If i.getEstado().id <> Estado.estados.cancelado Then
+                    flag = False
+                    Exit For 'alcanza con que un item no este cancelado para no seguir revisando
+                End If
+            Next
+
+            If flag Then
+                pedido.estado = New Estado(Estado.estados.cancelado)
+                pedido.actualizar()
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
 End Class
