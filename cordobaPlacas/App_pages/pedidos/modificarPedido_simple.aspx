@@ -40,6 +40,7 @@
                     <EditItemTemplate>
                         <asp:DropDownList ID="cbLineas" runat="server" DataSourceID="Lineas" DataTextField="nombre" DataValueField="id" SelectedValue='<%# bind("LINEA") %>'>
                         </asp:DropDownList>
+                        <asp:SqlDataSource ID="Lineas" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT DISTINCT * FROM [lineas]"></asp:SqlDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("LINEA") %>'></asp:Label>
