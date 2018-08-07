@@ -199,6 +199,7 @@ Public Class Pedido
 
     End Sub
 
+    'DEPRECADO
     Public Sub modificarItem(_id As Integer, _it As Item)
         Dim i = itemIndex(_id)
 

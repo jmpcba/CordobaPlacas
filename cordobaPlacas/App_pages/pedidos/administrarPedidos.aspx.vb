@@ -260,7 +260,7 @@ Public Class administrarPedidos
             Dim pedido = gestorPedidos.pedido
             Session("gestorPedidos") = gestorPedidos
 
-            dt = gestorDatos.getItems(pedido.id)
+            dt = gestorDatos.getItemsModificar(pedido.id)
 
             If pedido.estado.id < Estado.estados.deposito Then
                 dt.Columns.Add("EN DEPOSITO")
@@ -560,7 +560,7 @@ Public Class administrarPedidos
             Dim msg = String.Format("Carga de datos pedido {0} - CORRECTA", ped.id)
             msgPanel(msg)
 
-            grDetalleBusqueda.DataSource = gestorDatos.getItems(ped.id)
+            grDetalleBusqueda.DataSource = gestorDatos.getItemsModificar(ped.id)
             grDetalleBusqueda.DataBind()
 
         Catch ex As Exception

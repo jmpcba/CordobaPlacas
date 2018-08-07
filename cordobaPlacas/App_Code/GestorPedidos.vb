@@ -20,8 +20,19 @@ Public Class GestorPedidos
         db = New DbHelper("pedidos")
     End Sub
 
-    Public Sub addItem(ByVal item As Item)
-        pedido.agregarItem(item)
+    Public Sub addItem(ByVal _item As Item, Optional _existente As Boolean = False)
+        Try
+            If _existente Then
+                _item.idPedido = pedido.id
+                _item.insertarItem()
+                pedido.agregarItem(_item)
+                pedido.actualizar()
+            Else
+                pedido.agregarItem(_item)
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
     End Sub
 
     Public Sub enviarPedido()
@@ -159,5 +170,47 @@ Public Class GestorPedidos
             pedido.estado = New Estado(Estado.estados.enCola)
         End If
         pedido.actualizar()
+    End Sub
+
+    Friend Sub cancelarItem(_idItem As Integer)
+        Dim itemIndex = pedido.itemIndex(_idItem)
+        Dim estadoCancelado = New Estado(Estado.estados.cancelado)
+        Dim flag = True
+        'LOS PRODUCTOS ENSAMBLADOS SE ENVIAN A STOCK CON UN TRIGGER EN LA TABLA ITEMS
+        Try
+            pedido.items(itemIndex).setEstado(estadoCancelado)
+            pedido.items(itemIndex).actualizar()
+
+            'REVISA SI TODOS LOS ITEMS ESTAN CANCELADOS
+            For Each i As Item In pedido.items
+                If i.getEstado().id <> Estado.estados.cancelado Then
+                    flag = False
+                    Exit For
+                End If
+            Next
+
+            If flag Then
+                pedido.estado = estadoCancelado
+                pedido.actualizar()
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
+
+    Friend Sub cancelarPedido()
+        Dim estadoCancelado = New Estado(Estado.estados.cancelado)
+        Try
+            For Each i As Item In pedido.items
+                i.setEstado(estadoCancelado)
+            Next
+
+            pedido.estado = estadoCancelado
+            pedido.actualizar(True)
+
+        Catch ex As Exception
+            Throw
+        End Try
+
     End Sub
 End Class

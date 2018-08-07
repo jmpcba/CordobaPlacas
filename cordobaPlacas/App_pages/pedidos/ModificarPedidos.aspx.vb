@@ -23,7 +23,7 @@
         gestorPedidos = New GestorPedidos(idPedido)
         Session("gestorPedidos") = gestorPedidos
 
-        grDetalle.DataSource = gestorDatos.getItems(idPedido)
+        grDetalle.DataSource = gestorDatos.getItemsModificar(idPedido)
         grDetalle.DataBind()
         grDetalle.SelectedIndex = -1
     End Sub

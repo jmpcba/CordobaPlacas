@@ -101,7 +101,7 @@
 
             Dim lbl = "MODIFICAR ESTADO PEDIDO " & idPedido
 
-            grDetalle.DataSource = gestordatos.getItems(idPedido)
+            grDetalle.DataSource = gestordatos.getItemsModificar(idPedido)
             grDetalle.DataBind()
 
             lblDetalle.Text = "DETALLE"
@@ -175,7 +175,7 @@
 
             'gestorPedidos.actualizarPedido(idPedido, Item)
             buscar()
-            grDetalle.DataSource = gestordatos.getItems(idPedido)
+            grDetalle.DataSource = gestordatos.getItemsModificar(idPedido)
             grDetalle.DataBind()
         Catch ex As Exception
             errorPanel(ex.Message)

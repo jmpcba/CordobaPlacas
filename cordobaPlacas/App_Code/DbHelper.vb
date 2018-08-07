@@ -310,6 +310,24 @@ Public Class DbHelper
         End Try
     End Function
 
+    Public Function getItemsModificar(_pedido As Integer) As DataTable
+        Try
+            cmd.Connection = cnn
+
+            cmd.CommandText = "SP_ITEMS_PEDIDO_MODIFICAR"
+
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.AddWithValue("@idPedido", _pedido)
+
+            da.Fill(ds, table)
+
+            Return ds.Tables(table)
+        Catch ex As SqlException
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+    End Function
+
     Public Function buscarPedidos(ByVal _nroPedido As Integer, _fecRecDesde As Date, ByVal _fecRecHasta As Date, _fecModDesde As Date,
                                   ByVal _fecModHasta As Date, ByVal _cliente As Object, ByVal _estado As Object) As DataTable
         Dim dt = New DataTable

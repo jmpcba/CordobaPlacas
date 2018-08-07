@@ -74,6 +74,7 @@ Public Class Item
         estado = _est
 
         'DESCUENTA MATERIALES DE LA DB SI SE MUEVE EL PEDIDO A ESTADO "EN PRODUCCION" Y ACTUALIZA EL STOCK DEL PRODUCTO
+        'PARA ESTADO CANCELADO SE MUEVEN LOS PRODUCTOS ENSAMBLADOS A STOCK CON UN TRIGGER DE LA DB EN LA TABLA ITEMS
         If estado.id = Estado.estados.enCola Then
             db = New DbHelper()
             CalcularMateriales()

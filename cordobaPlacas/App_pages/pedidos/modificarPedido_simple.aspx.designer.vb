@@ -50,6 +50,24 @@ Partial Public Class modificarPedido_simple
     Protected WithEvents pnlDetalle As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
+    '''Control lblDetalle.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblDetalle As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control ImageButton5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ImageButton5 As Global.System.Web.UI.WebControls.ImageButton
+    
+    '''<summary>
     '''Control grDetalle.
     '''</summary>
     '''<remarks>
@@ -59,13 +77,22 @@ Partial Public Class modificarPedido_simple
     Protected WithEvents grDetalle As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''Control btnCancelar.
+    '''Control btnAgregar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnCancelar As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnAgregar As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnAgregar_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnAgregar_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
     
     '''<summary>
     '''Control pnlMsg.
@@ -86,20 +113,101 @@ Partial Public Class modificarPedido_simple
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Control pnlCombos.
+    '''Control pnlAgregar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents pnlCombos As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents pnlAgregar As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''Control btnCancelarCombos.
+    '''Control cbLinea.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnCancelarCombos As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents cbLinea As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control cbChapa.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cbChapa As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control cbMarco.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cbMarco As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control txtCant.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCant As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control cbMadera.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cbMadera As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control cbHoja.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cbHoja As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control cbMano.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cbMano As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''Control btnCancelarAgregar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelarAgregar As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnGuardar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnGuardar As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnGuardar_ConfirmButtonExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnGuardar_ConfirmButtonExtender As Global.AjaxControlToolkit.ConfirmButtonExtender
 End Class

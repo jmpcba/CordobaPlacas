@@ -270,6 +270,7 @@
     <Content Include="App_pages\pedidos\ModificarPedidos.aspx" />
     <Content Include="App_pages\pedidos\modificarPedido_simple.aspx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
+    <Content Include="images\arrow_left-512.png" />
     <Content Include="images\cancel.png" />
     <Content Include="images\delete.png" />
     <Content Include="images\edit-512.png" />

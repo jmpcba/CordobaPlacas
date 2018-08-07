@@ -203,10 +203,10 @@ Public Class GestorDatos
         _grilla.DataBind()
     End Sub
 
-    Public Function getItems(ByVal _pedido As Integer) As DataTable
+    Public Function getItemsModificar(ByVal _pedido As Integer) As DataTable
         Try
             Dim db = New DbHelper("ITEMS")
-            Return db.getItems(_pedido)
+            Return db.getItemsModificar(_pedido)
         Catch ex As Exception
             Throw
         End Try
