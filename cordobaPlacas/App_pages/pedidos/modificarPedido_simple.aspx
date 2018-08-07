@@ -153,7 +153,7 @@
     <asp:Panel ID="pnlMsg" runat="server">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>
     </asp:Panel>
-    <asp:Panel ID="pnlAgregar" CssClass="modalPopUp" runat="server" ScrollBars="Auto">
+    <asp:Panel ID="pnlAgregar" CssClass="modalPopUp" runat="server" ScrollBars="Auto" Style="display:none">
         <h4>Agregar Item</h4>
         <table>
             <tr>
