@@ -203,6 +203,7 @@ Public Class DbHelper
             cmd.CommandText = "SP_INSERT_ITEM"
             cmd.CommandType = CommandType.StoredProcedure
 
+            cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@ID_PRODUCTO", _idProducto)
             cmd.Parameters.AddWithValue("@ID_PEDIDO", _idPedido)
             cmd.Parameters.AddWithValue("@CANT", _cant)

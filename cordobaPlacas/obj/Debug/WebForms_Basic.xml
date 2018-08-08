@@ -2877,6 +2877,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.pedidoNuevo._rgvCant">
+<summary>
+Control rgvCant.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.pedidoNuevo._RequiredFieldValidator2">
+<summary>
+Control RequiredFieldValidator2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.pedidoNuevo._cbMadera">
 <summary>
 Control cbMadera.
@@ -2925,6 +2943,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.pedidoNuevo._grPedido">
 <summary>
 Control grPedido.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.pedidoNuevo._pnlValidacion">
+<summary>
+Control pnlValidacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.pedidoNuevo._ValidationSummary1">
+<summary>
+Control ValidationSummary1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2988,6 +3024,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.pedidoNuevo._grPepedidoConfirmar">
 <summary>
 Control grPepedidoConfirmar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.pedidoNuevo._lblConfirmacion">
+<summary>
+Control lblConfirmacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.pedidoNuevo._btnIniciar">
+<summary>
+Control btnIniciar.
 </summary>
 <remarks>
 Campo generado automáticamente.

@@ -95,6 +95,7 @@ Public Class Pedido
     End Sub
 
     Public Sub enviarPedido()
+        db = New DbHelper()
         Try
             id = db.insertPedido(cliente.id, cantTotal, precioTotal)
 

@@ -21,6 +21,7 @@
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:ImageButton ID="ImageButton6" runat="server" CommandName="delete" ImageUrl="~/images/delete.png" Width="20px" />
+                        <ajaxToolkit:ConfirmButtonExtender ID="ImageButton6_ConfirmButtonExtender" runat="server" ConfirmText="Este pedido y todos sus items seran cancelados&#10;&#10;Los productos que hayan sido fabricados seran movidos al Stock&#10;&#10;Desea continuar?" TargetControlID="ImageButton6" />
                     </ItemTemplate>
                     <ControlStyle Height="20px" Width="20px" />
                 </asp:TemplateField>

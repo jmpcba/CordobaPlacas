@@ -10,11 +10,9 @@
         pnlAgregar.Visible = False
         btnAgregar.Visible = True
 
-        llenarGrillaPedido()
-
-
         If Not IsPostBack Then
             gd.getComboLineas(cbLinea)
+            llenarGrillaPedido()
         End If
 
 
@@ -181,11 +179,12 @@
 
         Try
             gp.cancelarPedido()
+            llenarGrillaPedido()
             msgPanel(String.Format("Pedido {0} - CANCELADO", idPedido))
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
-        e.Cancel = True
+
     End Sub
 
     Protected Sub cbLinea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLinea.SelectedIndexChanged

@@ -347,6 +347,24 @@ Partial Public Class pedidoNuevo
     Protected WithEvents txtCant As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''Control rgvCant.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents rgvCant As Global.System.Web.UI.WebControls.RegularExpressionValidator
+    
+    '''<summary>
+    '''Control RequiredFieldValidator2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator2 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+    
+    '''<summary>
     '''Control cbMadera.
     '''</summary>
     '''<remarks>
@@ -399,6 +417,24 @@ Partial Public Class pedidoNuevo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents grPedido As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control pnlValidacion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlValidacion As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control ValidationSummary1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
     
     '''<summary>
     '''Control stepResumen.
@@ -462,6 +498,24 @@ Partial Public Class pedidoNuevo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents grPepedidoConfirmar As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control lblConfirmacion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblConfirmacion As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control btnIniciar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnIniciar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control pnlMsg.

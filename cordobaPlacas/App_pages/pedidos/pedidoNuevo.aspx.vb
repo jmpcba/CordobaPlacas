@@ -8,6 +8,7 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         pnlUpdateCliente.Visible = False
+        pnlDatosCliente.Visible = False
         chkStock.Checked = False
 
         Try
@@ -56,12 +57,14 @@
         Try
             gestorPedidos = Session("gestorPedidos")
             gestorPedidos.enviarPedido()
-            Response.Redirect(Request.Url.AbsoluteUri)
+            'Response.Redirect(Request.Url.AbsoluteUri)
+            lblConfirmacion.Text = gestorPedidos.pedido.id
             'TODO: REVISAR CONFIRMACION DE ENVIO
             Dim msg = String.Format("Pedido {0} - ENVIADO", gestorPedidos.pedido.id)
             msgPanel(msg)
 
             gestorPedidos = Nothing
+            Wizard1.ActiveStepIndex = 3
 
         Catch ex As Exception
             errorPanel(ex.Message)
@@ -135,22 +138,27 @@
     End Sub
 
     Protected Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
-        Dim chapa = New Chapa(cbChapa.SelectedItem.Value, cbChapa.SelectedItem.Text)
-        Dim marco = New Marco(cbMarco.SelectedItem.Value, cbMarco.SelectedItem.Text)
-        Dim madera = New Madera(cbMadera.SelectedItem.Value, cbMadera.SelectedItem.Text)
-        Dim hoja = New Hoja(cbHoja.SelectedItem.Value, cbHoja.SelectedItem.Text)
-        Dim mano = New Mano(cbMano.SelectedItem.Value, cbMano.SelectedItem.Text)
-        Dim cant = txtCant.Text.Trim()
-        Dim linea = New linea(cbLinea.SelectedItem.Value, cbLinea.SelectedItem.Text)
-        Dim producto = New Producto(hoja, marco, madera, chapa, mano, linea)
+        Try
+            Dim chapa = New Chapa(cbChapa.SelectedItem.Value, cbChapa.SelectedItem.Text)
+            Dim marco = New Marco(cbMarco.SelectedItem.Value, cbMarco.SelectedItem.Text)
+            Dim madera = New Madera(cbMadera.SelectedItem.Value, cbMadera.SelectedItem.Text)
+            Dim hoja = New Hoja(cbHoja.SelectedItem.Value, cbHoja.SelectedItem.Text)
+            Dim mano = New Mano(cbMano.SelectedItem.Value, cbMano.SelectedItem.Text)
+            Dim cant = txtCant.Text.Trim()
+            Dim linea = New linea(cbLinea.SelectedItem.Value, cbLinea.SelectedItem.Text)
+            Dim producto = New Producto(hoja, marco, madera, chapa, mano, linea)
 
-        Dim item = New Item(producto, cant)
-        gestorPedidos.addItem(item)
-        gestorDatos.mostrarGrillaItems(grPedido, gestorPedidos.pedido)
+            Dim item = New Item(producto, cant)
+            gestorPedidos.addItem(item)
+            gestorDatos.mostrarGrillaItems(grPedido, gestorPedidos.pedido)
 
-        Dim msg = String.Format("Nuevo Item Agregado")
-        msgPanel(msg)
-        Session("gestorPedidos") = gestorPedidos
+            Dim msg = String.Format("Nuevo Item Agregado")
+            msgPanel(msg)
+            Session("gestorPedidos") = gestorPedidos
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        End Try
+
     End Sub
 
     Private Sub grPedido_RowDeleting(sender As Object, e As GridViewDeleteEventArgs) Handles grPedido.RowDeleting
@@ -254,6 +262,12 @@
         If Not IsNothing(gestorPedidos) And e.CurrentStepIndex = 1 Then
             pnlUpdateCliente.Visible = True
         End If
+    End Sub
+
+    Protected Sub btnIniciar_Click(sender As Object, e As EventArgs) Handles btnIniciar.Click
+        Wizard1.ActiveStepIndex = 0
+        dpCliente.SelectedIndex = dpCliente.Items.Count - 1
+
     End Sub
 End Class
 
