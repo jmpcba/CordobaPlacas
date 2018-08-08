@@ -57,13 +57,16 @@
         Try
             gestorPedidos = Session("gestorPedidos")
             gestorPedidos.enviarPedido()
-            'Response.Redirect(Request.Url.AbsoluteUri)
             lblConfirmacion.Text = gestorPedidos.pedido.id
-            'TODO: REVISAR CONFIRMACION DE ENVIO
+
             Dim msg = String.Format("Pedido {0} - ENVIADO", gestorPedidos.pedido.id)
             msgPanel(msg)
 
             gestorPedidos = Nothing
+            Session("gestorPedidos") = gestorPedidos
+            grPedido.DataSource = Nothing
+            grPedido.DataBind()
+
             Wizard1.ActiveStepIndex = 3
 
         Catch ex As Exception
@@ -265,7 +268,7 @@
     End Sub
 
     Protected Sub btnIniciar_Click(sender As Object, e As EventArgs) Handles btnIniciar.Click
-        Wizard1.ActiveStepIndex = 0
+        Response.Redirect(Request.Url.AbsoluteUri)
         dpCliente.SelectedIndex = dpCliente.Items.Count - 1
 
     End Sub

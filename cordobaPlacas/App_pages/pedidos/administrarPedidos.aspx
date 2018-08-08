@@ -20,7 +20,7 @@
         runat="server"
         Height="100%"
         Width="100%"
-        ActiveTabIndex="3">
+        ActiveTabIndex="0">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
                  <asp:Panel ID="pnlNvos" runat="server">
@@ -29,7 +29,10 @@
                         <asp:ImageButton ID="btnRefreshNv" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" ImageAlign="Middle" ToolTip="Refrescar" />
                     </p>
                     <hr />
-                    <asp:GridView ID="grNvos" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsNvos" AutoGenerateSelectButton="True" ToolTip="Pedidos en estado RECIBIDO"><Columns>
+                    <asp:GridView ID="grNvos" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsNvos" ToolTip="Pedidos en estado RECIBIDO"><Columns>
+                        <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" ShowSelectButton="True">
+                        <ControlStyle Height="20px" Width="20px" />
+                        </asp:CommandField>
                         <asp:BoundField DataField="Nro Pedido" HeaderText="Nro Pedido" InsertVisible="False" ReadOnly="True" SortExpression="Nro Pedido" />
                         <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
                         <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" />
@@ -45,7 +48,9 @@
                             <h4>Detalles Pedido</h4>
                             <asp:GridView ID="grDetalleNvo" runat="server" AutoGenerateColumns="False" ToolTip="Detalles del Pedido">
                                 <Columns>
-                                    <asp:CommandField SelectText="Detalle" ShowSelectButton="True" />
+                                    <asp:CommandField SelectText="Detalle" ShowSelectButton="True" ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" >
+                                    <ControlStyle Height="20px" Width="20px" />
+                                    </asp:CommandField>
                                     <asp:BoundField HeaderText="ITEM" DataField="ITEM" />
                                     <asp:BoundField HeaderText="LINEA" DataField="LINEA" />
                                     <asp:BoundField HeaderText="MADERA" DataField="MADERA" />
@@ -113,8 +118,11 @@
                     <asp:ImageButton ID="btnRefreshEnCurso" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" />
                 </p>
                 <hr />
-                <asp:GridView ID="grEnCurso" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsEnCurso" AutoGenerateSelectButton="True" ToolTip="Pedidos EN COLA y EN PRODUCCION">
+                <asp:GridView ID="grEnCurso" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsEnCurso" ToolTip="Pedidos EN COLA y EN PRODUCCION">
                     <Columns>
+                        <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" ShowSelectButton="True">
+                        <ControlStyle Height="20px" Width="20px" />
+                        </asp:CommandField>
                         <asp:BoundField DataField="Nro Pedido" HeaderText="Nro Pedido" InsertVisible="False" ReadOnly="True" SortExpression="Nro Pedido" />
                         <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
                         <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" />
@@ -182,8 +190,11 @@
                             <asp:ImageButton ID="btnRefreshEnsamblado" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" />
                         </p>
                         <hr />
-                        <asp:GridView ID="grEnsamblados" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataKeyNames="Nro Pedido" DataSourceID="dsEnsamblados" ToolTip="Pedidos con items a la espera de ser recibidos en el deposito">
+                        <asp:GridView ID="grEnsamblados" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsEnsamblados" ToolTip="Pedidos con items a la espera de ser recibidos en el deposito">
                             <Columns>
+                                <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" ShowSelectButton="True">
+                                <ControlStyle Height="20px" Width="20px" />
+                                </asp:CommandField>
                                 <asp:BoundField DataField="Nro Pedido" HeaderText="Nro Pedido" InsertVisible="False" ReadOnly="True" SortExpression="Nro Pedido" />
                                 <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
                                 <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" />
@@ -228,8 +239,11 @@
                         <p>
                             <asp:ImageButton ID="btnRefreshDeposito" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" />
                         </p>
-                    <asp:GridView ID="grDeposito" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" DataKeyNames="Nro Pedido" DataSourceID="dsPedidosDeposito" ToolTip="Pedidos recibidos en el deposito">
+                    <asp:GridView ID="grDeposito" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsPedidosDeposito" ToolTip="Pedidos recibidos en el deposito">
                         <Columns>
+                            <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" ShowSelectButton="True">
+                            <ControlStyle Height="20px" Width="20px" />
+                            </asp:CommandField>
                             <asp:BoundField DataField="Nro Pedido" HeaderText="Nro Pedido" InsertVisible="False" ReadOnly="True" SortExpression="Nro Pedido" />
                             <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
                             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" />
@@ -243,7 +257,19 @@
                 <asp:Panel ID="pnlDetalleDeposito" runat="server" Visible="False">
                     <hr />
                     <h4>Detalles Pedido</h4>
-                    <asp:GridView ID="grDetalleDeposito" runat="server" ToolTip="Detalle pedido"></asp:GridView>
+                    <asp:GridView ID="grDetalleDeposito" runat="server" ToolTip="Detalle pedido" AutoGenerateColumns="False">
+                        <Columns>
+                            <asp:BoundField DataField="ITEM" HeaderText="ITEM" />
+                            <asp:BoundField DataField="CANT" HeaderText="CANT" />
+                            <asp:BoundField DataField="LINEA" HeaderText="LINEA" />
+                            <asp:BoundField DataField="MADERA" HeaderText="MADERA" />
+                            <asp:BoundField DataField="HOJA" HeaderText="HOJA" />
+                            <asp:BoundField DataField="MARCO" HeaderText="MARCO" />
+                            <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
+                            <asp:BoundField DataField="MANO" HeaderText="MANO" />
+                            <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" />
+                        </Columns>
+                    </asp:GridView>
                     <table>
                         <tr>
                             <td>
@@ -405,8 +431,11 @@
                     </asp:Panel>
                 </asp:Panel>
                 <asp:Panel ID="pnlResultadoBusqueda" runat="server">
-                    <asp:GridView ID="grResultadoBusqueda" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" ToolTip="Resultados de busqueda">
+                    <asp:GridView ID="grResultadoBusqueda" runat="server" AutoGenerateColumns="False" ToolTip="Resultados de busqueda">
                         <Columns>
+                            <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" ShowSelectButton="True">
+                            <ControlStyle Height="20px" Width="20px" />
+                            </asp:CommandField>
                             <asp:BoundField DataField="Nro Pedido" HeaderText="Nro" />
                             <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />

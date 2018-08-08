@@ -141,11 +141,14 @@
         <ajaxToolkit:ModalPopupExtender ID="btnPnlBusqueda_ModalPopupExtender" runat="server" BackgroundCssClass="modalBackground" PopupControlID="pnlBusquedas" TargetControlID="btnPnlBusqueda" CancelControlID="btnVolver">
         </ajaxToolkit:ModalPopupExtender>
         <br />
-        <asp:GridView ID="grResultadoBusqueda" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" ToolTip="Resultados de busqueda" DataKeyNames="Nro Pedido" DataSourceID="SqlDataSource1">
+        <asp:GridView ID="grResultadoBusqueda" runat="server" AutoGenerateColumns="False" ToolTip="Resultados de busqueda" DataKeyNames="Nro Pedido" DataSourceID="SqlDataSource1">
             <Columns>
+                <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" ShowSelectButton="True">
+                <ControlStyle Height="20px" Width="20px" />
+                </asp:CommandField>
                 <asp:BoundField DataField="Nro Pedido" HeaderText="Nro Pedido" ReadOnly="True" SortExpression="Nro Pedido" />
                 <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
-                <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" />
+                <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" DataFormatString="{0:d}" />
                 <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                 <asp:BoundField DataField="Fecha Recibido" HeaderText="Fecha Recibido" DataFormatString="{0:d}" SortExpression="Fecha Recibido" />
                 <asp:BoundField DataField="Ultima Modificacion" DataFormatString="{0:d}" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />

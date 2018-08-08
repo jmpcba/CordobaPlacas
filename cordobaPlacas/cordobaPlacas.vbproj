@@ -267,8 +267,7 @@
     <Content Include="App_pages\clientes\modificarCliente.aspx" />
     <Content Include="App_pages\clientes\nuevoCliente.aspx" />
     <Content Include="App_pages\pedidos\busquedas.ascx" />
-    <Content Include="App_pages\pedidos\ModificarPedidos.aspx" />
-    <Content Include="App_pages\pedidos\modificarPedido_simple.aspx" />
+    <Content Include="App_pages\pedidos\modificarPedido.aspx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
     <Content Include="images\arrow_left-512.png" />
     <Content Include="images\cancel.png" />
@@ -290,9 +289,6 @@
     <Content Include="Account\Web.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_pages\pedidos\ModificarPedido_viejo.aspx">
-      <BrowseToURL>~/App_pages/pedidos/ModificarPedido_viejo.aspx</BrowseToURL>
     </Content>
     <Content Include="App_pages\pedidos\consultarPedidos.aspx" />
     <Content Include="images\save.png" />
@@ -511,18 +507,11 @@
       <DependentUpon>busquedas.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_pages\pedidos\ModificarPedidos.aspx.designer.vb">
-      <DependentUpon>ModificarPedidos.aspx</DependentUpon>
+    <Compile Include="App_pages\pedidos\modificarPedido.aspx.designer.vb">
+      <DependentUpon>modificarPedido.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_pages\pedidos\ModificarPedidos.aspx.vb">
-      <DependentUpon>ModificarPedidos.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="App_pages\pedidos\modificarPedido_simple.aspx.designer.vb">
-      <DependentUpon>modificarPedido_simple.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_pages\pedidos\modificarPedido_simple.aspx.vb">
-      <DependentUpon>modificarPedido_simple.aspx</DependentUpon>
+    <Compile Include="App_pages\pedidos\modificarPedido.aspx.vb">
+      <DependentUpon>modificarPedido.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="App_pages\pedidos\pedidoNuevo.aspx.designer.vb">
@@ -574,13 +563,6 @@
     <Compile Include="App_Code\Mano.vb" />
     <Compile Include="App_Code\item.vb" />
     <Compile Include="Models\IdentityModels.vb" />
-    <Compile Include="App_pages\pedidos\ModificarPedido_viejo.aspx.designer.vb">
-      <DependentUpon>ModificarPedido_viejo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_pages\pedidos\ModificarPedido_viejo.aspx.vb">
-      <DependentUpon>ModificarPedido_viejo.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

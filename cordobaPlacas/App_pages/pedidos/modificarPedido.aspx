@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="modificarPedido_simple.aspx.vb" Inherits="cordobaPlacas.modificarPedido_simple" Theme="default"%>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="modificarPedido.aspx.vb" Inherits="cordobaPlacas.modificarPedido_simple" Theme="default"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Panel ID="pnlPedidos" runat="server">
         <h4>Seleccione un pedido</h4>
