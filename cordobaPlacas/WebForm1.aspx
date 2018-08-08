@@ -12,8 +12,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" />
-        <asp:Button ID="Button1" runat="server" Text="Button" />
+        <CR:CrystalReportViewer ID="visorCR" runat="server" AutoDataBind="true" BorderStyle="Solid" />
     </div>
     </form>
 </body>

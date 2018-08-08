@@ -746,4 +746,19 @@ Public Class DbHelper
             Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
         End Try
     End Function
+
+    Public Function getProductos() As DataTable
+        Dim query = "SELECT * FROM VW_LISTA_PRODUCTOS"
+
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = query
+
+        Try
+            da.Fill(ds, "PRODUCTOS")
+            Return ds.Tables("PRODUCTOS")
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+    End Function
+
 End Class

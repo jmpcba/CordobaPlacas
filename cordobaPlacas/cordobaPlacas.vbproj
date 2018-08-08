@@ -310,17 +310,6 @@
     <Content Include="WebForm3.aspx" />
     <Content Include="app_themes\default\default.skin" />
     <Content Include="App_pages\Web.config" />
-    <Content Include="pedidos.xsc">
-      <DependentUpon>pedidos.xsd</DependentUpon>
-    </Content>
-    <None Include="pedidos.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>pedidos.Designer.vb</LastGenOutput>
-    </None>
-    <Content Include="pedidos.xss">
-      <DependentUpon>pedidos.xsd</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -583,15 +572,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="App_Code\Producto.vb" />
-    <Compile Include="pedidos.Designer.vb">
+    <Compile Include="reportes\productos.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>pedidos.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="rptCliente.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptCliente.rpt</DependentUpon>
+      <DependentUpon>productos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">
@@ -645,9 +629,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="rptCliente.rpt">
+    <EmbeddedResource Include="reportes\productos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptCliente.vb</LastGenOutput>
+      <LastGenOutput>productos.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
