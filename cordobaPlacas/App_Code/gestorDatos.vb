@@ -29,6 +29,11 @@ Public Class GestorDatos
         _dv.DataBind()
     End Sub
 
+    Friend Function getPedidosModificar() As DataTable
+        Dim db = New DbHelper
+        Return db.getPedidosModificar()
+    End Function
+
     Friend Sub buscarCliente(_cliente As Cliente, _gv As GridView)
         Dim dt As New DataTable
         db = New DbHelper("CLIENTES")

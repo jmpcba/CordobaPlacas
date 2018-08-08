@@ -10,10 +10,19 @@
         pnlAgregar.Visible = False
         btnAgregar.Visible = True
 
+        llenarGrillaPedido()
+
+
         If Not IsPostBack Then
             gd.getComboLineas(cbLinea)
         End If
 
+
+    End Sub
+
+    Private Sub llenarGrillaPedido()
+        grPedidos.DataSource = gd.getPedidosModificar()
+        grPedidos.DataBind()
     End Sub
 
     Protected Sub grPedidos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grPedidos.SelectedIndexChanged
@@ -29,6 +38,19 @@
             Session("gestorPedidos") = gp
 
             llenarGrillaDetalle()
+
+            If gp.pedido.estado.id > Estado.estados.recibido Then
+                For Each r As GridViewRow In grDetalle.Rows
+                    Dim btnEditar As ImageButton
+                    btnEditar = r.FindControl("btnEditar")
+                    btnEditar.Visible = False
+                Next
+            End If
+
+            If gp.pedido.estado.id > Estado.estados.deposito Then
+                btnAgregar.Visible = False
+            End If
+
             lblDetalle.Text = String.Format("Detalle Pedido: {0}", gp.pedido.id)
 
             msgPanel(String.Format("Detalle Pedido {0} - CARGADO", gp.pedido.id))
@@ -153,16 +175,17 @@
         Response.Redirect(Request.Url.AbsoluteUri)
     End Sub
 
-    Protected Sub grPedidos_RowDeleting(sender As Object, e As GridViewDeleteEventArgs)
+    Protected Sub grPedidos_RowDeleting(sender As Object, e As GridViewDeleteEventArgs) Handles grPedidos.RowDeleting
         Dim idPedido = Convert.ToInt32(grPedidos.DataKeys(e.RowIndex).Value.ToString())
         gp = New GestorPedidos(idPedido)
+
         Try
             gp.cancelarPedido()
             msgPanel(String.Format("Pedido {0} - CANCELADO", idPedido))
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
-
+        e.Cancel = True
     End Sub
 
     Protected Sub cbLinea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbLinea.SelectedIndexChanged
@@ -192,6 +215,10 @@
         pnlDetalle.Visible = True
         pnlAgregar.Visible = True
         llenarGrillaDetalle()
+
+    End Sub
+
+    Protected Sub [select](sender As Object, e As CommandEventArgs)
 
     End Sub
 End Class

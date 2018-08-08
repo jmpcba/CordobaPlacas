@@ -40,6 +40,20 @@ Public Class DbHelper
         End Try
     End Function
 
+    Friend Function getPedidosModificar() As DataTable
+
+        Dim query = "SELECT * FROM VW_PEDIDOS_MODIFICAR"
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = query
+
+        Try
+            da.Fill(ds, "PEDIDOS_MODIFICAR")
+            Return ds.Tables("PEDIDOS_MODIFICAR")
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+    End Function
+
     Public Function getRow(ByVal index As Integer) As DataTable
         Try
             cmd.Connection = cnn

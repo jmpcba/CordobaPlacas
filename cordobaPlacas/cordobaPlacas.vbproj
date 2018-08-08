@@ -296,6 +296,9 @@
     </Content>
     <Content Include="App_pages\pedidos\consultarPedidos.aspx" />
     <Content Include="images\save.png" />
+    <Content Include="images\three_dots.png" />
+    <Content Include="images\view-details.png" />
+    <Content Include="images\zoom_in.png" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />

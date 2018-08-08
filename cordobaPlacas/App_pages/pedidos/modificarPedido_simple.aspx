@@ -5,12 +5,13 @@
         <asp:GridView ID="grPedidos" 
             runat="server" 
             AutoGenerateColumns="False" 
-            AutoGenerateSelectButton="True" 
-            ToolTip="Resultados de busqueda" 
-            DataKeyNames="Nro Pedido" 
-            DataSourceID="SqlDataSource1"
+            ToolTip="Pedidos en Curso" 
+            DataKeyNames="Nro Pedido"
             onrowdeleting="grPedidos_RowDeleting">
             <Columns>
+                <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" ShowSelectButton="True">
+                <ControlStyle Height="20px" Width="20px" />
+                </asp:CommandField>
                 <asp:BoundField DataField="Nro Pedido" HeaderText="Nro Pedido" ReadOnly="True" SortExpression="Nro Pedido" />
                 <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
                 <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" />
@@ -19,13 +20,13 @@
                 <asp:BoundField DataField="Ultima Modificacion" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:ImageButton ID="btnCancelarPedido" runat="server" CommandName="delete" ImageUrl="~/images/delete.png" Width="20px" />
-                        <ajaxToolkit:ConfirmButtonExtender ID="btnCancelarPedido_ConfirmButtonExtender" runat="server" ConfirmText="El Pedido y todos sus items seran cancelados&#10;&#10;Los productos que fueron ensamblados seran movidos al stock&#10;&#10;Desea Continuar?" TargetControlID="btnCancelarPedido" />
+                        <asp:ImageButton ID="ImageButton6" runat="server" CommandName="delete" ImageUrl="~/images/delete.png" Width="20px" />
                     </ItemTemplate>
+                    <ControlStyle Height="20px" Width="20px" />
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT [Nro Pedido], Cliente, Cantidad, Estado, [Fecha Recibido], [Ultima Modificacion] FROM PEDIDOS_EN_CURSO WHERE ('ESTADO' &lt;&gt; 'ENTREGADO') ORDER BY 'FECHA RECIBIDO'"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT [Nro Pedido], Cliente, Cantidad, Estado, [Fecha Recibido], [Ultima Modificacion] FROM VW_PEDIDOS_MODIFICAR ORDER BY 'FECHA RECIBIDO'"></asp:SqlDataSource>
         <br />
     </asp:Panel>
     <asp:Panel ID="pnlDetalle" runat="server">
@@ -41,9 +42,7 @@
             onrowediting="grDetalle_RowEditing"
             onrowcancelingedit="grDetalle_RowCancelingEdit"
             onrowUpdating="grDetalle_RowUpdating"
-            onrowdeleting="grDetalle_RowDeleting"
-            >
-
+            onrowdeleting="grDetalle_RowDeleting">
             <Columns>
                 <asp:BoundField DataField="ITEM" HeaderText="ITEM" ReadOnly="true"/>
                 <asp:BoundField DataField="LINEA" HeaderText="LINEA" ReadOnly="True" />
