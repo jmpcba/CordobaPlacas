@@ -11,6 +11,20 @@ Public Class DbHelper
     Private table As String
     Private conStr As String = "Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True"
 
+    Friend Function getRemito(_idPedido As String) As DataTable
+        Dim query = "SELECT * FROM VW_REMITOS WHERE PEDIDO=" & _idPedido
+
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = query
+
+        Try
+            da.Fill(ds, "REMITO")
+            Return ds.Tables("REMITO")
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+    End Function
+
     Sub New(ByVal _table As String)
         table = _table
         cnn = New SqlConnection(conStr)

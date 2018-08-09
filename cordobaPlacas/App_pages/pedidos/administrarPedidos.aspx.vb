@@ -606,4 +606,9 @@ Public Class administrarPedidos
     Protected Sub btnCancelarEnCurso_Click(sender As Object, e As EventArgs) Handles btnCancelarEnCurso.Click
         Response.Redirect(Request.Url.AbsoluteUri)
     End Sub
+
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim url = "../impresion/impresion.aspx?reporte=remito&idPedido=119"
+        Response.Redirect(url)
+    End Sub
 End Class

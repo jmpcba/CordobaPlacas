@@ -12,7 +12,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <CR:CrystalReportViewer ID="visorCR" runat="server" AutoDataBind="true" BorderStyle="Solid" />
+        <CR:CrystalReportViewer ID="visorCR" runat="server" AutoDataBind="true" BorderStyle="Solid" BorderWidth="2px" DisplayToolbar="True" HasCrystalLogo="False" HasDrilldownTabs="False" HasDrillUpButton="False" HasExportButton="False" HasGotoPageButton="False" HasSearchButton="False" HasToggleGroupTreeButton="False" HasToggleParameterPanelButton="False" HasZoomFactorList="False" GroupTreeStyle-ShowLines="False" PrintMode="Pdf" />
     </div>
     </form>
 </body>

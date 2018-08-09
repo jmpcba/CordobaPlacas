@@ -510,6 +510,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.impresion._visorCR">
+<summary>
+Control visorCR.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.administrarPedidos._TabContainer1">
 <summary>
 Control TabContainer1.
@@ -990,6 +999,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.administrarPedidos._btnCancelarDeposito">
 <summary>
 Control btnCancelarDeposito.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.administrarPedidos._Button1">
+<summary>
+Control Button1.
 </summary>
 <remarks>
 Campo generado automáticamente.

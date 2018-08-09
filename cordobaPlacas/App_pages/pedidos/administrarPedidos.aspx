@@ -20,7 +20,7 @@
         runat="server"
         Height="100%"
         Width="100%"
-        ActiveTabIndex="0">
+        ActiveTabIndex="3">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
                  <asp:Panel ID="pnlNvos" runat="server">
@@ -290,6 +290,7 @@
                             </td>
                         </tr>
                     </table>
+                    <asp:Button ID="Button1" runat="server" Text="Button" />
                 </asp:Panel>
 </ContentTemplate>
 </ajaxToolkit:TabPanel>

@@ -266,6 +266,7 @@
     <Content Include="App_pages\clientes\busquedaCliente.aspx" />
     <Content Include="App_pages\clientes\modificarCliente.aspx" />
     <Content Include="App_pages\clientes\nuevoCliente.aspx" />
+    <Content Include="App_pages\impresion\impresion.aspx" />
     <Content Include="App_pages\pedidos\busquedas.ascx" />
     <Content Include="App_pages\pedidos\modificarPedido.aspx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
@@ -461,6 +462,13 @@
     <Compile Include="App_Code\Madera.vb" />
     <Compile Include="App_Code\Marco.vb" />
     <Compile Include="App_Code\Pedido.vb" />
+    <Compile Include="App_pages\impresion\impresion.aspx.designer.vb">
+      <DependentUpon>impresion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_pages\impresion\impresion.aspx.vb">
+      <DependentUpon>impresion.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="App_pages\pedidos\administrarPedidos.aspx.designer.vb">
       <DependentUpon>administrarPedidos.aspx</DependentUpon>
     </Compile>
@@ -578,6 +586,12 @@
       <DependentUpon>productos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reportes\remitos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>remitos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Site.Master.designer.vb">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
@@ -632,6 +646,10 @@
     <EmbeddedResource Include="reportes\productos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>productos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\remitos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>remitos.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
