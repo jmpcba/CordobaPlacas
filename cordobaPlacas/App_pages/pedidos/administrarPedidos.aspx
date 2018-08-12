@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="administrarPedidos.aspx.vb" Inherits="cordobaPlacas.administrarPedidos" Theme="default"%>
 
+<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -290,7 +292,11 @@
                             </td>
                         </tr>
                     </table>
-                    <asp:Button ID="Button1" runat="server" Text="Button" />
+                </asp:Panel>
+                <asp:Panel ID="pnlRemito" runat="server" CssClass="imageButtons">
+                    <asp:ImageButton ID="btnVolverRemito" runat="server" ImageUrl="~/images/arrow_left-512.png" CssClass="imageButtons"/>
+                    <hr />
+                    <CR:CrystalReportViewer ID="CRVRemito" runat="server" AutoDataBind="True" EnableDrillDown="False" EnableParameterPrompt="False" GroupTreeImagesFolderUrl="" HasCrystalLogo="False" HasDrilldownTabs="False" HasDrillUpButton="False" HasExportButton="False" HasGotoPageButton="False" HasSearchButton="False" HasToggleGroupTreeButton="False" HasToggleParameterPanelButton="False" HasZoomFactorList="False" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" />
                 </asp:Panel>
 </ContentTemplate>
 </ajaxToolkit:TabPanel>

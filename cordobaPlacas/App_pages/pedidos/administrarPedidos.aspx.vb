@@ -1,4 +1,7 @@
 ﻿Imports System.Data
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
+
 Public Class administrarPedidos
     Inherits System.Web.UI.Page
     Dim gestorDatos As GestorDatos
@@ -28,6 +31,7 @@ Public Class administrarPedidos
         btnBuscarEtiquetasDeposito.Visible = False
         btnBuscarRemitos.Visible = False
         btnRecibido.Visible = False
+        pnlRemito.Visible = False
 
         If Not IsPostBack() Then
             gestorDatos.getCombos(dpFiltroEstados, GestorDatos.combos.estados)
@@ -387,7 +391,14 @@ Public Class administrarPedidos
 
     Protected Sub btnEnviarCliente_Click(sender As Object, e As EventArgs) Handles btnEnviarCliente.Click
         Dim estadoEnviado = New Estado(Estado.estados.enviado)
+        Dim R = New ReportDocument()
+        Dim db = New DbHelper()
+        Dim dt = New DataTable
+
         gestorPedidos = Session("gestorPEdidos")
+
+        dt = db.getRemito(gestorPedidos.pedido.id)
+
         For Each i As Item In gestorPedidos.pedido.items
             i.setEstado(estadoEnviado)
             i.actualizar()
@@ -400,8 +411,16 @@ Public Class administrarPedidos
         Dim msg = String.Format("Pedido {0} - Estado actualizado a ENVIADO", gestorPedidos.pedido.id)
         msgPanel(msg)
 
+        pnlRemito.Visible = True
+        pnlDeposito.Visible = False
+        pnlDetalleDeposito.Visible = False
+
+        R.Load(Server.MapPath("../../reportes/remitos.rpt"))
+        R.SetDataSource(dt)
+        CRVRemito.ReportSource = R
+
         bindGrillas()
-        'TODO: IMPRIMIR REMITO
+
     End Sub
 
     Protected Sub btnImprimirEtiquetasDeposito_Click(sender As Object, e As EventArgs) Handles btnImprimirEtiquetasDeposito.Click
@@ -607,8 +626,14 @@ Public Class administrarPedidos
         Response.Redirect(Request.Url.AbsoluteUri)
     End Sub
 
-    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim url = "../impresion/impresion.aspx?reporte=remito&idPedido=119"
-        Response.Redirect(url)
+    Protected Sub btnVolverRemito_Click(sender As Object, e As ImageClickEventArgs) Handles btnVolverRemito.Click
+        pnlDeposito.Visible = True
+        pnlDetalleDeposito.Visible = True
     End Sub
+
+    'DEPRECADO - PRUEBA
+    'Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    '    Dim url = "../impresion/impresion.aspx?reporte=remito&idPedido=119"
+    '    Response.Redirect(url)
+    'End Sub
 End Class

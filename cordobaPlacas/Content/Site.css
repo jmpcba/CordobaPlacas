@@ -84,6 +84,9 @@ td.combos {
     color: red;
 }
 
+.imageButtons{
+    width:20px;
+}
 
 /*
 .tabContainer .ajax__tab_tab{
