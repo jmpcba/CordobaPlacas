@@ -391,20 +391,20 @@ Public Class administrarPedidos
 
     Protected Sub btnEnviarCliente_Click(sender As Object, e As EventArgs) Handles btnEnviarCliente.Click
         Dim estadoEnviado = New Estado(Estado.estados.enviado)
-        Dim R = New ReportDocument()
+        Dim r = New ReportDocument()
         Dim db = New DbHelper()
         Dim dt = New DataTable
 
         gestorPedidos = Session("gestorPEdidos")
 
-        dt = db.getRemito(gestorPedidos.pedido.id)
+        'dt = db.getRemito(gestorPedidos.pedido.id)
 
-        For Each i As Item In gestorPedidos.pedido.items
-            i.setEstado(estadoEnviado)
-            i.actualizar()
-        Next
-        gestorPedidos.pedido.estado = estadoEnviado
-        gestorPedidos.pedido.actualizar()
+        'For Each i As Item In gestorPedidos.pedido.items
+        '    i.setEstado(estadoEnviado)
+        '    i.actualizar()
+        'Next
+        'gestorPedidos.pedido.estado = estadoEnviado
+        'gestorPedidos.pedido.actualizar()
 
         Session("gestorPEdidos") = gestorPedidos
 
@@ -415,9 +415,12 @@ Public Class administrarPedidos
         pnlDeposito.Visible = False
         pnlDetalleDeposito.Visible = False
 
-        R.Load(Server.MapPath("../../reportes/remitos.rpt"))
-        R.SetDataSource(dt)
-        CRVRemito.ReportSource = R
+        r.Load(Server.MapPath("../../reportes/remitoSP.rpt"))
+        r.SetParameterValue("@ID_PEDIDO", gestorPedidos.pedido.id)
+
+        'R.SetDataSource(dt)
+        CRVRemito.ReportSource = r
+        'CRVRemito.RefreshReport()
 
         bindGrillas()
 

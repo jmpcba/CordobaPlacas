@@ -270,8 +270,10 @@
     <Content Include="App_pages\pedidos\busquedas.ascx" />
     <Content Include="App_pages\pedidos\modificarPedido.aspx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
+    <Content Include="Content\crystal.css" />
     <Content Include="images\arrow_left-512.png" />
     <Content Include="images\cancel.png" />
+    <Content Include="images\cbaPlacasLogo.jpg" />
     <Content Include="images\delete.png" />
     <Content Include="images\edit-512.png" />
     <Content Include="images\edit.jpg" />
@@ -592,6 +594,12 @@
       <DependentUpon>remitos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reportes\remitoSP.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>remitoSP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Site.Master.designer.vb">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
@@ -650,6 +658,10 @@
     <EmbeddedResource Include="reportes\remitos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>remitos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\remitoSP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>remitoSP.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

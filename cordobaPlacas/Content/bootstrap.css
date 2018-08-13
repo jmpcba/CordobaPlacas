@@ -221,10 +221,11 @@ textarea {
   vertical-align: top;
 }
 
-table {
+/*table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+    */
 
 @media print {
   * {
@@ -279,6 +280,7 @@ table {
   .navbar {
     display: none;
   }
+  
   .table td,
   .table th {
     background-color: #fff !important;
@@ -6842,8 +6844,8 @@ td.visible-print {
 .wizard{
     padding: 20px;
 }
-
+/*
 .combos th, td {
     padding: 10px;
     text-align: right;
-}
+}*/

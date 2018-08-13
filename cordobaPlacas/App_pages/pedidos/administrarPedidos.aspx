@@ -296,7 +296,7 @@
                 <asp:Panel ID="pnlRemito" runat="server" CssClass="imageButtons">
                     <asp:ImageButton ID="btnVolverRemito" runat="server" ImageUrl="~/images/arrow_left-512.png" CssClass="imageButtons"/>
                     <hr />
-                    <CR:CrystalReportViewer ID="CRVRemito" runat="server" AutoDataBind="True" EnableDrillDown="False" EnableParameterPrompt="False" GroupTreeImagesFolderUrl="" HasCrystalLogo="False" HasDrilldownTabs="False" HasDrillUpButton="False" HasExportButton="False" HasGotoPageButton="False" HasSearchButton="False" HasToggleGroupTreeButton="False" HasToggleParameterPanelButton="False" HasZoomFactorList="False" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" />
+                    <CR:CrystalReportViewer ID="CRVRemito" runat="server" AutoDataBind="true" BorderStyle="None" CssFilename="crystal.css" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" HasCrystalLogo="False" HasExportButton="False" HasToggleGroupTreeButton="False" Height="50px" ReuseParameterValuesOnRefresh="True" ToolbarStyle-BorderStyle="None" ToolPanelView="None" />
                 </asp:Panel>
 </ContentTemplate>
 </ajaxToolkit:TabPanel>
