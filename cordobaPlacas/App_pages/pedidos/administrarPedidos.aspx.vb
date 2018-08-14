@@ -32,6 +32,7 @@ Public Class administrarPedidos
         btnBuscarRemitos.Visible = False
         btnRecibido.Visible = False
         pnlRemito.Visible = False
+        pnlOrdenesDeTrabajo.Visible = False
 
         If Not IsPostBack() Then
             gestorDatos.getCombos(dpFiltroEstados, GestorDatos.combos.estados)
@@ -136,7 +137,6 @@ Public Class administrarPedidos
         pnlDetalleNvo.Visible = True
         pnlStockNvo.Visible = True
         gestorPedidos = Session("gestorPedidos")
-        'txtStock.Text = ""
 
         item = gestorPedidos.pedido.getItemById(idItem)
 
@@ -179,6 +179,9 @@ Public Class administrarPedidos
 
     Protected Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         Dim ds As New DataTable()
+        Dim rd = New ReportDocument()
+        Dim dt = New DataTable()
+        Dim db = New DbHelper()
 
         gestorPedidos = Session("gestorPedidos")
         Try
@@ -187,13 +190,16 @@ Public Class administrarPedidos
             grDetalleNvo.SelectedIndex = -1
             Dim msg = String.Format("Pedido {0} - ACTUALIZADO", gestorPedidos.pedido.id)
             msgPanel(msg)
+
+            dt = db.getRemito(gestorPedidos.pedido.id)
+            rd.Load(Server.MapPath("../../reportes/OrdenesDeTrabajo.rpt"))
+            rd.SetDataSource(dt)
+            rd.SetParameterValue("ID_PEDIDO", gestorPedidos.pedido.id)
+            crvOrdenes.ReportSource = rd
+
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
-
-        'TODO: AGREGAR REPORTE CRYSTAL
-
-
     End Sub
 
     Private Sub bindGrillas()
@@ -248,7 +254,6 @@ Public Class administrarPedidos
     Protected Sub grDeposito_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grDeposito.SelectedIndexChanged
         Dim nt = New DataTable()
         Dim dt = New DataTable()
-        'Dim estadoDeposito = New Estado(Estado.estados.deposito)
         Dim check = True
 
         Try
@@ -391,38 +396,42 @@ Public Class administrarPedidos
 
     Protected Sub btnEnviarCliente_Click(sender As Object, e As EventArgs) Handles btnEnviarCliente.Click
         Dim estadoEnviado = New Estado(Estado.estados.enviado)
-        Dim r = New ReportDocument()
+        Dim rd = New ReportDocument()
         Dim db = New DbHelper()
-        Dim dt = New DataTable
+        Dim dt = New DataTable()
 
-        gestorPedidos = Session("gestorPEdidos")
+        Try
+            gestorPedidos = Session("gestorPEdidos")
 
-        'dt = db.getRemito(gestorPedidos.pedido.id)
+            For Each i As Item In gestorPedidos.pedido.items
+                i.setEstado(estadoEnviado)
+                i.actualizar()
+            Next
 
-        'For Each i As Item In gestorPedidos.pedido.items
-        '    i.setEstado(estadoEnviado)
-        '    i.actualizar()
-        'Next
-        'gestorPedidos.pedido.estado = estadoEnviado
-        'gestorPedidos.pedido.actualizar()
+            gestorPedidos.pedido.estado = estadoEnviado
+            gestorPedidos.pedido.actualizar()
 
-        Session("gestorPEdidos") = gestorPedidos
+            Session("gestorPEdidos") = gestorPedidos
 
-        Dim msg = String.Format("Pedido {0} - Estado actualizado a ENVIADO", gestorPedidos.pedido.id)
-        msgPanel(msg)
+            Dim msg = String.Format("Pedido {0} - Estado actualizado a ENVIADO", gestorPedidos.pedido.id)
+            msgPanel(msg)
 
-        pnlRemito.Visible = True
-        pnlDeposito.Visible = False
-        pnlDetalleDeposito.Visible = False
+            pnlRemito.Visible = True
+            pnlDeposito.Visible = False
+            pnlDetalleDeposito.Visible = False
 
-        r.Load(Server.MapPath("../../reportes/remitoSP.rpt"))
-        r.SetParameterValue("@ID_PEDIDO", gestorPedidos.pedido.id)
+            'CARGA DE CRYSTAL REPORT
+            dt = db.getRemito(gestorPedidos.pedido.id)
+            rd.Load(Server.MapPath("../../reportes/remito_filtrado.rpt"))
+            rd.SetDataSource(dt)
+            rd.SetParameterValue("ID_PEDIDO", gestorPedidos.pedido.id)
+            CRVRemito.ReportSource = rd
 
-        'R.SetDataSource(dt)
-        CRVRemito.ReportSource = r
-        'CRVRemito.RefreshReport()
+            bindGrillas()
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        End Try
 
-        bindGrillas()
 
     End Sub
 

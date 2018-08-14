@@ -22,7 +22,7 @@
         runat="server"
         Height="100%"
         Width="100%"
-        ActiveTabIndex="3">
+        ActiveTabIndex="0">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
                  <asp:Panel ID="pnlNvos" runat="server">
@@ -110,7 +110,10 @@
                             <ajaxToolkit:ConfirmButtonExtender ID="btnImprimir_ConfirmButtonExtender" runat="server" BehaviorID="_content_btnImprimir_ConfirmButtonExtender" ConfirmText="" TargetControlID="btnImprimir" />
                             <asp:Button ID="btnCancelarRecibido" runat="server" Text="Cancelar" />
                         </div>
-                    </asp:Panel>            
+                    </asp:Panel>   
+                 <asp:Panel ID="pnlOrdenesDeTrabajo" runat="server">
+                     <CR:CrystalReportViewer ID="crvOrdenes" runat="server" AutoDataBind="True" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" GroupTreeImagesFolderUrl="" ReuseParameterValuesOnRefresh="True" ToolbarImagesFolderUrl="" ToolPanelView="None" ToolPanelWidth="200px" />
+                 </asp:Panel>         
     </ContentTemplate>
 </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="tbEnCurso" runat="server" HeaderText="En Curso">
@@ -296,7 +299,7 @@
                 <asp:Panel ID="pnlRemito" runat="server" CssClass="imageButtons">
                     <asp:ImageButton ID="btnVolverRemito" runat="server" ImageUrl="~/images/arrow_left-512.png" CssClass="imageButtons"/>
                     <hr />
-                    <CR:CrystalReportViewer ID="CRVRemito" runat="server" AutoDataBind="true" BorderStyle="None" CssFilename="crystal.css" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" HasCrystalLogo="False" HasExportButton="False" HasToggleGroupTreeButton="False" Height="50px" ReuseParameterValuesOnRefresh="True" ToolbarStyle-BorderStyle="None" ToolPanelView="None" />
+                    <CR:CrystalReportViewer ID="CRVRemito" runat="server" AutoDataBind="True" BorderStyle="None" CssFilename="crystal.css" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" HasCrystalLogo="False" HasExportButton="False" HasToggleGroupTreeButton="False" Height="50px" ReuseParameterValuesOnRefresh="True" ToolbarStyle-BorderStyle="None" ToolPanelView="None" GroupTreeImagesFolderUrl="" PrintMode="ActiveX" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" />
                 </asp:Panel>
 </ContentTemplate>
 </ajaxToolkit:TabPanel>

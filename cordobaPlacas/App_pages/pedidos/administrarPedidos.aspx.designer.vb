@@ -212,6 +212,24 @@ Partial Public Class administrarPedidos
     Protected WithEvents btnCancelarRecibido As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''Control pnlOrdenesDeTrabajo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlOrdenesDeTrabajo As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control crvOrdenes.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents crvOrdenes As Global.CrystalDecisions.Web.CrystalReportViewer
+    
+    '''<summary>
     '''Control tbEnCurso.
     '''</summary>
     '''<remarks>

@@ -582,22 +582,22 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="App_Code\Producto.vb" />
+    <Compile Include="reportes\OrdenesDeTrabajo.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrdenesDeTrabajo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportes\productos.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>productos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="reportes\remitos.vb">
+    <Compile Include="reportes\remito_filtrado.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>remitos.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="reportes\remitoSP.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>remitoSP.rpt</DependentUpon>
+      <DependentUpon>remito_filtrado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.vb">
@@ -651,17 +651,17 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="reportes\OrdenesDeTrabajo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OrdenesDeTrabajo.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="reportes\productos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>productos.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="reportes\remitos.rpt">
+    <EmbeddedResource Include="reportes\remito_filtrado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>remitos.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="reportes\remitoSP.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>remitoSP.vb</LastGenOutput>
+      <LastGenOutput>remito_filtrado.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
