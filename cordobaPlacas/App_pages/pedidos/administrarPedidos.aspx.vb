@@ -31,8 +31,6 @@ Public Class administrarPedidos
         btnBuscarEtiquetasDeposito.Visible = False
         btnBuscarRemitos.Visible = False
         btnRecibido.Visible = False
-        pnlRemito.Visible = False
-        pnlOrdenesDeTrabajo.Visible = False
 
         If Not IsPostBack() Then
             gestorDatos.getCombos(dpFiltroEstados, GestorDatos.combos.estados)
@@ -415,23 +413,11 @@ Public Class administrarPedidos
             Dim msg = String.Format("Pedido {0} - Estado actualizado a ENVIADO", gestorPedidos.pedido.id)
             msgPanel(msg)
 
-            pnlRemito.Visible = True
-            pnlDeposito.Visible = False
-            pnlDetalleDeposito.Visible = False
-
-            'CARGA DE CRYSTAL REPORT
-            dt = db.getReporte(gestorPedidos.pedido.id, GestorDatos.reportes.remito)
-            rd.Load(Server.MapPath("../../reportes/remito_filtrado.rpt"))
-            rd.SetDataSource(dt)
-            rd.SetParameterValue("ID_PEDIDO", gestorPedidos.pedido.id)
-            CRVRemito.ReportSource = rd
-
+            crystalReport(GestorDatos.reportes.remito, gestorPedidos.pedido.id)
             bindGrillas()
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
-
-
     End Sub
 
     Protected Sub btnImprimirEtiquetasDeposito_Click(sender As Object, e As EventArgs) Handles btnImprimirEtiquetasDeposito.Click
@@ -637,16 +623,6 @@ Public Class administrarPedidos
         Response.Redirect(Request.Url.AbsoluteUri)
     End Sub
 
-    Protected Sub btnVolverRemito_Click(sender As Object, e As ImageClickEventArgs) Handles btnVolverRemito.Click
-        pnlDeposito.Visible = True
-        pnlDetalleDeposito.Visible = True
-    End Sub
-
-    Protected Sub btnVolverOrden_Click(sender As Object, e As ImageClickEventArgs) Handles btnVolverOrden.Click
-        pnlNvos.Visible = True
-        pnlOrdenesDeTrabajo.Visible = False
-    End Sub
-
     Protected Sub btnVolverEtiquetas_Click(sender As Object, e As ImageClickEventArgs) Handles btnVolverEtiquetas.Click
         TabContainer1.Visible = True
         pnlCrystalReport.Visible = False
@@ -679,6 +655,8 @@ Public Class administrarPedidos
             rptPath = "../../reportes/etiquetas.rpt"
         ElseIf _rpt = GestorDatos.reportes.ordenTrabajo Then
             rptPath = "../../reportes/OrdenDeTrabajo.rpt"
+        ElseIf _rpt = GestorDatos.reportes.remito Then
+            rptPath = "../../reportes/remito_filtrado.rpt"
         End If
 
         Try
@@ -689,6 +667,7 @@ Public Class administrarPedidos
             Session("CRD") = rd
 
         Catch ex As Exception
+            btnPrintCrystal.Visible = False
             errorPanel(ex.Message)
         End Try
     End Sub

@@ -500,33 +500,6 @@ Partial Public Class administrarPedidos
     Protected WithEvents btnCancelarDeposito As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control pnlRemito.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents pnlRemito As Global.System.Web.UI.WebControls.Panel
-    
-    '''<summary>
-    '''Control btnVolverRemito.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnVolverRemito As Global.System.Web.UI.WebControls.ImageButton
-    
-    '''<summary>
-    '''Control CRVRemito.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents CRVRemito As Global.CrystalDecisions.Web.CrystalReportViewer
-    
-    '''<summary>
     '''Control tbBuscar.
     '''</summary>
     '''<remarks>

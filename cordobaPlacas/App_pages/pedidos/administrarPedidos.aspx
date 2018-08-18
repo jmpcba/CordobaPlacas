@@ -285,12 +285,7 @@
                             </td>
                         </tr>
                     </table>
-                </asp:Panel>
-                <asp:Panel ID="pnlRemito" runat="server" CssClass="imageButtons">
-                    <asp:ImageButton ID="btnVolverRemito" runat="server" ImageUrl="~/images/arrow_left-512.png" CssClass="imageButtons"/>
-                    <hr />
-                    <CR:CrystalReportViewer ID="CRVRemito" runat="server" AutoDataBind="True" BorderStyle="None" CssFilename="crystal.css" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" HasCrystalLogo="False" HasExportButton="False" HasToggleGroupTreeButton="False" Height="50px" ReuseParameterValuesOnRefresh="True" ToolbarStyle-BorderStyle="None" ToolPanelView="None" GroupTreeImagesFolderUrl="" PrintMode="ActiveX" ToolbarImagesFolderUrl="" ToolPanelWidth="200px" />
-                </asp:Panel>
+                </asp:Panel>  
 </ContentTemplate>
 </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="tbBuscar" runat="server" HeaderText="Buscar">
@@ -465,7 +460,8 @@
         <br />
         <asp:ImageButton ID="btnPrintCrystal" runat="server" CssClass="printBtn" ImageUrl="~/images/print.png" Width="40px" />
         <br />
-        <CR:CrystalReportViewer ID="CRV" runat="server" AutoDataBind="true" DisplayToolbar="False" HasExportButton="False" HasPrintButton="False" HasToggleGroupTreeButton="False" HasToggleParameterPanelButton="False" />
+        <br />
+        <CR:CrystalReportViewer ID="CRV" runat="server" AutoDataBind="true" HasExportButton="False" HasPrintButton="False" ToolPanelView="None" />
     </asp:Panel>
     <asp:Panel ID="pnlMsg" runat="server">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>

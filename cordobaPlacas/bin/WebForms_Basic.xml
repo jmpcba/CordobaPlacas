@@ -717,33 +717,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.administrarPedidos._pnlOrdenesDeTrabajo">
-<summary>
-Control pnlOrdenesDeTrabajo.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnVolverOrden">
-<summary>
-Control btnVolverOrden.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._crvOrdenes">
-<summary>
-Control crvOrdenes.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:cordobaPlacas.administrarPedidos._tbEnCurso">
 <summary>
 Control tbEnCurso.
@@ -1026,33 +999,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.administrarPedidos._btnCancelarDeposito">
 <summary>
 Control btnCancelarDeposito.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._pnlRemito">
-<summary>
-Control pnlRemito.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnVolverRemito">
-<summary>
-Control btnVolverRemito.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._CRVRemito">
-<summary>
-Control CRVRemito.
 </summary>
 <remarks>
 Campo generado automáticamente.
