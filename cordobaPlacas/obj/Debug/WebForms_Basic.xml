@@ -726,6 +726,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.administrarPedidos._btnVolverOrden">
+<summary>
+Control btnVolverOrden.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.administrarPedidos._crvOrdenes">
 <summary>
 Control crvOrdenes.
@@ -1350,6 +1359,42 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.administrarPedidos._btnCancelarBuscar">
 <summary>
 Control btnCancelarBuscar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.administrarPedidos._pnlCrystalReport">
+<summary>
+Control pnlCrystalReport.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.administrarPedidos._btnVolverEtiquetas">
+<summary>
+Control btnVolverEtiquetas.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.administrarPedidos._btnPrintCrystal">
+<summary>
+Control btnPrintCrystal.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.administrarPedidos._CRV">
+<summary>
+Control CRV.
 </summary>
 <remarks>
 Campo generado automáticamente.

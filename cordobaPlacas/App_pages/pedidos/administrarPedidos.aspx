@@ -6,23 +6,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
-        $(document).ready(function (){ 
-            var hojas = $('#txtHojasTerminadas').val();
-            var marcos = $('#txtMarcosTerminados').val();
-            $('#TextBox_PRVNo').change(function(){
-                if (hojas > marcos){
-                    $('#txtEnsambladas').val(hojas);
-                }else{
-                    $('#txtEnsambladas').val(marcos);
-                }
-            })
-        })
+        function exportPDF() {
+            var url = "../impresion/impresion.aspx"
+            window.open(url, '_blank')
+        }
     </script>
     <ajaxToolkit:TabContainer ID="TabContainer1" 
         runat="server"
         Height="100%"
         Width="100%"
-        ActiveTabIndex="2">
+        ActiveTabIndex="0">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
                  <asp:Panel ID="pnlNvos" runat="server">
@@ -106,15 +99,11 @@
                                 </tr>
                             </table>
                             <hr />
-                            <asp:Button ID="btnImprimir" runat="server" Text="Imprimir Ordenes" ValidateRequestMode="Enabled" ValidationGroup="vgStock" ToolTip="Imprimir Ordenes de trabajo y enviar el pedido a estado EN COLA" />
+                            <asp:Button ID="btnImprimir" runat="server" Text="Enviar a Produccion" ValidateRequestMode="Enabled" ValidationGroup="vgStock" ToolTip="Imprimir Ordenes de trabajo y enviar el pedido a estado EN COLA" />
                             <ajaxToolkit:ConfirmButtonExtender ID="btnImprimir_ConfirmButtonExtender" runat="server" BehaviorID="_content_btnImprimir_ConfirmButtonExtender" ConfirmText="" TargetControlID="btnImprimir" />
                             <asp:Button ID="btnCancelarRecibido" runat="server" Text="Cancelar" />
                         </div>
                     </asp:Panel>   
-                 <asp:Panel ID="pnlOrdenesDeTrabajo" runat="server">
-                     <asp:ImageButton ID="btnVolverOrden" runat="server" CssClass="imageButtons" ImageUrl="~/images/arrow_left-512.png" />
-                     <CR:CrystalReportViewer ID="crvOrdenes" runat="server" AutoDataBind="True" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" GroupTreeImagesFolderUrl="" ReuseParameterValuesOnRefresh="True" ToolbarImagesFolderUrl="" ToolPanelView="None" ToolPanelWidth="200px" />
-                 </asp:Panel>         
     </ContentTemplate>
 </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="tbEnCurso" runat="server" HeaderText="En Curso">
@@ -232,13 +221,10 @@
                             </Columns>
                         </asp:GridView>
                         <br />
-                        <asp:Button ID="btnAlmacenar" runat="server" Text="Enviar a Deposito" ToolTip="Imprimir etiquetas de deposito" />
+                        <asp:Button ID="btnAlmacenar" runat="server" Text="Enviar a Deposito" ToolTip="Imprimir etiquetas de deposito" OnClientClick="exportPdf" />
                         <ajaxToolkit:ConfirmButtonExtender ID="btnAlmacenar_ConfirmButtonExtender" runat="server" BehaviorID="_content_btnAlmacenar_ConfirmButtonExtender" ConfirmText="" TargetControlID="btnAlmacenar" />
                         <asp:Button ID="btnCancelarEnsambladas" runat="server" Text="Cancelar" />
                     </asp:Panel>
-                <asp:Panel ID="pnlEtiquetaDeposito" runat="server">
-
-                </asp:Panel>
 </ContentTemplate>
 </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="tbDeposito" runat="server" HeaderText="Deposito">
@@ -473,7 +459,16 @@
     </ContentTemplate>
 </ajaxToolkit:TabPanel>  
     </ajaxToolkit:TabContainer>
+    <asp:Panel ID="pnlCrystalReport" runat="server" Visible="False">
+        <asp:ImageButton ID="btnVolverEtiquetas" runat="server" CssClass="imageButtons" ImageUrl="~/images/arrow_left-512.png" ToolTip="volver" />
+        <br />
+        <br />
+        <asp:ImageButton ID="btnPrintCrystal" runat="server" CssClass="printBtn" ImageUrl="~/images/print.png" Width="40px" />
+        <br />
+        <CR:CrystalReportViewer ID="CRV" runat="server" AutoDataBind="true" DisplayToolbar="False" HasExportButton="False" HasPrintButton="False" HasToggleGroupTreeButton="False" HasToggleParameterPanelButton="False" />
+    </asp:Panel>
     <asp:Panel ID="pnlMsg" runat="server">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>
      </asp:Panel>
+
 </asp:Content>

@@ -212,33 +212,6 @@ Partial Public Class administrarPedidos
     Protected WithEvents btnCancelarRecibido As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control pnlOrdenesDeTrabajo.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents pnlOrdenesDeTrabajo As Global.System.Web.UI.WebControls.Panel
-    
-    '''<summary>
-    '''Control btnVolverOrden.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnVolverOrden As Global.System.Web.UI.WebControls.ImageButton
-    
-    '''<summary>
-    '''Control crvOrdenes.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents crvOrdenes As Global.CrystalDecisions.Web.CrystalReportViewer
-    
-    '''<summary>
     '''Control tbEnCurso.
     '''</summary>
     '''<remarks>
@@ -408,15 +381,6 @@ Partial Public Class administrarPedidos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnCancelarEnsambladas As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control pnlEtiquetaDeposito.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents pnlEtiquetaDeposito As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
     '''Control tbDeposito.
@@ -867,6 +831,42 @@ Partial Public Class administrarPedidos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnCancelarBuscar As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control pnlCrystalReport.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlCrystalReport As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control btnVolverEtiquetas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnVolverEtiquetas As Global.System.Web.UI.WebControls.ImageButton
+    
+    '''<summary>
+    '''Control btnPrintCrystal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnPrintCrystal As Global.System.Web.UI.WebControls.ImageButton
+    
+    '''<summary>
+    '''Control CRV.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents CRV As Global.CrystalDecisions.Web.CrystalReportViewer
     
     '''<summary>
     '''Control pnlMsg.

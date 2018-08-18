@@ -1,4 +1,4 @@
-﻿Imports System.Data
+﻿Imports System.Threading
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 
@@ -191,17 +191,7 @@ Public Class administrarPedidos
             Dim msg = String.Format("Pedido {0} - ACTUALIZADO", gestorPedidos.pedido.id)
             msgPanel(msg)
 
-            dt = gestorDatos.getReporte(gestorPedidos.pedido.id, GestorDatos.reportes.ordenTrabajo)
-            rd.Load(Server.MapPath("../../reportes/OrdenDeTrabajo.rpt"))
-            rd.SetDataSource(dt)
-            rd.SetParameterValue("ID_PEDIDO", gestorPedidos.pedido.id)
-            crvOrdenes.ReportSource = rd
-
-            pnlDetalleNvo.Visible = False
-            pnlNvos.Visible = False
-            pnlStockNvo.Visible = False
-            pnlOrdenesDeTrabajo.Visible = True
-
+            crystalReport(GestorDatos.reportes.ordenTrabajo, gestorPedidos.pedido.id)
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
@@ -367,17 +357,21 @@ Public Class administrarPedidos
     Protected Sub btnAlmacenar_Click(sender As Object, e As EventArgs) Handles btnAlmacenar.Click
         Dim check = True
         Dim estadoDeposito = New Estado(Estado.estados.deposito)
+        Dim dt = New DataTable
+        Dim rd = New ReportDocument
+
         gestorPedidos = Session("gestorPedidos")
+
         Try
+            crystalReport(GestorDatos.reportes.etiquetaDeposito, gestorPedidos.pedido.id)
             gestorPedidos.enviarDeposito(grDetalleEnsamblados)
             bindGrillas()
+
             Dim msg = String.Format("Actualizacion Pedido {0} - CORRECTA", gestorPedidos.pedido.id)
             msgPanel(msg)
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
-
-        'TODO:IMPRIMIR ETIQUETAS ADHESIVAS PARA CADA PUERTA
     End Sub
 
     Protected Sub btnEnviarStock_Click(sender As Object, e As EventArgs) Handles btnEnviarStock.Click
@@ -650,12 +644,52 @@ Public Class administrarPedidos
 
     Protected Sub btnVolverOrden_Click(sender As Object, e As ImageClickEventArgs) Handles btnVolverOrden.Click
         pnlNvos.Visible = True
-        pnlOrdenesDeTrabajo.Visible = True
+        pnlOrdenesDeTrabajo.Visible = False
     End Sub
 
-    'DEPRECADO - PRUEBA
-    'Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-    '    Dim url = "../impresion/impresion.aspx?reporte=remito&idPedido=119"
-    '    Response.Redirect(url)
-    'End Sub
+    Protected Sub btnVolverEtiquetas_Click(sender As Object, e As ImageClickEventArgs) Handles btnVolverEtiquetas.Click
+        TabContainer1.Visible = True
+        pnlCrystalReport.Visible = False
+    End Sub
+
+    Protected Sub btnPrintCrystal_Click(sender As Object, e As ImageClickEventArgs) Handles btnPrintCrystal.Click
+        Dim rd As ReportDocument
+        Dim exFormat As ExportFormatType
+
+        exFormat = ExportFormatType.PortableDocFormat
+        rd = Session("CRD")
+
+        Try
+            rd.ExportToHttpResponse(exFormat, Response, True, "deposito.pdf")
+        Catch ex As ThreadAbortException
+            Thread.ResetAbort()
+            Session.Remove("CRD")
+        End Try
+    End Sub
+
+    Private Sub crystalReport(_rpt As GestorDatos.reportes, _idPedido As Integer)
+        Dim rptPath As String
+        Dim dt = New DataTable()
+        Dim rd = New ReportDocument()
+
+        pnlCrystalReport.Visible = True
+        TabContainer1.Visible = False
+
+        If _rpt = GestorDatos.reportes.etiquetaDeposito Then
+            rptPath = "../../reportes/etiquetas.rpt"
+        ElseIf _rpt = GestorDatos.reportes.ordenTrabajo Then
+            rptPath = "../../reportes/OrdenDeTrabajo.rpt"
+        End If
+
+        Try
+            dt = gestorDatos.getReporte(_idPedido, _rpt)
+            rd.Load(Server.MapPath(rptPath))
+            rd.SetDataSource(dt)
+            CRV.ReportSource = rd
+            Session("CRD") = rd
+
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        End Try
+    End Sub
 End Class

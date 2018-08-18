@@ -18,7 +18,7 @@ Public Class GestorDatos
         ordenTrabajo
         remito
         compras
-
+        etiquetaDeposito
     End Enum
     Public Sub New()
         chapa = New Chapa()

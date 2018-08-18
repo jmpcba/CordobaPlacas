@@ -33,8 +33,10 @@ Public Class DbHelper
 
         If _tipo = GestorDatos.reportes.remito Then
             query = "SELECT * FROM VW_REMITOS WHERE PEDIDO=" & _idPedido
-        Else
+        ElseIf _tipo = GestorDatos.reportes.ordenTrabajo Then
             query = "SELECT * FROM VW_ORDENES WHERE PEDIDO=" & _idPedido
+        ElseIf _tipo = GestorDatos.reportes.etiquetaDeposito Then
+            query = "SELECT * FROM VW_ETIQUETAS WHERE ID=" & _idPedido
         End If
 
         cmd.CommandType = CommandType.Text
