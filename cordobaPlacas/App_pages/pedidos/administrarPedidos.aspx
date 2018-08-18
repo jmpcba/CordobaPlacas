@@ -22,7 +22,7 @@
         runat="server"
         Height="100%"
         Width="100%"
-        ActiveTabIndex="0">
+        ActiveTabIndex="2">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
                  <asp:Panel ID="pnlNvos" runat="server">
@@ -112,6 +112,7 @@
                         </div>
                     </asp:Panel>   
                  <asp:Panel ID="pnlOrdenesDeTrabajo" runat="server">
+                     <asp:ImageButton ID="btnVolverOrden" runat="server" CssClass="imageButtons" ImageUrl="~/images/arrow_left-512.png" />
                      <CR:CrystalReportViewer ID="crvOrdenes" runat="server" AutoDataBind="True" EnableDatabaseLogonPrompt="False" EnableParameterPrompt="False" GroupTreeImagesFolderUrl="" ReuseParameterValuesOnRefresh="True" ToolbarImagesFolderUrl="" ToolPanelView="None" ToolPanelWidth="200px" />
                  </asp:Panel>         
     </ContentTemplate>
@@ -235,6 +236,9 @@
                         <ajaxToolkit:ConfirmButtonExtender ID="btnAlmacenar_ConfirmButtonExtender" runat="server" BehaviorID="_content_btnAlmacenar_ConfirmButtonExtender" ConfirmText="" TargetControlID="btnAlmacenar" />
                         <asp:Button ID="btnCancelarEnsambladas" runat="server" Text="Cancelar" />
                     </asp:Panel>
+                <asp:Panel ID="pnlEtiquetaDeposito" runat="server">
+
+                </asp:Panel>
 </ContentTemplate>
 </ajaxToolkit:TabPanel>
         <ajaxToolkit:TabPanel ID="tbDeposito" runat="server" HeaderText="Deposito">

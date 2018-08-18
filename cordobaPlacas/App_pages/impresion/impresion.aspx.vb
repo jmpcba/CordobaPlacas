@@ -10,10 +10,10 @@ Public Class impresion
         If Request.QueryString("reporte") = "remito" Then
             Dim idPedido = Request.QueryString("idPedido")
             Dim db = New DbHelper()
-            Dim dt = db.getRemito(idPedido)
+            'Dim dt = db.getReporte(idPedido)
 
             R.Load(Server.MapPath("../../reportes/remitos.rpt"))
-            R.SetDataSource(dt)
+            'R.SetDataSource(dt)
             visorCR.ReportSource = R
         End If
     End Sub

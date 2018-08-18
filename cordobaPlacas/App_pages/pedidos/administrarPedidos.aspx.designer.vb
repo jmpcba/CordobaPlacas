@@ -221,6 +221,15 @@ Partial Public Class administrarPedidos
     Protected WithEvents pnlOrdenesDeTrabajo As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
+    '''Control btnVolverOrden.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnVolverOrden As Global.System.Web.UI.WebControls.ImageButton
+    
+    '''<summary>
     '''Control crvOrdenes.
     '''</summary>
     '''<remarks>
@@ -399,6 +408,15 @@ Partial Public Class administrarPedidos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnCancelarEnsambladas As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control pnlEtiquetaDeposito.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlEtiquetaDeposito As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
     '''Control tbDeposito.

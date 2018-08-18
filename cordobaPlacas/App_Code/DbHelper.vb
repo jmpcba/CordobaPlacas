@@ -11,20 +11,6 @@ Public Class DbHelper
     Private table As String
     Private conStr As String = "Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True"
 
-    Friend Function getRemito(_idPedido As String) As DataTable
-        Dim query = "SELECT * FROM VW_REMITOS WHERE PEDIDO=" & _idPedido
-
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = query
-
-        Try
-            da.Fill(ds, "REMITO")
-            Return ds.Tables("REMITO")
-        Catch ex As Exception
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        End Try
-    End Function
-
     Sub New(ByVal _table As String)
         table = _table
         cnn = New SqlConnection(conStr)
@@ -41,6 +27,26 @@ Public Class DbHelper
         da = New SqlDataAdapter(cmd)
         ds = New DataSet()
     End Sub
+
+    Friend Function getReporte(_idPedido As String, _tipo As GestorDatos.reportes) As DataTable
+        Dim query As String
+
+        If _tipo = GestorDatos.reportes.remito Then
+            query = "SELECT * FROM VW_REMITOS WHERE PEDIDO=" & _idPedido
+        Else
+            query = "SELECT * FROM VW_ORDENES WHERE PEDIDO=" & _idPedido
+        End If
+
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = query
+
+        Try
+            da.Fill(ds, "REMITO")
+            Return ds.Tables("REMITO")
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+    End Function
 
     Public Function getTable() As DataTable
         Try
@@ -489,7 +495,7 @@ Public Class DbHelper
 
         cmd.Parameters.AddWithValue("@ID_ITEM", _item.id)
         cmd.Parameters.AddWithValue("@ID_PRODUCTO", _item.getProducto().id)
-        cmd.Parameters.AddWithValue("@CANT", _item.getcant)
+        cmd.Parameters.AddWithValue("@CANT", _item.getCant)
         cmd.Parameters.AddWithValue("@MONTO", _item.monto)
         cmd.Parameters.AddWithValue("@ID_ESTADO", _item.getEstado().id)
         cmd.Parameters.AddWithValue("@MARCO_TER", _item.marcosTerminados)

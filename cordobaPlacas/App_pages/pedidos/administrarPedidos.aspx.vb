@@ -191,11 +191,16 @@ Public Class administrarPedidos
             Dim msg = String.Format("Pedido {0} - ACTUALIZADO", gestorPedidos.pedido.id)
             msgPanel(msg)
 
-            dt = db.getRemito(gestorPedidos.pedido.id)
-            rd.Load(Server.MapPath("../../reportes/OrdenesDeTrabajo.rpt"))
+            dt = gestorDatos.getReporte(gestorPedidos.pedido.id, GestorDatos.reportes.ordenTrabajo)
+            rd.Load(Server.MapPath("../../reportes/OrdenDeTrabajo.rpt"))
             rd.SetDataSource(dt)
             rd.SetParameterValue("ID_PEDIDO", gestorPedidos.pedido.id)
             crvOrdenes.ReportSource = rd
+
+            pnlDetalleNvo.Visible = False
+            pnlNvos.Visible = False
+            pnlStockNvo.Visible = False
+            pnlOrdenesDeTrabajo.Visible = True
 
         Catch ex As Exception
             errorPanel(ex.Message)
@@ -421,7 +426,7 @@ Public Class administrarPedidos
             pnlDetalleDeposito.Visible = False
 
             'CARGA DE CRYSTAL REPORT
-            dt = db.getRemito(gestorPedidos.pedido.id)
+            dt = db.getReporte(gestorPedidos.pedido.id, GestorDatos.reportes.remito)
             rd.Load(Server.MapPath("../../reportes/remito_filtrado.rpt"))
             rd.SetDataSource(dt)
             rd.SetParameterValue("ID_PEDIDO", gestorPedidos.pedido.id)
@@ -641,6 +646,11 @@ Public Class administrarPedidos
     Protected Sub btnVolverRemito_Click(sender As Object, e As ImageClickEventArgs) Handles btnVolverRemito.Click
         pnlDeposito.Visible = True
         pnlDetalleDeposito.Visible = True
+    End Sub
+
+    Protected Sub btnVolverOrden_Click(sender As Object, e As ImageClickEventArgs) Handles btnVolverOrden.Click
+        pnlNvos.Visible = True
+        pnlOrdenesDeTrabajo.Visible = True
     End Sub
 
     'DEPRECADO - PRUEBA

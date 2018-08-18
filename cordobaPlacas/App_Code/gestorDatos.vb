@@ -13,6 +13,13 @@ Public Class GestorDatos
         estados
         clientes
     End Enum
+
+    Public Enum reportes
+        ordenTrabajo
+        remito
+        compras
+
+    End Enum
     Public Sub New()
         chapa = New Chapa()
         marco = New Marco()
@@ -228,6 +235,11 @@ Public Class GestorDatos
         End Try
     End Function
 
+    Friend Function getReporte(_idPedido As Integer, _reporte As reportes) As DataTable
+        db = New DbHelper()
+        Return db.getReporte(_idPedido, _reporte)
+    End Function
+
     Public Function getItems(_pedido As Integer, Optional _enCurso As Boolean = False) As DataTable
         Try
             Dim db = New DbHelper("ITEMS")
@@ -380,7 +392,7 @@ Public Class GestorDatos
             row("MARCO") = item.getProducto.marco.nombre
             row("MADERA") = item.getProducto.madera.nombre
             row("CHAPA") = item.getProducto.chapa.nombre
-            row("MANO") = item.getproducto.mano.nombre
+            row("MANO") = item.getProducto.mano.nombre
             row("CANTIDAD") = item.getCant()
             row("MONTO") = item.monto
             row("STOCK") = item.stock

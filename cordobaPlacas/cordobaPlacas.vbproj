@@ -582,6 +582,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="App_Code\Producto.vb" />
+    <Compile Include="reportes\etiquetas.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>etiquetas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reportes\ordenDeTrabajo.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ordenDeTrabajo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportes\OrdenesDeTrabajo.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -650,6 +662,14 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\etiquetas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>etiquetas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\ordenDeTrabajo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ordenDeTrabajo.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportes\OrdenesDeTrabajo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
