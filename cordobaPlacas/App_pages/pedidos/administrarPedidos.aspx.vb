@@ -291,16 +291,17 @@ Public Class administrarPedidos
         Dim idItem = row.Cells(1).Text
         Dim dt = New DataTable()
 
-        pnlDetalleEnsamblados.Visible = True
-
-        idPedido = row.Cells(1).Text
-        gestorPedidos = New GestorPedidos(idPedido)
-        Session("gestorPedidos") = gestorPedidos
-
-        grDetalleEnsamblados.DataSource = Nothing
-        grDetalleEnsamblados.DataBind()
-
         Try
+            pnlDetalleEnsamblados.Visible = True
+
+            idPedido = row.Cells(1).Text
+            gestorPedidos = New GestorPedidos(idPedido)
+            Session("gestorPedidos") = gestorPedidos
+
+            grDetalleEnsamblados.DataSource = Nothing
+            grDetalleEnsamblados.DataBind()
+
+
             dt = gestorDatos.getItemsEnsamblados(gestorPedidos.pedido.id)
 
             grDetalleEnsamblados.DataSource = dt
@@ -590,50 +591,53 @@ Public Class administrarPedidos
     End Sub
 
     Protected Sub grDeposito_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grDeposito.RowCommand
-        Dim estado As Estado
-        Dim idPedido = Convert.ToInt32(e.CommandArgument)
-        gestorPedidos = New GestorPedidos(idPedido)
 
-        Try
-            'ENVIAR PEDIDO A CLIENTE
-            If e.CommandName = "enviar" Then
-                estado = New Estado(Estado.estados.enviado)
-                gestorPedidos.actualizarEstado(estado)
+        If e.CommandName <> "Select" Then
+            Dim estado As Estado
+            Dim idPedido = Convert.ToInt32(e.CommandArgument)
+            gestorPedidos = New GestorPedidos(idPedido)
+            Try
+                'ENVIAR PEDIDO A CLIENTE
+                If e.CommandName = "enviar" Then
+                    estado = New Estado(Estado.estados.enviado)
+                    gestorPedidos.actualizarEstado(estado)
 
-                Session("gestorPEdidos") = gestorPedidos
+                    Session("gestorPEdidos") = gestorPedidos
 
-                Dim msg = String.Format("Pedido {0} - Estado actualizado a ENVIADO", gestorPedidos.pedido.id)
-                msgPanel(msg)
+                    Dim msg = String.Format("Pedido {0} - Estado actualizado a ENVIADO", gestorPedidos.pedido.id)
+                    msgPanel(msg)
 
-                crystalReport(GestorDatos.reportes.remito, gestorPedidos.pedido.id)
+                    crystalReport(GestorDatos.reportes.remito, gestorPedidos.pedido.id)
 
-                'ENVIAR A STOCK
-            ElseIf e.CommandName = "stock" Then
-                estado = New Estado(Estado.estados.stock)
+                    'ENVIAR A STOCK
+                ElseIf e.CommandName = "stock" Then
+                    estado = New Estado(Estado.estados.stock)
 
-                'EL STOCK DEL PRODUCTO SE INCREMENTA POR UN TRIGGER DE DB
-                gestorPedidos.actualizarEstado(estado)
+                    'EL STOCK DEL PRODUCTO SE INCREMENTA POR UN TRIGGER DE DB
+                    gestorPedidos.actualizarEstado(estado)
 
-                Session("gestorPEdidos") = gestorPedidos
+                    Session("gestorPEdidos") = gestorPedidos
 
-                Dim msg = String.Format("Pedido {0} enviado a STOCK interno", gestorPedidos.pedido.id)
-                msgPanel(msg)
+                    Dim msg = String.Format("Pedido {0} enviado a STOCK interno", gestorPedidos.pedido.id)
+                    msgPanel(msg)
 
-                'PEDIDO ENTREGADO AL CLIENTE
-            ElseIf e.CommandName = "entregado" Then
-                estado = New Estado(Estado.estados.entregado)
+                    'PEDIDO ENTREGADO AL CLIENTE
+                ElseIf e.CommandName = "entregado" Then
+                    estado = New Estado(Estado.estados.entregado)
 
-                gestorPedidos.actualizarEstado(estado)
+                    gestorPedidos.actualizarEstado(estado)
 
-                Dim msg = String.Format("Pedido {0} movido a estado ENREGADO", gestorPedidos.pedido.id)
-                msgPanel(msg)
+                    Dim msg = String.Format("Pedido {0} movido a estado ENREGADO", gestorPedidos.pedido.id)
+                    msgPanel(msg)
 
-            End If
-        Catch ex As Exception
-            errorPanel(ex.Message)
-        Finally
-            bindGrillas()
-        End Try
+                End If
+            Catch ex As Exception
+                errorPanel(ex.Message)
+            Finally
+                bindGrillas()
+            End Try
+        End If
+
     End Sub
 
     Protected Sub grDeposito_DataBound(sender As Object, e As EventArgs) Handles grDeposito.DataBound

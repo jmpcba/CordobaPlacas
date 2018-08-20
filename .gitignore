@@ -9,3 +9,5 @@
 *.dll
 *.dll
 *.dll
+*.pdb
+*.dll
