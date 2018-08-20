@@ -11,3 +11,8 @@
 *.dll
 *.pdb
 *.dll
+.vs/cordobaPlacas/v14/.suo
+cordobaPlacas/bin/cordobaPlacas.dll
+cordobaPlacas/bin/cordobaPlacas.pdb
+cordobaPlacas/obj/Debug/cordobaPlacas.dll
+cordobaPlacas/obj/Debug/cordobaPlacas.pdb
