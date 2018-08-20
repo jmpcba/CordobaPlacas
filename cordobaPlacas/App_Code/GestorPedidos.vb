@@ -129,6 +129,32 @@ Public Class GestorPedidos
         End If
     End Sub
 
+    Public Sub enviarDeposito()
+        'EL ITEM PASA A ESTADO DEPOSITO SI TODOS DEPOSITO = CANT - STOCK POR TRIGGER DE LA DB
+        Dim flag = True
+        Try
+            For Each i As Item In pedido.items
+                If i.getEnsamblados > i.getEnDeposito Then
+                    i.setEnDeposito(i.getEnsamblados)
+                    i.actualizar()
+
+                    If i.getEstado.id <> Estado.estados.deposito Then
+                        flag = False
+                    End If
+                End If
+            Next
+
+            If flag Then
+                pedido.estado = New Estado(Estado.estados.deposito)
+                pedido.actualizar()
+            End If
+
+        Catch ex As Exception
+            Throw
+        End Try
+
+    End Sub
+
     Friend Sub modificarPedido(_itemOrg As Pedido, _Nvoitem As Item)
 
     End Sub
@@ -208,6 +234,20 @@ Public Class GestorPedidos
             pedido.estado = estadoCancelado
             pedido.actualizar(True)
 
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
+
+    Public Sub actualizarEstado(_estado As Estado)
+        Try
+            For Each i As Item In pedido.items
+                i.setEstado(_estado)
+                i.actualizar()
+            Next
+
+            pedido.estado = _estado
+            pedido.actualizar()
         Catch ex As Exception
             Throw
         End Try

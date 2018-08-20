@@ -19,18 +19,11 @@ Public Class administrarPedidos
         pnlStockNvo.Visible = False
         pnlDetalleEnCurso.Visible = False
         pnlDetalleEnsamblados.Visible = False
-        btnEnviarCliente.Visible = False
-        btnEnviarStock.Visible = False
-        btnAlmacenar.Visible = False
         pnlMsg.Visible = False
         pnlBtnCompras.Visible = False
         btnImprimir.Visible = False
         pnlResultadoBusqueda.Visible = False
         pnlBuscarBotones.Visible = False
-        btnBuscarOrdenes.Visible = False
-        btnBuscarEtiquetasDeposito.Visible = False
-        btnBuscarRemitos.Visible = False
-        btnRecibido.Visible = False
 
         If Not IsPostBack() Then
             gestorDatos.getCombos(dpFiltroEstados, GestorDatos.combos.estados)
@@ -279,30 +272,11 @@ Public Class administrarPedidos
             grDetalleDeposito.DataBind()
             grDetalleDeposito.SelectedIndex = -1
 
-            For Each i As Item In gestorPedidos.pedido.items
-                If i.getEstado().id <> Estado.estados.deposito Then
-                    check = False
-                End If
-            Next
-
-            If check Then
-                btnEnviarCliente.Visible = True
-                btnEnviarStock.Visible = True
-            End If
-
-            If gestorPedidos.pedido.estado.id = Estado.estados.enviado Then
-                btnRecibido.Visible = True
-            End If
-
             For Each r As GridViewRow In grDetalleDeposito.Rows
                 If r.Cells(8).Text.Trim() <> "DEPOSITO" And r.Cells(8).Text.Trim() <> "ENVIADO" Then
                     r.ForeColor = Drawing.Color.Red
                 End If
             Next
-
-            btnEnviarCliente_ConfirmButtonExtender.ConfirmText = String.Format("Imprimir Remito y mover el pedido {0} a estado ENVIADO?", gestorPedidos.pedido.id)
-            btnEnviarCliente.Text = String.Format("Enviar Pedido {0} a Cliente", gestorPedidos.pedido.id)
-            btnEnviarStock.Text = String.Format("Enviar Pedido {0} a Stock", gestorPedidos.pedido.id)
 
             Dim msg = String.Format("Carga de datos pedido {0} - CORRECTA", gestorPedidos.pedido.id)
             msgPanel(msg)
@@ -335,7 +309,7 @@ Public Class administrarPedidos
 
             For Each i As Item In gestorPedidos.pedido.items
                 If i.getEnsamblados > i.getEnDeposito Then
-                    btnAlmacenar.Visible = True
+                    'btnAlmacenar.Visible = True
                     Exit For
                 End If
             Next
@@ -343,81 +317,10 @@ Public Class administrarPedidos
             Dim msg = String.Format("Carga de datos pedido {0} - CORRECTA", gestorPedidos.pedido.id)
             msgPanel(msg)
 
-            btnAlmacenar_ConfirmButtonExtender.ConfirmText = String.Format("Imprimir etiquetas de deposito para el pedido {0}?", gestorPedidos.pedido.id)
-
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
 
-    End Sub
-
-
-    Protected Sub btnAlmacenar_Click(sender As Object, e As EventArgs) Handles btnAlmacenar.Click
-        Dim check = True
-        Dim estadoDeposito = New Estado(Estado.estados.deposito)
-        Dim dt = New DataTable
-        Dim rd = New ReportDocument
-
-        gestorPedidos = Session("gestorPedidos")
-
-        Try
-            crystalReport(GestorDatos.reportes.etiquetaDeposito, gestorPedidos.pedido.id)
-            gestorPedidos.enviarDeposito(grDetalleEnsamblados)
-            bindGrillas()
-
-            Dim msg = String.Format("Actualizacion Pedido {0} - CORRECTA", gestorPedidos.pedido.id)
-            msgPanel(msg)
-        Catch ex As Exception
-            errorPanel(ex.Message)
-        End Try
-    End Sub
-
-    Protected Sub btnEnviarStock_Click(sender As Object, e As EventArgs) Handles btnEnviarStock.Click
-        Dim estadoStock = New Estado(Estado.estados.stock)
-        gestorPedidos = Session("gestorPEdidos")
-
-        'EL STOCK DEL PRODUCTO SE INCREMENTA POR UN TRIGGER DE DB
-        For Each i As Item In gestorPedidos.pedido.items
-            i.setEstado(estadoStock)
-            i.actualizar()
-        Next
-        gestorPedidos.pedido.estado = estadoStock
-        gestorPedidos.pedido.actualizar()
-
-        Session("gestorPEdidos") = gestorPedidos
-
-        bindGrillas()
-        Dim msg = String.Format("Pedido {0} enviado a Stock", gestorPedidos.pedido.id)
-        msgPanel(msg)
-    End Sub
-
-    Protected Sub btnEnviarCliente_Click(sender As Object, e As EventArgs) Handles btnEnviarCliente.Click
-        Dim estadoEnviado = New Estado(Estado.estados.enviado)
-        Dim rd = New ReportDocument()
-        Dim db = New DbHelper()
-        Dim dt = New DataTable()
-
-        Try
-            gestorPedidos = Session("gestorPEdidos")
-
-            For Each i As Item In gestorPedidos.pedido.items
-                i.setEstado(estadoEnviado)
-                i.actualizar()
-            Next
-
-            gestorPedidos.pedido.estado = estadoEnviado
-            gestorPedidos.pedido.actualizar()
-
-            Session("gestorPEdidos") = gestorPedidos
-
-            Dim msg = String.Format("Pedido {0} - Estado actualizado a ENVIADO", gestorPedidos.pedido.id)
-            msgPanel(msg)
-
-            crystalReport(GestorDatos.reportes.remito, gestorPedidos.pedido.id)
-            bindGrillas()
-        Catch ex As Exception
-            errorPanel(ex.Message)
-        End Try
     End Sub
 
     Protected Sub btnImprimirEtiquetasDeposito_Click(sender As Object, e As EventArgs) Handles btnImprimirEtiquetasDeposito.Click
@@ -543,6 +446,26 @@ Public Class administrarPedidos
             grResultadoBusqueda.DataSource = table
             grResultadoBusqueda.DataBind()
 
+            Dim i = 0
+            For Each r As GridViewRow In grResultadoBusqueda.Rows
+                Dim btnOrden As ImageButton
+                Dim btnRemito As ImageButton
+
+                btnOrden = r.FindControl("btnRePrintOrdenes")
+                btnRemito = r.FindControl("btnRePrintRemito")
+
+                If table.Rows(i)("ID_ESTADO") > Estado.estados.enCola And table.Rows(i)("ID_ESTADO") < Estado.estados.entregado Then
+                    btnOrden.Visible = True
+                End If
+
+                If table.Rows(i)("ID_ESTADO") > Estado.estados.deposito And table.Rows(i)("ID_ESTADO") < Estado.estados.entregado Then
+                    btnRemito.Visible = True
+                End If
+                i += 1
+            Next
+
+
+
             Dim msg = "Resultados de busqueda - CARGADOS"
             msgPanel(msg)
 
@@ -556,6 +479,7 @@ Public Class administrarPedidos
             Dim row = grResultadoBusqueda.SelectedRow
             Dim idPedido = row.Cells(1).Text
             Dim ped As Pedido
+            Dim dt = New DataTable
 
             pnlBuscarBotones.Visible = True
             pnlResultadoBusqueda.Visible = True
@@ -564,20 +488,21 @@ Public Class administrarPedidos
             ped = gestorPedidos.pedido
             Session("gestorPedidos") = gestorPedidos
 
-            If ped.estado.id >= Estado.estados.enProduccion And ped.estado.id <= Estado.estados.deposito Then
-                btnBuscarOrdenes.Visible = True
-                btnBuscarEtiquetasDeposito.Visible = True
-            End If
-
-            If ped.estado.id >= Estado.estados.deposito And ped.estado.id <= Estado.estados.entregado Then
-                btnBuscarRemitos.Visible = True
-            End If
-
             Dim msg = String.Format("Carga de datos pedido {0} - CORRECTA", ped.id)
             msgPanel(msg)
 
-            grDetalleBusqueda.DataSource = gestorDatos.getItemsModificar(ped.id)
+            dt = gestorDatos.getItemsModificar(ped.id)
+            grDetalleBusqueda.DataSource = dt
             grDetalleBusqueda.DataBind()
+
+
+            If gestorPedidos.pedido.estado.id > Estado.estados.enCola And gestorPedidos.pedido.estado.id < Estado.estados.enviado Then
+                For Each r As GridViewRow In grDetalleBusqueda.Rows
+                    Dim btnEtiqueta As ImageButton
+                    btnEtiqueta = r.FindControl("btnRePrintEtiqueta")
+                    btnEtiqueta.Visible = True
+                Next
+            End If
 
         Catch ex As Exception
             errorPanel(ex.Message)
@@ -585,37 +510,6 @@ Public Class administrarPedidos
     End Sub
 
     Protected Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
-        Response.Redirect(Request.Url.AbsoluteUri)
-    End Sub
-
-    Protected Sub btnRecibido_Click(sender As Object, e As EventArgs) Handles btnRecibido.Click
-        gestorPedidos = Session("gestorPedidos")
-
-        Try
-            For Each i As Item In gestorPedidos.pedido.items
-                i.setEstado(New Estado(Estado.estados.recibido))
-                i.actualizar()
-            Next
-
-            gestorPedidos.pedido.estado = New Estado(Estado.estados.recibido)
-            gestorPedidos.pedido.actualizar()
-            Dim msg = String.Format("Pedido {0} movido a estado RECIBIDO", gestorPedidos.pedido.id)
-            msgPanel(msg)
-            bindGrillas()
-        Catch ex As Exception
-            errorPanel(ex.Message)
-        End Try
-    End Sub
-
-    Protected Sub btnCancelarBuscar_Click(sender As Object, e As EventArgs) Handles btnCancelarBuscar.Click
-        Response.Redirect(Request.Url.AbsoluteUri)
-    End Sub
-
-    Protected Sub btnCancelarDeposito_Click(sender As Object, e As EventArgs) Handles btnCancelarDeposito.Click
-        Response.Redirect(Request.Url.AbsoluteUri)
-    End Sub
-
-    Protected Sub btnCancelarEnsambladas_Click(sender As Object, e As EventArgs) Handles btnCancelarEnsambladas.Click
         Response.Redirect(Request.Url.AbsoluteUri)
     End Sub
 
@@ -651,7 +545,7 @@ Public Class administrarPedidos
         pnlCrystalReport.Visible = True
         TabContainer1.Visible = False
 
-        If _rpt = GestorDatos.reportes.etiquetaDeposito Then
+        If _rpt = GestorDatos.reportes.etiquetaDeposito Or _rpt = GestorDatos.reportes.etiquetaDepositoUnica Then
             rptPath = "../../reportes/etiquetas.rpt"
         ElseIf _rpt = GestorDatos.reportes.ordenTrabajo Then
             rptPath = "../../reportes/OrdenDeTrabajo.rpt"
@@ -665,10 +559,130 @@ Public Class administrarPedidos
             rd.SetDataSource(dt)
             CRV.ReportSource = rd
             Session("CRD") = rd
-
+            msgPanel("Vista previa de impresion - CARGADA")
         Catch ex As Exception
             btnPrintCrystal.Visible = False
             errorPanel(ex.Message)
         End Try
+    End Sub
+
+    Protected Sub grResultadoBusqueda_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grResultadoBusqueda.RowCommand
+        Try
+            If e.CommandName = "printOrden" Then
+                crystalReport(GestorDatos.reportes.ordenTrabajo, e.CommandArgument)
+            ElseIf e.CommandName = "printRemito" Then
+                crystalReport(GestorDatos.reportes.remito, e.CommandArgument)
+            End If
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        End Try
+
+    End Sub
+
+    Protected Sub grDetalleBusqueda_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grDetalleBusqueda.RowCommand
+        Try
+            If e.CommandName = "printEtiqueta" Then
+                crystalReport(GestorDatos.reportes.etiquetaDepositoUnica, e.CommandArgument)
+            End If
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        End Try
+    End Sub
+
+    Protected Sub grDeposito_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grDeposito.RowCommand
+        Dim estado As Estado
+        Dim idPedido = Convert.ToInt32(e.CommandArgument)
+        gestorPedidos = New GestorPedidos(idPedido)
+
+        Try
+            'ENVIAR PEDIDO A CLIENTE
+            If e.CommandName = "enviar" Then
+                estado = New Estado(Estado.estados.enviado)
+                gestorPedidos.actualizarEstado(estado)
+
+                Session("gestorPEdidos") = gestorPedidos
+
+                Dim msg = String.Format("Pedido {0} - Estado actualizado a ENVIADO", gestorPedidos.pedido.id)
+                msgPanel(msg)
+
+                crystalReport(GestorDatos.reportes.remito, gestorPedidos.pedido.id)
+
+                'ENVIAR A STOCK
+            ElseIf e.CommandName = "stock" Then
+                estado = New Estado(Estado.estados.stock)
+
+                'EL STOCK DEL PRODUCTO SE INCREMENTA POR UN TRIGGER DE DB
+                gestorPedidos.actualizarEstado(estado)
+
+                Session("gestorPEdidos") = gestorPedidos
+
+                Dim msg = String.Format("Pedido {0} enviado a STOCK interno", gestorPedidos.pedido.id)
+                msgPanel(msg)
+
+                'PEDIDO ENTREGADO AL CLIENTE
+            ElseIf e.CommandName = "entregado" Then
+                estado = New Estado(Estado.estados.entregado)
+
+                gestorPedidos.actualizarEstado(estado)
+
+                Dim msg = String.Format("Pedido {0} movido a estado ENREGADO", gestorPedidos.pedido.id)
+                msgPanel(msg)
+
+            End If
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        Finally
+            bindGrillas()
+        End Try
+    End Sub
+
+    Protected Sub grDeposito_DataBound(sender As Object, e As EventArgs) Handles grDeposito.DataBound
+
+        For Each r As GridViewRow In grDeposito.Rows
+            Dim btnEnviar As ImageButton
+            Dim btnStock As ImageButton
+            Dim btnEntregado As ImageButton
+
+            btnEnviar = r.FindControl("btnDepoEnviar")
+            btnStock = r.FindControl("btnDepoStock")
+            btnEntregado = r.FindControl("btnDepoEntregado")
+
+            If r.Cells(7).Text <> "" Then
+                If r.Cells(7).Text = Estado.estados.deposito Then
+                    btnEnviar.Visible = True
+                    btnStock.Visible = True
+                ElseIf r.Cells(7).Text = Estado.estados.enviado Then
+                    btnEntregado.Visible = True
+                End If
+            End If
+        Next
+    End Sub
+
+    Protected Sub grEnsamblados_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grEnsamblados.RowCommand
+
+        If e.CommandName = "almacenar" Then
+            Dim idPedido = Convert.ToInt32(e.CommandArgument)
+            gestorPedidos = New GestorPedidos(idPedido)
+            Try
+                crystalReport(GestorDatos.reportes.etiquetaDeposito, gestorPedidos.pedido.id)
+                gestorPedidos.enviarDeposito()
+                bindGrillas()
+
+                Dim msg = String.Format("Actualizacion Pedido {0} - CORRECTA", gestorPedidos.pedido.id)
+                msgPanel(msg)
+            Catch ex As Exception
+                errorPanel(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Protected Sub grEnsamblados_DataBound(sender As Object, e As EventArgs) Handles grEnsamblados.DataBound
+        For Each r As GridViewRow In grEnsamblados.Rows
+            If r.Cells(7).Text > 0 Then
+                Dim btnAlmac As ImageButton
+                btnAlmac = r.FindControl("btnAlmacenar")
+                btnAlmac.Visible = True
+            End If
+        Next
     End Sub
 End Class

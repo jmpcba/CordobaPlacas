@@ -861,33 +861,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.administrarPedidos._btnAlmacenar">
-<summary>
-Control btnAlmacenar.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnAlmacenar_ConfirmButtonExtender">
-<summary>
-Control btnAlmacenar_ConfirmButtonExtender.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnCancelarEnsambladas">
-<summary>
-Control btnCancelarEnsambladas.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:cordobaPlacas.administrarPedidos._tbDeposito">
 <summary>
 Control tbDeposito.
@@ -945,60 +918,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.administrarPedidos._grDetalleDeposito">
 <summary>
 Control grDetalleDeposito.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnEnviarStock">
-<summary>
-Control btnEnviarStock.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnEnviarCliente">
-<summary>
-Control btnEnviarCliente.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnEnviarCliente_ConfirmButtonExtender">
-<summary>
-Control btnEnviarCliente_ConfirmButtonExtender.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnRecibido">
-<summary>
-Control btnRecibido.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._ConfirmButtonExtender1">
-<summary>
-Control ConfirmButtonExtender1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnCancelarDeposito">
-<summary>
-Control btnCancelarDeposito.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1269,42 +1188,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.administrarPedidos._grDetalleBusqueda">
 <summary>
 Control grDetalleBusqueda.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnBuscarOrdenes">
-<summary>
-Control btnBuscarOrdenes.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnBuscarEtiquetasDeposito">
-<summary>
-Control btnBuscarEtiquetasDeposito.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnBuscarRemitos">
-<summary>
-Control btnBuscarRemitos.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnCancelarBuscar">
-<summary>
-Control btnCancelarBuscar.
 </summary>
 <remarks>
 Campo generado automáticamente.

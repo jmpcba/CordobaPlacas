@@ -37,6 +37,8 @@ Public Class DbHelper
             query = "SELECT * FROM VW_ORDENES WHERE PEDIDO=" & _idPedido
         ElseIf _tipo = GestorDatos.reportes.etiquetaDeposito Then
             query = "SELECT * FROM VW_ETIQUETAS WHERE ID=" & _idPedido
+        ElseIf _tipo = gestordatos.reportes.etiquetaDepositoUnica Then
+            query = "SELECT * FROM VW_ETIQUETAS_SIMPLE WHERE ID=" & _idPedido
         End If
 
         cmd.CommandType = CommandType.Text
@@ -368,7 +370,7 @@ Public Class DbHelper
     Public Function buscarPedidos(ByVal _nroPedido As Integer, _fecRecDesde As Date, ByVal _fecRecHasta As Date, _fecModDesde As Date,
                                   ByVal _fecModHasta As Date, ByVal _cliente As Object, ByVal _estado As Object) As DataTable
         Dim dt = New DataTable
-        Dim query = "select P.id AS 'Nro Pedido', C.nombre as Cliente, P.cant_total as Cantidad, P.precio_total as Precio, E.nombre as Estado, P.fecha_recibido as 'Fecha Recibido', 
+        Dim query = "select P.id AS 'Nro Pedido', C.nombre as Cliente, P.cant_total as Cantidad, P.precio_total as Precio, E.ID as ID_ESTADO, E.nombre as Estado, P.fecha_recibido as 'Fecha Recibido', 
                      P.fecha_modificado as 'Ultima Modificacion', P.fecha_entregado as 'Fecha entregado' from pedidos P 
                      inner join clientes C on p.id_cliente = c.id
                      inner join estados E on E.id = P.id_estado

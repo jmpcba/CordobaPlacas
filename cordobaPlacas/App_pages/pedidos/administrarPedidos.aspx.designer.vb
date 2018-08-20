@@ -356,33 +356,6 @@ Partial Public Class administrarPedidos
     Protected WithEvents grDetalleEnsamblados As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''Control btnAlmacenar.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnAlmacenar As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control btnAlmacenar_ConfirmButtonExtender.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnAlmacenar_ConfirmButtonExtender As Global.AjaxControlToolkit.ConfirmButtonExtender
-    
-    '''<summary>
-    '''Control btnCancelarEnsambladas.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnCancelarEnsambladas As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
     '''Control tbDeposito.
     '''</summary>
     '''<remarks>
@@ -444,60 +417,6 @@ Partial Public Class administrarPedidos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents grDetalleDeposito As Global.System.Web.UI.WebControls.GridView
-    
-    '''<summary>
-    '''Control btnEnviarStock.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnEnviarStock As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control btnEnviarCliente.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnEnviarCliente As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control btnEnviarCliente_ConfirmButtonExtender.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnEnviarCliente_ConfirmButtonExtender As Global.AjaxControlToolkit.ConfirmButtonExtender
-    
-    '''<summary>
-    '''Control btnRecibido.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnRecibido As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control ConfirmButtonExtender1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ConfirmButtonExtender1 As Global.AjaxControlToolkit.ConfirmButtonExtender
-    
-    '''<summary>
-    '''Control btnCancelarDeposito.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnCancelarDeposito As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control tbBuscar.
@@ -768,42 +687,6 @@ Partial Public Class administrarPedidos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents grDetalleBusqueda As Global.System.Web.UI.WebControls.GridView
-    
-    '''<summary>
-    '''Control btnBuscarOrdenes.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnBuscarOrdenes As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control btnBuscarEtiquetasDeposito.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnBuscarEtiquetasDeposito As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control btnBuscarRemitos.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnBuscarRemitos As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''Control btnCancelarBuscar.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnCancelarBuscar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control pnlCrystalReport.

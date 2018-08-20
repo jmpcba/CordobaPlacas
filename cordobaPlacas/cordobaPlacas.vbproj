@@ -271,13 +271,20 @@
     <Content Include="App_pages\pedidos\modificarPedido.aspx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
     <Content Include="Content\crystal.css" />
+    <Content Include="images\almacen.jpg" />
     <Content Include="images\arrow_left-512.png" />
     <Content Include="images\cancel.png" />
     <Content Include="images\cbaPlacasLogo.jpg" />
     <Content Include="images\delete.png" />
+    <Content Include="images\deposito.png" />
     <Content Include="images\edit-512.png" />
     <Content Include="images\edit.jpg" />
+    <Content Include="images\edit.png" />
+    <Content Include="images\enviar.png" />
+    <Content Include="images\enviar_flecha.png" />
     <Content Include="images\print.png" />
+    <Content Include="images\recibido.png" />
+    <Content Include="images\recibido_verde.png" />
     <Content Include="images\refresh-button-icon.png" />
     <Content Include="images\refresh.jpg" />
     <Content Include="App_pages\pedidos\administrarPedidos.aspx" />
@@ -296,8 +303,12 @@
     </Content>
     <Content Include="App_pages\pedidos\consultarPedidos.aspx" />
     <Content Include="images\save.png" />
+    <Content Include="images\select512.png" />
+    <Content Include="images\stock.jpg" />
+    <Content Include="images\stock.png" />
     <Content Include="images\three_dots.png" />
     <Content Include="images\view-details.png" />
+    <Content Include="images\work_order.png" />
     <Content Include="images\zoom_in.png" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />

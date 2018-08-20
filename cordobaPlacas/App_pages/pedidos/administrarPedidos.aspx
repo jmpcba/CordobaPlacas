@@ -15,7 +15,7 @@
         runat="server"
         Height="100%"
         Width="100%"
-        ActiveTabIndex="0">
+        ActiveTabIndex="2">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
                  <asp:Panel ID="pnlNvos" runat="server">
@@ -140,8 +140,14 @@
                             <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
                             <asp:BoundField DataField="MANO" HeaderText="MANO" />
                             <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" />
-                            <asp:BoundField DataField="CANT" HeaderText="CANT" />
-                            <asp:BoundField DataField="STOCK" HeaderText="EN STOCK" />
+                            <asp:BoundField DataField="CANT" HeaderText="CANT" >
+                            <ControlStyle Font-Bold="True" />
+                            <ItemStyle Font-Bold="True" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="STOCK" HeaderText="EN STOCK" >
+                            <HeaderStyle Font-Bold="True" />
+                            <ItemStyle Font-Bold="True" />
+                            </asp:BoundField>
                             <asp:TemplateField HeaderText="HOJAS TERMINADAS">
                                 <ItemTemplate>
                                     <asp:TextBox ID="txtHojasTerminadas" runat="server" Height="17px" Width="35px" Text='<%# Bind("HOJAS_TER") %>' ToolTip="Hojas fabricadas"></asp:TextBox>
@@ -196,6 +202,15 @@
                                 <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                                 <asp:BoundField DataField="Fecha Recibido" DataFormatString="{0:d}" HeaderText="Fecha Recibido" SortExpression="Fecha Recibido" />
                                 <asp:BoundField DataField="Ultima Modificacion" DataFormatString="{0:d}" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
+                                <asp:BoundField DataField="A_ALMACENAR" HeaderText="P/ Almancenar">
+                                <ItemStyle Font-Bold="True" />
+                                </asp:BoundField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:ImageButton ID="btnAlmacenar" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="almacenar" CssClass="imageButtons" ImageUrl="~/images/stock.png" ToolTip="Imprimir etiquetas de deposito para items ensamblados" Visible="False" />
+                                        <ajaxToolkit:ConfirmButtonExtender ID="btnAlmacenar_ConfirmButtonExtender" runat="server" ConfirmText="Imprimir etiquetas de deposito?" TargetControlID="btnAlmacenar" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                         <asp:SqlDataSource ID="dsEnsamblados" runat="server" ConnectionString="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True" SelectCommand="SP_PEDIDOS_ITEMS_ENSAMBLADO" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
@@ -217,13 +232,12 @@
                                 <asp:BoundField DataField="STOCK" HeaderText="STOCK" />
                                 <asp:BoundField DataField="ENSAMBLADAS" HeaderText="ENSAMBLADAS" />
                                 <asp:BoundField DataField="DEPOSITO" HeaderText="DEPOSITO" />
-                                <asp:BoundField DataField="PARA ALMACENAR" HeaderText="P/ ALMANCENAR" />
+                                <asp:BoundField DataField="PARA ALMACENAR" HeaderText="P/ ALMANCENAR" >
+                                <ItemStyle Font-Bold="True" />
+                                </asp:BoundField>
                             </Columns>
                         </asp:GridView>
                         <br />
-                        <asp:Button ID="btnAlmacenar" runat="server" Text="Enviar a Deposito" ToolTip="Imprimir etiquetas de deposito" OnClientClick="exportPdf" />
-                        <ajaxToolkit:ConfirmButtonExtender ID="btnAlmacenar_ConfirmButtonExtender" runat="server" BehaviorID="_content_btnAlmacenar_ConfirmButtonExtender" ConfirmText="" TargetControlID="btnAlmacenar" />
-                        <asp:Button ID="btnCancelarEnsambladas" runat="server" Text="Cancelar" />
                     </asp:Panel>
 </ContentTemplate>
 </ajaxToolkit:TabPanel>
@@ -245,6 +259,20 @@
                             <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                             <asp:BoundField DataField="Fecha Recibido" DataFormatString="{0:d}" HeaderText="Fecha Recibido" SortExpression="Fecha Recibido" />
                             <asp:BoundField DataField="Ultima Modificacion" DataFormatString="{0:d}" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
+                            <asp:BoundField DataField="ID_ESTADO" HeaderText="ID_ESTADO">
+                            <HeaderStyle CssClass="hiddencol" />
+                            <ItemStyle CssClass="hiddencol" />
+                            </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="btnDepoEnviar" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="enviar" CssClass="imageButtons" ImageUrl="~/images/enviar_flecha.png" ToolTip="Mover pedido a ENVIADO e imprimir remito" Visible="False" />
+                                    <ajaxToolkit:ConfirmButtonExtender ID="btnDepoEnviar_ConfirmButtonExtender" runat="server" ConfirmText="Eviar pedido al cliente e imprimir remito?" TargetControlID="btnDepoEnviar" />
+                                    <asp:ImageButton ID="btnDepoStock" runat="server" CommandArgument='<%# Eval("nro pedido")%>' CommandName="stock" CssClass="imageButtons" ImageUrl="~/images/almacen.jpg" ToolTip="Mover Pedido al Stock Interno" Visible="False" />
+                                    <ajaxToolkit:ConfirmButtonExtender ID="btnDepoStock_ConfirmButtonExtender" runat="server" ConfirmText="Mover pedido al stock interno?" TargetControlID="btnDepoStock" />
+                                    <asp:ImageButton ID="btnDepoEntregado" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="entregado" CssClass="imageButtons" ImageUrl="~/images/recibido.png" ToolTip="Mover el pedido a ENTREGADO" Visible="False" />
+                                    <ajaxToolkit:ConfirmButtonExtender ID="btnDepoEntregado_ConfirmButtonExtender" runat="server" ConfirmText="El cliente recibio el pedido?" TargetControlID="btnDepoEntregado" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                         </asp:GridView>
                         <asp:SqlDataSource ID="dsPedidosDeposito" runat="server" ConnectionString="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True" SelectCommand="SP_PEDIDOS_ITEMS_ENDEPOSITO" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
@@ -265,26 +293,6 @@
                             <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" />
                         </Columns>
                     </asp:GridView>
-                    <table>
-                        <tr>
-                            <td>
-                                <h5>
-                                    <asp:Button ID="btnEnviarStock" runat="server" Text="Enviar Pedido a Stock" ToolTip="Cerrar el pedido en enviandolo a stock interno" />
-                                </h5>
-                            </td>
-                            <td>
-                                <asp:Button ID="btnEnviarCliente" runat="server" Text="Enviar Pedido a Cliente" ToolTip="Imprimir remito y cambiar el estado a ENVIADO" />
-                                <ajaxToolkit:ConfirmButtonExtender ID="btnEnviarCliente_ConfirmButtonExtender" runat="server" BehaviorID="_content_btnEnviarCliente_ConfirmButtonExtender" ConfirmText="" TargetControlID="btnEnviarCliente" />
-                            </td>
-                            <td>
-                                <asp:Button ID="btnRecibido" runat="server" Text="Mover a Recibido" ToolTip="cambiar el estado si el cliente recibio el pedido" />
-                                <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" BehaviorID="_content_btnEnviarCliente_ConfirmButtonExtender" ConfirmText="El estado del pedido cambiara a RECIBIDO &#10;&#10; El Cambio no puede ser deshecho &#10;&#10; Desea Continuar?" TargetControlID="btnRecibido" />
-                            </td>
-                             <td>
-                                <asp:Button ID="btnCancelarDeposito" runat="server" Text="Cancelar" />
-                            </td>
-                        </tr>
-                    </table>
                 </asp:Panel>  
 </ContentTemplate>
 </ajaxToolkit:TabPanel>
@@ -426,7 +434,7 @@
                     </asp:Panel>
                 </asp:Panel>
                 <asp:Panel ID="pnlResultadoBusqueda" runat="server">
-                    <asp:GridView ID="grResultadoBusqueda" runat="server" AutoGenerateColumns="False" ToolTip="Resultados de busqueda">
+                    <asp:GridView ID="grResultadoBusqueda" runat="server" AutoGenerateColumns="False" ToolTip="Resultados de busqueda" DataKeyNames="Nro Pedido">
                         <Columns>
                             <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" ShowSelectButton="True">
                             <ControlStyle Height="20px" Width="20px" />
@@ -438,18 +446,37 @@
                             <asp:BoundField DataField="Estado" HeaderText="Estado" />
                             <asp:BoundField DataField="Fecha Recibido" DataFormatString="{0:d}" HeaderText="Fecha Recibido" />
                             <asp:BoundField DataField="Ultima Modificacion" DataFormatString="{0:d}" HeaderText="Fecha Modificado" />
-                            <asp:BoundField />
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="btnRePrintOrdenes" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="printOrden" CssClass="imageButtons" ImageUrl="~/images/view-details.png" ToolTip="Imprimir orden de trabajo" Visible="False" />
+                                    <ajaxToolkit:ConfirmButtonExtender ID="btnRePrintOrdenes_ConfirmButtonExtender" runat="server" ConfirmText="Re-imprimir ordenes de trabajo?" TargetControlID="btnRePrintOrdenes" />
+                                    <asp:ImageButton ID="btnRePrintRemito" runat="server" CssClass="imageButtons" ImageUrl="~/images/enviar.png" CommandArgument='<%# Eval("nro pedido") %>' CommandName="printRemito" ToolTip="Imprimir Remito" Visible="False" />
+                                    <ajaxToolkit:ConfirmButtonExtender ID="btnRePrintRemito_ConfirmButtonExtender" runat="server" ConfirmText="Re-imprimir remito?" TargetControlID="btnRePrintRemito" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                 </asp:Panel>
                 <asp:Panel ID="pnlBuscarBotones" Visible="False" runat="server">
                     <hr />
-                    <asp:GridView ID="grDetalleBusqueda" runat="server" ToolTip="Detalle pedido"></asp:GridView>
+                    <asp:GridView ID="grDetalleBusqueda" runat="server" ToolTip="Detalle pedido" AutoGenerateColumns="False">
+                        <Columns>
+                            <asp:BoundField DataField="ITEM" HeaderText="ITEM" />
+                            <asp:BoundField DataField="CANT" HeaderText="CANT" />
+                            <asp:BoundField DataField="LINEA" HeaderText="LINEA" />
+                            <asp:BoundField DataField="MADERA" HeaderText="MADERA" />
+                            <asp:BoundField DataField="MARCO" HeaderText="MARCO" />
+                            <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
+                            <asp:BoundField DataField="MANO" HeaderText="MANO" />
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="btnRePrintEtiqueta" runat="server" CssClass="imageButtons" ImageUrl="~/images/stock.png" CommandArgument='<%# Eval("ITEM") %>' CommandName="printEtiqueta" ToolTip="Imprimir etiquetas p/ deposito" Visible="False" />
+                                    <ajaxToolkit:ConfirmButtonExtender ID="btnRePrintEtiqueta_ConfirmButtonExtender" runat="server" ConfirmText="Re-imprimir etiquetas de Deposito?" TargetControlID="btnRePrintEtiqueta" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
                     <br />
-                    <asp:Button ID="btnBuscarOrdenes" runat="server" Text="Re-Imprimir Ordenes De Trabajo" visible="False" ToolTip="Imprimir nuevamente las ordenes de trabajo"/>
-                    <asp:Button ID="btnBuscarEtiquetasDeposito" runat="server" Text="Re-Imprimir Etiquetas de Deposito" visible="False" ToolTip="Imprimir nuevamente las etiquetas del deposito"/>
-                    <asp:Button ID="btnBuscarRemitos" runat="server" Text="Re-Imprimir Remitos" visible="False" ToolTip="Imprimir nuevamente el remito"/>
-                    <asp:Button ID="btnCancelarBuscar" runat="server" Text="Cancelar" visible="False"/>
                 </asp:Panel>
     </ContentTemplate>
 </ajaxToolkit:TabPanel>  
@@ -458,10 +485,10 @@
         <asp:ImageButton ID="btnVolverEtiquetas" runat="server" CssClass="imageButtons" ImageUrl="~/images/arrow_left-512.png" ToolTip="volver" />
         <br />
         <br />
-        <asp:ImageButton ID="btnPrintCrystal" runat="server" CssClass="printBtn" ImageUrl="~/images/print.png" Width="40px" />
+        <asp:ImageButton ID="btnPrintCrystal" runat="server" CssClass="printBtn" ImageUrl="~/images/print.png" Width="35px" />
         <br />
         <br />
-        <CR:CrystalReportViewer ID="CRV" runat="server" AutoDataBind="true" HasExportButton="False" HasPrintButton="False" ToolPanelView="None" />
+        <CR:CrystalReportViewer ID="CRV" runat="server" AutoDataBind="true" HasExportButton="False" HasPrintButton="False" ToolPanelView="None" HasToggleGroupTreeButton="False" />
     </asp:Panel>
     <asp:Panel ID="pnlMsg" runat="server">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>

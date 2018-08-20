@@ -85,11 +85,16 @@ td.combos {
 }
 
 .imageButtons{
-    width:20px;
+    width:25px;
+    padding:2px;
 }
 
 .printBtn{
     width:40px;
+}
+
+.hiddencol{
+    display:none;
 }
 
 /*
