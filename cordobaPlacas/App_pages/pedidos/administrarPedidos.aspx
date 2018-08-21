@@ -21,7 +21,7 @@
                  <asp:Panel ID="pnlNvos" runat="server">
                     <h2>Pedidos Nuevos</h2>
                     <p>
-                        <asp:ImageButton ID="btnRefreshNv" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" ImageAlign="Middle" ToolTip="Refrescar" />
+                        <asp:ImageButton ID="btnRefreshNv" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" ImageAlign="Middle" ToolTip="Refrescar" CssClass="imageButtons" />
                     </p>
                     <hr />
                     <asp:GridView ID="grNvos" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsNvos" ToolTip="Pedidos en estado RECIBIDO"><Columns>
@@ -54,8 +54,12 @@
                                     <asp:BoundField HeaderText="CHAPA" DataField="CHAPA" />
                                     <asp:BoundField HeaderText="MANO" DataField="MANO" />
                                     <asp:BoundField HeaderText="ESTADO" DataField="ESTADO" />
-                                    <asp:BoundField HeaderText="CANT" DataField="CANT" />
-                                    <asp:BoundField HeaderText="STOCK" DataField="STOCK" />
+                                    <asp:BoundField HeaderText="CANT" DataField="CANT" >
+                                    <ItemStyle CssClass="numCols" />
+                                    </asp:BoundField>
+                                    <asp:BoundField HeaderText="STOCK" DataField="STOCK" >
+                                    <ItemStyle CssClass="numCols" />
+                                    </asp:BoundField>
                                     <asp:TemplateField HeaderText="USAR STOCK">
                                         <ItemTemplate>
                                             <asp:TextBox ID="txtStockRow" runat="server" Height="17px" Width="35px" ValidationGroup="vgStock" ToolTip="Seleccione cuantas puertas cubrir con stock existente"></asp:TextBox>
@@ -66,17 +70,9 @@
                                 </Columns>
                             </asp:GridView>
                             <asp:Button ID="btnRecalcularPedido" runat="server" Text="Recalcular Materiales" ValidationGroup="vgStock" ToolTip="Recalcular Materiales utilizando Stock existente" />
-                            <asp:Button ID="btnImprimirEtiquetasDeposito" runat="server" Text="Imprimir Etiquetas de Deposito" ValidationGroup="vgStock" ToolTip="Imprimir etiquetas de deposito para las puertas en Stock" />
                             <asp:panel id="pnlVal" runat="server">
                                 <asp:ValidationSummary ID="vsNvos" runat="server" ValidationGroup="vgStock" DisplayMode="List" ForeColor="Red" ShowMessageBox="True" />
                             </asp:panel>
-                            <ajaxToolkit:ConfirmButtonExtender 
-                                ID="btnImprimirEtiquetasDeposito_ConfirmButtonExtender" 
-                                runat="server" 
-                                BehaviorID="_content_btnImprimirEtiquetasDeposito_ConfirmButtonExtender" 
-                                ConfirmText="Imprimir etiquetas de deposito?" 
-                                TargetControlID="btnImprimirEtiquetasDeposito"
-                                 />
                     </asp:Panel>
                     <asp:Panel ID="pnlStockNvo" runat="server" Visible="False">
                         <div>
@@ -110,7 +106,7 @@
             <ContentTemplate>
                 <h2>Pedidos En Curso</h2>
                 <p>
-                    <asp:ImageButton ID="btnRefreshEnCurso" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" />
+                    <asp:ImageButton ID="btnRefreshEnCurso" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" CssClass="imageButtons" />
                 </p>
                 <hr />
                 <asp:GridView ID="grEnCurso" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsEnCurso" ToolTip="Pedidos EN COLA y EN PRODUCCION">
@@ -142,11 +138,11 @@
                             <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" />
                             <asp:BoundField DataField="CANT" HeaderText="CANT" >
                             <ControlStyle Font-Bold="True" />
-                            <ItemStyle Font-Bold="True" />
+                            <ItemStyle Font-Bold="True" CssClass="numCols" />
                             </asp:BoundField>
                             <asp:BoundField DataField="STOCK" HeaderText="EN STOCK" >
                             <HeaderStyle Font-Bold="True" />
-                            <ItemStyle Font-Bold="True" />
+                            <ItemStyle Font-Bold="True" CssClass="numCols" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="HOJAS TERMINADAS">
                                 <ItemTemplate>
@@ -188,7 +184,7 @@
                     <div>
                         <h2>Items Ensamblados</h2>
                         <p>
-                            <asp:ImageButton ID="btnRefreshEnsamblado" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" />
+                            <asp:ImageButton ID="btnRefreshEnsamblado" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" CssClass="imageButtons" />
                         </p>
                         <hr />
                         <asp:GridView ID="grEnsamblados" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsEnsamblados" ToolTip="Pedidos con items a la espera de ser recibidos en el deposito">
@@ -203,7 +199,7 @@
                                 <asp:BoundField DataField="Fecha Recibido" DataFormatString="{0:d}" HeaderText="Fecha Recibido" SortExpression="Fecha Recibido" />
                                 <asp:BoundField DataField="Ultima Modificacion" DataFormatString="{0:d}" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
                                 <asp:BoundField DataField="A_ALMACENAR" HeaderText="P/ Almancenar">
-                                <ItemStyle Font-Bold="True" />
+                                <ItemStyle Font-Bold="True" CssClass="numCols" />
                                 </asp:BoundField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
@@ -228,12 +224,20 @@
                                 <asp:BoundField DataField="MARCO" HeaderText="MARCO" />
                                 <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
                                 <asp:BoundField DataField="MANO" HeaderText="MANO" />
-                                <asp:BoundField DataField="CANT" HeaderText="CANT" />
-                                <asp:BoundField DataField="STOCK" HeaderText="STOCK" />
-                                <asp:BoundField DataField="ENSAMBLADAS" HeaderText="ENSAMBLADAS" />
-                                <asp:BoundField DataField="DEPOSITO" HeaderText="DEPOSITO" />
+                                <asp:BoundField DataField="CANT" HeaderText="CANT" >
+                                <ItemStyle CssClass="numCols" HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="STOCK" HeaderText="STOCK" >
+                                <ItemStyle CssClass="numCols" HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ENSAMBLADAS" HeaderText="ENSAMBLADAS" >
+                                <ItemStyle CssClass="numCols" HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="DEPOSITO" HeaderText="DEPOSITO" >
+                                <ItemStyle CssClass="numCols" HorizontalAlign="Center" />
+                                </asp:BoundField>
                                 <asp:BoundField DataField="PARA ALMACENAR" HeaderText="P/ ALMANCENAR" >
-                                <ItemStyle Font-Bold="True" />
+                                <ItemStyle Font-Bold="True" CssClass="numCols" HorizontalAlign="Center" />
                                 </asp:BoundField>
                             </Columns>
                         </asp:GridView>
@@ -246,7 +250,7 @@
                     <asp:Panel ID="pnlDeposito" runat="server">
                     <h2>Pedidos en Deposito</h2>
                         <p>
-                            <asp:ImageButton ID="btnRefreshDeposito" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" />
+                            <asp:ImageButton ID="btnRefreshDeposito" runat="server" Height="34px" ImageUrl="~/images/refresh-button-icon.png" Width="34px" CssClass="imageButtons" />
                         </p>
                     <asp:GridView ID="grDeposito" runat="server" AutoGenerateColumns="False" DataKeyNames="Nro Pedido" DataSourceID="dsPedidosDeposito" ToolTip="Pedidos recibidos en el deposito">
                         <Columns>
@@ -255,7 +259,9 @@
                             </asp:CommandField>
                             <asp:BoundField DataField="Nro Pedido" HeaderText="Nro Pedido" InsertVisible="False" ReadOnly="True" SortExpression="Nro Pedido" />
                             <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
-                            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" />
+                            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" >
+                            <ItemStyle CssClass="numCols" HorizontalAlign="Center" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                             <asp:BoundField DataField="Fecha Recibido" DataFormatString="{0:d}" HeaderText="Fecha Recibido" SortExpression="Fecha Recibido" />
                             <asp:BoundField DataField="Ultima Modificacion" DataFormatString="{0:d}" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
@@ -267,7 +273,7 @@
                                 <ItemTemplate>
                                     <asp:ImageButton ID="btnDepoEnviar" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="enviar" CssClass="imageButtons" ImageUrl="~/images/enviar_flecha.png" ToolTip="Mover pedido a ENVIADO e imprimir remito" Visible="False" />
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnDepoEnviar_ConfirmButtonExtender" runat="server" ConfirmText="Eviar pedido al cliente e imprimir remito?" TargetControlID="btnDepoEnviar" />
-                                    <asp:ImageButton ID="btnDepoStock" runat="server" CommandArgument='<%# Eval("nro pedido")%>' CommandName="stock" CssClass="imageButtons" ImageUrl="~/images/almacen.jpg" ToolTip="Mover Pedido al Stock Interno" Visible="False" />
+                                    <asp:ImageButton ID="btnDepoStock" runat="server" CommandArgument='<%# Eval("nro pedido")%>' CommandName="stock" CssClass="imageButtons" ImageUrl="~/images/almacen.png" ToolTip="Mover Pedido al Stock Interno" Visible="False" />
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnDepoStock_ConfirmButtonExtender" runat="server" ConfirmText="Mover pedido al stock interno?" TargetControlID="btnDepoStock" />
                                     <asp:ImageButton ID="btnDepoEntregado" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="entregado" CssClass="imageButtons" ImageUrl="~/images/recibido.png" ToolTip="Mover el pedido a ENTREGADO" Visible="False" />
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnDepoEntregado_ConfirmButtonExtender" runat="server" ConfirmText="El cliente recibio el pedido?" TargetControlID="btnDepoEntregado" />
@@ -283,7 +289,9 @@
                     <asp:GridView ID="grDetalleDeposito" runat="server" ToolTip="Detalle pedido" AutoGenerateColumns="False">
                         <Columns>
                             <asp:BoundField DataField="ITEM" HeaderText="ITEM" />
-                            <asp:BoundField DataField="CANT" HeaderText="CANT" />
+                            <asp:BoundField DataField="CANT" HeaderText="CANT" >
+                            <ItemStyle CssClass="numCols" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="LINEA" HeaderText="LINEA" />
                             <asp:BoundField DataField="MADERA" HeaderText="MADERA" />
                             <asp:BoundField DataField="HOJA" HeaderText="HOJA" />
@@ -441,7 +449,9 @@
                             </asp:CommandField>
                             <asp:BoundField DataField="Nro Pedido" HeaderText="Nro" />
                             <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
-                            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
+                            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" >
+                            <ItemStyle CssClass="numCols" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="Precio" DataFormatString="{0:F2}" HeaderText="Precio" />
                             <asp:BoundField DataField="Estado" HeaderText="Estado" />
                             <asp:BoundField DataField="Fecha Recibido" DataFormatString="{0:d}" HeaderText="Fecha Recibido" />
@@ -462,7 +472,9 @@
                     <asp:GridView ID="grDetalleBusqueda" runat="server" ToolTip="Detalle pedido" AutoGenerateColumns="False">
                         <Columns>
                             <asp:BoundField DataField="ITEM" HeaderText="ITEM" />
-                            <asp:BoundField DataField="CANT" HeaderText="CANT" />
+                            <asp:BoundField DataField="CANT" HeaderText="CANT" >
+                            <ItemStyle CssClass="numCols" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="LINEA" HeaderText="LINEA" />
                             <asp:BoundField DataField="MADERA" HeaderText="MADERA" />
                             <asp:BoundField DataField="MARCO" HeaderText="MARCO" />
@@ -484,7 +496,7 @@
     <asp:Panel ID="pnlCrystalReport" runat="server" Visible="False">
         <asp:ImageButton ID="btnVolverEtiquetas" runat="server" CssClass="imageButtons" ImageUrl="~/images/arrow_left-512.png" ToolTip="volver" />
         <br />
-        <br />
+        &nbsp;<br />
         <asp:ImageButton ID="btnPrintCrystal" runat="server" CssClass="printBtn" ImageUrl="~/images/print.png" Width="35px" />
         <br />
         <br />

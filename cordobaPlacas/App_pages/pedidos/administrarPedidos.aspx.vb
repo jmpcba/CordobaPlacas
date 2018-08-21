@@ -308,13 +308,6 @@ Public Class administrarPedidos
             grDetalleEnsamblados.DataBind()
             grDetalleEnsamblados.SelectedIndex = -1
 
-            For Each i As Item In gestorPedidos.pedido.items
-                If i.getEnsamblados > i.getEnDeposito Then
-                    'btnAlmacenar.Visible = True
-                    Exit For
-                End If
-            Next
-
             Dim msg = String.Format("Carga de datos pedido {0} - CORRECTA", gestorPedidos.pedido.id)
             msgPanel(msg)
 
@@ -322,10 +315,6 @@ Public Class administrarPedidos
             errorPanel(ex.Message)
         End Try
 
-    End Sub
-
-    Protected Sub btnImprimirEtiquetasDeposito_Click(sender As Object, e As EventArgs) Handles btnImprimirEtiquetasDeposito.Click
-        'TODO IMPRIMIR ETIQUETAS
     End Sub
 
     Protected Sub btnRefreshEnCurso_Click(sender As Object, e As ImageClickEventArgs) Handles btnRefreshEnCurso.Click
@@ -688,5 +677,18 @@ Public Class administrarPedidos
                 btnAlmac.Visible = True
             End If
         Next
+    End Sub
+
+    Protected Sub grDetalleNvo_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grDetalleNvo.RowCommand
+        If e.CommandName <> "Select" Then
+            Dim idPedido = e.CommandArgument
+            Dim r As GridViewRow
+            Dim txtstock As TextBox
+            Dim stock As Integer
+
+            r = e.CommandSource.parent.parent
+            txtstock = r.FindControl("txtStockRow")
+            stock = txtstock.Text.Trim
+        End If
     End Sub
 End Class

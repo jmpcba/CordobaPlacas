@@ -85,7 +85,7 @@ td.combos {
 }
 
 .imageButtons{
-    width:25px;
+    width:30px;
     padding:2px;
 }
 
@@ -107,6 +107,6 @@ td.combos {
 background: #428bca;
 }*/
 
-.crystal{
-    border:solid;
+.numCols{
+    text-align: center;
 }

@@ -14,7 +14,7 @@
         Try
             gestorDatos = New GestorDatos()
             If IsPostBack Then
-                gestorPedidos = Session("GestorPedidos")
+                'gestorPedidos = Session("GestorPedidos")
             Else
                 gestorDatos.getCombos(dpCliente, GestorDatos.combos.clientes)
                 dpCliente.Items.Add("")
@@ -62,8 +62,8 @@
             Dim msg = String.Format("Pedido {0} - ENVIADO", gestorPedidos.pedido.id)
             msgPanel(msg)
 
-            gestorPedidos = Nothing
-            Session("gestorPedidos") = gestorPedidos
+            Session.Remove("gestorPedidos")
+
             grPedido.DataSource = Nothing
             grPedido.DataBind()
 
@@ -75,6 +75,8 @@
     End Sub
 
     Protected Sub Wizard1_NextButtonClick(sender As Object, e As WizardNavigationEventArgs) Handles Wizard1.NextButtonClick
+
+        gestorPedidos = Session("GestorPedidos")
 
         If e.CurrentStepIndex = 0 Then
             gestorDatos.getComboLineas(cbLinea)
@@ -93,11 +95,12 @@
             End If
 
         ElseIf e.CurrentStepIndex = 1 Then
+
             If gestorPedidos.pedido.items.Count = 0 Then
                 errorPanel("Agregue por lo menos un Item al Pedido")
                 e.Cancel = True
             Else
-                gestorPedidos = Session("GestorPedidos")
+
                 gestorDatos.getCliente(gestorPedidos.pedido.cliente.id, dvClienteConfirmar)
                 gestorDatos.mostrarGrillaItems(grPepedidoConfirmar, gestorPedidos.pedido, True)
                 lblCantidadNvo.Text = gestorPedidos.pedido.cantTotal
@@ -152,6 +155,7 @@
             Dim producto = New Producto(hoja, marco, madera, chapa, mano, linea)
 
             Dim item = New Item(producto, cant)
+            gestorPedidos = Session("gestorPedidos")
             gestorPedidos.addItem(item)
             gestorDatos.mostrarGrillaItems(grPedido, gestorPedidos.pedido)
 
@@ -166,7 +170,7 @@
 
     Private Sub grPedido_RowDeleting(sender As Object, e As GridViewDeleteEventArgs) Handles grPedido.RowDeleting
         Dim r = e.RowIndex
-
+        gestorPedidos = Session("gestorPedidos")
         gestorPedidos.eliminarItem(r)
         gestorDatos.mostrarGrillaItems(grPedido, gestorPedidos.pedido)
 
@@ -255,8 +259,7 @@
     End Sub
 
     Protected Sub Wizard1_CancelButtonClick(sender As Object, e As EventArgs) Handles Wizard1.CancelButtonClick
-        gestorPedidos = Nothing
-        Session("gestorPedidos") = gestorPedidos
+        Session.Remove("gestorPedidos")
         Response.Redirect(Request.Url.AbsoluteUri)
     End Sub
 

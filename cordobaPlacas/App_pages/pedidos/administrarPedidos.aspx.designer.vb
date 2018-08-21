@@ -95,15 +95,6 @@ Partial Public Class administrarPedidos
     Protected WithEvents btnRecalcularPedido As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Control btnImprimirEtiquetasDeposito.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnImprimirEtiquetasDeposito As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
     '''Control pnlVal.
     '''</summary>
     '''<remarks>
@@ -120,15 +111,6 @@ Partial Public Class administrarPedidos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents vsNvos As Global.System.Web.UI.WebControls.ValidationSummary
-    
-    '''<summary>
-    '''Control btnImprimirEtiquetasDeposito_ConfirmButtonExtender.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnImprimirEtiquetasDeposito_ConfirmButtonExtender As Global.AjaxControlToolkit.ConfirmButtonExtender
     
     '''<summary>
     '''Control pnlStockNvo.

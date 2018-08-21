@@ -266,12 +266,11 @@
     <Content Include="App_pages\clientes\busquedaCliente.aspx" />
     <Content Include="App_pages\clientes\modificarCliente.aspx" />
     <Content Include="App_pages\clientes\nuevoCliente.aspx" />
-    <Content Include="App_pages\impresion\impresion.aspx" />
     <Content Include="App_pages\pedidos\busquedas.ascx" />
     <Content Include="App_pages\pedidos\modificarPedido.aspx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
     <Content Include="Content\crystal.css" />
-    <Content Include="images\almacen.jpg" />
+    <Content Include="images\almacen.png" />
     <Content Include="images\arrow_left-512.png" />
     <Content Include="images\cancel.png" />
     <Content Include="images\cbaPlacasLogo.jpg" />
@@ -304,7 +303,6 @@
     <Content Include="App_pages\pedidos\consultarPedidos.aspx" />
     <Content Include="images\save.png" />
     <Content Include="images\select512.png" />
-    <Content Include="images\stock.jpg" />
     <Content Include="images\stock.png" />
     <Content Include="images\three_dots.png" />
     <Content Include="images\view-details.png" />
@@ -476,13 +474,6 @@
     <Compile Include="App_Code\Madera.vb" />
     <Compile Include="App_Code\Marco.vb" />
     <Compile Include="App_Code\Pedido.vb" />
-    <Compile Include="App_pages\impresion\impresion.aspx.designer.vb">
-      <DependentUpon>impresion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_pages\impresion\impresion.aspx.vb">
-      <DependentUpon>impresion.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="App_pages\pedidos\administrarPedidos.aspx.designer.vb">
       <DependentUpon>administrarPedidos.aspx</DependentUpon>
     </Compile>
