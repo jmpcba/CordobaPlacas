@@ -137,10 +137,10 @@ Public Class GestorPedidos
                 If i.getEnsamblados > i.getEnDeposito Then
                     i.setEnDeposito(i.getEnsamblados)
                     i.actualizar()
+                End If
 
-                    If i.getEstado.id <> Estado.estados.deposito Then
-                        flag = False
-                    End If
+                If i.getEstado.id <> Estado.estados.deposito Then
+                    flag = False
                 End If
             Next
 

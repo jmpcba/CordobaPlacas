@@ -72,17 +72,19 @@ Public Class Item
 
     Public Sub setEstado(_est As Estado)
         estado = _est
-
+        db = New DbHelper()
         'DESCUENTA MATERIALES DE LA DB SI SE MUEVE EL PEDIDO A ESTADO "EN PRODUCCION" Y ACTUALIZA EL STOCK DEL PRODUCTO
         'PARA ESTADO CANCELADO SE MUEVEN LOS PRODUCTOS ENSAMBLADOS A STOCK CON UN TRIGGER DE LA DB EN LA TABLA ITEMS
         If estado.id = Estado.estados.enCola Then
-            db = New DbHelper()
             CalcularMateriales()
             Try
                 db.consumirMateriales(despiece, cant - stock)
             Catch ex As Exception
                 Throw
             End Try
+        ElseIf estado.id = Estado.estados.cancelado Then
+            despiece = CalcularMateriales()
+            db.consumirMateriales(despiece, ensamblados * -1)
         End If
     End Sub
 

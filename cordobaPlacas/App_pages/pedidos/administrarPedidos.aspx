@@ -15,7 +15,7 @@
         runat="server"
         Height="100%"
         Width="100%"
-        ActiveTabIndex="0">
+        ActiveTabIndex="4">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
                  <asp:Panel ID="pnlNvos" runat="server">
@@ -273,8 +273,6 @@
                                 <ItemTemplate>
                                     <asp:ImageButton ID="btnDepoEnviar" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="enviar" CssClass="imageButtons" ImageUrl="~/images/enviar_flecha.png" ToolTip="Mover pedido a ENVIADO e imprimir remito" Visible="False" />
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnDepoEnviar_ConfirmButtonExtender" runat="server" ConfirmText="Eviar pedido al cliente e imprimir remito?" TargetControlID="btnDepoEnviar" />
-                                    <asp:ImageButton ID="btnDepoStock" runat="server" CommandArgument='<%# Eval("nro pedido")%>' CommandName="stock" CssClass="imageButtons" ImageUrl="~/images/almacen.png" ToolTip="Mover Pedido al Stock Interno" Visible="False" />
-                                    <ajaxToolkit:ConfirmButtonExtender ID="btnDepoStock_ConfirmButtonExtender" runat="server" ConfirmText="Mover pedido al stock interno?" TargetControlID="btnDepoStock" />
                                     <asp:ImageButton ID="btnDepoEntregado" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="entregado" CssClass="imageButtons" ImageUrl="~/images/recibido.png" ToolTip="Mover el pedido a ENTREGADO" Visible="False" />
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnDepoEntregado_ConfirmButtonExtender" runat="server" ConfirmText="El cliente recibio el pedido?" TargetControlID="btnDepoEntregado" />
                                 </ItemTemplate>
@@ -462,6 +460,8 @@
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnRePrintOrdenes_ConfirmButtonExtender" runat="server" ConfirmText="Re-imprimir ordenes de trabajo?" TargetControlID="btnRePrintOrdenes" />
                                     <asp:ImageButton ID="btnRePrintRemito" runat="server" CssClass="imageButtons" ImageUrl="~/images/enviar.png" CommandArgument='<%# Eval("nro pedido") %>' CommandName="printRemito" ToolTip="Imprimir Remito" Visible="False" />
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnRePrintRemito_ConfirmButtonExtender" runat="server" ConfirmText="Re-imprimir remito?" TargetControlID="btnRePrintRemito" />
+                                    <asp:ImageButton ID="btnEtiquetaStock" runat="server" CommandArgument='<%# Eval("nro pedido")%>' CommandName="stock" CssClass="imageButtons" ImageUrl="~/images/almacen.png" ToolTip="Imprimir Etiquetas para STOCK INTERNO" Visible="False" />
+                                    <ajaxToolkit:ConfirmButtonExtender ID="btnEtiquetaStock_ConfirmButtonExtender" runat="server" ConfirmText="Imprimir etiquetas para STOCK INTERNO?" TargetControlID="btnEtiquetaStock" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -471,18 +471,25 @@
                     <hr />
                     <asp:GridView ID="grDetalleBusqueda" runat="server" ToolTip="Detalle pedido" AutoGenerateColumns="False">
                         <Columns>
-                            <asp:BoundField DataField="ITEM" HeaderText="ITEM" />
-                            <asp:BoundField DataField="CANT" HeaderText="CANT" >
-                            <ItemStyle CssClass="numCols" />
-                            </asp:BoundField>
+                            <asp:BoundField DataField="ID_ITEM" HeaderText="ITEM" />
                             <asp:BoundField DataField="LINEA" HeaderText="LINEA" />
                             <asp:BoundField DataField="MADERA" HeaderText="MADERA" />
                             <asp:BoundField DataField="MARCO" HeaderText="MARCO" />
+                            <asp:BoundField DataField="HOJA" HeaderText="HOJA" />
                             <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
                             <asp:BoundField DataField="MANO" HeaderText="MANO" />
+                            <asp:BoundField DataField="CANT" HeaderText="CANT" >
+                            <ItemStyle CssClass="numCols" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="STOCK" HeaderText="STOCK" >
+                            <ControlStyle CssClass="numCols" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ENSAMBLADAS" HeaderText="ENSAMBLADAS" >
+                            <ControlStyle CssClass="numCols" />
+                            </asp:BoundField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="btnRePrintEtiqueta" runat="server" CssClass="imageButtons" ImageUrl="~/images/stock.png" CommandArgument='<%# Eval("ITEM") %>' CommandName="printEtiqueta" ToolTip="Imprimir etiquetas p/ deposito" Visible="False" />
+                                    <asp:ImageButton ID="btnRePrintEtiqueta" runat="server" CssClass="imageButtons" ImageUrl="~/images/stock.png" CommandArgument='<%# Eval("ID_ITEM") %>' CommandName="printEtiqueta" ToolTip="Imprimir etiquetas p/ deposito" Visible="False" />
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnRePrintEtiqueta_ConfirmButtonExtender" runat="server" ConfirmText="Re-imprimir etiquetas de Deposito?" TargetControlID="btnRePrintEtiqueta" />
                                 </ItemTemplate>
                             </asp:TemplateField>

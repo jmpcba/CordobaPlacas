@@ -510,15 +510,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.impresion._visorCR">
-<summary>
-Control visorCR.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:cordobaPlacas.administrarPedidos._TabContainer1">
 <summary>
 Control TabContainer1.
@@ -600,15 +591,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.administrarPedidos._btnImprimirEtiquetasDeposito">
-<summary>
-Control btnImprimirEtiquetasDeposito.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:cordobaPlacas.administrarPedidos._pnlVal">
 <summary>
 Control pnlVal.
@@ -621,15 +603,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.administrarPedidos._vsNvos">
 <summary>
 Control vsNvos.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._btnImprimirEtiquetasDeposito_ConfirmButtonExtender">
-<summary>
-Control btnImprimirEtiquetasDeposito_ConfirmButtonExtender.
 </summary>
 <remarks>
 Campo generado automáticamente.

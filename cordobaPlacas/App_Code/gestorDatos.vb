@@ -20,6 +20,14 @@ Public Class GestorDatos
         compras
         etiquetaDeposito
         etiquetaDepositoUnica
+        etiquetaDepositoInterna
+    End Enum
+
+    Public Enum tipoItems
+        busqueda
+        enCurso
+        Ensamblados
+        modificar
     End Enum
     Public Sub New()
         chapa = New Chapa()
@@ -250,6 +258,13 @@ Public Class GestorDatos
         End Try
     End Function
 
+    Public Function getItems(_idPedido As Integer, _tipo As tipoItems) As DataTable
+        Dim db = New DbHelper()
+        If _tipo = tipoItems.busqueda Then
+            Return db.getItemsBusqueda(_idPedido)
+        End If
+    End Function
+
     Public Function buscarPedidos(ByVal _nroPedido As Integer, _fecDesde As Date, ByVal _fecHasta As Date, _fecModDesde As Date, _fecModHasta As Date, ByVal _cliente As Object, ByVal _estado As Object) As DataTable
 
         Dim db = New DbHelper("pedidos")
@@ -335,6 +350,8 @@ Public Class GestorDatos
             Throw
         End Try
     End Function
+
+
 
     Public Function calcularMateriales(_pedido As Pedido, _gr As GridView) As Boolean
         Dim materiales = _pedido.calcularMateriales()

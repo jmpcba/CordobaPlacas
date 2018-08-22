@@ -39,6 +39,8 @@ Public Class DbHelper
             query = "SELECT * FROM VW_ETIQUETAS WHERE ID=" & _idPedido
         ElseIf _tipo = gestordatos.reportes.etiquetaDepositoUnica Then
             query = "SELECT * FROM VW_ETIQUETAS_SIMPLE WHERE ID=" & _idPedido
+        ElseIf GestorDatos.reportes.etiquetaDepositoInterna Then
+            query = "SELECT * FROM VW_ETIQUETAS_INTERNAS WHERE ID=" & _idPedido
         End If
 
         cmd.CommandType = CommandType.Text
@@ -171,27 +173,26 @@ Public Class DbHelper
     End Sub
 
     Friend Sub consumirMateriales(_piezas As DataTable, _cant As Double, Optional _depo As Boolean = False)
-        Dim query As String
-        query = "UPDATE MATERIALES SET "
-        cmd.Connection = cnn
-        cmd.CommandType = CommandType.Text
 
-        If _depo Then
-            query = query & "STOCK_RESERVADO=STOCK_RESERVADO-[CANT] WHERE ID="
-        Else
-            query = query & "STOCK_RESERVADO=STOCK_RESERVADO+[CANT], STOCK_DISPONIBLE= STOCK_DISPONIBLE-[CANT] WHERE ID="
-        End If
+        cmd.Connection = cnn
+        cmd.CommandText = "SP_UPDATE_MATERIAL"
+        cmd.CommandType = CommandType.StoredProcedure
 
         Try
             cnn.Open()
             For Each r As DataRow In _piezas.Rows
-                Dim formatQuery = query
-                Dim cant = _cant * r("CONSUMO")
-                cant = cant.ToString().Replace(",", ".")
-                formatQuery = formatQuery.Replace("[CANT]", cant)
 
-                formatQuery = formatQuery & r("ID_PIEZA")
-                cmd.CommandText = formatQuery
+                cmd.Parameters.Clear()
+                If _depo Then
+                    cmd.Parameters.AddWithValue("@DEPO", 1)
+                Else
+                    cmd.Parameters.AddWithValue("@DEPO", 0)
+                End If
+
+                cmd.Parameters.AddWithValue("@ID_PIEZA", r("ID_PIEZA"))
+                cmd.Parameters.AddWithValue("@CONSUMO", r("consumo"))
+                cmd.Parameters.AddWithValue("@CANT", _cant)
+
                 cmd.ExecuteNonQuery()
             Next
 
@@ -202,22 +203,6 @@ Public Class DbHelper
         End Try
 
 
-    End Sub
-
-    Public Sub insertarItem(ByVal _hoja As Integer, ByVal _marco As Integer, ByVal _madera As Integer, ByVal _chapa As Integer, ByVal _cant As Integer, ByVal _precio As Decimal, ByVal _mano As Integer, ByVal _pedido As Integer, ByVal _idLinea As Integer)
-        Dim strPrecio = _precio.ToString
-        strPrecio = strPrecio.Replace(",", ".")
-        Dim query = String.Format("INSERT INTO dbo.items (idHoja, idMarco, idMadera, idChapa, cantidad, precio, idMano, idPedido, idLinea) VALUES({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8})", _hoja, _marco, _madera, _chapa, _cant, strPrecio, _mano, _pedido, _idLinea)
-        Try
-            cmd.Connection = cnn
-            cmd.CommandText = query
-            cnn.Open()
-            cmd.ExecuteNonQuery()
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        Finally
-            cnn.Close()
-        End Try
     End Sub
 
     Public Sub insertarItem(_idProducto As Integer, _idPedido As Integer, _cant As Integer, _monto As Decimal, _stock As Integer)
@@ -265,6 +250,20 @@ Public Class DbHelper
             cnn.Close()
         End Try
 
+    End Function
+
+    Friend Function getItemsBusqueda(_idPedido As Integer) As DataTable
+        Dim query = "SELECT * FROM VW_ITEMS WHERE ID_PEDIDO=" & _idPedido
+
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = query
+
+        Try
+            da.Fill(ds, "ITEMS")
+            Return ds.Tables("ITEMS")
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
     End Function
 
     Public Function getRange(ByVal _column As String, ByVal _value As String) As DataTable

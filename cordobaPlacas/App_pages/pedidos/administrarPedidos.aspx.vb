@@ -440,9 +440,11 @@ Public Class administrarPedidos
             For Each r As GridViewRow In grResultadoBusqueda.Rows
                 Dim btnOrden As ImageButton
                 Dim btnRemito As ImageButton
+                Dim btnEtiquetaStockInterno As ImageButton
 
                 btnOrden = r.FindControl("btnRePrintOrdenes")
                 btnRemito = r.FindControl("btnRePrintRemito")
+                btnEtiquetaStockInterno = r.FindControl("btnEtiquetaStock")
 
                 If table.Rows(i)("ID_ESTADO") > Estado.estados.enCola And table.Rows(i)("ID_ESTADO") < Estado.estados.entregado Then
                     btnOrden.Visible = True
@@ -451,10 +453,12 @@ Public Class administrarPedidos
                 If table.Rows(i)("ID_ESTADO") > Estado.estados.deposito And table.Rows(i)("ID_ESTADO") < Estado.estados.entregado Then
                     btnRemito.Visible = True
                 End If
+
+                If table.Rows(i)("ID_ESTADO") = Estado.estados.cancelado Then
+                    btnEtiquetaStockInterno.Visible = True
+                End If
                 i += 1
             Next
-
-
 
             Dim msg = "Resultados de busqueda - CARGADOS"
             msgPanel(msg)
@@ -481,7 +485,7 @@ Public Class administrarPedidos
             Dim msg = String.Format("Carga de datos pedido {0} - CORRECTA", ped.id)
             msgPanel(msg)
 
-            dt = gestorDatos.getItemsModificar(ped.id)
+            dt = gestorDatos.getItems(ped.id, GestorDatos.tipoItems.busqueda)
             grDetalleBusqueda.DataSource = dt
             grDetalleBusqueda.DataBind()
 
@@ -541,6 +545,8 @@ Public Class administrarPedidos
             rptPath = "../../reportes/OrdenDeTrabajo.rpt"
         ElseIf _rpt = GestorDatos.reportes.remito Then
             rptPath = "../../reportes/remito_filtrado.rpt"
+        ElseIf _rpt = GestorDatos.reportes.etiquetaDepositoInterna Then
+            rptPath = "../../reportes/etiquetasInternas.rpt"
         End If
 
         Try
@@ -562,6 +568,8 @@ Public Class administrarPedidos
                 crystalReport(GestorDatos.reportes.ordenTrabajo, e.CommandArgument)
             ElseIf e.CommandName = "printRemito" Then
                 crystalReport(GestorDatos.reportes.remito, e.CommandArgument)
+            ElseIf e.CommandName = "stock" Then
+                crystalReport(GestorDatos.reportes.etiquetaDepositoInterna, e.CommandArgument)
             End If
         Catch ex As Exception
             errorPanel(ex.Message)
@@ -599,16 +607,16 @@ Public Class administrarPedidos
                     crystalReport(GestorDatos.reportes.remito, gestorPedidos.pedido.id)
 
                     'ENVIAR A STOCK
-                ElseIf e.CommandName = "stock" Then
-                    estado = New Estado(Estado.estados.stock)
+                    'ElseIf e.CommandName = "stock" Then
+                    '    estado = New Estado(Estado.estados.stock)
 
-                    'EL STOCK DEL PRODUCTO SE INCREMENTA POR UN TRIGGER DE DB
-                    gestorPedidos.actualizarEstado(estado)
+                    '    'EL STOCK DEL PRODUCTO SE INCREMENTA POR UN TRIGGER DE DB
+                    '    gestorPedidos.actualizarEstado(estado)
 
-                    Session("gestorPEdidos") = gestorPedidos
+                    '    Session("gestorPEdidos") = gestorPedidos
 
-                    Dim msg = String.Format("Pedido {0} enviado a STOCK interno", gestorPedidos.pedido.id)
-                    msgPanel(msg)
+                    '    Dim msg = String.Format("Pedido {0} enviado a STOCK interno", gestorPedidos.pedido.id)
+                    '    msgPanel(msg)
 
                     'PEDIDO ENTREGADO AL CLIENTE
                 ElseIf e.CommandName = "entregado" Then
@@ -633,17 +641,14 @@ Public Class administrarPedidos
 
         For Each r As GridViewRow In grDeposito.Rows
             Dim btnEnviar As ImageButton
-            Dim btnStock As ImageButton
             Dim btnEntregado As ImageButton
 
             btnEnviar = r.FindControl("btnDepoEnviar")
-            btnStock = r.FindControl("btnDepoStock")
             btnEntregado = r.FindControl("btnDepoEntregado")
 
             If r.Cells(7).Text <> "" Then
                 If r.Cells(7).Text = Estado.estados.deposito Then
                     btnEnviar.Visible = True
-                    btnStock.Visible = True
                 ElseIf r.Cells(7).Text = Estado.estados.enviado Then
                     btnEntregado.Visible = True
                 End If
