@@ -636,27 +636,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:cordobaPlacas.administrarPedidos._grMateriales">
-<summary>
-Control grMateriales.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.administrarPedidos._pnlBtnCompras">
-<summary>
-Control pnlBtnCompras.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:cordobaPlacas.administrarPedidos._btnPedidoCompras">
 <summary>
 Control btnPedidoCompras.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.administrarPedidos._grMateriales">
+<summary>
+Control grMateriales.
 </summary>
 <remarks>
 Campo generado automáticamente.

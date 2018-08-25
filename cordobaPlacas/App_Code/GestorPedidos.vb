@@ -89,45 +89,12 @@ Public Class GestorPedidos
                 pedido.actualizar()
             End If
         End If
-
     End Sub
 
     Friend Sub eliminarItem(_index As Integer)
         pedido.eliminarItem(_index)
     End Sub
 
-    Public Sub enviarDeposito(_gr As GridView)
-        Dim flag As Boolean = True
-
-        'ACTUALIZAR LOS ITEMS QUE SE MUESTRAN EN PANTALLA
-        For Each r As GridViewRow In _gr.Rows
-            Dim index = pedido.itemIndex(r.Cells(0).Text)
-            pedido.items(index).setEnDeposito(pedido.items(index).getEnsamblados())
-            Try
-                pedido.items(index).actualizar()
-            Catch ex As Exception
-                Throw
-            End Try
-
-        Next
-
-        'CONTROLAR SI TODOS LOS ITEMS DEL PEDIDO ESTAN EN DEPOSITO
-        For Each i As Item In pedido.items
-            If i.getEstado.id <> Estado.estados.deposito Then
-                flag = False
-            End If
-        Next
-
-        'SI ESTAN TODOS EN DEPOSITO MARCAR EL PEDIDO COMO ESTADO DEPOSITO
-        If flag Then
-            pedido.estado = New Estado(Estado.estados.deposito)
-            Try
-                pedido.actualizar()
-            Catch ex As Exception
-                Throw
-            End Try
-        End If
-    End Sub
 
     Public Sub enviarDeposito()
         'EL ITEM PASA A ESTADO DEPOSITO SI TODOS DEPOSITO = CANT - STOCK POR TRIGGER DE LA DB
@@ -152,11 +119,6 @@ Public Class GestorPedidos
         Catch ex As Exception
             Throw
         End Try
-
-    End Sub
-
-    Friend Sub modificarPedido(_itemOrg As Pedido, _Nvoitem As Item)
-
     End Sub
 
     Public Sub EnviarProduccion(_gr As GridView)
@@ -251,6 +213,22 @@ Public Class GestorPedidos
         Catch ex As Exception
             Throw
         End Try
-
     End Sub
+
+    Public Function calcularMateriales() As DataTable
+        Dim materiales = pedido.calcularMateriales()
+
+        materiales.Columns.Add("FALTANTE", GetType(Decimal))
+
+        Dim i = 0
+
+        For Each r As DataRow In materiales.Rows
+            Dim requerido = r("CONSUMO")
+
+            If requerido > r("STOCK_DISPONIBLE") Then
+                r("FALTANTE") = r("STOCK_DISPONIBLE") - requerido
+            End If
+            i += 1
+        Next
+    End Function
 End Class

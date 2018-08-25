@@ -585,6 +585,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="App_Code\Producto.vb" />
+    <Compile Include="reportes\compras.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>compras.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportes\etiquetasInternas.vb">
       <DependentUpon>etiquetasInternas.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -666,6 +672,10 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="reportes\compras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>compras.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="reportes\etiquetasInternas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>etiquetasInternas.vb</LastGenOutput>
@@ -704,6 +714,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
+    <Folder Include="App_pages\materiales\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

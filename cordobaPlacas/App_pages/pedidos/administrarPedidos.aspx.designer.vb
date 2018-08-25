@@ -140,24 +140,6 @@ Partial Public Class administrarPedidos
     Protected WithEvents chkPiezas As Global.System.Web.UI.WebControls.CheckBox
     
     '''<summary>
-    '''Control grMateriales.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents grMateriales As Global.System.Web.UI.WebControls.GridView
-    
-    '''<summary>
-    '''Control pnlBtnCompras.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents pnlBtnCompras As Global.System.Web.UI.WebControls.Panel
-    
-    '''<summary>
     '''Control btnPedidoCompras.
     '''</summary>
     '''<remarks>
@@ -165,6 +147,15 @@ Partial Public Class administrarPedidos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnPedidoCompras As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control grMateriales.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grMateriales As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
     '''Control btnImprimir.

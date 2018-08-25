@@ -21,6 +21,7 @@ Public Class GestorDatos
         etiquetaDeposito
         etiquetaDepositoUnica
         etiquetaDepositoInterna
+        etiquetaDepositoStock
     End Enum
 
     Public Enum tipoItems
@@ -351,14 +352,11 @@ Public Class GestorDatos
         End Try
     End Function
 
-
-
     Public Function calcularMateriales(_pedido As Pedido, _gr As GridView) As Boolean
         Dim materiales = _pedido.calcularMateriales()
         Dim result = True
         Dim redRows = New List(Of Integer)
 
-        materiales.Columns.Add("FALTANTE", GetType(Decimal))
 
         Dim i = 0
 
@@ -367,7 +365,6 @@ Public Class GestorDatos
 
             If requerido > r("STOCK_DISPONIBLE") Then
                 result = False
-                r("FALTANTE") = r("STOCK_DISPONIBLE") - requerido
                 redRows.Add(i)
             End If
             i += 1

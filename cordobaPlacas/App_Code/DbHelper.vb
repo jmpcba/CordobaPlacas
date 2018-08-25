@@ -28,8 +28,9 @@ Public Class DbHelper
         ds = New DataSet()
     End Sub
 
-    Friend Function getReporte(_idPedido As String, _tipo As GestorDatos.reportes) As DataTable
+    Friend Function getReporte(_idPedido As String, _tipo As GestorDatos.reportes, Optional _stock As Integer = 0) As DataTable
         Dim query As String
+        cmd.CommandType = CommandType.Text
 
         If _tipo = GestorDatos.reportes.remito Then
             query = "SELECT * FROM VW_REMITOS WHERE PEDIDO=" & _idPedido
@@ -37,13 +38,14 @@ Public Class DbHelper
             query = "SELECT * FROM VW_ORDENES WHERE PEDIDO=" & _idPedido
         ElseIf _tipo = GestorDatos.reportes.etiquetaDeposito Then
             query = "SELECT * FROM VW_ETIQUETAS WHERE ID=" & _idPedido
-        ElseIf _tipo = gestordatos.reportes.etiquetaDepositoUnica Then
+        ElseIf _tipo = GestorDatos.reportes.etiquetaDepositoUnica Then
             query = "SELECT * FROM VW_ETIQUETAS_SIMPLE WHERE ID=" & _idPedido
         ElseIf GestorDatos.reportes.etiquetaDepositoInterna Then
             query = "SELECT * FROM VW_ETIQUETAS_INTERNAS WHERE ID=" & _idPedido
+        ElseIf _tipo = GestorDatos.reportes.etiquetaDepositoStock Then
+            query = "SELECT * FROM VW_ETIQUETAS_STOCK WHERE ID=" & _idPedido
         End If
 
-        cmd.CommandType = CommandType.Text
         cmd.CommandText = query
 
         Try
@@ -278,34 +280,6 @@ Public Class DbHelper
         End Try
     End Function
 
-    Public Function getPedidos(ByVal _cliente As Integer) As DataTable
-        Try
-            cmd.Connection = cnn
-            cmd.CommandText = String.Format("SELECT P.ID, P.FECHA, P.ESTADO FROM PEDIDOS P INNER JOIN clientes C ON p.cliente = C.id WHERE P.cliente={0}", _cliente.ToString())
-            da.Fill(ds, table)
-
-            Return ds.Tables(table)
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        End Try
-    End Function
-
-    Public Function getItems(ByVal _pedido As Integer) As DataTable
-        Try
-            cmd.Connection = cnn
-            cmd.CommandText = "SP_ITEMS_PEDIDO"
-            cmd.CommandType = CommandType.StoredProcedure
-
-            cmd.Parameters.AddWithValue("@idPedido", _pedido)
-
-            da.Fill(ds, table)
-
-            Return ds.Tables(table)
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        End Try
-    End Function
-
     Public Function getItems(_pedido As Integer, _estado As Estado, Optional _stock As Boolean = False) As DataTable
         Try
             cmd.Connection = cnn
@@ -463,28 +437,6 @@ Public Class DbHelper
 
         Return ds.Tables("pedidos")
     End Function
-
-    Public Sub updateById(ByVal _id As Integer, ByVal _col As String, ByVal _val As String)
-        Dim query As String
-
-        If IsNumeric(_val) Then
-            _val = _val.Replace(",", ".")
-            query = String.Format("UPDATE {0} SET {1} = {2} WHERE id={3}", table, _col, _val, _id)
-        Else
-            query = String.Format("UPDATE {0} SET {1} = '{2}' WHERE id={3}", table, _col, _val, _id)
-        End If
-
-        Try
-            cmd.Connection = cnn
-            cmd.CommandText = query
-            cnn.Open()
-            cmd.ExecuteNonQuery()
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        Finally
-            cnn.Close()
-        End Try
-    End Sub
 
     Public Sub actualizarItem(_item As Item)
         Dim strPrecio = _item.monto.ToString()
@@ -656,6 +608,26 @@ Public Class DbHelper
         cmd.CommandType = CommandType.StoredProcedure
 
         cmd.Parameters.AddWithValue("@ID_PROD", _idProducto)
+
+        Try
+            da.Fill(ds, "RESULTADO")
+            Return ds.Tables("RESULTADO")
+
+        Catch ex As SqlException
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+    End Function
+
+    Public Function getDespiece(_pedido As Pedido) As DataTable
+
+        ds = New DataSet
+
+        cmd.Connection = cnn
+        cmd.CommandText = "SP_DESPIECE_PEDIDO"
+        cmd.CommandType = CommandType.StoredProcedure
+
+        cmd.Parameters.Clear()
+        cmd.Parameters.AddWithValue("@ID_PEDIDO", _pedido.id)
 
         Try
             da.Fill(ds, "RESULTADO")

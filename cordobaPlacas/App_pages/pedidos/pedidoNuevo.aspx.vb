@@ -16,9 +16,14 @@
             If IsPostBack Then
                 'gestorPedidos = Session("GestorPedidos")
             Else
-                gestorDatos.getCombos(dpCliente, GestorDatos.combos.clientes)
-                dpCliente.Items.Add("")
-                dpCliente.SelectedIndex = dpCliente.Items.Count - 1
+                Try
+                    Session.Remove("gestorPedidos")
+                    gestorDatos.getCombos(dpCliente, GestorDatos.combos.clientes)
+                    dpCliente.Items.Add("")
+                    dpCliente.SelectedIndex = dpCliente.Items.Count - 1
+                Catch ex As Exception
+
+                End Try
             End If
         Catch ex As Exception
             errorPanel(ex.Message)

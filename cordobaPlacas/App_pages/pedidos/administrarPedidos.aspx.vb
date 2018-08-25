@@ -20,10 +20,10 @@ Public Class administrarPedidos
         pnlDetalleEnCurso.Visible = False
         pnlDetalleEnsamblados.Visible = False
         pnlMsg.Visible = False
-        pnlBtnCompras.Visible = False
         btnImprimir.Visible = False
         pnlResultadoBusqueda.Visible = False
         pnlBuscarBotones.Visible = False
+        btnPedidoCompras.Visible = False
 
         If Not IsPostBack() Then
             gestorDatos.getCombos(dpFiltroEstados, GestorDatos.combos.estados)
@@ -99,7 +99,7 @@ Public Class administrarPedidos
                 chkPiezas.Text = "NO DISPONE DE MATERIALES SUFICIENTES"
                 chkPiezas.Checked = False
                 chkPiezas.ForeColor = Drawing.Color.Red
-                pnlBtnCompras.Visible = True
+                btnPedidoCompras.Visible = True
             End If
 
             btnImprimir_ConfirmButtonExtender.ConfirmText = String.Format("Mover el pedido {0} a la cola de produccion \n&#10; E imprimir ordenes de trabajo?", gestorPedidos.pedido.id)
@@ -148,7 +148,7 @@ Public Class administrarPedidos
             chkPiezas.Text = "NO DISPONE DE MATERIALES SUFICIENTES"
             chkPiezas.Checked = False
             chkPiezas.ForeColor = Drawing.Color.Red
-            pnlBtnCompras.Visible = True
+            btnPedidoCompras.Visible = True
         End If
 
         lbltituloMat.Text = String.Format("Lista de materiales Pedido: {0} Item {1}", gestorPedidos.pedido.id, item.id)
@@ -165,7 +165,11 @@ Public Class administrarPedidos
     End Sub
 
     Protected Sub btnPedidoCompras_Click(sender As Object, e As EventArgs) Handles btnPedidoCompras.Click
+        Dim desp = New DataTable()
 
+        gestorPedidos = Session("gestorPedidos")
+
+        crystalReport(GestorDatos.reportes.compras, gestorPedidos.pedido.id)
     End Sub
 
     Protected Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
@@ -367,7 +371,7 @@ Public Class administrarPedidos
             chkPiezas.Text = "NO DISPONE DE MATERIALES SUFICIENTES"
             chkPiezas.Checked = False
             chkPiezas.ForeColor = Drawing.Color.Red
-            pnlBtnCompras.Visible = True
+            btnPedidoCompras.Visible = True
         End If
 
     End Sub
@@ -539,7 +543,9 @@ Public Class administrarPedidos
         pnlCrystalReport.Visible = True
         TabContainer1.Visible = False
 
-        If _rpt = GestorDatos.reportes.etiquetaDeposito Or _rpt = GestorDatos.reportes.etiquetaDepositoUnica Then
+        If _rpt = GestorDatos.reportes.etiquetaDeposito Or _rpt = GestorDatos.reportes.etiquetaDepositoUnica Or
+            _rpt = GestorDatos.reportes.etiquetaDepositoStock Then
+
             rptPath = "../../reportes/etiquetas.rpt"
         ElseIf _rpt = GestorDatos.reportes.ordenTrabajo Then
             rptPath = "../../reportes/OrdenDeTrabajo.rpt"
@@ -547,10 +553,30 @@ Public Class administrarPedidos
             rptPath = "../../reportes/remito_filtrado.rpt"
         ElseIf _rpt = GestorDatos.reportes.etiquetaDepositoInterna Then
             rptPath = "../../reportes/etiquetasInternas.rpt"
+        ElseIf _rpt = GestorDatos.reportes.compras Then
+            rptPath = "../../reportes/compras.rpt"
         End If
 
         Try
-            dt = gestorDatos.getReporte(_idPedido, _rpt)
+            If _rpt = GestorDatos.reportes.compras Then
+                Dim rowsToDelete = New List(Of DataRow)
+                gestorPedidos = Session("gestorPedidos")
+
+                dt = gestorPedidos.pedido.despiece
+
+                For Each r As DataRow In dt.Rows
+                    If IsDBNull(r("FALTANTE")) Then
+                        rowsToDelete.Add(r)
+                    End If
+                Next
+
+                For Each r In rowsToDelete
+                    dt.Rows.Remove(r)
+                Next
+            Else
+                dt = gestorDatos.getReporte(_idPedido, _rpt)
+            End If
+
             rd.Load(Server.MapPath(rptPath))
             rd.SetDataSource(dt)
             CRV.ReportSource = rd
@@ -695,5 +721,25 @@ Public Class administrarPedidos
             txtstock = r.FindControl("txtStockRow")
             stock = txtstock.Text.Trim
         End If
+    End Sub
+
+    Protected Sub grEnCurso_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grEnCurso.RowCommand
+        If e.CommandName <> "Select" Then
+            If e.CommandName = "etiquetaStock" Then
+                crystalReport(GestorDatos.reportes.etiquetaDepositoStock, e.CommandArgument)
+            End If
+        End If
+    End Sub
+
+    Protected Sub grEnCurso_DataBound(sender As Object, e As EventArgs) Handles grEnCurso.DataBound
+        For Each r As GridViewRow In grEnCurso.Rows
+            Dim stock = Convert.ToInt32(r.Cells(7).Text)
+
+            If stock > 0 Then
+                Dim btn As ImageButton
+                btn = r.FindControl("btnEtiquetaStock")
+                btn.Visible = True
+            End If
+        Next
     End Sub
 End Class

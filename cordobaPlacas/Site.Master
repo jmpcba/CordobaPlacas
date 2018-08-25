@@ -79,7 +79,6 @@
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-        <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Cordoba Placas SRL</p>
             </footer>

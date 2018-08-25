@@ -15,7 +15,7 @@
         runat="server"
         Height="100%"
         Width="100%"
-        ActiveTabIndex="4">
+        ActiveTabIndex="0" CssClass="Tab">
         <ajaxToolkit:TabPanel runat="server" HeaderText="Recibidos" ID="tbNuevos" CssClass="tabContainer">
              <ContentTemplate>
                  <asp:Panel ID="pnlNvos" runat="server">
@@ -64,36 +64,49 @@
                                         <ItemTemplate>
                                             <asp:TextBox ID="txtStockRow" runat="server" Height="17px" Width="35px" ValidationGroup="vgStock" ToolTip="Seleccione cuantas puertas cubrir con stock existente"></asp:TextBox>
                                             <ajaxToolkit:NumericUpDownExtender ID="txtStockRow_NumericUpDownExtender" runat="server" TargetControlID="txtStockRow" Width="50" Minimum="0"  />
-                                            <asp:RangeValidator ID="rvStockNvo" runat="server" ControlToValidate="txtStockRow" ErrorMessage="No puede superar Stock o Cantidad" ForeColor="Red" MinimumValue="0" ValidationGroup="vgStock" Type="Integer">*</asp:RangeValidator>
+                                            <asp:RangeValidator ID="rvStockNvo" runat="server" ControlToValidate="txtStockRow" ErrorMessage="No puede superar Stock o Cantidad" ForeColor="Red" MinimumValue="0" ValidationGroup="vgStock" Type="Integer" MaximumValue="0">*</asp:RangeValidator>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                             <asp:Button ID="btnRecalcularPedido" runat="server" Text="Recalcular Materiales" ValidationGroup="vgStock" ToolTip="Recalcular Materiales utilizando Stock existente" />
                             <asp:panel id="pnlVal" runat="server">
-                                <asp:ValidationSummary ID="vsNvos" runat="server" ValidationGroup="vgStock" DisplayMode="List" ForeColor="Red" ShowMessageBox="True" />
+                                <asp:ValidationSummary ID="vsNvos" runat="server" ValidationGroup="vgStock" DisplayMode="List" ForeColor="Red" />
                             </asp:panel>
                     </asp:Panel>
                     <asp:Panel ID="pnlStockNvo" runat="server" Visible="False">
                         <div>
                             <br />
                             <hr />
-                            <h4><asp:Label ID="lbltituloMat" runat="server"></asp:Label>
-                            </h4>
+                            <h4><asp:Label ID="lbltituloMat" runat="server"></asp:Label></h4>
+                                <asp:CheckBox ID="chkPiezas" Text="Dispone de materiales suficientes" runat="server" Enabled="False" />
+                            <br />  
                             <table>
                                 <tr>
                                     <td>
-                                        <asp:CheckBox ID="chkPiezas" Text="Dispone de materiales suficientes" runat="server" Enabled="False" />
-                                        <asp:GridView ID="grMateriales" runat="server" ToolTip="Despiece"></asp:GridView>
-                                    </td>
-                                    <td>
-                                        <asp:Panel ID="pnlBtnCompras" runat="server" Visible="False">
-                                            <h5>Imprimir pedido para piezas faltantes</h5><br/>
-                                            <asp:Button ID="btnPedidoCompras" runat="server" Text="Imprimir" ToolTip="Imprimir orden de compra de los materiales faltantes" />
-                                        </asp:Panel>
+                                        <asp:Button ID="btnPedidoCompras" runat="server" Text="Imprimir Pedido Compras" ToolTip="Imprimir orden de compra de los materiales faltantes" />
                                     </td>
                                 </tr>
-                            </table>
+                                <tr>
+                                    <td>
+                                        <asp:GridView ID="grMateriales" runat="server" ToolTip="Despiece" AutoGenerateColumns="False">
+                                    <Columns>
+                                        <asp:BoundField DataField="ID_PIEZA" HeaderText="CODIGO" />
+                                        <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" />
+                                        <asp:BoundField DataField="CONSUMO" HeaderText="CONSUMO">
+                                        <ItemStyle CssClass="numCols" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="STOCK_DISPONIBLE" HeaderText="DISPONIBLE">
+                                        <ItemStyle CssClass="numCols" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="FALTANTE" HeaderText="FALTANTE">
+                                        <ItemStyle CssClass="numCols" />
+                                        </asp:BoundField>
+                                    </Columns>
+                                </asp:GridView>
+                                    </td>
+                                </tr>
+                            </table>  
                             <hr />
                             <asp:Button ID="btnImprimir" runat="server" Text="Enviar a Produccion" ValidateRequestMode="Enabled" ValidationGroup="vgStock" ToolTip="Imprimir Ordenes de trabajo y enviar el pedido a estado EN COLA" />
                             <ajaxToolkit:ConfirmButtonExtender ID="btnImprimir_ConfirmButtonExtender" runat="server" BehaviorID="_content_btnImprimir_ConfirmButtonExtender" ConfirmText="" TargetControlID="btnImprimir" />
@@ -120,6 +133,15 @@
                         <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
                         <asp:BoundField DataField="Fecha Recibido" DataFormatString="{0:d}" HeaderText="Fecha Recibido" SortExpression="Fecha Recibido" />
                         <asp:BoundField DataField="Ultima Modificacion" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" DataFormatString="{0:d}" />
+                        <asp:BoundField DataField="STOCK" HeaderText="STOCK">
+                        <HeaderStyle CssClass="hiddencol" />
+                        <ItemStyle CssClass="hiddencol" />
+                        </asp:BoundField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton ID="btnEtiquetaStock" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="etiquetaStock" CssClass="imageButtons" ImageUrl="~/images/deposito.png" ToolTip="Imprimir Etiquetas para items cubiertos con stock interno" Visible="False" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
                 <asp:SqlDataSource ID="dsEnCurso" runat="server" SelectCommand="sp_PEDIDOS_EN_CURSO" SelectCommandType="StoredProcedure" ConnectionString="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True"></asp:SqlDataSource>

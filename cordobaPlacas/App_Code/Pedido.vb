@@ -9,6 +9,7 @@ Public Class Pedido
     Public precioTotal As Decimal
     Public cantTotal As Integer
     Public estado As Estado
+    Public despiece As DataTable
     Private db As DbHelper
 
     Sub New()
@@ -135,35 +136,15 @@ Public Class Pedido
     End Function
 
     Public Function calcularMateriales() As DataTable
-        Dim dt = New DataTable
         Dim dts = New List(Of DataTable)
+        Dim db = New DbHelper
 
+        despiece = db.getDespiece(Me)
 
         For Each i As Item In items
-            Dim desp = i.CalcularMateriales()
-
-            If dt.Rows.Count = 0 Then
-                dt = desp.Clone()
-            End If
-
-            For Each r As DataRow In desp.Rows
-                Dim id = r("ID_PIEZA")
-                Dim encontro = False
-                r("CONSUMO") = r("CONSUMO") * (i.getCant() - i.stock)
-                For Each j As DataRow In dt.Rows
-                    If j("ID_PIEZA") = id Then
-                        j("CONSUMO") = j("CONSUMO") + r("CONSUMO")
-                        encontro = True
-                        Exit For
-                    End If
-                Next
-
-                If Not encontro Then
-                    dt.ImportRow(r)
-                End If
-            Next
+            i.CalcularMateriales()
         Next
-        Return dt
+        Return despiece
     End Function
 
     Friend Sub eliminarItem(_index As Integer)
