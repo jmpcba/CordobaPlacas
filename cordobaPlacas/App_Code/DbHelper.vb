@@ -56,6 +56,35 @@ Public Class DbHelper
         End Try
     End Function
 
+    Friend Sub eliminarMaterial(_id As Integer)
+        Try
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = "DELETE FROM MATERIALES WHERE ID=" & _id
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Friend Sub insertMaterial(_nombre As String, _unidad As String)
+        Try
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = String.Format("INSERT INTO MATERIALES (NOMBRE, UNIDAD) VALUES ('{0}', '{1}')", _nombre, _unidad)
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+
+    End Sub
+
     Public Function getTable() As DataTable
         Try
             cmd.Connection = cnn
@@ -177,7 +206,7 @@ Public Class DbHelper
     Friend Sub consumirMateriales(_piezas As DataTable, _cant As Double, Optional _depo As Boolean = False)
 
         cmd.Connection = cnn
-        cmd.CommandText = "SP_UPDATE_MATERIAL"
+        cmd.CommandText = "SP_UPDATE_STOCK_MATERIAL"
         cmd.CommandType = CommandType.StoredProcedure
 
         Try
@@ -203,7 +232,26 @@ Public Class DbHelper
         Finally
             cnn.Close()
         End Try
+    End Sub
 
+    Public Sub updateMaterial(_idpieza As Integer, _cant As Decimal)
+        Try
+            cmd.Connection = cnn
+            cmd.CommandText = "SP_UPDATE_MATERIALES"
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@ID_PIEZA", _idpieza)
+            cmd.Parameters.AddWithValue("@CANT", _cant)
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+            Throw
+        Finally
+            cnn.Close()
+        End Try
 
     End Sub
 

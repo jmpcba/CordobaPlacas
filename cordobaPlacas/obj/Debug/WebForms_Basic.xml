@@ -2778,6 +2778,231 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.materiales._pnlMateriales">
+<summary>
+Control pnlMateriales.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._ImageButton1">
+<summary>
+Control ImageButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._grMateriales">
+<summary>
+Control grMateriales.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._DSMateriales">
+<summary>
+Control DSMateriales.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnActualizar">
+<summary>
+Control btnActualizar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnActualizar_ConfirmButtonExtender">
+<summary>
+Control btnActualizar_ConfirmButtonExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnAgregarMaterial">
+<summary>
+Control btnAgregarMaterial.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnAgregarMaterial_ModalPopupExtender">
+<summary>
+Control btnAgregarMaterial_ModalPopupExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnBorrarMaterial">
+<summary>
+Control btnBorrarMaterial.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnBorrarMaterial_ModalPopupExtender">
+<summary>
+Control btnBorrarMaterial_ModalPopupExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._ValidationSummary1">
+<summary>
+Control ValidationSummary1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._pnlNvoMaterial">
+<summary>
+Control pnlNvoMaterial.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._txtNombreMaterial">
+<summary>
+Control txtNombreMaterial.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._dpUnidadMaterial">
+<summary>
+Control dpUnidadMaterial.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._DSDPMateriales">
+<summary>
+Control DSDPMateriales.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnGuardarNuevo">
+<summary>
+Control btnGuardarNuevo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnGuardarNuevo_ConfirmButtonExtender">
+<summary>
+Control btnGuardarNuevo_ConfirmButtonExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnCancelarNvo">
+<summary>
+Control btnCancelarNvo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._pnlBorrar">
+<summary>
+Control pnlBorrar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._dpMateriales">
+<summary>
+Control dpMateriales.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnGuardarBorrar">
+<summary>
+Control btnGuardarBorrar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._btnCancelarBorrar">
+<summary>
+Control btnCancelarBorrar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._pnlMsg">
+<summary>
+Control pnlMsg.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.materiales._lblMsg">
+<summary>
+Control lblMsg.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.confirmacionNuevoPedido._lblNroPedido">
 <summary>
 Control lblNroPedido.

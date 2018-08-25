@@ -12,6 +12,7 @@ Public Class GestorDatos
     Public Enum combos
         estados
         clientes
+        unidadMateriales
     End Enum
 
     Public Enum reportes
@@ -39,6 +40,33 @@ Public Class GestorDatos
         mano = New Mano
 
     End Sub
+
+    Friend Function actualizarMateriales(_grMateriales As GridView) As List(Of Integer)
+        Dim db = New DbHelper()
+        Dim lineasActualizadas = New List(Of Integer)
+
+        For Each r As GridViewRow In _grMateriales.Rows
+            Dim txt As TextBox
+            Dim cant As Decimal
+            Dim idPieza As Integer
+
+            txt = r.FindControl("txtAgregar")
+            cant = txt.Text.Trim
+            idPieza = r.Cells(0).Text
+
+            If cant <> 0 Then
+                Try
+                    db.updateMaterial(idPieza, cant)
+                    lineasActualizadas.Add(r.RowIndex)
+                Catch ex As Exception
+                    Throw
+                End Try
+            End If
+        Next
+
+        Return lineasActualizadas
+
+    End Function
 
     Friend Sub getCliente(_idCliente As Integer, _dv As DetailsView)
         Dim cliente = New Cliente(_idCliente)

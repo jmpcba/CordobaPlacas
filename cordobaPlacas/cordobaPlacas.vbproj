@@ -269,6 +269,7 @@
     <Content Include="App_pages\pedidos\busquedas.ascx" />
     <Content Include="App_pages\pedidos\modificarPedido.aspx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
+    <Content Include="App_pages\productos\materiales.aspx" />
     <Content Include="Content\crystal.css" />
     <Content Include="images\almacen.png" />
     <Content Include="images\arrow_left-512.png" />
@@ -473,7 +474,9 @@
     <Compile Include="App_Code\Hoja.vb" />
     <Compile Include="App_Code\Madera.vb" />
     <Compile Include="App_Code\Marco.vb" />
+    <Compile Include="App_Code\material.vb" />
     <Compile Include="App_Code\Pedido.vb" />
+    <Compile Include="App_Code\Pieza.vb" />
     <Compile Include="App_pages\pedidos\administrarPedidos.aspx.designer.vb">
       <DependentUpon>administrarPedidos.aspx</DependentUpon>
     </Compile>
@@ -521,6 +524,13 @@
     </Compile>
     <Compile Include="App_pages\pedidos\pedidoNuevo.aspx.vb">
       <DependentUpon>pedidoNuevo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="App_pages\productos\materiales.aspx.designer.vb">
+      <DependentUpon>materiales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_pages\productos\materiales.aspx.vb">
+      <DependentUpon>materiales.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
@@ -714,7 +724,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
-    <Folder Include="App_pages\materiales\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

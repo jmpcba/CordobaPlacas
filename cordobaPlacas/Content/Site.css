@@ -100,3 +100,8 @@ td.combos {
 .numCols{
     text-align: center;
 }
+
+.gridTxt{
+    height:25px;
+    width: 75px;
+}
