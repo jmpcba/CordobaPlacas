@@ -270,6 +270,7 @@
     <Content Include="App_pages\pedidos\modificarPedido.aspx" />
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
     <Content Include="App_pages\productos\materiales.aspx" />
+    <Content Include="App_pages\productos\modificarProductos.aspx" />
     <Content Include="Content\crystal.css" />
     <Content Include="images\almacen.png" />
     <Content Include="images\arrow_left-512.png" />
@@ -277,6 +278,7 @@
     <Content Include="images\cbaPlacasLogo.jpg" />
     <Content Include="images\delete.png" />
     <Content Include="images\deposito.png" />
+    <Content Include="images\despiece.png" />
     <Content Include="images\edit-512.png" />
     <Content Include="images\edit.jpg" />
     <Content Include="images\edit.png" />
@@ -531,6 +533,13 @@
     </Compile>
     <Compile Include="App_pages\productos\materiales.aspx.vb">
       <DependentUpon>materiales.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="App_pages\productos\modificarProductos.aspx.designer.vb">
+      <DependentUpon>modificarProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_pages\productos\modificarProductos.aspx.vb">
+      <DependentUpon>modificarProductos.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />

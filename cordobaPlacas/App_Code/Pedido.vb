@@ -118,7 +118,7 @@ Public Class Pedido
             Next
         End If
 
-        db.actualizarPedido(Me)
+        db.actualizar(Me)
     End Sub
 
     Public Function getItemById(_ItemId As Integer) As Item

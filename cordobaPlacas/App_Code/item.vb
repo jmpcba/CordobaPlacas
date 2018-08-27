@@ -120,7 +120,7 @@ Public Class Item
 
     Public Sub actualizar()
         db = New DbHelper()
-        db.actualizarItem(Me)
+        db.actualizar(Me)
     End Sub
 
     Public Function CalcularMateriales() As DataTable

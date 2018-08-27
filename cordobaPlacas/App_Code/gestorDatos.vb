@@ -25,12 +25,17 @@ Public Class GestorDatos
         etiquetaDepositoStock
     End Enum
 
+    Public Enum grillas
+        productos
+        pedidosModificar
+    End Enum
     Public Enum tipoItems
         busqueda
         enCurso
         Ensamblados
         modificar
     End Enum
+
     Public Sub New()
         chapa = New Chapa()
         marco = New Marco()
@@ -74,9 +79,19 @@ Public Class GestorDatos
         _dv.DataBind()
     End Sub
 
-    Friend Function getPedidosModificar() As DataTable
+    Friend Function getGrilla(_tipo As grillas) As DataTable
         Dim db = New DbHelper
-        Return db.getPedidosModificar()
+        Dim dt = New DataTable()
+        Try
+            If _tipo = grillas.pedidosModificar Then
+                dt = db.getPedidosModificar()
+            ElseIf _tipo = grillas.productos Then
+                dt = db.getProductos()
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
+        Return dt
     End Function
 
     Friend Sub buscarCliente(_cliente As Cliente, _gv As GridView)
@@ -129,6 +144,12 @@ Public Class GestorDatos
         _cbHoja.DataTextField = "nombre"
         _cbHoja.DataValueField = "id"
 
+        _cbChapa.DataSourceID = Nothing
+        _cbMarco.DataSourceID = Nothing
+        _cbMadera.DataSourceID = Nothing
+        _cbHoja.DataSourceID = Nothing
+        _cbMano.DataSourceID = Nothing
+
         _cbChapa.DataBind()
         _cbMarco.DataBind()
         _cbMadera.DataBind()
@@ -136,6 +157,11 @@ Public Class GestorDatos
         _cbMano.DataBind()
 
     End Sub
+
+    Friend Function buscarProductos(_idLinea, _idChapa, _idHoja, _idMarco, _idMadera, _idMano) As DataTable
+        db = New DbHelper()
+        Return db.buscarPedidos(_idLinea, _idChapa, _idHoja, _idMarco, _idMadera, _idMano)
+    End Function
 
     Public Sub getCombos(ByVal _cb As DropDownList, ByVal _comboName As combos)
         Try
@@ -469,4 +495,14 @@ Public Class GestorDatos
         _grRegistro.DataSource = DTR
         _grRegistro.DataBind()
     End Sub
+
+    Public Function getDespieceProducto(_idProducto As Integer) As DataTable
+        Try
+            db = New DbHelper()
+            Return db.getDespiece(_idProducto)
+        Catch ex As Exception
+            Throw
+        End Try
+    End Function
+
 End Class

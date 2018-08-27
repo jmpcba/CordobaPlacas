@@ -19,7 +19,7 @@
     End Sub
 
     Private Sub llenarGrillaPedido()
-        grPedidos.DataSource = gd.getPedidosModificar()
+        grPedidos.DataSource = gd.getGrilla(GestorDatos.grillas.pedidosModificar)
         grPedidos.DataBind()
     End Sub
 
@@ -116,11 +116,11 @@
         Dim cbMano As DropDownList
         Dim producto As Producto
 
-        cbMadera = grDetalle.Rows(ViewState(e.RowIndex)).FindControl("cbmadera")
-        cbHoja = grDetalle.Rows(ViewState(e.RowIndex)).FindControl("cbHoja")
-        cbMarco = grDetalle.Rows(ViewState(e.RowIndex)).FindControl("cbMarco")
-        cbChapa = grDetalle.Rows(ViewState(e.RowIndex)).FindControl("cbChapa")
-        cbMano = grDetalle.Rows(ViewState(e.RowIndex)).FindControl("cbMano")
+        cbMadera = grDetalle.Rows(e.RowIndex).FindControl("cbmadera")
+        cbHoja = grDetalle.Rows(e.RowIndex).FindControl("cbHoja")
+        cbMarco = grDetalle.Rows(e.RowIndex).FindControl("cbMarco")
+        cbChapa = grDetalle.Rows(e.RowIndex).FindControl("cbChapa")
+        cbMano = grDetalle.Rows(e.RowIndex).FindControl("cbMano")
 
         Dim chapa = New Chapa(cbChapa.SelectedItem.Value, cbChapa.SelectedItem.Text)
         Dim marco = New Marco(cbMarco.SelectedItem.Value, cbMarco.SelectedItem.Text)

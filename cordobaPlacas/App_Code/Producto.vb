@@ -47,7 +47,11 @@ Public Class Producto
         chapa = New Chapa(dt(0)("idChapa"))
         mano = New Mano(dt(0)("idMano"))
         linea = New linea(dt(0)("idLinea"))
-        precioUnitario = dt(0)("precio")
+
     End Sub
 
+    Friend Sub actualizar()
+        db = New DbHelper()
+        db.actualizar(Me)
+    End Sub
 End Class

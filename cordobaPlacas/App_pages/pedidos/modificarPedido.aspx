@@ -20,7 +20,7 @@
                 <asp:BoundField DataField="Ultima Modificacion" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:ImageButton ID="ImageButton6" runat="server" CommandName="delete" ImageUrl="~/images/delete.png" Width="20px" CssClass="imageButtons" />
+                        <asp:ImageButton ID="ImageButton6" runat="server" CommandName="delete" ImageUrl="~/images/delete.png" CssClass="imageButtons" />
                         <ajaxToolkit:ConfirmButtonExtender ID="ImageButton6_ConfirmButtonExtender" runat="server" ConfirmText="Este pedido y todos sus items seran cancelados&#10;&#10;Los productos que hayan sido fabricados seran movidos al Stock&#10;&#10;Desea continuar?" TargetControlID="ImageButton6" />
                     </ItemTemplate>
                     <ControlStyle Height="20px" Width="20px" />
@@ -127,13 +127,13 @@
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <EditItemTemplate>
-                        <asp:ImageButton ID="ImageButton2" runat="server" CommandName="update" Height="20px" ImageUrl="~/images/save.png" ToolTip="Guardar Cambios" Width="20px" CssClass="imageButtons" />
+                        <asp:ImageButton ID="ImageButton2" runat="server" CommandName="update" ImageUrl="~/images/save.png" ToolTip="Guardar Cambios" CssClass="imageButtons" />
                         <ajaxToolkit:ConfirmButtonExtender ID="ImageButton2_ConfirmButtonExtender" runat="server" ConfirmText="Desea Guardar los cambios?" TargetControlID="ImageButton2" />
-                        <asp:ImageButton ID="ImageButton3" runat="server" CommandName="cancel" Height="20px" ImageUrl="~/images/cancel.png" ToolTip="Cancelar Edicion" Width="20px" CssClass="imageButtons" />
+                        <asp:ImageButton ID="ImageButton3" runat="server" CommandName="cancel" ImageUrl="~/images/cancel.png" ToolTip="Cancelar Edicion" CssClass="imageButtons" />
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:ImageButton ID="btnEditar" runat="server" CommandName="edit" Height="20px" ImageUrl="~/images/edit-512.png" Width="20px" CssClass="imageButtons" />
-                        <asp:ImageButton ID="ImageButton4" runat="server" CommandName="delete" Height="20px" ImageUrl="~/images/delete.png" ToolTip="Borrar Item" Width="20px" CssClass="imageButtons" />
+                        <asp:ImageButton ID="btnEditar" runat="server" CommandName="edit" ImageUrl="~/images/edit-512.png" CssClass="imageButtons" />
+                        <asp:ImageButton ID="ImageButton4" runat="server" CommandName="delete" ImageUrl="~/images/delete.png" ToolTip="Borrar Item" CssClass="imageButtons" />
                         <ajaxToolkit:ConfirmButtonExtender ID="ImageButton4_ConfirmButtonExtender" runat="server" ConfirmText="El item seran cancelado&#10;&#10;Los productos que fueron ensamblados seran movidos al stock&#10;&#10;Desea Continuar?" TargetControlID="ImageButton4" />
                     </ItemTemplate>
                 </asp:TemplateField>

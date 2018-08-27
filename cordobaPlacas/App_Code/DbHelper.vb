@@ -148,6 +148,76 @@ Public Class DbHelper
         End Try
     End Sub
 
+    Friend Function buscarPedidos(_idLinea As Object, _idChapa As Object, _idHoja As Object, _idMarco As Object, _idMadera As Object, _idMano As Object) As DataTable
+        Dim query = "SELECT ID, LINEA, CHAPA, HOJA, MARCO, MADERA, MANO, PRECIO, STOCK FROM VW_PRODUCTOS WHERE "
+        Dim firstParam = True
+
+        'LINEA
+        If _idLinea <> 0 Then
+            If Not firstParam Then
+                query = query + " AND "
+            End If
+
+            query = query & "ID_LINEA=" & _idLinea.ToString()
+            firstParam = False
+        End If
+
+        'CHAPA
+        If _idChapa <> "" Then
+            If Not firstParam Then
+                query = query + " AND "
+            End If
+            query = query & "ID_CHAPA=" & _idChapa.ToString()
+            firstParam = False
+        End If
+
+        'HOJA
+        If _idHoja <> "" Then
+            If Not firstParam Then
+                query = query + " AND "
+            End If
+            query = query & "ID_HOJA=" & _idHoja.ToString()
+        End If
+
+        'MARCO
+        If _idMarco <> "" Then
+            If Not firstParam Then
+                query = query + " AND "
+            End If
+            query = query & "ID_MARCO=" & _idMarco.ToString
+            firstParam = false
+        End If
+
+        'MADERA
+        If _idMadera <> "" Then
+            If Not firstParam Then
+                query = query + " AND "
+            End If
+            query = query & "ID_MADERA=" & _idMadera.ToString
+            firstParam = False
+        End If
+
+        'MANO
+        If _idMano <> "" Then
+            If Not firstParam Then
+                query = query + " AND "
+            End If
+            query = query & "ID_MANO=" & _idMano.ToString
+            firstParam = False
+        End If
+
+        cmd.Connection = cnn
+        cmd.CommandText = query
+        Try
+            da.Fill(ds, "PRODUCTOS")
+        Catch ex As Exception
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+
+        Return ds.Tables("PRODUCTOS")
+
+    End Function
+
     Friend Sub insertCliente(_cliente As Cliente)
         Try
             String.Format("SELECT COUNT(CUIT) FROM CLIENTES WHERE CUIT={0}", _cliente.CUIT)
@@ -184,24 +254,6 @@ Public Class DbHelper
             cnn.Close()
         End Try
     End Sub
-    Friend Sub updateStock(_idItem As Integer, _stock As Integer)
-        Try
-            cmd.Connection = cnn
-            cmd.CommandText = "SP_UPDATE_STOCK"
-            cmd.CommandType = CommandType.StoredProcedure
-
-            cmd.Parameters.AddWithValue("@STOCK", _stock)
-            cmd.Parameters.AddWithValue("@ID_ITEM", _idItem)
-
-            cnn.Open()
-            cmd.ExecuteNonQuery()
-
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        Finally
-            cnn.Close()
-        End Try
-    End Sub
 
     Friend Sub consumirMateriales(_piezas As DataTable, _cant As Double, Optional _depo As Boolean = False)
 
@@ -229,6 +281,25 @@ Public Class DbHelper
 
         Catch ex As SqlException
             Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Friend Sub updateStock(_idItem As Integer, _stock As Integer)
+        Try
+            cmd.Connection = cnn
+            cmd.CommandText = "SP_UPDATE_STOCK"
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.AddWithValue("@STOCK", _stock)
+            cmd.Parameters.AddWithValue("@ID_ITEM", _idItem)
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+
+        Catch ex As SqlException
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
         Finally
             cnn.Close()
         End Try
@@ -486,7 +557,7 @@ Public Class DbHelper
         Return ds.Tables("pedidos")
     End Function
 
-    Public Sub actualizarItem(_item As Item)
+    Public Sub actualizar(_item As Item)
         Dim strPrecio = _item.monto.ToString()
 
         strPrecio = strPrecio.Replace(",", ".")
@@ -512,6 +583,63 @@ Public Class DbHelper
 
         Catch ex As SqlException
             Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Public Sub actualizar(_pedido As Pedido)
+        Dim strPrecio = _pedido.precioTotal.ToString()
+
+        strPrecio = strPrecio.Replace(",", ".")
+
+
+        cmd.Connection = cnn
+        cmd.CommandText = "SP_UPDATE_PEDIDO"
+        cmd.CommandType = CommandType.StoredProcedure
+
+        cmd.Parameters.Clear()
+        cmd.Parameters.AddWithValue("@ID_PEDIDO", _pedido.id)
+        cmd.Parameters.AddWithValue("@ID_CLIENTE", _pedido.cliente.id)
+        cmd.Parameters.AddWithValue("@CANT_TOTAL", _pedido.cantTotal)
+        cmd.Parameters.AddWithValue("@PRECIO_TOTAL", strPrecio)
+        cmd.Parameters.AddWithValue("@ID_ESTADO", _pedido.estado.id)
+
+        If _pedido.entregado <> Date.MinValue Then
+            cmd.Parameters.AddWithValue("@FECHA_ENTREGADO", _pedido.entregado)
+        End If
+
+        Try
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+
+        Catch ex As SqlException
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Public Sub actualizar(_producto As Producto)
+        Dim strPrecio = _producto.precioUnitario.ToString()
+
+        strPrecio = strPrecio.Replace(",", ".")
+
+
+        cmd.Connection = cnn
+        cmd.CommandText = "SP_UPDATE_PRODUCTO"
+        cmd.CommandType = CommandType.StoredProcedure
+
+        cmd.Parameters.Clear()
+        cmd.Parameters.AddWithValue("@ID_PRODUCTO", _producto.id)
+        cmd.Parameters.AddWithValue("@PRECIO", _producto.precioUnitario)
+        cmd.Parameters.AddWithValue("@STOCK", _producto.stock)
+
+        Try
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As SqlException
+            Throw
         Finally
             cnn.Close()
         End Try
@@ -615,37 +743,6 @@ Public Class DbHelper
             Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
         End Try
     End Function
-
-    Public Sub actualizarPedido(_pedido As Pedido)
-        Dim strPrecio = _pedido.precioTotal.ToString()
-
-        strPrecio = strPrecio.Replace(",", ".")
-
-
-        cmd.Connection = cnn
-        cmd.CommandText = "SP_UPDATE_PEDIDO"
-        cmd.CommandType = CommandType.StoredProcedure
-
-        cmd.Parameters.AddWithValue("@ID_PEDIDO", _pedido.id)
-        cmd.Parameters.AddWithValue("@ID_CLIENTE", _pedido.cliente.id)
-        cmd.Parameters.AddWithValue("@CANT_TOTAL", _pedido.cantTotal)
-        cmd.Parameters.AddWithValue("@PRECIO_TOTAL", strPrecio)
-        cmd.Parameters.AddWithValue("@ID_ESTADO", _pedido.estado.id)
-
-        If _pedido.entregado <> Date.MinValue Then
-            cmd.Parameters.AddWithValue("@FECHA_ENTREGADO", _pedido.entregado)
-        End If
-
-        Try
-            cnn.Open()
-            cmd.ExecuteNonQuery()
-
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        Finally
-            cnn.Close()
-        End Try
-    End Sub
 
     Public Function getDespiece(_idProducto As Integer) As DataTable
 
@@ -791,7 +888,7 @@ Public Class DbHelper
     End Function
 
     Public Function getProductos() As DataTable
-        Dim query = "SELECT * FROM VW_LISTA_PRODUCTOS"
+        Dim query = "SELECT * FROM VW_PRODUCTOS"
 
         cmd.CommandType = CommandType.Text
         cmd.CommandText = query
