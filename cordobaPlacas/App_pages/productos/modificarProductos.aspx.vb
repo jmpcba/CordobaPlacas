@@ -1,6 +1,7 @@
 ﻿Public Class modificarProductos
     Inherits System.Web.UI.Page
     Dim gd As GestorDatos
+    Dim filtros = False
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         gd = New GestorDatos()
 
@@ -8,11 +9,6 @@
 
         If Not IsPostBack Then
             llenarGrillaProductos()
-            dpChapa.Items.Insert(0, "")
-            dpHoja.Items.Insert(0, "")
-            dpMadera.Items.Insert(0, "")
-            dpMano.Items.Insert(0, "")
-            dpMarco.Items.Insert(0, "")
         End If
     End Sub
 
@@ -26,8 +22,13 @@
 
     Public Sub llenarGrillaProductos()
         Try
-            grProductos.DataSource = gd.getGrilla(GestorDatos.grillas.productos)
-            grProductos.DataBind()
+            If ViewState("filtro") Then
+                buscar()
+            Else
+                grProductos.DataSource = gd.getGrilla(GestorDatos.grillas.productos)
+                grProductos.DataBind()
+            End If
+
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
@@ -99,6 +100,7 @@
     End Sub
 
     Private Sub buscar()
+        ViewState("filtro") = 1
         Dim idLinea = dpLinea.SelectedValue
         Dim idChapa = dpChapa.SelectedValue
         Dim idHoja = dpHoja.SelectedValue
@@ -112,29 +114,36 @@
     Protected Sub dpLinea_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dpLinea.SelectedIndexChanged
         gd.fillCombos(dpLinea, dpChapa, dpMarco, dpMadera, dpHoja, dpMano)
         buscar()
+
     End Sub
 
     Protected Sub dpChapa_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dpChapa.SelectedIndexChanged
         buscar()
+
     End Sub
 
     Protected Sub dpHoja_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dpHoja.SelectedIndexChanged
         buscar()
+
     End Sub
 
     Protected Sub dpMarco_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dpMarco.SelectedIndexChanged
         buscar()
+
     End Sub
 
     Protected Sub dpMadera_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dpMadera.SelectedIndexChanged
         buscar()
+
     End Sub
 
     Protected Sub dpMano_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dpMano.SelectedIndexChanged
         buscar()
+
     End Sub
 
     Protected Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
+        ViewState("filtro") = 0
         Response.Redirect(Request.Url.AbsoluteUri)
     End Sub
 
@@ -222,10 +231,10 @@
 
             txtConsumo = grDespiece.Rows(e.RowIndex).FindControl("txtConsumo")
             gprod.actualizarDespiece(idPieza, txtConsumo.Text.Trim)
-            grDespiece.Rows(e.RowIndex).ForeColor = Drawing.Color.Green
             msgPanel("Despiece - ACTUALIZADO")
             grDespiece.EditIndex = -1
             llenarGrillaDespiece(idProducto)
+            grDespiece.Rows(e.RowIndex).ForeColor = Drawing.Color.Green
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
