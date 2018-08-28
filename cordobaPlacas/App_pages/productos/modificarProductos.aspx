@@ -51,23 +51,29 @@
                 <asp:BoundField DataField="MANO" HeaderText="MANO" SortExpression="MANO" ReadOnly="True" />
                 <asp:TemplateField HeaderText="PRECIO" SortExpression="PRECIO">
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtPrecio" runat="server" Text='<%# Bind("PRECIO") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtPrecio" runat="server" Text='<%# Bind("PRECIO", "{0:f2}") %>' ValidationGroup="vgEditProducto"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtPrecio" CssClass="validators" ErrorMessage="Ingrese un valor" ValidationGroup="vgEditProducto">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtPrecio" CssClass="validators" ErrorMessage="ingrese un valor numerico - separe decimales con &quot;,&quot;" ValidationExpression="\d+\,?(\d{2}|\d{1})?" ValidationGroup="vgEditProducto">*</asp:RegularExpressionValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("PRECIO") %>'></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("PRECIO", "{0:C2}") %>'></asp:Label>
                     </ItemTemplate>
+                    <ItemStyle CssClass="numCols" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="STOCK" SortExpression="STOCK">
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtStock" runat="server" Text='<%# Bind("STOCK") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtStock" runat="server" Text='<%# Bind("STOCK") %>' ValidationGroup="vgEditProducto"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtStock" CssClass="validators" ErrorMessage="Ingrese un valor" ValidationGroup="vgEditProducto">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtStock" CssClass="validators" ErrorMessage="Solo se permiten valores numericos enteros" ValidationExpression="\d+" ValidationGroup="vgEditProducto">*</asp:RegularExpressionValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("STOCK") %>'></asp:Label>
                     </ItemTemplate>
+                    <ItemStyle CssClass="numCols" />
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <EditItemTemplate>
-                        <asp:ImageButton ID="btnUpdate" runat="server" CommandName="update" CssClass="imageButtons" ImageUrl="~/images/save.png" ToolTip="Guardar cambios" />
+                        <asp:ImageButton ID="btnUpdate" runat="server" CommandName="update" CssClass="imageButtons" ImageUrl="~/images/save.png" ToolTip="Guardar cambios" ValidationGroup="vgEditProducto" />
                         <ajaxToolkit:ConfirmButtonExtender ID="btnUpdate_ConfirmButtonExtender" runat="server" ConfirmText="Guardar cambios?" TargetControlID="btnUpdate" />
                         <asp:ImageButton ID="btnCancel" runat="server" CommandName="cancel" CssClass="imageButtons" ImageUrl="~/images/cancel.png" ToolTip="Cancelar edicion" />
                     </EditItemTemplate>
@@ -85,13 +91,64 @@
     <asp:Panel ID="pnlDespiece" runat="server">
         <asp:ImageButton ID="ImageButton5" runat="server" CssClass="imageButtons" ImageUrl="~/images/arrow_left-512.png" ToolTip="volver" Width="30px" />
         <br />
-        <asp:GridView ID="grDespiece" runat="server" AutoGenerateColumns="False">
+        <asp:GridView ID="grDespiece" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_PIEZA" ShowFooter="True">
             <Columns>
-                <asp:BoundField DataField="ID_PIEZA" HeaderText="ID PIEZA" />
-                <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" />
-                <asp:BoundField DataField="CONSUMO" HeaderText="CONSUMO" />
+                <asp:BoundField DataField="ID_PIEZA" HeaderText="ID PIEZA" ReadOnly="True" />
+                <asp:TemplateField HeaderText="NOMBRE">
+                    <EditItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("NOMBRE") %>'></asp:Label>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:DropDownList ID="cbNombre" runat="server" DataSourceID="DSnombreMat" DataTextField="NOMBRE" DataValueField="id">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="DSnombreMat" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [MATERIALES]"></asp:SqlDataSource>
+                    </FooterTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("NOMBRE") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="CONSUMO">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtConsumo" runat="server" Text='<%# Bind("CONSUMO") %>' ValidationGroup="vgEdit"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtConsumo" CssClass="validators" ErrorMessage="Ingrese un valor" ValidationGroup="vgEdit">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtConsumo" CssClass="validators" ErrorMessage="ingrese valores numericos - separe decimales con &quot;,&quot;" ValidationExpression="\d+\,?(\d{2}|\d{1})?" ValidationGroup="vgEdit">*</asp:RegularExpressionValidator>
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:TextBox ID="txtConsumo" runat="server" ValidationGroup="vgInsert"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtConsumo" CssClass="validators" ErrorMessage="Ingrese un valor" ValidationGroup="vgInsert">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtConsumo" CssClass="validators" ErrorMessage="ingrese valores numericos - separe decimales con &quot;,&quot;" ValidationExpression="\d+\,?(\d{2}|\d{1})?" ValidationGroup="vgInsert">*</asp:RegularExpressionValidator>
+                    </FooterTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("CONSUMO") %>'></asp:Label>
+                    </ItemTemplate>
+                    <ItemStyle CssClass="numCols" />
+                </asp:TemplateField>
+                <asp:BoundField DataField="UNIDAD" HeaderText="UNIDAD" ReadOnly="True" />
+                <asp:TemplateField>
+                    <EditItemTemplate>
+                        <asp:ImageButton ID="ImageButton8" runat="server" CommandArgument='<%# Eval("ID_PIEZA") %>' CommandName="update" CssClass="imageButtons" ImageUrl="~/images/save.png" ValidationGroup="vgEdit" ToolTip="Guardar cambios" />
+                        <ajaxToolkit:ConfirmButtonExtender ID="ImageButton8_ConfirmButtonExtender" runat="server" ConfirmText="Guardar Cambios?" TargetControlID="ImageButton8" />
+                        <asp:ImageButton ID="ImageButton9" runat="server" CommandArgument='<%# Eval("ID_PIEZA") %>' CommandName="cancel" CssClass="imageButtons" ImageUrl="~/images/cancel.png" ToolTip="Cancelar" />
+                    </EditItemTemplate>
+                    <FooterTemplate>
+                        <asp:ImageButton ID="ImageButton10" runat="server" CommandName="insert" CssClass="imageButtons" ImageUrl="~/images/add-512.png" ValidationGroup="vgInsert" />
+                        <ajaxToolkit:ConfirmButtonExtender ID="ImageButton10_ConfirmButtonExtender" runat="server" ConfirmText="Agregar nueva pieza al producto?" TargetControlID="ImageButton10" />
+                    </FooterTemplate>
+                    <ItemTemplate>
+                        <asp:ImageButton ID="ImageButton6" runat="server" CommandArgument='<%# Eval("ID_PIEZA") %>' CommandName="edit" CssClass="imageButtons" ImageUrl="~/images/edit-512.png" ToolTip="Editar Consumo"/>
+                        <asp:ImageButton ID="ImageButton7" runat="server" CommandArgument='<%# Eval("ID_PIEZA") %>' CommandName="delete" CssClass="imageButtons" ImageUrl="~/images/delete.png" ToolTip="Eliminar material del despiece" />
+                        <ajaxToolkit:ConfirmButtonExtender ID="ImageButton7_ConfirmButtonExtender" runat="server" ConfirmText="Desea eliminar esta pieza del producto?" TargetControlID="ImageButton7" />
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
+        <br />
+        
+    </asp:Panel>
+    <asp:Panel ID="pnlValidadores" runat="server">
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="validators" DisplayMode="List" ValidationGroup="vgInsert" />
+        <asp:ValidationSummary ID="ValidationSummary2" runat="server" CssClass="validators" DisplayMode="List" ValidationGroup="vgEdit" />
+        <asp:ValidationSummary ID="ValidationSummary3" runat="server" CssClass="validators" DisplayMode="List" ValidationGroup="vgEditProducto" />
     </asp:Panel>
     <asp:Panel ID="pnlMsg" runat="server">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>

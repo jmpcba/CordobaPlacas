@@ -272,6 +272,7 @@
     <Content Include="App_pages\productos\materiales.aspx" />
     <Content Include="App_pages\productos\modificarProductos.aspx" />
     <Content Include="Content\crystal.css" />
+    <Content Include="images\add-512.png" />
     <Content Include="images\almacen.png" />
     <Content Include="images\arrow_left-512.png" />
     <Content Include="images\cancel.png" />
@@ -473,6 +474,7 @@
     <Compile Include="App_Code\Chapa.vb" />
     <Compile Include="App_Code\Cliente.vb" />
     <Compile Include="App_Code\GestorPedidos.vb" />
+    <Compile Include="App_Code\GestorProductos.vb" />
     <Compile Include="App_Code\Hoja.vb" />
     <Compile Include="App_Code\Madera.vb" />
     <Compile Include="App_Code\Marco.vb" />

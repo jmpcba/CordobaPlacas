@@ -20,6 +20,57 @@ Public Class DbHelper
         cmd.Connection = cnn
     End Sub
 
+    Friend Sub eliminarPieza(_idProducto As Integer, _idPieza As Integer)
+        Try
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = String.Format("DELETE FROM DESPIECE WHERE ID_PROD={0} AND ID_PIEZA={1}", _idProducto, _idPieza)
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Friend Sub insertarPiezaProducto(_idProducto As Integer, _idPieza As Integer, _consumo As Decimal)
+        Dim strConsumo = _consumo.ToString
+
+        strConsumo = strConsumo.Replace(",", ".")
+        Try
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = String.Format("INSERT INTO DESPIECE VALUES({0}, {1}, {2})", _idProducto, _idPieza, strConsumo)
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Friend Sub actualizarDespiece(_idProducto As Integer, _idPieza As Integer, _consumo As Decimal)
+        Try
+            cmd.Connection = cnn
+            cmd.CommandText = "SP_UPDATE_DESPIECE"
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.AddWithValue("@ID_PROD", _idProducto)
+            cmd.Parameters.AddWithValue("@ID_PIEZA", _idPieza)
+            cmd.Parameters.AddWithValue("@CONSUMO", _consumo)
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+
+        Catch ex As SqlException
+            Throw New Exception("ERROR DE BASE DE DATOS:    " & ex.Message)
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
     Sub New()
         cnn = New SqlConnection(conStr)
         cmd = New SqlCommand()
@@ -52,7 +103,7 @@ Public Class DbHelper
             da.Fill(ds, "REMITO")
             Return ds.Tables("REMITO")
         Catch ex As Exception
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+            Throw New Exception("ERROR DE BASE DE DATOS:  " & ex.Message)
         End Try
     End Function
 
@@ -185,7 +236,7 @@ Public Class DbHelper
                 query = query + " AND "
             End If
             query = query & "ID_MARCO=" & _idMarco.ToString
-            firstParam = false
+            firstParam = False
         End If
 
         'MADERA

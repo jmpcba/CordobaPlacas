@@ -185,6 +185,42 @@ Partial Public Class modificarProductos
     Protected WithEvents grDespiece As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
+    '''Control pnlValidadores.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlValidadores As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control ValidationSummary1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ValidationSummary1 As Global.System.Web.UI.WebControls.ValidationSummary
+    
+    '''<summary>
+    '''Control ValidationSummary2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ValidationSummary2 As Global.System.Web.UI.WebControls.ValidationSummary
+    
+    '''<summary>
+    '''Control ValidationSummary3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ValidationSummary3 As Global.System.Web.UI.WebControls.ValidationSummary
+    
+    '''<summary>
     '''Control pnlMsg.
     '''</summary>
     '''<remarks>

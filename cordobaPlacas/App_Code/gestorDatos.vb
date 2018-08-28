@@ -158,7 +158,7 @@ Public Class GestorDatos
 
     End Sub
 
-    Friend Function buscarProductos(_idLinea, _idChapa, _idHoja, _idMarco, _idMadera, _idMano) As DataTable
+    Friend Function buscarProductos(_idLinea As Object, _idChapa As Object, _idHoja As Object, _idMarco As Object, _idMadera As Object, _idMano As Object) As DataTable
         db = New DbHelper()
         Return db.buscarPedidos(_idLinea, _idChapa, _idHoja, _idMarco, _idMadera, _idMano)
     End Function

@@ -175,7 +175,7 @@
                             <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
                             <asp:BoundField DataField="MANO" HeaderText="MANO" />
                             <asp:BoundField DataField="CANTIDAD" HeaderText="CANTIDAD" />
-                            <asp:BoundField DataField="MONTO" HeaderText="MONTO" />
+                            <asp:BoundField DataField="MONTO" HeaderText="MONTO" DataFormatString="{0:f2}" />
                         </Columns>
                     </asp:GridView>
                 </asp:Panel>
