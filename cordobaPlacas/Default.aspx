@@ -18,7 +18,8 @@
                     <p>
                         Administre desde aqui sus productos.</p>
                     <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Nuevo &raquo;</a></p>
-                    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Modificar &raquo;</a></p>
+                    <p><a class="btn btn-default" href="App_pages/productos/modificarProductos.aspx">Modificar &raquo;</a></p>
+                    <p><a class="btn btn-default" href="App_pages/productos/materiales.aspx">Materiales&raquo;</a></p>
                 </div>
                 <div class="col-md-4">
                     <h2>Clientes</h2>
