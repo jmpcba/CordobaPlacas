@@ -24,7 +24,7 @@ Public Class GestorPedidos
         Try
             If _existente Then
                 _item.idPedido = pedido.id
-                _item.insertarItem()
+                _item.insertar()
                 pedido.agregarItem(_item)
                 pedido.actualizar()
             Else
@@ -37,7 +37,7 @@ Public Class GestorPedidos
 
     Public Sub enviarPedido()
         Try
-            pedido.enviarPedido()
+            pedido.enviar()
         Catch ex As Exception
             Throw
         End Try

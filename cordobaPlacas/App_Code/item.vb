@@ -114,8 +114,8 @@ Public Class Item
         ensamblados = _val
     End Sub
 
-    Public Sub insertarItem()
-        db.insertarItem(producto.id, idPedido, cant, monto, stock)
+    Public Sub insertar()
+        db.insertar(Me)
     End Sub
 
     Public Sub actualizar()

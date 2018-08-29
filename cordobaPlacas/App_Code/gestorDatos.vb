@@ -5,7 +5,7 @@ Public Class GestorDatos
     Public marco As Marco
     Public madera As Madera
     Public hoja As Hoja
-    Public linea As linea
+    Public linea As Linea
     Public mano As Mano
     Private db As DbHelper
 
@@ -41,7 +41,7 @@ Public Class GestorDatos
         marco = New Marco()
         madera = New Madera()
         hoja = New Hoja()
-        linea = New linea()
+        linea = New Linea()
         mano = New Mano
 
     End Sub
@@ -99,7 +99,7 @@ Public Class GestorDatos
         db = New DbHelper("CLIENTES")
 
         Try
-            dt = db.buscarClientes(_cliente)
+            dt = db.buscar(_cliente)
             _gv.DataSource = dt
             _gv.DataBind()
         Catch ex As Exception

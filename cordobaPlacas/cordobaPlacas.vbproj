@@ -271,6 +271,7 @@
     <Content Include="App_pages\pedidos\pedidoNuevo.aspx" />
     <Content Include="App_pages\productos\materiales.aspx" />
     <Content Include="App_pages\productos\modificarProductos.aspx" />
+    <Content Include="App_pages\productos\productoNuevo.aspx" />
     <Content Include="Content\crystal.css" />
     <Content Include="images\add-512.png" />
     <Content Include="images\almacen.png" />
@@ -542,6 +543,13 @@
     </Compile>
     <Compile Include="App_pages\productos\modificarProductos.aspx.vb">
       <DependentUpon>modificarProductos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="App_pages\productos\productoNuevo.aspx.designer.vb">
+      <DependentUpon>productoNuevo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_pages\productos\productoNuevo.aspx.vb">
+      <DependentUpon>productoNuevo.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />

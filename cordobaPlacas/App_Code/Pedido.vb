@@ -95,14 +95,14 @@ Public Class Pedido
 
     End Sub
 
-    Public Sub enviarPedido()
+    Public Sub enviar()
         db = New DbHelper()
         Try
-            id = db.insertPedido(cliente.id, cantTotal, precioTotal)
+            id = db.insertar(Me)
 
             For Each item As Item In items
                 item.idPedido = id
-                item.insertarItem()
+                item.insertar()
             Next
         Catch ex As Exception
             Throw

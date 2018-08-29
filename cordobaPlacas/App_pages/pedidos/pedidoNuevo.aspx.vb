@@ -156,7 +156,7 @@
             Dim hoja = New Hoja(cbHoja.SelectedItem.Value, cbHoja.SelectedItem.Text)
             Dim mano = New Mano(cbMano.SelectedItem.Value, cbMano.SelectedItem.Text)
             Dim cant = txtCant.Text.Trim()
-            Dim linea = New linea(cbLinea.SelectedItem.Value, cbLinea.SelectedItem.Text)
+            Dim linea = New Linea(cbLinea.SelectedItem.Value, cbLinea.SelectedItem.Text)
             Dim producto = New Producto(hoja, marco, madera, chapa, mano, linea)
 
             Dim item = New Item(producto, cant)

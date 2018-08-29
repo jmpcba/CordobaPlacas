@@ -269,7 +269,7 @@ Public Class DbHelper
 
     End Function
 
-    Friend Sub insertCliente(_cliente As Cliente)
+    Friend Sub insertar(_cliente As Cliente)
         Try
             String.Format("SELECT COUNT(CUIT) FROM CLIENTES WHERE CUIT={0}", _cliente.CUIT)
             cmd.Connection = cnn
@@ -400,6 +400,78 @@ Public Class DbHelper
             cnn.Close()
         End Try
     End Sub
+
+    Public Sub insertar(_prod As Producto)
+        Try
+            cmd.Connection = cnn
+            cmd.CommandText = "SP_INSERT_PRODUCTO"
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@ID_LINEA", _prod.linea.id)
+            cmd.Parameters.AddWithValue("@ID_CHAPA", _prod.chapa.id)
+            cmd.Parameters.AddWithValue("@ID_HOJA", _prod.hoja.id)
+            cmd.Parameters.AddWithValue("@ID_MARCO", _prod.marco.id)
+            cmd.Parameters.AddWithValue("@ID_MADERA", _prod.madera.id)
+            cmd.Parameters.AddWithValue("@ID_MANO", _prod.mano.id)
+            cmd.Parameters.AddWithValue("@PRECIO", _prod.precioUnitario)
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+
+        Catch ex As SqlException
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Public Sub insertar(_item As Item)
+
+        Try
+            cmd.Connection = cnn
+            cmd.CommandText = "SP_INSERT_ITEM"
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@ID_PRODUCTO", _item.getProducto().id)
+            cmd.Parameters.AddWithValue("@ID_PEDIDO", _item.idPedido)
+            cmd.Parameters.AddWithValue("@CANT", _item.getCant())
+            cmd.Parameters.AddWithValue("@MONTO", _item.monto)
+            cmd.Parameters.AddWithValue("@STOCK", _item.stock)
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+
+        Catch ex As SqlException
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Public Function insertar(_pedido As Pedido) As Integer
+
+        Try
+            cmd.Connection = cnn
+            cmd.CommandText = "SP_INSERT_PEDIDO"
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.AddWithValue("@CLIENTE", _pedido.cliente.id)
+            cmd.Parameters.AddWithValue("@CANT", _pedido.cantTotal)
+            cmd.Parameters.AddWithValue("@PRECIO", _pedido.precioTotal)
+
+            cnn.Open()
+
+            Return cmd.ExecuteScalar()
+
+        Catch ex As SqlException
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+
+    End Function
 
     Public Function insertPedido(ByVal _cliente As Integer, ByVal _cant As Integer, ByVal _precio As Decimal) As Integer
 
@@ -834,7 +906,7 @@ Public Class DbHelper
         End Try
     End Function
 
-    Public Function buscarClientes(_cliente As Cliente) As DataTable
+    Public Function buscar(_cliente As Cliente) As DataTable
         Dim query = "SELECT * FROM CLIENTES WHERE "
         Dim firstParam = True
 
@@ -952,4 +1024,27 @@ Public Class DbHelper
         End Try
     End Function
 
+    Public Function buscar(_producto As Producto) As DataTable
+        ds = New DataSet
+
+        Try
+            cmd.Connection = cnn
+            cmd.CommandText = "SP_GET_PRODUCTO"
+            cmd.CommandType = CommandType.StoredProcedure
+
+            cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@LINEA", _producto.linea.id)
+            cmd.Parameters.AddWithValue("@CHAPA", _producto.chapa.id)
+            cmd.Parameters.AddWithValue("@HOJA", _producto.hoja.id)
+            cmd.Parameters.AddWithValue("@MARCO", _producto.marco.id)
+            cmd.Parameters.AddWithValue("@MADERA", _producto.madera.id)
+            cmd.Parameters.AddWithValue("@MANO", _producto.mano.id)
+
+            da.Fill(ds, "RESULTADO")
+            Return ds.Tables("RESULTADO")
+
+        Catch ex As SqlException
+            Throw
+        End Try
+    End Function
 End Class

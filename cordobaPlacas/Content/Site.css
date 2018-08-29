@@ -112,3 +112,8 @@ table.center {
     border: 1px solid black;
     padding: 2px;
   }
+.tablaProductos th td{
+    text-align: left;
+    vertical-align: top
+    
+}

@@ -60,7 +60,7 @@ Public Class Cliente
 
     Public Sub insertar()
         Try
-            db.insertCliente(Me)
+            db.insertar(Me)
         Catch ex As Exception
             Throw
         End Try

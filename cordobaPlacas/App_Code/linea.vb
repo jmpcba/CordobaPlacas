@@ -1,5 +1,5 @@
 ﻿Imports System.Data
-Public Class linea
+Public Class Linea
     Public id As Integer
     Public nombre As String
     Private db As DbHelper
