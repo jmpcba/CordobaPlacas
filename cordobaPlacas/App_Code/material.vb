@@ -21,13 +21,17 @@ Public Class Material
 
     Public Sub New(ByVal _id As Integer)
         db = New DbHelper("MATERIALES")
-        Dim t = db.getRow(_id)
+        Try
+            Dim t = db.getRow(_id)
 
-        id = _id
-        nombre = t.Rows(0)("NOMBRE")
-        unidad = t.Rows(0)("UNIDAD")
-        stockReservado = t.Rows(0)("STOCK_RESERVADO")
-        stock = t.Rows(0)("STOCK_DISPONIBLE")
+            id = _id
+            nombre = t.Rows(0)("NOMBRE")
+            unidad = t.Rows(0)("UNIDAD")
+            stockReservado = t.Rows(0)("STOCK_RESERVADO")
+            stock = t.Rows(0)("STOCK_DISPONIBLE")
+        Catch ex As Exception
+            Throw
+        End Try
     End Sub
 
     Public Function getMateriales() As DataTable

@@ -293,6 +293,33 @@ Partial Public Class productoNuevo
     Protected WithEvents DSMateriales As Global.System.Web.UI.WebControls.SqlDataSource
     
     '''<summary>
+    '''Control Panel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control lblNroProducto.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblNroProducto As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control btnVolver.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnVolver As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
     '''Control pnlMsg.
     '''</summary>
     '''<remarks>

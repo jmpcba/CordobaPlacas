@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="productoNuevo.aspx.vb" Inherits="cordobaPlacas.productoNuevo" Theme="default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:Wizard ID="Wizard1" runat="server" ActiveStepIndex="1">
+    <asp:Wizard ID="Wizard1" runat="server" ActiveStepIndex="0" DisplayCancelButton="True">
+        <NavigationStyle BorderStyle="Solid" BorderWidth="1px" />
+        <SideBarStyle BorderStyle="None" HorizontalAlign="Left" VerticalAlign="Top" />
         <StartNavigationTemplate>
             <asp:Button ID="StartNextButton" runat="server" CommandName="MoveNext" Text="Siguiente" ValidationGroup="VGCar"/>
         </StartNavigationTemplate>
@@ -9,7 +11,7 @@
             <asp:WizardStep runat="server" title="Caracteristicas">
                 <table>
                     <tr>
-                        <td colspan="2">LINEA
+                        <td colspan="2" style="height: 24px">LINEA
                         </td>
                     </tr>
                     <tr>
@@ -142,7 +144,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:TextBox ID="txtConsumo" runat="server"></asp:TextBox>
-                                <ajaxToolkit:NumericUpDownExtender ID="txtConsumo_NumericUpDownExtender" runat="server" Minimum="0" TargetControlID="txtConsumo" />
+                                <ajaxToolkit:NumericUpDownExtender ID="txtConsumo_NumericUpDownExtender" runat="server" Minimum="0" TargetControlID="txtConsumo" Width="50" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -150,6 +152,11 @@
                 <asp:SqlDataSource ID="DSMateriales" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT [id], [NOMBRE], [UNIDAD] FROM [MATERIALES]"></asp:SqlDataSource>
             </asp:WizardStep>
             <asp:WizardStep runat="server" StepType="Complete" Title="Confirmacion">
+                <asp:Panel ID="Panel1" runat="server">
+                    <h4>Producto Guardado</h4>
+                    <h4>Nuevo Producto: </h4><asp:Label ID="lblNroProducto" runat="server" Text=""></asp:Label>
+                    <asp:Button ID="btnVolver" runat="server" Text="Volver" />
+                </asp:Panel>
             </asp:WizardStep>
         </WizardSteps>
     </asp:Wizard>

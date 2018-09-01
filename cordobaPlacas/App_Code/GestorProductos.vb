@@ -11,8 +11,11 @@ Public Class GestorProductos
     End Sub
 
     Public Sub New(hoja As Hoja, marco As Marco, madera As Madera, chapa As Chapa, mano As Mano, linea As Linea)
+        despiece = New DataTable
         producto = New Producto(hoja, marco, madera, chapa, mano, linea)
         db = New DbHelper("productos")
+        despiece.Columns.Add("ID_PIEZA", GetType(Integer))
+        despiece.Columns.Add("CONSUMO", GetType(Decimal))
     End Sub
 
     Public Sub eliminarPieza(_idPieza As Integer)
@@ -48,16 +51,41 @@ Public Class GestorProductos
 
     Public Sub agregarProducto()
         Try
-            If db.buscar(producto).Rows.Count > 0 Then
+            Dim testProd = New Producto(producto.hoja, producto.marco, producto.madera, producto.chapa, producto.mano, producto.linea)
+            If testProd.id = 0 Then
+                producto.insertar()
+            Else
                 Throw New Exception("YA EXISTE UN PRODUCTO CON ESTAS CARACTERISTICAS")
             End If
-            producto.insertar()
+
         Catch ex As Exception
             Throw
         End Try
     End Sub
 
-    Public Sub setDespiece()
+    Public Sub setDespiece(_gr As GridView)
 
+        For Each r As GridViewRow In _gr.Rows
+            Dim txtconsumo As TextBox
+            txtconsumo = r.FindControl("txtConsumo")
+            Dim consumo = txtconsumo.Text.Trim()
+
+
+
+            If consumo > 0 Then
+                Dim idPieza = Convert.ToInt32(_gr.DataKeys(r.RowIndex).Value.ToString)
+                Dim resultado = despiece.Select(String.Format("ID_PIEZA ={0}", idPieza))
+
+                Dim d As DataRow
+                d = despiece.NewRow
+
+                d("ID_PIEZA") = idPieza
+                d("CONSUMO") = consumo
+
+                despiece.Rows.Add(d)
+
+            End If
+        Next
+        producto.despiece = despiece
     End Sub
 End Class

@@ -10,6 +10,10 @@ Public Class DbHelper
     Private ds As DataSet
     Private table As String
     Private conStr As String = "Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True"
+    Public Enum tablas
+        CHAPAS
+        MADERAS
+    End Enum
 
     Sub New(ByVal _table As String)
         table = _table
@@ -33,6 +37,18 @@ Public Class DbHelper
             cnn.Close()
         End Try
     End Sub
+
+    Friend Function getExcluidas(_tabla As tablas, _id As Integer) As DataTable
+        cmd.CommandText = String.Format("SELECT * FROM {0} WHERE ID <> {1}", _tabla, _id)
+        cmd.CommandType = CommandType.Text
+
+        Try
+            da.Fill(ds, _tabla)
+            Return ds.Tables(_tabla)
+        Catch ex As Exception
+            Throw
+        End Try
+    End Function
 
     Friend Sub insertarPiezaProducto(_idProducto As Integer, _idPieza As Integer, _consumo As Decimal)
         Dim strConsumo = _consumo.ToString
@@ -401,7 +417,7 @@ Public Class DbHelper
         End Try
     End Sub
 
-    Public Sub insertar(_prod As Producto)
+    Public Function insertar(_prod As Producto) As Integer
         Try
             cmd.Connection = cnn
             cmd.CommandText = "SP_INSERT_PRODUCTO"
@@ -417,14 +433,17 @@ Public Class DbHelper
             cmd.Parameters.AddWithValue("@PRECIO", _prod.precioUnitario)
 
             cnn.Open()
-            cmd.ExecuteNonQuery()
+            Return cmd.ExecuteScalar()
 
         Catch ex As SqlException
             Throw
         Finally
             cnn.Close()
         End Try
-    End Sub
+
+
+
+    End Function
 
     Public Sub insertar(_item As Item)
 
@@ -470,31 +489,24 @@ Public Class DbHelper
         Finally
             cnn.Close()
         End Try
-
     End Function
 
-    Public Function insertPedido(ByVal _cliente As Integer, ByVal _cant As Integer, ByVal _precio As Decimal) As Integer
+    Public Sub insertDespiece(_idProducto As Integer, _despiece As DataTable)
+        cmd.CommandType = CommandType.Text
+        cnn.Open()
 
         Try
-            cmd.Connection = cnn
-            cmd.CommandText = "SP_INSERT_PEDIDO"
-            cmd.CommandType = CommandType.StoredProcedure
-
-            cmd.Parameters.AddWithValue("@CLIENTE", _cliente)
-            cmd.Parameters.AddWithValue("@CANT", _cant)
-            cmd.Parameters.AddWithValue("@PRECIO", _precio)
-
-            cnn.Open()
-
-            Return cmd.ExecuteScalar()
-
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+            For Each r As DataRow In _despiece.Rows
+                Dim query = String.Format("INSERT INTO DESPIECE VALUES ({0}, {1}, {2})", _idProducto, r("ID_PIEZA"), r("CONSUMO"))
+                cmd.CommandText = query
+                cmd.ExecuteNonQuery()
+            Next
+        Catch ex As Exception
+            Throw
         Finally
             cnn.Close()
         End Try
-
-    End Function
+    End Sub
 
     Friend Function getItemsBusqueda(_idPedido As Integer) As DataTable
         Dim query = "SELECT * FROM VW_ITEMS WHERE ID_PEDIDO=" & _idPedido

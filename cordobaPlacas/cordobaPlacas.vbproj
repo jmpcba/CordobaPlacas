@@ -272,6 +272,7 @@
     <Content Include="App_pages\productos\materiales.aspx" />
     <Content Include="App_pages\productos\modificarProductos.aspx" />
     <Content Include="App_pages\productos\productoNuevo.aspx" />
+    <Content Include="App_pages\reportes\reportePedidosCliente.aspx" />
     <Content Include="Content\crystal.css" />
     <Content Include="images\add-512.png" />
     <Content Include="images\almacen.png" />
@@ -552,6 +553,13 @@
       <DependentUpon>productoNuevo.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="App_pages\reportes\reportePedidosCliente.aspx.designer.vb">
+      <DependentUpon>reportePedidosCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_pages\reportes\reportePedidosCliente.aspx.vb">
+      <DependentUpon>reportePedidosCliente.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\IdentityConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
@@ -638,6 +646,12 @@
       <DependentUpon>ordenDeTrabajo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="reportes\pedidosClientes.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pedidosClientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportes\productos.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -716,6 +730,10 @@
     <EmbeddedResource Include="reportes\ordenDeTrabajo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ordenDeTrabajo.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\pedidosClientes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>pedidosClientes.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="reportes\productos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

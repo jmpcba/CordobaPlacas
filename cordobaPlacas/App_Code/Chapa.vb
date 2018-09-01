@@ -2,6 +2,7 @@
 Public Class Chapa
     Public id As Integer
     Public nombre As String
+    Public codMat As Integer
     Private db As New DbHelper("chapas")
 
     Public Sub New()
@@ -17,6 +18,7 @@ Public Class Chapa
         id = _id
         Dim t = db.getRow(_id)
         nombre = t.Rows(0)("nombre")
+        codMat = t.Rows(0)("COD_MAT")
     End Sub
 
     Public Function getChapas() As DataTable
@@ -33,6 +35,13 @@ Public Class Chapa
         Catch ex As Exception
             Throw
         End Try
+    End Function
 
+    Public Function getExcluidas() As DataTable
+        Try
+            Return db.getExcluidas(DbHelper.tablas.CHAPAS, id)
+        Catch ex As Exception
+            Throw
+        End Try
     End Function
 End Class

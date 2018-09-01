@@ -9,6 +9,7 @@ Public Class Producto
     Public mano As Mano
     Public linea As Linea
     Public stock As Integer
+    Public despiece As DataTable
     Dim db As DbHelper
 
     Public Sub New(ByVal _hoja As Hoja, ByVal _marco As Marco, ByVal _madera As Madera, ByVal _chapa As Chapa, ByVal _mano As Mano, ByVal _linea As Linea)
@@ -68,7 +69,11 @@ Public Class Producto
     Friend Sub insertar()
         Try
             db = New DbHelper
-            db.insertar(Me)
+
+            id = db.insertar(Me)
+            If Not IsNothing(despiece) Then
+                db.insertDespiece(id, despiece)
+            End If
         Catch ex As Exception
             Throw
         End Try

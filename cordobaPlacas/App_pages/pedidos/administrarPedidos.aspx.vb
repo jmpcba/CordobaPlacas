@@ -632,25 +632,13 @@ Public Class administrarPedidos
 
                     crystalReport(GestorDatos.reportes.remito, gestorPedidos.pedido.id)
 
-                    'ENVIAR A STOCK
-                    'ElseIf e.CommandName = "stock" Then
-                    '    estado = New Estado(Estado.estados.stock)
-
-                    '    'EL STOCK DEL PRODUCTO SE INCREMENTA POR UN TRIGGER DE DB
-                    '    gestorPedidos.actualizarEstado(estado)
-
-                    '    Session("gestorPEdidos") = gestorPedidos
-
-                    '    Dim msg = String.Format("Pedido {0} enviado a STOCK interno", gestorPedidos.pedido.id)
-                    '    msgPanel(msg)
-
                     'PEDIDO ENTREGADO AL CLIENTE
                 ElseIf e.CommandName = "entregado" Then
                     estado = New Estado(Estado.estados.entregado)
 
                     gestorPedidos.actualizarEstado(estado)
 
-                    Dim msg = String.Format("Pedido {0} movido a estado ENREGADO", gestorPedidos.pedido.id)
+                    Dim msg = String.Format("Pedido {0} movido a estado ENTREGADO", gestorPedidos.pedido.id)
                     msgPanel(msg)
 
                 End If

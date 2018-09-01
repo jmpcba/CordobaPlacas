@@ -54,8 +54,6 @@
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
-
-
     End Sub
 
     Protected Sub Wizard1_FinishButtonClick(sender As Object, e As WizardNavigationEventArgs) Handles Wizard1.FinishButtonClick
