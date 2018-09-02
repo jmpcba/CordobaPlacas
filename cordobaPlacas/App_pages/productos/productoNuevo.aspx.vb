@@ -1,8 +1,8 @@
 ﻿Public Class productoNuevo
     Inherits System.Web.UI.Page
-
+    Dim gd As GestorDatos
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        gd = New GestorDatos
     End Sub
 
     Protected Sub Wizard1_FinishButtonClick(sender As Object, e As WizardNavigationEventArgs) Handles Wizard1.FinishButtonClick
@@ -48,10 +48,8 @@
                 gp.producto.precioUnitario = txtPrecio.Text.Trim
                 Session("gp") = gp
 
-                For Each r As GridViewRow In grDespiece.Rows
-                    'TODO: SI ESTA EN LA TABLA CHAPAS Y EN LA TABLA CHAPASEX BORRAR
-                    'TODO: SI ESTA EN LA TABLA MADERAS Y EN LA TABLA MADERASEX BORRAR
-                Next
+                grDespiece.DataSource = gd.getDespiece(gp.producto)
+                grDespiece.DataBind()
 
             ElseIf e.NextStepIndex = 2 Then
                 Dim gp = Session("gp")
@@ -68,5 +66,15 @@
         Catch ex As Exception
             errorPanel(ex.Message)
         End Try
+    End Sub
+
+    Protected Sub Wizard1_PreviousButtonClick(sender As Object, e As WizardNavigationEventArgs) Handles Wizard1.PreviousButtonClick
+        If e.NextStepIndex = 0 Then
+            Session.Remove("gp")
+        End If
+    End Sub
+
+    Protected Sub lsLinea_DataBound(sender As Object, e As EventArgs) Handles lsLinea.DataBound
+        lsLinea.Items.Remove("")
     End Sub
 End Class

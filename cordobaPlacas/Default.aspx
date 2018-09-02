@@ -6,8 +6,8 @@
                 <p class="lead">Administre pedidos existentes y envie nuevos pedidos desde aqui.</p>
                 <p><a href="App_pages/pedidos/pedidoNuevo.aspx" class="btn btn-primary btn-lg">Nuevo&raquo;</a></p>
                 <p><a href="App_pages/pedidos/ModificarPedido.aspx" class="btn btn-primary btn-lg">Modificar&raquo;</a></p>
-                <p><a href="App_pages/pedidos/consultarPedidos.aspx" class="btn btn-primary btn-lg">Consultar Pedidos&raquo;</a></p>
-                <p><a href="App_pages/pedidos/administrarPedidos.aspx" class="btn btn-primary btn-lg">Administrar Pedidos&raquo;</a></p>
+                <p><a href="App_pages/pedidos/consultarPedidos.aspx" class="btn btn-primary btn-lg">Consultar&raquo;</a></p>
+                <p><a href="App_pages/pedidos/administrarPedidos.aspx" class="btn btn-primary btn-lg">Administrar&raquo;</a></p>
             </div>
 
             <div class="row">

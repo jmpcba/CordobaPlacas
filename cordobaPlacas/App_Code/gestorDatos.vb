@@ -79,6 +79,16 @@ Public Class GestorDatos
         _dv.DataBind()
     End Sub
 
+    Friend Function getDespiece(_prod As Producto) As DataTable
+        Try
+            db = New DbHelper
+            Return db.getDespiece(_prod)
+        Catch ex As Exception
+            Throw
+        End Try
+
+    End Function
+
     Friend Function getGrilla(_tipo As grillas) As DataTable
         Dim db = New DbHelper
         Dim dt = New DataTable()

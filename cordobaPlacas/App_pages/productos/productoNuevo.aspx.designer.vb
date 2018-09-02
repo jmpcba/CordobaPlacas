@@ -284,15 +284,6 @@ Partial Public Class productoNuevo
     Protected WithEvents grDespiece As Global.System.Web.UI.WebControls.GridView
     
     '''<summary>
-    '''Control DSMateriales.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents DSMateriales As Global.System.Web.UI.WebControls.SqlDataSource
-    
-    '''<summary>
     '''Control Panel1.
     '''</summary>
     '''<remarks>

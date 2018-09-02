@@ -117,3 +117,8 @@ table.center {
     vertical-align: top
     
 }
+
+.sideNav{
+    float: left;
+    width: 100px
+}

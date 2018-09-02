@@ -136,7 +136,7 @@
             </asp:WizardStep>
             <asp:WizardStep runat="server" title="Materiales">
                 Ingrese los Materiales a Utilizar<br />
-                <asp:GridView ID="grDespiece" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="DSMateriales">
+                <asp:GridView ID="grDespiece" runat="server" AutoGenerateColumns="False" DataKeyNames="id">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID PIEZA" InsertVisible="False" ReadOnly="True" SortExpression="id" />
                         <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" SortExpression="NOMBRE" />
@@ -149,7 +149,6 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-                <asp:SqlDataSource ID="DSMateriales" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT [id], [NOMBRE], [UNIDAD] FROM [MATERIALES]"></asp:SqlDataSource>
             </asp:WizardStep>
             <asp:WizardStep runat="server" StepType="Complete" Title="Confirmacion">
                 <asp:Panel ID="Panel1" runat="server">

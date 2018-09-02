@@ -918,6 +918,27 @@ Public Class DbHelper
         End Try
     End Function
 
+    Public Function getDespiece(_prod As Producto) As DataTable
+
+        ds = New DataSet
+
+        cmd.Connection = cnn
+        cmd.CommandText = "SP_GET_MATERIALES"
+        cmd.CommandType = CommandType.StoredProcedure
+
+        cmd.Parameters.Clear()
+        cmd.Parameters.AddWithValue("@ID_CHAPA", _prod.chapa.id)
+        cmd.Parameters.AddWithValue("@ID_MADERA", _prod.madera.id)
+
+        Try
+            da.Fill(ds, "RESULTADO")
+            Return ds.Tables("RESULTADO")
+
+        Catch ex As SqlException
+            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+        End Try
+    End Function
+
     Public Function buscar(_cliente As Cliente) As DataTable
         Dim query = "SELECT * FROM CLIENTES WHERE "
         Dim firstParam = True
