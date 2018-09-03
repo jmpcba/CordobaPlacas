@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <asp:Wizard ID="Wizard1" runat="server" ActiveStepIndex="0" DisplayCancelButton="True">
-        <NavigationStyle BorderStyle="Solid" BorderWidth="1px" />
         <SideBarStyle BorderStyle="None" HorizontalAlign="Left" VerticalAlign="Top" />
         <StartNavigationTemplate>
             <asp:Button ID="StartNextButton" runat="server" CommandName="MoveNext" Text="Siguiente" ValidationGroup="VGCar"/>
@@ -22,6 +21,8 @@
                         </td>
                         <td>
                             <asp:Button ID="btnAgregarLinea" runat="server" Text="Agregar Linea" />
+                            <ajaxToolkit:ModalPopupExtender ID="btnAgregarLinea_ModalPopupExtender" runat="server" BehaviorID="Wizard1_btnAgregarLinea_ModalPopupExtender" DynamicServicePath="" TargetControlID="btnAgregarLinea" BackgroundCssClass="modalBackground" CancelControlID="btnCancelarLinea" PopupControlID="pnlAgregarLinea">
+                            </ajaxToolkit:ModalPopupExtender>
                         </td>
                     </tr>
                     <tr>
@@ -41,6 +42,8 @@
                         </td>
                         <td>
                             <asp:Button ID="btnAgregarChapa" runat="server" Text="Agregar Chapa" />
+                            <ajaxToolkit:ModalPopupExtender ID="btnAgregarChapa_ModalPopupExtender" runat="server" BehaviorID="Wizard1_btnAgregarChapa_ModalPopupExtender" DynamicServicePath="" TargetControlID="btnAgregarChapa" BackgroundCssClass="modalBackground" CancelControlID="btnCancelarChapa" PopupControlID="pnlAgregarChapa">
+                            </ajaxToolkit:ModalPopupExtender>
                         </td>
                     </tr>
                     <tr>
@@ -60,6 +63,8 @@
                         </td>
                         <td>
                             <asp:Button ID="btnAgregarHojas" runat="server" Text="Agregar Ancho Hoja" />
+                            <ajaxToolkit:ModalPopupExtender ID="btnAgregarHojas_ModalPopupExtender" runat="server" BehaviorID="Wizard1_btnAgregarHojas_ModalPopupExtender" DynamicServicePath="" TargetControlID="btnAgregarHojas" BackgroundCssClass="modalBackground" CancelControlID="btnCancelarHoja" PopupControlID="pnlAgregarHoja">
+                            </ajaxToolkit:ModalPopupExtender>
                         </td>
                     </tr>
                     <tr>
@@ -79,6 +84,8 @@
                         </td>
                         <td>
                             <asp:Button ID="btnAgregarAnchoMarco" runat="server" Text="Agregar Ancho Marco" />
+                            <ajaxToolkit:ModalPopupExtender ID="btnAgregarAnchoMarco_ModalPopupExtender" runat="server" BehaviorID="Wizard1_btnAgregarAnchoMarco_ModalPopupExtender" DynamicServicePath="" TargetControlID="btnAgregarAnchoMarco" BackgroundCssClass="modalBackground" CancelControlID="btnCancelarMarco" PopupControlID="pnlAgregarMarco">
+                            </ajaxToolkit:ModalPopupExtender>
                         </td>
                     </tr>
                     <tr>
@@ -98,6 +105,8 @@
                         </td>
                         <td>
                             <asp:Button ID="btnAgregarMaderas" runat="server" Text="Agregar Madera" />
+                            <ajaxToolkit:ModalPopupExtender ID="btnAgregarMaderas_ModalPopupExtender" runat="server" BehaviorID="Wizard1_btnAgregarMaderas_ModalPopupExtender" DynamicServicePath="" TargetControlID="btnAgregarMaderas" BackgroundCssClass="modalBackground" CancelControlID="btnCancelarMadera" PopupControlID="pnlAgregarMadera">
+                            </ajaxToolkit:ModalPopupExtender>
                         </td>
                     </tr>
                     <tr>
@@ -117,6 +126,8 @@
                         </td>
                         <td>
                             <asp:Button ID="btnAgregarMano" runat="server" Text="Agregar Mano" />
+                            <ajaxToolkit:ModalPopupExtender ID="btnAgregarMano_ModalPopupExtender" runat="server" BehaviorID="Wizard1_btnAgregarMano_ModalPopupExtender" DynamicServicePath="" TargetControlID="btnAgregarMano" BackgroundCssClass="modalBackground" CancelControlID="btnCancelarMano" PopupControlID="pnlAgregarMano">
+                            </ajaxToolkit:ModalPopupExtender>
                         </td>
                     </tr>
                     <tr>
@@ -161,5 +172,47 @@
     </asp:Wizard>
     <asp:Panel ID="pnlMsg" runat="server">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>
+    </asp:Panel>
+    <asp:Panel ID="pnlAgregarLinea" runat="server" CssClass="modalPopUp">
+        <h4>Nueva Linea</h4>
+        <br />
+        <h5>Nombre</h5><asp:TextBox ID="txtNvaLinea" runat="server"></asp:TextBox>
+        <asp:Button ID="btnNvaLinea" runat="server" Text="Agregar Linea" />
+        <asp:Button ID="btnCancelarLinea" runat="server" Text="Cancelar" />
+    </asp:Panel>
+    <asp:Panel ID="pnlAgregarChapa" runat="server" CssClass="modalPopUp">
+        <h4>Nueva Chapa</h4>
+        <br />
+        <h5>Nombre</h5><asp:TextBox ID="txtNvaChapa" runat="server"></asp:TextBox>
+        <asp:Button ID="btnNvaChapa" runat="server" Text="Agregar Chapa" />
+        <asp:Button ID="btnCancelarChapa" runat="server" Text="Cancelar" />
+    </asp:Panel>
+    <asp:Panel ID="pnlAgregarHoja" runat="server" CssClass="modalPopUp">
+        <h4>Nuevo Ancho de Hoja</h4>
+        <br />
+        <h5>Nombre</h5><asp:TextBox ID="txtNvoAnchoHoja" runat="server"></asp:TextBox>
+        <asp:Button ID="btnNvaHoja" runat="server" Text="Agregar Hoja" />
+        <asp:Button ID="btnCancelarHoja" runat="server" Text="Cancelar" />
+    </asp:Panel>
+    <asp:Panel ID="pnlAgregarMarco" runat="server" CssClass="modalPopUp">
+        <h4>Nuevo Ancho de Marco</h4>
+        <br />
+        <h5>Nombre</h5><asp:TextBox ID="txtNvoMarco" runat="server"></asp:TextBox>
+        <asp:Button ID="btnNvoMarco" runat="server" Text="Agregar Marco" />
+        <asp:Button ID="btnCancelarMarco" runat="server" Text="Cancelar" />
+    </asp:Panel>
+    <asp:Panel ID="pnlAgregarMadera" runat="server" CssClass="modalPopUp">
+        <h4>Nueva Madera</h4>
+        <br />
+        <h5>Nombre</h5><asp:TextBox ID="txtMadera" runat="server"></asp:TextBox>
+        <asp:Button ID="btnNvaMadera" runat="server" Text="Agregar Madera" />
+        <asp:Button ID="btnCancelarMadera" runat="server" Text="Cancelar" />
+    </asp:Panel>
+    <asp:Panel ID="pnlAgregarMano" runat="server" CssClass="modalPopUp">
+        <h4>Nueva Mano</h4>
+        <br />
+        <h5>Nombre</h5><asp:TextBox ID="txtNvaMano" runat="server"></asp:TextBox>
+        <asp:Button ID="btnNvaMano" runat="server" Text="Agregar Mano" />
+        <asp:Button ID="btnCancelarMano" runat="server" Text="Cancelar" />
     </asp:Panel>
 </asp:Content>

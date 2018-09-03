@@ -28,4 +28,20 @@ Public Class Mano
             Throw
         End Try
     End Function
+
+    Friend Sub insertar()
+        Try
+            If nombre <> "" Then
+                Dim manos = getManos()
+                If manos.Select("NOMBRE='" & nombre & "'").Count > 0 Then
+                    Throw New Exception("YA EXISTE UNA MANO CON ESE NOMBRE")
+                Else
+                    db.insertar(Me)
+                End If
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
+
 End Class

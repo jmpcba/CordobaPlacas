@@ -28,4 +28,19 @@ Public Class Marco
         End Try
     End Function
 
+    Friend Sub insertar()
+        Try
+            If nombre <> "" Then
+                Dim marcos = getMarcos()
+                If marcos.Select("NOMBRE='" & nombre & "'").Count > 0 Then
+                    Throw New Exception("YA EXISTE UN MARCO CON ESE NOMBRE")
+                Else
+                    db.insertar(Me)
+                End If
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
+
 End Class

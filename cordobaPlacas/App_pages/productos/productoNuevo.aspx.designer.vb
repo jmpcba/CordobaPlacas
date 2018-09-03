@@ -59,6 +59,15 @@ Partial Public Class productoNuevo
     Protected WithEvents btnAgregarLinea As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''Control btnAgregarLinea_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnAgregarLinea_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+    
+    '''<summary>
     '''Control lsChapa.
     '''</summary>
     '''<remarks>
@@ -93,6 +102,15 @@ Partial Public Class productoNuevo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnAgregarChapa As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnAgregarChapa_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnAgregarChapa_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
     
     '''<summary>
     '''Control lsHoja.
@@ -131,6 +149,15 @@ Partial Public Class productoNuevo
     Protected WithEvents btnAgregarHojas As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''Control btnAgregarHojas_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnAgregarHojas_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+    
+    '''<summary>
     '''Control lsMarco.
     '''</summary>
     '''<remarks>
@@ -165,6 +192,15 @@ Partial Public Class productoNuevo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnAgregarAnchoMarco As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnAgregarAnchoMarco_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnAgregarAnchoMarco_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
     
     '''<summary>
     '''Control lsMaderas.
@@ -203,6 +239,15 @@ Partial Public Class productoNuevo
     Protected WithEvents btnAgregarMaderas As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''Control btnAgregarMaderas_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnAgregarMaderas_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+    
+    '''<summary>
     '''Control lsManos.
     '''</summary>
     '''<remarks>
@@ -237,6 +282,15 @@ Partial Public Class productoNuevo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnAgregarMano As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnAgregarMano_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnAgregarMano_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
     
     '''<summary>
     '''Control txtPrecio.
@@ -327,4 +381,220 @@ Partial Public Class productoNuevo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control pnlAgregarLinea.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlAgregarLinea As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtNvaLinea.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtNvaLinea As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control btnNvaLinea.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnNvaLinea As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnCancelarLinea.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelarLinea As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control pnlAgregarChapa.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlAgregarChapa As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtNvaChapa.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtNvaChapa As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control btnNvaChapa.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnNvaChapa As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnCancelarChapa.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelarChapa As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control pnlAgregarHoja.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlAgregarHoja As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtNvoAnchoHoja.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtNvoAnchoHoja As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control btnNvaHoja.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnNvaHoja As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnCancelarHoja.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelarHoja As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control pnlAgregarMarco.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlAgregarMarco As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtNvoMarco.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtNvoMarco As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control btnNvoMarco.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnNvoMarco As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnCancelarMarco.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelarMarco As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control pnlAgregarMadera.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlAgregarMadera As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtMadera.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtMadera As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control btnNvaMadera.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnNvaMadera As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnCancelarMadera.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelarMadera As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control pnlAgregarMano.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlAgregarMano As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control txtNvaMano.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtNvaMano As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''Control btnNvaMano.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnNvaMano As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btnCancelarMano.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnCancelarMano As Global.System.Web.UI.WebControls.Button
 End Class

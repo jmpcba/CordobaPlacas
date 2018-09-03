@@ -322,6 +322,102 @@ Public Class DbHelper
         End Try
     End Sub
 
+    Friend Sub insertar(_linea As Linea)
+        Try
+            Dim query = String.Format("INSERT INTO LINEAS (nombre) VALUES ('{0}')", _linea.nombre)
+
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = query
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As SqlException
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Friend Sub insertar(_chapa As Chapa)
+        Try
+            Dim query = String.Format("INSERT INTO CHAPAS (nombre) VALUES ('{0}')", _chapa.nombre)
+
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = query
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As SqlException
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Friend Sub insertar(_hoja As Hoja)
+        Try
+            Dim query = String.Format("INSERT INTO HOJAS (nombre) VALUES ('{0}')", _hoja.nombre)
+
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = query
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As SqlException
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Friend Sub insertar(_marco As Marco)
+        Try
+            Dim query = String.Format("INSERT INTO MARCOS (nombre) VALUES ('{0}')", _marco.nombre)
+
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = query
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As SqlException
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Friend Sub insertar(_madera As Madera)
+        Try
+            Dim query = String.Format("INSERT INTO MADERAS (nombre) VALUES ('{0}')", _madera.nombre)
+
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = query
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As SqlException
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
+    Friend Sub insertar(_mano As Mano)
+        Try
+            Dim query = String.Format("INSERT INTO MANOS (nombre) VALUES ('{0}')", _mano.nombre)
+
+            cmd.CommandType = CommandType.Text
+            cmd.CommandText = query
+
+            cnn.Open()
+            cmd.ExecuteNonQuery()
+        Catch ex As SqlException
+            Throw
+        Finally
+            cnn.Close()
+        End Try
+    End Sub
+
     Friend Sub consumirMateriales(_piezas As DataTable, _cant As Double, Optional _depo As Boolean = False)
 
         cmd.Connection = cnn

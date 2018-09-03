@@ -30,12 +30,19 @@ Public Class Linea
 
     End Function
 
-    Public Function getLineas(ByVal index As Integer) As DataTable
+    Friend Sub insertar()
         Try
-            Return db.getRow(index)
+            If nombre <> "" Then
+                Dim lineas = getLineas()
+                If lineas.Select("NOMBRE='" & nombre & "'").Count > 0 Then
+                    Throw New Exception("YA EXISTE UNA LINEA CON ESE NOMBRE")
+                Else
+                    db.insertar(Me)
+                End If
+            End If
         Catch ex As Exception
             Throw
         End Try
-    End Function
+    End Sub
 End Class
 

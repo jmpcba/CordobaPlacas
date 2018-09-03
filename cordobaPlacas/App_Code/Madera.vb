@@ -36,4 +36,19 @@ Public Class Madera
             Throw
         End Try
     End Function
+
+    Friend Sub insertar()
+        Try
+            If nombre <> "" Then
+                Dim maderas = getMaderas()
+                If maderas.Select("NOMBRE='" & nombre & "'").Count > 0 Then
+                    Throw New Exception("YA EXISTE UNA MADERA CON ESE NOMBRE")
+                Else
+                    db.insertar(Me)
+                End If
+            End If
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
 End Class

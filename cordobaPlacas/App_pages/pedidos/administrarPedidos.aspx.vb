@@ -632,6 +632,15 @@ Public Class administrarPedidos
 
                     crystalReport(GestorDatos.reportes.remito, gestorPedidos.pedido.id)
 
+                    'ENVIAR A STOCK
+                ElseIf e.CommandName = "stock" Then
+                    estado = New Estado(Estado.estados.stock)
+                    'EL STOCK DEL PRODUCTO SE INCREMENTA POR UN TRIGGER DE DB
+                    gestorPedidos.actualizarEstado(estado)
+                    Session("gestorPEdidos") = gestorPedidos
+                    Dim msg = String.Format("Pedido {0} enviado a STOCK interno", gestorPedidos.pedido.id)
+                    msgPanel(msg)
+
                     'PEDIDO ENTREGADO AL CLIENTE
                 ElseIf e.CommandName = "entregado" Then
                     estado = New Estado(Estado.estados.entregado)
@@ -656,15 +665,22 @@ Public Class administrarPedidos
         For Each r As GridViewRow In grDeposito.Rows
             Dim btnEnviar As ImageButton
             Dim btnEntregado As ImageButton
+            Dim btnStock As ImageButton
 
             btnEnviar = r.FindControl("btnDepoEnviar")
             btnEntregado = r.FindControl("btnDepoEntregado")
+            btnStock = r.FindControl("btnStock")
 
             If r.Cells(7).Text <> "" Then
-                If r.Cells(7).Text = Estado.estados.deposito Then
-                    btnEnviar.Visible = True
-                ElseIf r.Cells(7).Text = Estado.estados.enviado Then
-                    btnEntregado.Visible = True
+                If r.Cells(8).Text = "0" Then
+                    btnStock = r.FindControl("btnStock")
+                    btnStock.Visible = True
+                Else
+                    If r.Cells(7).Text = Estado.estados.deposito Then
+                        btnEnviar.Visible = True
+                    ElseIf r.Cells(7).Text = Estado.estados.enviado Then
+                        btnEntregado.Visible = True
+                    End If
                 End If
             End If
         Next

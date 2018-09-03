@@ -3273,6 +3273,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.productoNuevo._btnAgregarLinea_ModalPopupExtender">
+<summary>
+Control btnAgregarLinea_ModalPopupExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.productoNuevo._lsChapa">
 <summary>
 Control lsChapa.
@@ -3303,6 +3312,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.productoNuevo._btnAgregarChapa">
 <summary>
 Control btnAgregarChapa.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnAgregarChapa_ModalPopupExtender">
+<summary>
+Control btnAgregarChapa_ModalPopupExtender.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -3345,6 +3363,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.productoNuevo._btnAgregarHojas_ModalPopupExtender">
+<summary>
+Control btnAgregarHojas_ModalPopupExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.productoNuevo._lsMarco">
 <summary>
 Control lsMarco.
@@ -3375,6 +3402,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.productoNuevo._btnAgregarAnchoMarco">
 <summary>
 Control btnAgregarAnchoMarco.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnAgregarAnchoMarco_ModalPopupExtender">
+<summary>
+Control btnAgregarAnchoMarco_ModalPopupExtender.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -3417,6 +3453,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.productoNuevo._btnAgregarMaderas_ModalPopupExtender">
+<summary>
+Control btnAgregarMaderas_ModalPopupExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.productoNuevo._lsManos">
 <summary>
 Control lsManos.
@@ -3447,6 +3492,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.productoNuevo._btnAgregarMano">
 <summary>
 Control btnAgregarMano.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnAgregarMano_ModalPopupExtender">
+<summary>
+Control btnAgregarMano_ModalPopupExtender.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -3537,6 +3591,222 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.productoNuevo._lblMsg">
 <summary>
 Control lblMsg.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._pnlAgregarLinea">
+<summary>
+Control pnlAgregarLinea.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._txtNvaLinea">
+<summary>
+Control txtNvaLinea.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnNvaLinea">
+<summary>
+Control btnNvaLinea.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnCancelarLinea">
+<summary>
+Control btnCancelarLinea.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._pnlAgregarChapa">
+<summary>
+Control pnlAgregarChapa.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._txtNvaChapa">
+<summary>
+Control txtNvaChapa.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnNvaChapa">
+<summary>
+Control btnNvaChapa.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnCancelarChapa">
+<summary>
+Control btnCancelarChapa.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._pnlAgregarHoja">
+<summary>
+Control pnlAgregarHoja.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._txtNvoAnchoHoja">
+<summary>
+Control txtNvoAnchoHoja.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnNvaHoja">
+<summary>
+Control btnNvaHoja.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnCancelarHoja">
+<summary>
+Control btnCancelarHoja.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._pnlAgregarMarco">
+<summary>
+Control pnlAgregarMarco.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._txtNvoMarco">
+<summary>
+Control txtNvoMarco.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnNvoMarco">
+<summary>
+Control btnNvoMarco.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnCancelarMarco">
+<summary>
+Control btnCancelarMarco.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._pnlAgregarMadera">
+<summary>
+Control pnlAgregarMadera.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._txtMadera">
+<summary>
+Control txtMadera.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnNvaMadera">
+<summary>
+Control btnNvaMadera.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnCancelarMadera">
+<summary>
+Control btnCancelarMadera.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._pnlAgregarMano">
+<summary>
+Control pnlAgregarMano.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._txtNvaMano">
+<summary>
+Control txtNvaMano.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnNvaMano">
+<summary>
+Control btnNvaMano.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.productoNuevo._btnCancelarMano">
+<summary>
+Control btnCancelarMano.
 </summary>
 <remarks>
 Campo generado automáticamente.

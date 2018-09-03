@@ -291,12 +291,17 @@
                             <HeaderStyle CssClass="hiddencol" />
                             <ItemStyle CssClass="hiddencol" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="ID_CLIENTE" HeaderText="ID_CLIENTE">
+                            <HeaderStyle CssClass="hiddencol" />
+                            <ItemStyle CssClass="hiddencol" />
+                            </asp:BoundField>
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:ImageButton ID="btnDepoEnviar" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="enviar" CssClass="imageButtons" ImageUrl="~/images/enviar_flecha.png" ToolTip="Mover pedido a ENVIADO e imprimir remito" Visible="False" />
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnDepoEnviar_ConfirmButtonExtender" runat="server" ConfirmText="Eviar pedido al cliente e imprimir remito?" TargetControlID="btnDepoEnviar" />
                                     <asp:ImageButton ID="btnDepoEntregado" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="entregado" CssClass="imageButtons" ImageUrl="~/images/recibido.png" ToolTip="Mover el pedido a ENTREGADO" Visible="False" />
                                     <ajaxToolkit:ConfirmButtonExtender ID="btnDepoEntregado_ConfirmButtonExtender" runat="server" ConfirmText="El cliente recibio el pedido?" TargetControlID="btnDepoEntregado" />
+                                    <asp:ImageButton ID="btnStock" runat="server" CommandArgument='<%# Eval("nro pedido") %>' CommandName="stock" CssClass="imageButtons" ImageUrl="~/images/almacen.png" ToolTip="Pedido interno - Mover a deposito" Visible="False" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

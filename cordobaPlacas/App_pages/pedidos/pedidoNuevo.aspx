@@ -175,7 +175,7 @@
                             <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
                             <asp:BoundField DataField="MANO" HeaderText="MANO" />
                             <asp:BoundField DataField="CANTIDAD" HeaderText="CANTIDAD" />
-                            <asp:BoundField DataField="MONTO" HeaderText="MONTO" DataFormatString="{0:f2}" />
+                            <asp:BoundField DataField="MONTO" HeaderText="MONTO" DataFormatString="{0:C2}" />
                         </Columns>
                     </asp:GridView>
                 </asp:Panel>
@@ -221,7 +221,19 @@
                 <br />
                 <asp:CheckBox ID="chkStock" style="align-items:center;" runat="server" Enabled="False" />
                 <br />
-                <asp:GridView ID="grPepedidoConfirmar" runat="server"></asp:GridView>
+                <asp:GridView ID="grPepedidoConfirmar" runat="server" AutoGenerateColumns="False">
+                    <Columns>
+                        <asp:BoundField DataField="LINEA" HeaderText="LINEA" />
+                        <asp:BoundField DataField="HOJA" HeaderText="HOJA" />
+                        <asp:BoundField DataField="MARCO" HeaderText="MARCO" />
+                        <asp:BoundField DataField="MADERA" HeaderText="MADERA" />
+                        <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
+                        <asp:BoundField DataField="MANO" HeaderText="MANO" />
+                        <asp:BoundField DataField="CANTIDAD" HeaderText="CANTIDAD" />
+                        <asp:BoundField DataField="MONTO" DataFormatString="{0:f2}" HeaderText="MONTO" />
+                        <asp:BoundField DataField="STOCK" HeaderText="STOCK" />
+                    </Columns>
+                </asp:GridView>
             </asp:WizardStep>
             <asp:WizardStep runat="server" StepType="Complete" Title="Confirmacion">
                 <h4>El pedido fue enviado, informe el numero de pedido al cliente <br /><br />NUMERO DE PEDIDO: <asp:Label ID="lblConfirmacion" runat="server" Text="Label"></asp:Label></h4>
