@@ -43,7 +43,6 @@ Public Class GestorDatos
         hoja = New Hoja()
         linea = New Linea()
         mano = New Mano
-
     End Sub
 
     Friend Function actualizarMateriales(_grMateriales As GridView) As List(Of Integer)
@@ -258,37 +257,6 @@ Public Class GestorDatos
         _grilla.DataBind()
     End Sub
 
-    Public Sub mostrarGrillaModificarItems(ByVal _grilla As GridView, ByVal _pedido As Pedido)
-        'definicion de tabla
-        Dim dt = New DataTable()
-        dt.Columns.Add("CANT", GetType(Integer))
-        dt.Columns.Add("LINEA", GetType(String))
-        dt.Columns.Add("MADERA", GetType(String))
-        dt.Columns.Add("HOJA", GetType(String))
-        dt.Columns.Add("MARCO", GetType(String))
-        dt.Columns.Add("CHAPA", GetType(String))
-        dt.Columns.Add("MANO", GetType(String))
-        dt.Columns.Add("MONTO", GetType(Decimal))
-
-        'llenado de tabla
-        For Each item As Item In _pedido.items
-            Dim row = dt.NewRow()
-            row("linea") = item.getProducto.linea.nombre
-            row("hoja") = item.getProducto.hoja.nombre
-            row("marco") = item.getProducto.marco.nombre
-            row("madera") = item.getProducto.madera.nombre
-            row("chapa") = item.getProducto.chapa.nombre
-            row("CANT") = item.getCant
-            row("MONTO") = item.monto
-            row("mano") = item.getProducto.mano.nombre
-
-            dt.Rows.Add(row)
-        Next
-        'actualizacion de grilla
-        _grilla.DataSource = dt
-        _grilla.DataBind()
-    End Sub
-
     Public Function getItemsModificar(ByVal _pedido As Integer) As DataTable
         Try
             Dim db = New DbHelper("ITEMS")
@@ -339,35 +307,6 @@ Public Class GestorDatos
             Throw
         End Try
     End Function
-
-    Public Sub cargarEstados(ByVal _dpEstados As DropDownList, ByVal _actual As Integer)
-        Try
-            Dim estado = New Estado(_actual)
-            Dim EstadosPosibles() As String
-            Dim estados = estado.getEstados()
-            Dim rowsToDelete = New List(Of DataRow)
-
-
-            EstadosPosibles = estado.getEstadosPosibles()
-
-            For Each r As DataRow In estados.Rows
-                If Not EstadosPosibles.Contains(r("id")) Then
-                    rowsToDelete.Add(r)
-                End If
-            Next
-
-            For Each r As DataRow In rowsToDelete
-                estados.Rows.Remove(r)
-            Next
-
-            _dpEstados.DataSource = estados
-            _dpEstados.DataValueField = "id"
-            _dpEstados.DataTextField = "nombre"
-            _dpEstados.DataBind()
-        Catch ex As Exception
-            Throw
-        End Try
-    End Sub
 
     Public Function getStock(_item As Item) As DataTable
         Dim db = New DbHelper("Stock")

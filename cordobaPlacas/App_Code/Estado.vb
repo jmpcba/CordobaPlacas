@@ -26,11 +26,6 @@ Public Class Estado
         nombre = t.Rows(0)("nombre")
     End Sub
 
-    Public Sub New(ByVal _id As Integer, ByVal _nombre As String)
-        id = _id
-        nombre = _nombre
-    End Sub
-
     Public Function getEstados() As DataTable
         Try
             db = New DbHelper("estados")
@@ -40,16 +35,4 @@ Public Class Estado
         End Try
     End Function
 
-    'PARA BORRAR
-    Public Function getEstadosPosibles() As String()
-        Dim r As DataRow
-        Dim dt As DataTable
-        Dim posStr As String
-        db = New DbHelper("estados")
-
-        dt = db.getRow(id)
-        r = dt.Rows(0)
-        posStr = r("sig_estado")
-        Return posStr.Split(";")
-    End Function
 End Class

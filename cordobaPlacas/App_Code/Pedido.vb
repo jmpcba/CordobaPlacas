@@ -180,20 +180,4 @@ Public Class Pedido
         Next
 
     End Sub
-
-    'DEPRECADO
-    Public Sub modificarItem(_id As Integer, _it As Item)
-        Dim i = itemIndex(_id)
-
-        If items(i).getCant() <> _it.getCant() Then
-            items(i).setCant(_it.getCant())
-        End If
-
-        If items(i).getProducto.id <> _it.getProducto.id Then
-            items(i).setProducto(_it.getProducto)
-        End If
-
-        calcularTotales()
-
-    End Sub
 End Class

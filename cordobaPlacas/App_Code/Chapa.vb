@@ -29,22 +29,6 @@ Public Class Chapa
         End Try
     End Function
 
-    Public Function getChapas(ByVal index As Integer) As DataTable
-        Try
-            Return db.getRow(index)
-        Catch ex As Exception
-            Throw
-        End Try
-    End Function
-
-    Public Function getExcluidas() As DataTable
-        Try
-            Return db.getExcluidas(DbHelper.tablas.CHAPAS, id)
-        Catch ex As Exception
-            Throw
-        End Try
-    End Function
-
     Friend Sub insertar()
         Try
             If nombre <> "" Then

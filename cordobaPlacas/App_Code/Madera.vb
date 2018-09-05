@@ -29,14 +29,6 @@ Public Class Madera
         End Try
     End Function
 
-    Public Function getExcluidas() As DataTable
-        Try
-            Return db.getExcluidas(DbHelper.tablas.MADERAS, id)
-        Catch ex As Exception
-            Throw
-        End Try
-    End Function
-
     Friend Sub insertar()
         Try
             If nombre <> "" Then

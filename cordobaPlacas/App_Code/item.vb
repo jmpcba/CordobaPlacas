@@ -130,19 +130,6 @@ Public Class Item
         Return despiece
     End Function
 
-    Public Sub clone(_item As Item)
-        producto = _item.producto
-        cant = _item.cant
-        monto = _item.monto
-        setEstado(_item.estado)
-        marcosTerminados = _item.marcosTerminados
-        hojasTerminadas = _item.hojasTerminadas
-        ensamblados = _item.ensamblados
-        enDeposito = _item.enDeposito
-        stock = _item.stock
-        despiece = _item.despiece
-    End Sub
-
     Public Sub setStock(_newStock As Integer)
         db = New DbHelper
         stock = _newStock

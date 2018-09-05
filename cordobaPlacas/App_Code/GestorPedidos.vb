@@ -5,11 +5,6 @@ Public Class GestorPedidos
     Public pedido As Pedido
     Private db As DbHelper
 
-    Public Sub New()
-        pedido = New Pedido()
-        db = New DbHelper("pedidos")
-    End Sub
-
     Public Sub New(ByVal _idPedido As Integer)
         pedido = New Pedido(_idPedido)
         db = New DbHelper("pedidos")
@@ -214,21 +209,4 @@ Public Class GestorPedidos
             Throw
         End Try
     End Sub
-
-    Public Function calcularMateriales() As DataTable
-        Dim materiales = pedido.calcularMateriales()
-
-        materiales.Columns.Add("FALTANTE", GetType(Decimal))
-
-        Dim i = 0
-
-        For Each r As DataRow In materiales.Rows
-            Dim requerido = r("CONSUMO")
-
-            If requerido > r("STOCK_DISPONIBLE") Then
-                r("FALTANTE") = r("STOCK_DISPONIBLE") - requerido
-            End If
-            i += 1
-        Next
-    End Function
 End Class

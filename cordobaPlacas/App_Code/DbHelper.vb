@@ -489,30 +489,6 @@ Public Class DbHelper
 
     End Sub
 
-    Public Sub insertarItem(_idProducto As Integer, _idPedido As Integer, _cant As Integer, _monto As Decimal, _stock As Integer)
-
-        Try
-            cmd.Connection = cnn
-            cmd.CommandText = "SP_INSERT_ITEM"
-            cmd.CommandType = CommandType.StoredProcedure
-
-            cmd.Parameters.Clear()
-            cmd.Parameters.AddWithValue("@ID_PRODUCTO", _idProducto)
-            cmd.Parameters.AddWithValue("@ID_PEDIDO", _idPedido)
-            cmd.Parameters.AddWithValue("@CANT", _cant)
-            cmd.Parameters.AddWithValue("@MONTO", _monto)
-            cmd.Parameters.AddWithValue("@STOCK", _stock)
-
-            cnn.Open()
-            cmd.ExecuteNonQuery()
-
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        Finally
-            cnn.Close()
-        End Try
-    End Sub
-
     Public Function insertar(_prod As Producto) As Integer
         Try
             cmd.Connection = cnn
@@ -536,9 +512,6 @@ Public Class DbHelper
         Finally
             cnn.Close()
         End Try
-
-
-
     End Function
 
     Public Sub insertar(_item As Item)
@@ -927,30 +900,6 @@ Public Class DbHelper
             da.Fill(ds, "tabla_combos")
 
             Return ds.Tables("tabla_combos")
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        End Try
-    End Function
-
-    Public Function getProducto(_linea As Integer, _chapa As Integer, _hoja As Integer, _marco As Integer, _madera As Integer, _mano As Integer) As DataTable
-        ds = New DataSet
-
-        Try
-            cmd.Connection = cnn
-            cmd.CommandText = "SP_GET_PRODUCTO"
-            cmd.CommandType = CommandType.StoredProcedure
-
-            cmd.Parameters.Clear()
-            cmd.Parameters.AddWithValue("@LINEA", _linea)
-            cmd.Parameters.AddWithValue("@CHAPA", _chapa)
-            cmd.Parameters.AddWithValue("@HOJA", _hoja)
-            cmd.Parameters.AddWithValue("@MARCO", _marco)
-            cmd.Parameters.AddWithValue("@MADERA", _madera)
-            cmd.Parameters.AddWithValue("@MANO", _mano)
-
-            da.Fill(ds, "RESULTADO")
-            Return ds.Tables("RESULTADO")
-
         Catch ex As SqlException
             Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
         End Try
