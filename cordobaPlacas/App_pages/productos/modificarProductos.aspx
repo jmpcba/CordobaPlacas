@@ -6,31 +6,99 @@
                 <td>Linea</td>
                 <td>
                     <asp:DropDownList ID="dpLinea" runat="server" DataSourceID="DSLineas" DataTextField="nombre" DataValueField="id" AutoPostBack="True"></asp:DropDownList>
-                    <asp:SqlDataSource ID="DSLineas" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [lineas]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="DSLineas" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [lineas]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [lineas] WHERE [id] = @original_id " InsertCommand="INSERT INTO [lineas] ([nombre]) VALUES (@nombre)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [lineas] SET [nombre] = @nombre WHERE [id] = @original_id">
+                        <DeleteParameters>
+                            <asp:ControlParameter ControlID="grlineas" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="nombre" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:ControlParameter ControlID="grlineas" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                            <asp:ControlParameter ControlID="grlineas" Name="original_nombre" PropertyName="SelectedValue" Type="String" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                 </td>
                 <td>Chapa</td>
                 <td>
                     <asp:DropDownList ID="dpChapa" runat="server" DataSourceID="DSChapa" DataTextField="nombre" DataValueField="id" AutoPostBack="True"></asp:DropDownList>
-                    <asp:SqlDataSource ID="DSChapa" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [chapas]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="DSChapa" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [chapas]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [chapas] WHERE [id] = @original_id" InsertCommand="INSERT INTO [chapas] ([nombre], [COD_MAT]) VALUES (@nombre, @COD_MAT)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [chapas] SET [nombre] = @nombre WHERE [id] = @original_id">
+                        <DeleteParameters>
+                            <asp:ControlParameter ControlID="grChapas" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="nombre" Type="String" />
+                            <asp:Parameter Name="COD_MAT" Type="Int32" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:ControlParameter ControlID="grChapas" Name="nombre" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="grChapas" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                 </td>
                 <td>Hoja</td>
                 <td>
                     <asp:DropDownList ID="dpHoja" runat="server" DataSourceID="DSHoja" DataTextField="nombre" DataValueField="id" AutoPostBack="True"></asp:DropDownList>
-                    <asp:SqlDataSource ID="DSHoja" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [hojas]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="DSHoja" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [hojas]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [hojas] WHERE [id] = @original_id" InsertCommand="INSERT INTO [hojas] ([nombre]) VALUES (@nombre)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [hojas] SET [nombre] = @nombre WHERE [id] = @original_id">
+                        <DeleteParameters>
+                            <asp:ControlParameter ControlID="grHoja" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="nombre" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:ControlParameter ControlID="grHoja" Name="nombre" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="grHoja" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
                 <td>Marco</td>
                 <td><asp:DropDownList ID="dpMarco" runat="server" DataSourceID="DSMarco" DataTextField="nombre" DataValueField="id" AutoPostBack="True"></asp:DropDownList>
-                    <asp:SqlDataSource ID="DSMarco" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [marcos]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="DSMarco" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [marcos]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [marcos] WHERE [id] = @original_id AND [nombre] = @original_nombre" InsertCommand="INSERT INTO [marcos] ([nombre]) VALUES (@nombre)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [marcos] SET [nombre] = @nombre WHERE [id] = @original_id">
+                        <DeleteParameters>
+                            <asp:ControlParameter ControlID="grMarcos" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="nombre" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:ControlParameter ControlID="dpMarco" Name="nombre" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="grMarcos" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                 </td>
                 <td>Madera</td>
                 <td><asp:DropDownList ID="dpMadera" runat="server" DataSourceID="DSMadera" DataTextField="NOMBRE" DataValueField="ID" AutoPostBack="True"></asp:DropDownList>
-                    <asp:SqlDataSource ID="DSMadera" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [maderas]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="DSMadera" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [maderas]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [maderas] WHERE [ID] = @original_ID" InsertCommand="INSERT INTO [maderas] ([NOMBRE], [COD_MAT]) VALUES (@NOMBRE, @COD_MAT)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [maderas] SET [NOMBRE] = @NOMBRE WHERE [ID] = @original_ID">
+                        <DeleteParameters>
+                            <asp:ControlParameter ControlID="grMaderas" Name="original_ID" PropertyName="SelectedDataKey" Type="Int16" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="NOMBRE" Type="String" />
+                            <asp:Parameter Name="COD_MAT" Type="Int16" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:ControlParameter ControlID="grMaderas" Name="NOMBRE" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="grMaderas" Name="COD_MAT" PropertyName="SelectedDataKey" Type="Int16" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                 </td>
                 <td>Mano</td>
                 <td><asp:DropDownList ID="dpMano" runat="server" DataSourceID="DSMano" DataTextField="nombre" DataValueField="id" AutoPostBack="True"></asp:DropDownList>
-                    <asp:SqlDataSource ID="DSMano" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [manos]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="DSMano" runat="server" ConnectionString="<%$ ConnectionStrings:cbaPlacasConnectionString1 %>" SelectCommand="SELECT * FROM [manos]" ConflictDetection="CompareAllValues" DeleteCommand="DELETE FROM [manos] WHERE [id] = @original_id AND [nombre] = @original_nombre" InsertCommand="INSERT INTO [manos] ([nombre]) VALUES (@nombre)" OldValuesParameterFormatString="original_{0}" UpdateCommand="UPDATE [manos] SET [nombre] = @nombre WHERE [id] = @original_id">
+                        <DeleteParameters>
+                            <asp:ControlParameter ControlID="grManos" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="nombre" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:ControlParameter ControlID="grManos" Name="nombre" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="grManos" Name="original_id" PropertyName="SelectedDataKey" Type="Int16" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
@@ -40,6 +108,10 @@
             </tr>
         </table>
         <hr />
+             <asp:ImageButton ID="imgBtnConfig" runat="server" style="float:right; " CssClass="imageButtons" ImageUrl="~/images/config.png" ToolTip="Modificar caracteristicas" />
+             <ajaxToolkit:ModalPopupExtender ID="imgBtnConfig_ModalPopupExtender" runat="server" BackgroundCssClass="modalBackground" CancelControlID="btnVolverCarac" PopupControlID="pnlCaracteristicas" TargetControlID="imgBtnConfig">
+             </ajaxToolkit:ModalPopupExtender>
+        <br />
         <asp:GridView ID="grProductos" runat="server" AutoGenerateColumns="False" DataKeyNames="id">
             <Columns>
                 <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
@@ -143,7 +215,6 @@
             </Columns>
         </asp:GridView>
         <br />
-        
     </asp:Panel>
     <asp:Panel ID="pnlValidadores" runat="server">
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="validators" DisplayMode="List" ValidationGroup="vgInsert" />
@@ -152,5 +223,129 @@
     </asp:Panel>
     <asp:Panel ID="pnlMsg" runat="server">
         <asp:Label ID="lblMsg" runat="server"></asp:Label>
+    </asp:Panel>
+    <asp:Panel ID="pnlCaracteristicas" runat="server" CssClass="modalPopUp" HorizontalAlign="Center" ScrollBars="Vertical">
+        <table class="tablaCaracteristicas">
+            <tr>
+                <th style="height: 26px">LINEAS</th>
+                <th style="height: 26px">MADERAS</th>
+                <th style="height: 26px">CHAPAS</th>
+                <th style="height: 26px">ANCHOS HOJA</th>
+                <th style="height: 26px">ANCHOS MARCO</th>
+                <th style="height: 26px">MANO</th>
+                <th>
+                    <asp:ImageButton ID="btnVolverCarac" runat="server" ImageUrl="~/images/arrow_left-512.png" CssClass="imageButtons" ToolTip="Cerrar" /></th>
+            </tr>
+            <tr>
+                <td>
+                    <asp:GridView ID="grlineas" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="DSLineas">
+                        <Columns>
+                            <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                            <asp:TemplateField HeaderText="nombre" SortExpression="nombre">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("nombre") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:CommandField ButtonType="Image" CancelImageUrl="~/images/cancel.png" DeleteImageUrl="~/images/delete.png" EditImageUrl="~/images/edit-512.png" ShowDeleteButton="True" ShowEditButton="True" UpdateImageUrl="~/images/save.png" ValidationGroup="vgCaracteristicas">
+                            <ControlStyle CssClass="imageButtons" />
+                            </asp:CommandField>
+                        </Columns>
+                    </asp:GridView>
+                </td>
+                <td>
+                    <asp:GridView ID="grMaderas" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="DSMadera">
+                        <Columns>
+                            <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                            <asp:TemplateField HeaderText="nombre" SortExpression="nombre">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("nombre") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:CommandField ButtonType="Image" CancelImageUrl="~/images/cancel.png" DeleteImageUrl="~/images/delete.png" EditImageUrl="~/images/edit-512.png" ShowDeleteButton="True" ShowEditButton="True" UpdateImageUrl="~/images/save.png" ValidationGroup="vgCaracteristicas">
+                            <ControlStyle CssClass="imageButtons" />
+                            </asp:CommandField>
+                        </Columns>
+                    </asp:GridView>
+                </td>
+                <td>
+                    <asp:GridView ID="grChapas" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="DSChapa">
+                        <Columns>
+                            <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                            <asp:TemplateField HeaderText="nombre" SortExpression="nombre">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("nombre") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:CommandField ButtonType="Image" CancelImageUrl="~/images/cancel.png" DeleteImageUrl="~/images/delete.png" EditImageUrl="~/images/edit-512.png" ShowDeleteButton="True" ShowEditButton="True" UpdateImageUrl="~/images/save.png" ValidationGroup="vgCaracteristicas">
+                            <ControlStyle CssClass="imageButtons" />
+                            </asp:CommandField>
+                        </Columns>
+                    </asp:GridView>
+                </td>
+                <td>
+                    <asp:GridView ID="grHoja" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="DSHoja">
+                        <Columns>
+                            <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                            <asp:TemplateField HeaderText="nombre" SortExpression="nombre">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("nombre") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:CommandField ButtonType="Image" CancelImageUrl="~/images/cancel.png" DeleteImageUrl="~/images/delete.png" EditImageUrl="~/images/edit-512.png" ShowDeleteButton="True" ShowEditButton="True" UpdateImageUrl="~/images/save.png" ValidationGroup="vgCaracteristicas">
+                            <ControlStyle CssClass="imageButtons" />
+                            </asp:CommandField>
+                        </Columns>
+                    </asp:GridView>
+                </td>
+                <td>
+                    <asp:GridView ID="grMarcos" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="DSMarco">
+                        <Columns>
+                            <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                            <asp:TemplateField HeaderText="nombre" SortExpression="nombre">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("nombre") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:CommandField ButtonType="Image" CancelImageUrl="~/images/cancel.png" DeleteImageUrl="~/images/delete.png" EditImageUrl="~/images/edit-512.png" ShowDeleteButton="True" ShowEditButton="True" UpdateImageUrl="~/images/save.png" ValidationGroup="vgCaracteristicas">
+                            <ControlStyle CssClass="imageButtons" />
+                            </asp:CommandField>
+                        </Columns>
+                    </asp:GridView>
+                </td>
+                <td>
+                    <asp:GridView ID="grManos" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="DSMano">
+                        <Columns>
+                            <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                            <asp:TemplateField HeaderText="nombre" SortExpression="nombre">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("nombre") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:CommandField ButtonType="Image" CancelImageUrl="~/images/cancel.png" DeleteImageUrl="~/images/delete.png" EditImageUrl="~/images/edit-512.png" ShowDeleteButton="True" ShowEditButton="True" UpdateImageUrl="~/images/save.png" ValidationGroup="vgCaracteristicas">
+                            <ControlStyle CssClass="imageButtons" />
+                            </asp:CommandField>
+                        </Columns>
+                    </asp:GridView>
+                </td>
+            </tr>
+        </table>
     </asp:Panel>
 </asp:Content>

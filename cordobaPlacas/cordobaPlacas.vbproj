@@ -279,6 +279,7 @@
     <Content Include="images\arrow_left-512.png" />
     <Content Include="images\cancel.png" />
     <Content Include="images\cbaPlacasLogo.jpg" />
+    <Content Include="images\config.png" />
     <Content Include="images\delete.png" />
     <Content Include="images\deposito.png" />
     <Content Include="images\despiece.png" />

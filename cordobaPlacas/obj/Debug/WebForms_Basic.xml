@@ -3129,6 +3129,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:cordobaPlacas.modificarProductos._imgBtnConfig">
+<summary>
+Control imgBtnConfig.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.modificarProductos._imgBtnConfig_ModalPopupExtender">
+<summary>
+Control imgBtnConfig_ModalPopupExtender.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:cordobaPlacas.modificarProductos._grProductos">
 <summary>
 Control grProductos.
@@ -3222,6 +3240,78 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.modificarProductos._lblMsg">
 <summary>
 Control lblMsg.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.modificarProductos._pnlCaracteristicas">
+<summary>
+Control pnlCaracteristicas.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.modificarProductos._btnVolverCarac">
+<summary>
+Control btnVolverCarac.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.modificarProductos._grlineas">
+<summary>
+Control grlineas.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.modificarProductos._grMaderas">
+<summary>
+Control grMaderas.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.modificarProductos._grChapas">
+<summary>
+Control grChapas.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.modificarProductos._grHoja">
+<summary>
+Control grHoja.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.modificarProductos._grMarcos">
+<summary>
+Control grMarcos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:cordobaPlacas.modificarProductos._grManos">
+<summary>
+Control grManos.
 </summary>
 <remarks>
 Campo generado automáticamente.

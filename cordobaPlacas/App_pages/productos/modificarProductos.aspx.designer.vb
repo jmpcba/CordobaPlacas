@@ -140,6 +140,24 @@ Partial Public Class modificarProductos
     Protected WithEvents btnLimpiar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''Control imgBtnConfig.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents imgBtnConfig As Global.System.Web.UI.WebControls.ImageButton
+    
+    '''<summary>
+    '''Control imgBtnConfig_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents imgBtnConfig_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+    
+    '''<summary>
     '''Control grProductos.
     '''</summary>
     '''<remarks>
@@ -237,4 +255,76 @@ Partial Public Class modificarProductos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lblMsg As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control pnlCaracteristicas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pnlCaracteristicas As Global.System.Web.UI.WebControls.Panel
+    
+    '''<summary>
+    '''Control btnVolverCarac.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnVolverCarac As Global.System.Web.UI.WebControls.ImageButton
+    
+    '''<summary>
+    '''Control grlineas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grlineas As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control grMaderas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grMaderas As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control grChapas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grChapas As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control grHoja.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grHoja As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control grMarcos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grMarcos As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Control grManos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents grManos As Global.System.Web.UI.WebControls.GridView
 End Class

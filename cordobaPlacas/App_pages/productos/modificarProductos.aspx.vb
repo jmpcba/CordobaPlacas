@@ -239,4 +239,28 @@
             errorPanel(ex.Message)
         End Try
     End Sub
+
+    Protected Sub grlineas_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grlineas.RowCommand
+        imgBtnConfig_ModalPopupExtender.Show()
+    End Sub
+
+    Protected Sub grMaderas_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grMaderas.RowCommand
+        imgBtnConfig_ModalPopupExtender.Show()
+    End Sub
+
+    Protected Sub grChapas_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grChapas.RowCommand
+        imgBtnConfig_ModalPopupExtender.Show()
+    End Sub
+
+    Protected Sub grHoja_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grHoja.RowCommand
+        imgBtnConfig_ModalPopupExtender.Show()
+    End Sub
+
+    Protected Sub grMarcos_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grMarcos.RowCommand
+        imgBtnConfig_ModalPopupExtender.Show()
+    End Sub
+
+    Protected Sub grManos_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grManos.RowCommand
+        imgBtnConfig_ModalPopupExtender.Show()
+    End Sub
 End Class
