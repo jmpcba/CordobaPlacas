@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class SiteMaster
     
     '''<summary>
+    '''Control Menu1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Menu1 As Global.System.Web.UI.WebControls.Menu
+    
+    '''<summary>
     '''Control MainContent.
     '''</summary>
     '''<remarks>

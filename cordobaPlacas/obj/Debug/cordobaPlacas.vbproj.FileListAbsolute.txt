@@ -213,19 +213,7 @@ C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\System.Spatial.
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\System.Web.Optimization.dll
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\System.Web.Providers.dll
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\WebGrease.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.Controllers.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.Prompting.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
-C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\stdole.dll
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\HtmlAgilityPack.pdb
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\HtmlAgilityPack.xml
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\Microsoft.AI.DependencyCollector.xml
@@ -310,3 +298,5 @@ C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecision
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.ReportSource.dll
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.Shared.dll
 C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\CrystalDecisions.Web.dll
+C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\log4net.dll
+C:\Users\Manuel\Documents\GitHub\cordobaPlacas\cordobaPlacas\bin\log4net.xml

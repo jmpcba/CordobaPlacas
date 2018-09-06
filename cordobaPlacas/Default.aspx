@@ -33,7 +33,7 @@
                     <p>
                         Informacion historica del sistema</p>
                     <p><a class="btn btn-default" href="App_pages/reportes/reportePedidosCliente.aspx">Ventas Por Cliente &raquo;</a></p>
-                    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">Ventas Por Producto &raquo;</a></p>
+                    <p><a class="btn btn-default" href="App_pages/reportes/reportePedidosProducto.aspx">Ventas Por Producto &raquo;</a></p>
                 </div>
             </div>
 </asp:Content>
