@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-cordobaPlacas-20180524070816.mdf;Initial Catalog=aspnet-cordobaPlacas-20180524070816;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="cbaPlacasConnectionString-Web.config Connection String" description="cbaPlacasConnectionString Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=DESKTOP-DGL3LL5;Initial Catalog=cbaPlacas;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cbaPlacasConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="cordobaPlacas.My.MySettings.desktopConStr-Web.config Connection String" description="cordobaPlacas.My.MySettings.desktopConStr Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=DESKTOP-DGL3LL5;Initial Catalog=cbaPlacas;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cordobaPlacas.My.MySettings.desktopConStr']/@connectionString" />
+  </parameter>
+  <parameter name="cordobaPlacas.My.MySettings.laptopConStr-Web.config Connection String" description="cordobaPlacas.My.MySettings.laptopConStr Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source = USER - PC;Initial Catalog=cbaPlacas;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cordobaPlacas.My.MySettings.laptopConStr']/@connectionString" />
+  </parameter>
+  <parameter name="cbaPlacasConnectionString1-Web.config Connection String" description="cbaPlacasConnectionString1 Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cbaPlacasConnectionString1']/@connectionString" />
+  </parameter>
+</parameters>

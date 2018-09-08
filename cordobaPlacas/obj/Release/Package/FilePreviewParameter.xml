@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/cbaPlacas" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="cbaPlacasConnectionString-Web.config Connection String" description="" value="Data Source=DESKTOP-DGL3LL5;Initial Catalog=cbaPlacas;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cbaPlacasConnectionString']/@connectionString" />
+  </parameter>
+  <parameter name="cbaPlacasConnectionString1-Web.config Connection String" description="" value="Data Source=USER-PC;Initial Catalog=cbaPlacas;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cbaPlacasConnectionString1']/@connectionString" />
+  </parameter>
+  <parameter name="cordobaPlacas.My.MySettings.desktopConStr-Web.config Connection String" description="" value="Data Source=DESKTOP-DGL3LL5;Initial Catalog=cbaPlacas;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cordobaPlacas.My.MySettings.desktopConStr']/@connectionString" />
+  </parameter>
+  <parameter name="cordobaPlacas.My.MySettings.laptopConStr-Web.config Connection String" description="" value="Data Source = USER - PC;Initial Catalog=cbaPlacas;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='cordobaPlacas.My.MySettings.laptopConStr']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=localhost;Initial Catalog=cbaPlacas;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Manuel\\Documents\\GitHub\\cordobaPlacas\\cordobaPlacas\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

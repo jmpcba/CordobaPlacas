@@ -1,0 +1,131 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="select"] {
+    max-width: 280px;
+}
+
+.menu{
+    background-color: black
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+        padding: 4px
+    }
+    .body-content {
+        padding: 0;
+    }
+}
+
+tr.combos {
+    align-items: center;
+    font-weight: bold
+}
+
+td.combos {
+
+}
+
+.table{
+    border-collapse:separate;
+     border-spacing: 0 50px
+}
+
+.error{
+    font-size: 15px;
+    color: red;
+}
+
+.tablas{
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    /*text-align: center;*/
+}
+
+.button {
+    background-color: #428bca;
+    border: none;
+    color: white;
+    text-align: center;
+    /*text-decoration: none;*/
+    display: inline-block;
+    /*font-size: 16px;*/
+    font-weight: bold;
+}
+
+
+.validators
+{
+    color: red;
+}
+
+.imageButtons{
+    width:30px;
+    padding:2px;
+}
+
+.printBtn{
+    width:40px;
+}
+
+.hiddencol{
+    display:none;
+}
+
+.numCols{
+    text-align: center;
+}
+
+.gridTxt{
+    height:25px;
+    width: 75px;
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+    border: 1px solid black;
+    padding: 2px;
+  }
+.tablaProductos, th, td{
+    text-align: left;
+    vertical-align: top
+    
+}
+
+.sideNav{
+    float: left;
+    width: 100px
+}
+
+.tablaCaracteristicas, th, tr, td{
+    vertical-align:top;
+    margin-left:auto; 
+    margin-right:auto;
+    padding: 2px;
+}
