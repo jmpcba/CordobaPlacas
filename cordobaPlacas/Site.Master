@@ -49,9 +49,6 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Inicio</a></li>
-                        <li>
-                            <asp:Menu ID="Menu1" runat="server"></asp:Menu>
-                        </li>
                         <!--li><a runat="server" href="~/About">Acerca de</a></!--li-->
                         <li><a runat="server" href="~/Contact">Contacto</a></li>
                     </ul>

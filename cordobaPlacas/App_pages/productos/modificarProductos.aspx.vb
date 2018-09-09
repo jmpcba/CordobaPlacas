@@ -151,6 +151,7 @@
         Dim idProducto = grProductos.DataKeys(grProductos.SelectedIndex).Value.ToString()
 
         pnlProductos.Visible = False
+        pnlCaracteristicas.Visible = False
         pnlDespiece.Visible = True
         ViewState("idProducto") = idProducto
         llenarGrillaDespiece(idProducto)
@@ -218,6 +219,7 @@
     Protected Sub ImageButton5_Click(sender As Object, e As ImageClickEventArgs) Handles ImageButton5.Click
         pnlDespiece.Visible = False
         pnlProductos.Visible = True
+        pnlCaracteristicas.Visible = True
     End Sub
 
     Protected Sub grDespiece_RowUpdating(sender As Object, e As GridViewUpdateEventArgs) Handles grDespiece.RowUpdating

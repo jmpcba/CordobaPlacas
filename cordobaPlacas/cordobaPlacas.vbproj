@@ -488,7 +488,6 @@
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
     <Content Include="app_themes\default\default.skin" />
     <Content Include="App_pages\Web.config" />
-    <Content Include="WebForm3.aspx" />
     <None Include="My Project\PublishProfiles\CBAPLACAS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
@@ -872,13 +871,6 @@
     </Compile>
     <Compile Include="App_pages\pedidos\consultarPedidos.aspx.vb">
       <DependentUpon>consultarPedidos.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="WebForm3.aspx.designer.vb">
-      <DependentUpon>WebForm3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm3.aspx.vb">
-      <DependentUpon>WebForm3.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>

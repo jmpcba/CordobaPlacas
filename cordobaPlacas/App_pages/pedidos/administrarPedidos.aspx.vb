@@ -358,7 +358,7 @@ Public Class administrarPedidos
             pedido.agregarItem(item)
         Next
 
-        materiales = gestorDatos.calcularMateriales(pedido, grMateriales)
+        materiales = gestorDatos.calcularMateriales(gestorPedidos.pedido, grMateriales)
 
         chkPiezas.Checked = materiales
 

@@ -190,7 +190,7 @@
                 <table class="combos">
                     <tr>
                         <td>
-                            Cliente
+                            <b>Cliente</b>
                         </td>
                         <td>
                             <asp:Label ID="lblDetalleNvo" runat="server" Text=""></asp:Label>
@@ -198,7 +198,7 @@
                     </tr>
                         <tr>
                         <td>
-                            Cantidad
+                            <b>Cantidad</b>
                         </td>
                         <td>
                             <asp:Label ID="lblCantidadNvo" runat="server" Text=""></asp:Label>
@@ -206,7 +206,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Monto
+                            <b>Monto</b>
                         </td>
                         <td>
                             <asp:Label ID="lblPrecioNvo" runat="server" Text=""></asp:Label>
@@ -230,8 +230,8 @@
                         <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
                         <asp:BoundField DataField="MANO" HeaderText="MANO" />
                         <asp:BoundField DataField="CANTIDAD" HeaderText="CANTIDAD" />
-                        <asp:BoundField DataField="MONTO" DataFormatString="{0:f2}" HeaderText="MONTO" />
-                        <asp:BoundField DataField="STOCK" HeaderText="STOCK" />
+                        <asp:BoundField DataField="MONTO" DataFormatString="{0:C2}" HeaderText="MONTO" />
+                        <asp:BoundField DataField="STOCK" HeaderText="STOCK" ItemStyle-HorizontalAlign="Right" />
                     </Columns>
                 </asp:GridView>
             </asp:WizardStep>

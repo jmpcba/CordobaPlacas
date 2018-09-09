@@ -346,15 +346,6 @@ Public Class GestorDatos
         Return result
     End Function
 
-    Friend Function getItemsEnsamblados(_id As Integer) As DataTable
-        Dim db = New DbHelper()
-        Try
-            Return db.getItemsEnsamblados(_id)
-        Catch ex As Exception
-            Throw
-        End Try
-    End Function
-
     Public Function calcularMateriales(_pedido As Pedido, _gr As GridView) As Boolean
         Dim materiales = _pedido.calcularMateriales()
         Dim result = True
@@ -381,6 +372,15 @@ Public Class GestorDatos
         Next
 
         Return result
+    End Function
+
+    Friend Function getItemsEnsamblados(_id As Integer) As DataTable
+        Dim db = New DbHelper()
+        Try
+            Return db.getItemsEnsamblados(_id)
+        Catch ex As Exception
+            Throw
+        End Try
     End Function
 
     Public Sub consultarPedido(_pedido As Pedido, grDetalle As GridView, _grRegistro As GridView)

@@ -4058,15 +4058,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
-<member name="F:cordobaPlacas.SiteMaster._Menu1">
-<summary>
-Control Menu1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:cordobaPlacas.SiteMaster._MainContent">
 <summary>
 Control MainContent.
@@ -4475,42 +4466,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:cordobaPlacas.WebForm2._btnRegistroVolver">
 <summary>
 Control btnRegistroVolver.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.WebForm3._pnlCrystalReport">
-<summary>
-Control pnlCrystalReport.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.WebForm3._HyperLink1">
-<summary>
-Control HyperLink1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.WebForm3._CRV">
-<summary>
-Control CRV.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:cordobaPlacas.WebForm3._CrystalReportSource1">
-<summary>
-Control CrystalReportSource1.
 </summary>
 <remarks>
 Campo generado automáticamente.
