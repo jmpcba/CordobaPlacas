@@ -174,8 +174,14 @@
                             <asp:BoundField DataField="MADERA" HeaderText="MADERA" />
                             <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
                             <asp:BoundField DataField="MANO" HeaderText="MANO" />
-                            <asp:BoundField DataField="CANTIDAD" HeaderText="CANTIDAD" />
-                            <asp:BoundField DataField="MONTO" HeaderText="MONTO" DataFormatString="{0:C2}" />
+                            <asp:BoundField DataField="CANTIDAD" HeaderText="CANTIDAD" >
+                            <HeaderStyle CssClass="numCols" HorizontalAlign="Center" />
+                            <ItemStyle CssClass="numCols" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="MONTO" HeaderText="MONTO" DataFormatString="{0:C2}" >
+                            <HeaderStyle CssClass="numCols" HorizontalAlign="Center" />
+                            <ItemStyle CssClass="numCols" HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:BoundField>
                         </Columns>
                     </asp:GridView>
                 </asp:Panel>
@@ -229,9 +235,18 @@
                         <asp:BoundField DataField="MADERA" HeaderText="MADERA" />
                         <asp:BoundField DataField="CHAPA" HeaderText="CHAPA" />
                         <asp:BoundField DataField="MANO" HeaderText="MANO" />
-                        <asp:BoundField DataField="CANTIDAD" HeaderText="CANTIDAD" />
-                        <asp:BoundField DataField="MONTO" DataFormatString="{0:C2}" HeaderText="MONTO" />
-                        <asp:BoundField DataField="STOCK" HeaderText="STOCK" ItemStyle-HorizontalAlign="Right" />
+                        <asp:BoundField DataField="CANTIDAD" HeaderText="CANTIDAD" >
+                        <HeaderStyle CssClass="numCols" />
+                        <ItemStyle CssClass="numCols" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="MONTO" DataFormatString="{0:C2}" HeaderText="MONTO" >
+                        <HeaderStyle CssClass="numCols" />
+                        <ItemStyle CssClass="numCols" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="STOCK" HeaderText="STOCK" ItemStyle-HorizontalAlign="Right" >
+                        <HeaderStyle CssClass="numCols" />
+<ItemStyle HorizontalAlign="Right" CssClass="numCols"></ItemStyle>
+                        </asp:BoundField>
                     </Columns>
                 </asp:GridView>
             </asp:WizardStep>

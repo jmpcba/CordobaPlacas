@@ -16,8 +16,8 @@
                 <asp:BoundField DataField="Cliente" HeaderText="Cliente" SortExpression="Cliente" />
                 <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" SortExpression="Cantidad" />
                 <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
-                <asp:BoundField DataField="Fecha Recibido" HeaderText="Fecha Recibido" SortExpression="Fecha Recibido" />
-                <asp:BoundField DataField="Ultima Modificacion" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" />
+                <asp:BoundField DataField="Fecha Recibido" HeaderText="Fecha Recibido" SortExpression="Fecha Recibido" DataFormatString="{0:d}" />
+                <asp:BoundField DataField="Ultima Modificacion" HeaderText="Ultima Modificacion" SortExpression="Ultima Modificacion" DataFormatString="{0:d}" />
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:ImageButton ID="ImageButton6" runat="server" CommandName="delete" ImageUrl="~/images/delete.png" CssClass="imageButtons" />

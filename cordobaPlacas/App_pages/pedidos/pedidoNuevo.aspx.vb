@@ -36,6 +36,7 @@
         pnlUpdateCliente.Visible = True
 
         Try
+            txtCUIT.Text = cliente.CUIT
             txtNombre.Text = cliente.nombre
             txtTelefono.Text = cliente.tel
             txtMail.Text = cliente.mail

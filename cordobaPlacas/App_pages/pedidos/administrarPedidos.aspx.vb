@@ -642,6 +642,7 @@ Public Class administrarPedidos
                     'EL STOCK DEL PRODUCTO SE INCREMENTA POR UN TRIGGER DE DB
                     gestorPedidos.actualizarEstado(estado)
                     Session("gestorPEdidos") = gestorPedidos
+                    crystalReport(GestorDatos.reportes.etiquetaDepositoInterna, e.CommandArgument)
                     Dim msg = String.Format("Pedido {0} enviado a STOCK interno", gestorPedidos.pedido.id)
                     msgPanel(msg)
 

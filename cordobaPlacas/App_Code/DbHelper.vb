@@ -951,12 +951,12 @@ Public Class DbHelper
 
         If _recalc Then
             cmd.CommandText = "SP_ITEM_STOCK_TEMP"
-            cmd.Parameters.Clear()
 
             Try
                 cnn.Open()
 
                 For Each i As Item In _pedido.items
+                    cmd.Parameters.Clear()
                     cmd.Parameters.AddWithValue("@ID_ITEM", i.id)
                     cmd.Parameters.AddWithValue("@STOCK", i.stock)
                     cmd.ExecuteNonQuery()
