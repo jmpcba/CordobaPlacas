@@ -639,6 +639,7 @@
     <Compile Include="App_Code\GestorProductos.vb" />
     <Compile Include="App_Code\Hoja.vb" />
     <Compile Include="App_Code\Madera.vb" />
+    <Compile Include="App_Code\mail.vb" />
     <Compile Include="App_Code\Marco.vb" />
     <Compile Include="App_Code\material.vb" />
     <Compile Include="App_Code\Pedido.vb" />

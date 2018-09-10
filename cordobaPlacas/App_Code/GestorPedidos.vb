@@ -4,15 +4,18 @@ Imports cordobaPlacas
 Public Class GestorPedidos
     Public pedido As Pedido
     Private db As DbHelper
+    Private mail As mail
 
     Public Sub New(ByVal _idPedido As Integer)
         pedido = New Pedido(_idPedido)
         db = New DbHelper("pedidos")
+        mail = New mail()
     End Sub
 
     Public Sub New(ByVal _cliente As Cliente)
         pedido = New Pedido(_cliente)
         db = New DbHelper("pedidos")
+        mail = New mail()
     End Sub
 
     Public Sub addItem(ByVal _item As Item, Optional _existente As Boolean = False)
@@ -31,8 +34,10 @@ Public Class GestorPedidos
     End Sub
 
     Public Sub enviarPedido()
+        Dim mail = New Mail
         Try
             pedido.enviar()
+            mail.send("su pedido fue recibido y sera procesado a la brevedad")
         Catch ex As Exception
             Throw
         End Try
@@ -110,7 +115,7 @@ Public Class GestorPedidos
                 pedido.estado = New Estado(Estado.estados.deposito)
                 pedido.actualizar()
             End If
-
+            mail.send(String.Format("Su pedido {0} se encuentra en Deposito", pedido.id))
         Catch ex As Exception
             Throw
         End Try
@@ -153,6 +158,8 @@ Public Class GestorPedidos
             pedido.estado = New Estado(Estado.estados.enCola)
         End If
         pedido.actualizar()
+
+        mail.send(String.Format("Su pedido {0} ingreso a la cola de produccion", pedido.id))
     End Sub
 
     Friend Sub cancelarItem(_idItem As Integer)
@@ -175,6 +182,7 @@ Public Class GestorPedidos
             If flag Then
                 pedido.estado = estadoCancelado
                 pedido.actualizar()
+                mail.send(String.Format("Su pedido {0} fue modificado", pedido.id))
             End If
         Catch ex As Exception
             Throw
@@ -190,7 +198,7 @@ Public Class GestorPedidos
 
             pedido.estado = estadoCancelado
             pedido.actualizar(True)
-
+            mail.send(String.Format("Su pedido {0} fue modificado", pedido.id))
         Catch ex As Exception
             Throw
         End Try
@@ -205,6 +213,7 @@ Public Class GestorPedidos
 
             pedido.estado = _estado
             pedido.actualizar()
+            mail.send(String.Format("Su pedido {0} se encuenbtra en estado: {1}", pedido.id, pedido.estado.nombre))
         Catch ex As Exception
             Throw
         End Try
