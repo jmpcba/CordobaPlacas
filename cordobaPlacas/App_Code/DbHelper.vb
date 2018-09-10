@@ -943,24 +943,50 @@ Public Class DbHelper
         End Try
     End Function
 
-    Public Function getDespiece(_pedido As Pedido) As DataTable
-
+    Public Function getDespiece(_pedido As Pedido, _recalc As Boolean)
         ds = New DataSet
 
         cmd.Connection = cnn
-        cmd.CommandText = "SP_DESPIECE_PEDIDO"
         cmd.CommandType = CommandType.StoredProcedure
 
-        cmd.Parameters.Clear()
-        cmd.Parameters.AddWithValue("@ID_PEDIDO", _pedido.id)
+        If _recalc Then
+            cmd.CommandText = "SP_ITEM_STOCK_TEMP"
+            cmd.Parameters.Clear()
 
-        Try
-            da.Fill(ds, "RESULTADO")
-            Return ds.Tables("RESULTADO")
+            Try
+                cnn.Open()
 
-        Catch ex As SqlException
-            Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
-        End Try
+                For Each i As Item In _pedido.items
+                    cmd.Parameters.AddWithValue("@ID_ITEM", i.id)
+                    cmd.Parameters.AddWithValue("@STOCK", i.stock)
+                    cmd.ExecuteNonQuery()
+                Next
+                cmd.CommandText = "SP_DESPIECE_PRODUCTO_RECALC"
+                cmd.Parameters.Clear()
+                cmd.Parameters.AddWithValue("@ID_PEDIDO", _pedido.id)
+
+                da.Fill(ds, "RESULTADO")
+                Return ds.Tables("RESULTADO")
+
+            Catch ex As Exception
+                Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+            Finally
+                cnn.Close()
+            End Try
+
+        Else
+            Try
+                cmd.CommandText = "SP_DESPIECE_PEDIDO"
+
+                cmd.Parameters.Clear()
+                cmd.Parameters.AddWithValue("@ID_PEDIDO", _pedido.id)
+                da.Fill(ds, "RESULTADO")
+                Return ds.Tables("RESULTADO")
+            Catch ex As Exception
+                Throw New Exception("ERROR DE BASE DE DATOS: " & ex.Message)
+            End Try
+        End If
+
     End Function
 
     Public Function getDespiece(_prod As Producto) As DataTable

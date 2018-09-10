@@ -346,30 +346,35 @@ Public Class GestorDatos
         Return result
     End Function
 
-    Public Function calcularMateriales(_pedido As Pedido, _gr As GridView) As Boolean
-        Dim materiales = _pedido.calcularMateriales()
+    Public Function calcularMateriales(_pedido As Pedido, _gr As GridView, Optional _recalc As Boolean = False) As Boolean
+
+        Dim materiales = _pedido.calcularMateriales(_recalc)
         Dim result = True
         Dim redRows = New List(Of Integer)
 
+        Try
 
-        Dim i = 0
+            Dim i = 0
 
-        For Each r As DataRow In materiales.Rows
-            Dim requerido = r("CONSUMO")
+            For Each r As DataRow In materiales.Rows
+                Dim requerido = r("CONSUMO")
 
-            If requerido > r("STOCK_DISPONIBLE") Then
-                result = False
-                redRows.Add(i)
-            End If
-            i += 1
-        Next
+                If requerido > r("STOCK_DISPONIBLE") Then
+                    Result = False
+                    redRows.Add(i)
+                End If
+                i += 1
+            Next
 
-        _gr.DataSource = materiales
-        _gr.DataBind()
+            _gr.DataSource = materiales
+            _gr.DataBind()
 
-        For Each i In redRows
-            _gr.Rows(i).ForeColor = Drawing.Color.Red
-        Next
+            For Each i In redRows
+                _gr.Rows(i).ForeColor = Drawing.Color.Red
+            Next
+        Catch ex As Exception
+            Throw
+        End Try
 
         Return result
     End Function

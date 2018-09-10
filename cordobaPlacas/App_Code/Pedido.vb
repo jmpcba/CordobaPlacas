@@ -135,11 +135,11 @@ Public Class Pedido
 
     End Function
 
-    Public Function calcularMateriales() As DataTable
+    Public Function calcularMateriales(_recalc As Boolean) As DataTable
         Dim dts = New List(Of DataTable)
         Dim db = New DbHelper
 
-        despiece = db.getDespiece(Me)
+        despiece = db.getDespiece(Me, _recalc)
 
         For Each i As Item In items
             i.CalcularMateriales()

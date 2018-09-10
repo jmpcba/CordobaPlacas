@@ -73,7 +73,21 @@
             <td style="vertical-align: top; text-align: left">
                 <asp:Panel ID="pnlResultado" runat="server">
                     <h4>Resultados</h4><br />
-                    <asp:GridView ID="grResultado" runat="server" AutoGenerateSelectButton="True"></asp:GridView>
+                    <asp:GridView ID="grResultado" runat="server" AutoGenerateColumns="False">
+                        <Columns>
+                            <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" ShowSelectButton="True">
+                            <ControlStyle Height="20px" Width="20px" />
+                            </asp:CommandField>
+                            <asp:BoundField DataField="ID" HeaderText="ID" />
+                            <asp:BoundField DataField="CUIT" HeaderText="CUIT" />
+                            <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" />
+                            <asp:BoundField DataField="TELEFONO" HeaderText="TELEFONO" />
+                            <asp:BoundField DataField="MAIL" HeaderText="MAIL" />
+                            <asp:BoundField DataField="DIRECCION" HeaderText="DIRECCION" />
+                            <asp:BoundField DataField="CIUDAD" HeaderText="CIUDAD" />
+                            <asp:BoundField DataField="PROVINCIA" HeaderText="PROVINCIA" />
+                        </Columns>
+                    </asp:GridView>
                 </asp:Panel>
             </td>
         </tr>

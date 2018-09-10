@@ -43,9 +43,6 @@
                             <h4>Detalles Pedido</h4>
                             <asp:GridView ID="grDetalleNvo" runat="server" AutoGenerateColumns="False" ToolTip="Detalles del Pedido">
                                 <Columns>
-                                    <asp:CommandField SelectText="Detalle" ShowSelectButton="True" ButtonType="Image" SelectImageUrl="~/images/zoom_in.png" >
-                                    <ControlStyle Height="20px" Width="20px" />
-                                    </asp:CommandField>
                                     <asp:BoundField HeaderText="ITEM" DataField="ITEM" />
                                     <asp:BoundField HeaderText="LINEA" DataField="LINEA" />
                                     <asp:BoundField HeaderText="MADERA" DataField="MADERA" />

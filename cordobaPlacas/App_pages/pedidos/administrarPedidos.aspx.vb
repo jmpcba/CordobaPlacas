@@ -75,13 +75,13 @@ Public Class administrarPedidos
                 val = r.FindControl("rvStockNvo")
                 val.MinimumValue = 0
 
-                If Convert.ToInt32(r.Cells(10).Text) > Convert.ToInt32(r.Cells(9).Text) Then
-                    numUpDown.Maximum = r.Cells(9).Text
-                    val.MaximumValue = r.Cells(9).Text
+                If Convert.ToInt32(r.Cells(9).Text) > Convert.ToInt32(r.Cells(8).Text) Then
+                    numUpDown.Maximum = r.Cells(8).Text
+                    val.MaximumValue = r.Cells(8).Text
                     val.ErrorMessage = "No puede exceder el valor definido en la columna CANT"
                 Else
-                    numUpDown.Maximum = r.Cells(10).Text
-                    val.MaximumValue = r.Cells(10).Text
+                    numUpDown.Maximum = r.Cells(9).Text
+                    val.MaximumValue = r.Cells(9).Text
                     val.ErrorMessage = "No puede exceder el valor definido en la columna STOCK"
                 End If
             Next
@@ -102,7 +102,7 @@ Public Class administrarPedidos
                 btnPedidoCompras.Visible = True
             End If
 
-            btnImprimir_ConfirmButtonExtender.ConfirmText = String.Format("Mover el pedido {0} a la cola de produccion \n&#10; E imprimir ordenes de trabajo?", gestorPedidos.pedido.id)
+            btnImprimir_ConfirmButtonExtender.ConfirmText = String.Format("Mover el pedido {0} a la cola de produccion &#10; E imprimir ordenes de trabajo?", gestorPedidos.pedido.id)
 
             Dim msg = String.Format("Carga de datos pedido {0} - CORRECTA", gestorPedidos.pedido.id)
             msgPanel(msg)
@@ -153,7 +153,7 @@ Public Class administrarPedidos
 
         lbltituloMat.Text = String.Format("Lista de materiales Pedido: {0} Item {1}", gestorPedidos.pedido.id, item.id)
 
-        btnImprimir_ConfirmButtonExtender.ConfirmText = String.Format("Mover el pedido {0} a la cola de produccion \n&#10; E imprimir ordenes de trabajo?", gestorPedidos.pedido.id)
+        btnImprimir_ConfirmButtonExtender.ConfirmText = String.Format("Mover el pedido {0} a la cola de produccion e imprimir ordenes de trabajo?", gestorPedidos.pedido.id)
         Dim msg = String.Format("Carga de datos Item {0} - CORRECTA", item.id)
         msgPanel(msg)
     End Sub
@@ -338,41 +338,45 @@ Public Class administrarPedidos
     End Sub
 
     Protected Sub btnRecalcularPedido_Click(sender As Object, e As EventArgs) Handles btnRecalcularPedido.Click
-        Dim materiales As Boolean
-        Dim pedido = New Pedido
+        Try
+            Dim materiales As Boolean
+            Dim pedido = New Pedido
 
-        gestorPedidos = Session("gestorPedidos")
-        grDetalleNvo.SelectedIndex = -1
-        pnlDetalleNvo.Visible = True
-        pnlStockNvo.Visible = True
+            gestorPedidos = Session("gestorPedidos")
+            grDetalleNvo.SelectedIndex = -1
+            pnlDetalleNvo.Visible = True
+            pnlStockNvo.Visible = True
 
-        For Each r As GridViewRow In grDetalleNvo.Rows
-            Dim item = gestorPedidos.pedido.getItemById(r.Cells(1).Text)
-            Dim txstockGridView As TextBox
-            Dim stock As Integer
+            For Each r As GridViewRow In grDetalleNvo.Rows
+                Dim item = gestorPedidos.pedido.getItemById(r.Cells(0).Text)
+                Dim txstockGridView As TextBox
+                Dim stock As Integer
 
-            txstockGridView = r.FindControl("txtStockRow")
-            stock = txstockGridView.Text
-            item.stock = stock
+                txstockGridView = r.FindControl("txtStockRow")
+                stock = txstockGridView.Text
+                item.stock = stock
 
-            pedido.agregarItem(item)
-        Next
+                pedido.agregarItem(item)
+            Next
 
-        materiales = gestorDatos.calcularMateriales(gestorPedidos.pedido, grMateriales)
+            materiales = gestorDatos.calcularMateriales(gestorPedidos.pedido, grMateriales, True)
 
-        chkPiezas.Checked = materiales
+            chkPiezas.Checked = materiales
 
-        If materiales Then
-            btnImprimir.Visible = True
-            chkPiezas.Text = "DISPONE DE MATERIALES SUFICIENTES"
-            chkPiezas.ForeColor = Drawing.Color.Green
-            chkPiezas.Checked = True
-        Else
-            chkPiezas.Text = "NO DISPONE DE MATERIALES SUFICIENTES"
-            chkPiezas.Checked = False
-            chkPiezas.ForeColor = Drawing.Color.Red
-            btnPedidoCompras.Visible = True
-        End If
+            If materiales Then
+                btnImprimir.Visible = True
+                chkPiezas.Text = "DISPONE DE MATERIALES SUFICIENTES"
+                chkPiezas.ForeColor = Drawing.Color.Green
+                chkPiezas.Checked = True
+            Else
+                chkPiezas.Text = "NO DISPONE DE MATERIALES SUFICIENTES"
+                chkPiezas.Checked = False
+                chkPiezas.ForeColor = Drawing.Color.Red
+                btnPedidoCompras.Visible = True
+            End If
+        Catch ex As Exception
+            errorPanel(ex.Message)
+        End Try
 
     End Sub
 
